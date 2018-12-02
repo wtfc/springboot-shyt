@@ -1,0 +1,2099 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"><mapper namespace="com.jc.oa.po.workTask.domain.WorkTask"><select id="query" parameterType="com.jc.oa.po.workTask.domain.WorkTask" resultType="com.jc.oa.po.workTask.domain.WorkTask">
+		SELECT 
+			t.ID id,
+			t.TASK_NAME taskName,
+			t.PARENT_TASKID parentTaskid,
+			t.TASK_IMP_CODE taskImpCode,
+			t.SPONSOR_ID sponsorId,
+			t.DIRECTOR_ID directorId,
+			t.PRTICIPANTS_ID prticipantsId,
+			t.CONTENT content,
+			t.STANDARD standard,
+			t.START_TIME startTime,
+			t.END_TIME endTime,
+			t.ACT_START_TIME actStartTime,
+			t.ACT_END_TIME actEndTime,
+			t.TASK_PROC taskProc,
+			t.REPORT_TYPE reportType,
+			t.REPORT_DAY reportDay,
+			t.REPORT_TIME reportTime,
+			t.STATUS status,
+			t.TASK_ORIGIN taskOrigin,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5,
+			(SELECT tt.TASK_NAME FROM tty_po_task tt WHERE tt.id=t.PARENT_TASKID) as parentTaskName,
+			(SELECT su.display_name FROM toa_sys_user su WHERE su.id=t.SPONSOR_ID) as sponsor,
+			(SELECT su.display_name FROM toa_sys_user su WHERE su.id=t.DIRECTOR_ID) as director,
+			t.is_Templet isTemplet,
+			t.REMIND_TYPE remindType,
+			t.is_Import_Diary isImportDiary,
+			(SELECT tt.task_Imp_Code FROM tty_po_task tt WHERE tt.id=t.PARENT_TASKID) as parentTaskImpCode,
+			(SELECT COUNT(*) FROM tty_po_taskfinish tt WHERE tt.PARENT_TASKID=t.id AND tt.STATUS='3' AND tt.DELETE_FLAG=0) + 
+            (SELECT COUNT(*) FROM tty_po_task tt WHERE tt.PARENT_TASKID=t.id AND tt.STATUS IN ('0','1','2','4','6','7') AND tt.DELETE_FLAG=0) AS totalCount,
+            t.remind_Per_Id  remindPerId,
+            t.remind_Content remindContent,
+            t.delay_Status  delayStatus,
+            (SELECT COUNT(*) FROM tty_po_task tt WHERE tt.PARENT_TASKID=t.id AND tt.STATUS IN ('0','1','2','6') AND tt.DELETE_FLAG=0) AS normalToCount
+		FROM tty_po_task t
+		<where>
+			<if test="id != null">
+				 t.ID = #{id}
+			</if>
+			<if test="taskName !='' and taskName != null">
+				and t.TASK_NAME like  <![CDATA['%${taskName}%']]>
+			</if>
+			<if test="parentTaskid != null">
+				and t.PARENT_TASKID = #{parentTaskid}
+			</if>
+			<if test="taskImpCode != null">
+				and t.TASK_IMP_CODE = #{taskImpCode}
+			</if>
+	        <if test="sponsorId != null and directorId==null">
+				and t.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId != null and sponsorId==null">
+				and t.DIRECTOR_ID = #{directorId}
+			</if>
+			<if test="directorId != null and sponsorId !=null">
+				and t.DIRECTOR_ID = #{directorId} and t.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId == null and sponsorId ==null and userId !=null">
+				and (t.DIRECTOR_ID = #{userId} or t.SPONSOR_ID = #{userId})
+			</if>
+			<if test="prticipantsId != null">
+				and t.PRTICIPANTS_ID = #{prticipantsId}
+			</if>
+			<if test="content !='' and content != null">
+				and t.CONTENT like  <![CDATA['%${content}%']]>
+			</if>
+			<if test="standard != null">
+				and t.STANDARD = #{standard}
+			</if>
+			<if test="startTime != null and endTime != null">
+				and t.START_TIME between  #{startTime} and #{endTime}
+			</if>
+			<if test="startTime != null and endTime == null">
+				<![CDATA[and t.START_TIME >=  #{startTime}]]>
+			</if>
+			<if test="startTime == null and endTime != null">
+				<![CDATA[and t.START_TIME <=  #{endTime}]]>
+			</if>
+			<if test="actStartTime != null">
+				and t.ACT_START_TIME = #{actStartTime}
+			</if>
+			<if test="actEndTime != null">
+				and t.ACT_END_TIME = #{actEndTime}
+			</if>
+			<if test="taskProc != null">
+				and t.TASK_PROC = #{taskProc}
+			</if>
+			<if test="reportType != null">
+				and t.REPORT_TYPE = #{reportType}
+			</if>
+			<if test="reportDay != null">
+				and t.REPORT_DAY = #{reportDay}
+			</if>
+			<if test="reportTime != null">
+				and t.REPORT_TIME = #{reportTime}
+			</if>
+			<if test="status != null">
+				and t.STATUS = #{status}
+			</if>
+			<if test="status ==null and infoStatus==null">
+				and t.STATUS in ('0','1','2','3','4','6','7')
+			</if>
+			<if test="status ==null and infoStatus != null">
+				and t.STATUS in 
+				 <foreach item="infoStatu" index="index" collection="infoStatus" open="(" separator="," close=")">  
+				  #{infoStatu}  
+				 </foreach>
+			</if>
+			<if test="taskOrigin != null">
+				and t.TASK_ORIGIN = #{taskOrigin}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="isTemplet != null">
+				and t.is_Templet = #{isTemplet}
+			</if>
+			<if test="taskIds != null">
+				and t.ID in 
+				 <foreach item="taskId" index="index" collection="taskIds" open="(" separator="," close=")">  
+				  #{taskId}  
+				 </foreach>
+			</if>
+			<if test="remindType!= null">
+				and t.remind_Type = #{remindType}
+			</if>
+		</where>
+		ORDER BY t.CREATE_DATE DESC
+	</select><select id="queryCount" parameterType="com.jc.oa.po.workTask.domain.WorkTask" resultType="java.lang.Integer">
+		SELECT count(ID) 
+		FROM tty_po_task t
+		<where>
+			<if test="id != null">
+				 t.ID = #{id}
+			</if>
+			<if test="taskName !='' and taskName != null">
+				and t.TASK_NAME like  <![CDATA['%${taskName}%']]>
+			</if>
+			<if test="parentTaskid != null">
+				and t.PARENT_TASKID = #{parentTaskid}
+			</if>
+			<if test="taskImpCode != null">
+				and t.TASK_IMP_CODE = #{taskImpCode}
+			</if>
+			<if test="sponsorId != null and directorId==null">
+				and t.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId != null and sponsorId==null">
+				and t.DIRECTOR_ID = #{directorId}
+			</if>
+			<if test="directorId != null and sponsorId !=null">
+				and t.DIRECTOR_ID = #{directorId} and t.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId == null and sponsorId ==null and userId !=null">
+				and (t.DIRECTOR_ID = #{userId} or t.SPONSOR_ID = #{userId})
+			</if>
+			
+			<if test="prticipantsId != null">
+				and t.PRTICIPANTS_ID = #{prticipantsId}
+			</if>
+			<if test="content !='' and content != null">
+				and t.CONTENT like  <![CDATA['%${content}%']]>
+			</if>
+			<if test="standard != null">
+				and t.STANDARD = #{standard}
+			</if>
+			<if test="startTime != null and endTime != null">
+				and t.START_TIME between  #{startTime} and #{endTime}
+			</if>
+			<if test="startTime != null and endTime == null">
+				<![CDATA[and t.START_TIME >=  #{startTime}]]>
+			</if>
+			<if test="startTime == null and endTime != null">
+				<![CDATA[and t.START_TIME <=  #{endTime}]]>
+			</if>
+			<if test="actStartTime != null">
+				and t.ACT_START_TIME = #{actStartTime}
+			</if>
+			<if test="actEndTime != null">
+				and t.ACT_END_TIME = #{actEndTime}
+			</if>
+			<if test="taskProc != null">
+				and t.TASK_PROC = #{taskProc}
+			</if>
+			<if test="reportType != null">
+				and t.REPORT_TYPE = #{reportType}
+			</if>
+			<if test="reportDay != null">
+				and t.REPORT_DAY = #{reportDay}
+			</if>
+			<if test="reportTime != null">
+				and t.REPORT_TIME = #{reportTime}
+			</if>
+			<if test="status != null">
+				and t.STATUS = #{status}
+			</if>
+			<if test="status ==null and infoStatus==null">
+				and t.STATUS in ('0','1','2','3','4','6','7')
+			</if>
+			<if test="status ==null and infoStatus != null">
+				and t.STATUS in 
+				 <foreach item="infoStatu" index="index" collection="infoStatus" open="(" separator="," close=")">  
+				  #{infoStatu}  
+				 </foreach>
+			</if>
+			<if test="taskOrigin != null">
+				and t.TASK_ORIGIN = #{taskOrigin}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="isTemplet != null">
+				and t.is_Templet = #{isTemplet}
+			</if>
+			<if test="taskIds != null">
+				and t.ID in 
+				 <foreach item="taskId" index="index" collection="taskIds" open="(" separator="," close=")">  
+				  #{taskId}  
+				 </foreach>
+			</if>
+			<if test="remindType!= null">
+				and t.remind_Type = #{remindType}
+			</if>
+		</where>
+	</select><select id="queryUnion" parameterType="com.jc.oa.po.workTask.domain.WorkTask" resultType="com.jc.oa.po.workTask.domain.WorkTask">
+		SELECT 
+			t.ID id,
+			t.ID taskId,
+			t.TASK_NAME taskName,
+			t.PARENT_TASKID parentTaskid,
+			t.TASK_IMP_CODE taskImpCode,
+			t.SPONSOR_ID sponsorId,
+			t.DIRECTOR_ID directorId,
+			t.PRTICIPANTS_ID prticipantsId,
+			t.CONTENT content,
+			t.STANDARD standard,
+			t.START_TIME startTime,
+			t.END_TIME endTime,
+			t.ACT_START_TIME actStartTime,
+			t.ACT_END_TIME actEndTime,
+			t.TASK_PROC taskProc,
+			t.REPORT_TYPE reportType,
+			t.REPORT_DAY reportDay,
+			t.REPORT_TIME reportTime,
+			t.STATUS STATUS,
+			t.TASK_ORIGIN taskOrigin,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5,
+			(SELECT tt.TASK_NAME FROM tty_po_task tt WHERE tt.id=t.PARENT_TASKID) AS parentTaskName,
+			(SELECT su.display_name FROM toa_sys_user su WHERE su.id=t.SPONSOR_ID) AS sponsor,
+			(SELECT su.display_name FROM toa_sys_user su WHERE su.id=t.DIRECTOR_ID) AS director,
+			t.is_Templet isTemplet,
+			(SELECT COUNT(*) FROM tty_po_task tt WHERE tt.PARENT_TASKID=t.id AND tt.STATUS IN ('0','1','2','3','4','6','7') AND tt.DELETE_FLAG=0 ) AS totalCount,
+			t.is_Import_Diary isImportDiary,
+			(SELECT tt.task_Imp_Code FROM tty_po_task tt WHERE tt.id=t.PARENT_TASKID) as parentTaskImpCode,
+			t.remind_Per_Id  remindPerId,
+            t.remind_Content remindContent,
+            t.delay_Status delayStatus,
+            (SELECT COUNT(*) FROM tty_po_task tt WHERE tt.PARENT_TASKID=t.id AND tt.STATUS IN ('0','1','2','6') AND tt.DELETE_FLAG=0 ) AS normalToCount
+		FROM tty_po_task t 
+		<where>
+			<if test="id != null">
+				 t.ID = #{id}
+			</if>
+			<if test="taskName !='' and taskName != null">
+				and t.TASK_NAME like  <![CDATA['%${taskName}%']]>
+			</if>
+			<if test="parentTaskid != null">
+				and t.PARENT_TASKID = #{parentTaskid}
+			</if>
+			<if test="taskImpCode != null">
+				and t.TASK_IMP_CODE = #{taskImpCode}
+			</if>
+	        <if test="sponsorId != null and directorId==null">
+				and t.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId != null and sponsorId==null">
+				and t.DIRECTOR_ID = #{directorId}
+			</if>
+			<if test="directorId != null and sponsorId !=null">
+				and t.DIRECTOR_ID = #{directorId} and t.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId == null and sponsorId ==null and userId !=null">
+				and (t.DIRECTOR_ID = #{userId} or t.SPONSOR_ID = #{userId})
+			</if>
+			<if test="prticipantsId != null">
+				and t.PRTICIPANTS_ID = #{prticipantsId}
+			</if>
+			<if test="content !='' and content != null">
+				and t.CONTENT like  <![CDATA['%${content}%']]>
+			</if>
+			<if test="standard != null">
+				and t.STANDARD = #{standard}
+			</if>
+			<if test="startTime != null and endTime != null">
+				and t.START_TIME between  #{startTime} and #{endTime}
+			</if>
+			<if test="startTime != null and endTime == null">
+				<![CDATA[and t.START_TIME >=  #{startTime}]]>
+			</if>
+			<if test="startTime == null and endTime != null">
+				<![CDATA[and t.START_TIME <=  #{endTime}]]>
+			</if>
+			<if test="actStartTime != null">
+				and t.ACT_START_TIME = #{actStartTime}
+			</if>
+			<if test="actEndTime != null">
+				and t.ACT_END_TIME = #{actEndTime}
+			</if>
+			<if test="taskProc != null">
+				and t.TASK_PROC = #{taskProc}
+			</if>
+			<if test="reportType != null">
+				and t.REPORT_TYPE = #{reportType}
+			</if>
+			<if test="reportDay != null">
+				and t.REPORT_DAY = #{reportDay}
+			</if>
+			<if test="reportTime != null">
+				and t.REPORT_TIME = #{reportTime}
+			</if>
+			<if test="status != null">
+				and t.STATUS = #{status}
+			</if>
+			<if test="status ==null and infoStatus==null">
+				and t.STATUS in ('0','1','2','3','4','6','7')
+			</if>
+			<if test="status ==null and infoStatus != null">
+				and t.STATUS in 
+				 <foreach item="infoStatu" index="index" collection="infoStatus" open="(" separator="," close=")">  
+				  #{infoStatu}  
+				 </foreach>
+			</if>
+			<if test="taskOrigin != null">
+				and t.TASK_ORIGIN = #{taskOrigin}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="isTemplet != null">
+				and t.is_Templet = #{isTemplet}
+			</if>
+			<if test="taskIds != null">
+				and t.ID in 
+				 <foreach item="taskId" index="index" collection="taskIds" open="(" separator="," close=")">  
+				  #{taskId}  
+				 </foreach>
+			</if>
+			<if test="taskNameTemp !='' and taskNameTemp != null">
+				and t.TASK_NAME = #{taskNameTemp}
+			</if>
+		</where>
+		UNION
+			SELECT 
+			f.id id ,
+			f.task_Id taskId,
+			f.TASK_NAME taskName,
+			f.PARENT_TASKID parentTaskid,
+			f.TASK_IMP_CODE taskImpCode,
+			f.SPONSOR_ID sponsorId,
+			f.DIRECTOR_ID directorId,
+			f.PRTICIPANTS_ID prticipantsId,
+			f.CONTENT content,
+			f.STANDARD standard,
+			f.START_TIME startTime,
+			f.END_TIME endTime,
+			f.ACT_START_TIME actStartTime,
+			f.ACT_END_TIME actEndTime,
+			f.TASK_PROC taskProc,
+			f.REPORT_TYPE reportType,
+			f.REPORT_DAY reportDay,
+			f.REPORT_TIME reportTime,
+			f.STATUS STATUS,
+			f.TASK_ORIGIN taskOrigin,
+			f.DELETE_FLAG deleteFlag,
+			f.CREATE_USER createUser,
+			f.CREATE_USER_DEPT createUserDept,
+			f.CREATE_USER_ORG createUserOrg,
+			f.CREATE_DATE createDate,
+			f.MODIFY_USER modifyUser,
+			f.MODIFY_DATE modifyDate,
+			f.EXT_DATE1 extDate1,
+			f.EXT_DATE2 extDate2,
+			f.EXT_NUM1 extNum1,
+			f.EXT_NUM2 extNum2,
+			f.EXT_NUM3 extNum3,
+			f.EXT_STR1 extStr1,
+			f.EXT_STR2 extStr2,
+			f.EXT_STR3 extStr3,
+			f.EXT_STR4 extStr4,
+			f.EXT_STR5 extStr5,
+			(SELECT tt.TASK_NAME FROM tty_po_taskfinish tt WHERE tt.task_id=f.PARENT_TASKID) AS parentTaskName,
+			(SELECT su.display_name FROM toa_sys_user su WHERE su.id=f.SPONSOR_ID) AS sponsor,
+			(SELECT su.display_name FROM toa_sys_user su WHERE su.id=f.DIRECTOR_ID) AS director,
+			f.is_Templet isTemplet,
+			(SELECT COUNT(*) FROM tty_po_taskfinish tt WHERE tt.PARENT_TASKID=f.task_id AND tt.STATUS IN ('0','1','2','3','4','6','7') AND tt.DELETE_FLAG=0 ) AS totalCount,
+			f.is_Import_Diary isImportDiary,
+			(SELECT tt.task_Imp_Code FROM tty_po_task tt WHERE tt.id=f.PARENT_TASKID) as parentTaskImpCode,
+			f.remind_Per_Id  remindPerId,
+            f.remind_Content remindContent,
+            f.delay_Status delayStatus,
+            0 AS normalToCount
+			FROM tty_po_taskfinish f
+		 <where>
+			<if test="id != null">
+				f.ID = #{id}
+			</if>
+			<if test="taskName !='' and taskName != null">
+				and f.TASK_NAME like  <![CDATA['%${taskName}%']]>
+			</if>
+			<if test="content !='' and content != null">
+				and f.CONTENT like  <![CDATA['%${content}%']]>
+			</if>
+			<if test="parentTaskid != null">
+				and f.PARENT_TASKID = #{parentTaskid}
+			</if>
+	        <if test="sponsorId != null and directorId==null">
+				and f.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId != null and sponsorId==null">
+				and f.DIRECTOR_ID = #{directorId}
+			</if>
+			<if test="directorId != null and sponsorId !=null">
+				and f.DIRECTOR_ID = #{directorId} and f.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId == null and sponsorId ==null and userId !=null">
+				and (f.DIRECTOR_ID = #{userId} or f.SPONSOR_ID = #{userId})
+			</if>
+			<if test="startTime != null and endTime != null">
+				and f.START_TIME between  #{startTime} and #{endTime}
+			</if>
+			<if test="startTime != null and endTime == null">
+				<![CDATA[and f.START_TIME >=  #{startTime}]]>
+			</if>
+			<if test="startTime == null and endTime != null">
+				<![CDATA[and f.START_TIME <=  #{endTime}]]>
+			</if>
+			<if test="status != null">
+				and f.STATUS = #{status}
+			</if>
+			<if test="status == null and infoStatus==null">
+				and f.STATUS=3
+			</if>
+			<if test="status == null and infoStatus != null">
+				and f.STATUS in 
+				 <foreach item="infoStatu" index="index" collection="infoStatus" open="(" separator="," close=")">  
+				  #{infoStatu}  
+				 </foreach>
+			</if>
+			<if test="isTemplet != null">
+				and f.is_Templet = #{isTemplet}
+			</if>
+			<if test="deleteFlag != null">
+				and f.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and f.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and f.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and f.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and f.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and f.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and f.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="taskNameTemp !='' and taskNameTemp != null">
+				and f.TASK_NAME = #{taskNameTemp}
+			</if>
+		</where>
+		ORDER BY createDate DESC
+	</select><select id="queryCountUnion" parameterType="com.jc.oa.po.workTask.domain.WorkTask" resultType="java.lang.Integer">
+		SELECT COUNT(id) FROM (
+		SELECT tt.ID id,tt.create_user,tt.CREATE_USER_DEPT,tt.CREATE_USER_ORG FROM tty_po_task tt 
+		<where>
+			<if test="id != null">
+				 tt.ID = #{id}
+			</if>
+			<if test="taskName !='' and taskName != null">
+				and tt.TASK_NAME like  <![CDATA['%${taskName}%']]>
+			</if>
+			<if test="parentTaskid != null">
+				and tt.PARENT_TASKID = #{parentTaskid}
+			</if>
+			<if test="taskImpCode != null">
+				and tt.TASK_IMP_CODE = #{taskImpCode}
+			</if>
+	        <if test="sponsorId != null and directorId==null">
+				and tt.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId != null and sponsorId==null">
+				and tt.DIRECTOR_ID = #{directorId}
+			</if>
+			<if test="directorId != null and sponsorId !=null">
+				and tt.DIRECTOR_ID = #{directorId} and t.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId == null and sponsorId ==null and userId !=null">
+				and (tt.DIRECTOR_ID = #{userId} or tt.SPONSOR_ID = #{userId})
+			</if>
+			<if test="prticipantsId != null">
+				and tt.PRTICIPANTS_ID = #{prticipantsId}
+			</if>
+			<if test="content !='' and content != null">
+				and tt.CONTENT like  <![CDATA['%${content}%']]>
+			</if>
+			<if test="standard != null">
+				and tt.STANDARD = #{standard}
+			</if>
+			<if test="startTime != null and endTime != null">
+				and tt.START_TIME between  #{startTime} and #{endTime}
+			</if>
+			<if test="startTime != null and endTime == null">
+				<![CDATA[and tt.START_TIME >=  #{startTime}]]>
+			</if>
+			<if test="startTime == null and endTime != null">
+				<![CDATA[and tt.START_TIME <=  #{endTime}]]>
+			</if>
+			<if test="actStartTime != null">
+				and tt.ACT_START_TIME = #{actStartTime}
+			</if>
+			<if test="actEndTime != null">
+				and tt.ACT_END_TIME = #{actEndTime}
+			</if>
+			<if test="taskProc != null">
+				and tt.TASK_PROC = #{taskProc}
+			</if>
+			<if test="reportType != null">
+				and tt.REPORT_TYPE = #{reportType}
+			</if>
+			<if test="reportDay != null">
+				and tt.REPORT_DAY = #{reportDay}
+			</if>
+			<if test="reportTime != null">
+				and tt.REPORT_TIME = #{reportTime}
+			</if>
+			<if test="status != null">
+				and tt.STATUS = #{status}
+			</if>
+			<if test="status ==null and infoStatus==null">
+				and tt.STATUS in ('0','1','2','3','4','6','7')
+			</if>
+			<if test="status ==null and infoStatus != null">
+				and tt.STATUS in 
+				 <foreach item="infoStatu" index="index" collection="infoStatus" open="(" separator="," close=")">  
+				  #{infoStatu}  
+				 </foreach>
+			</if>
+			<if test="taskOrigin != null">
+				and tt.TASK_ORIGIN = #{taskOrigin}
+			</if>
+			<if test="deleteFlag != null">
+				and tt.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and tt.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and tt.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and tt.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and tt.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and tt.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and tt.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and tt.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and tt.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and tt.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and tt.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and tt.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and tt.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and tt.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and tt.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and tt.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and tt.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="isTemplet != null">
+				and tt.is_Templet = #{isTemplet}
+			</if>
+			<if test="taskIds != null">
+				and tt.ID in 
+				 <foreach item="taskId" index="index" collection="taskIds" open="(" separator="," close=")">  
+				  #{taskId}  
+				 </foreach>
+			</if>
+			<if test="taskNameTemp !='' and taskNameTemp != null">
+				and tt.TASK_NAME = #{taskNameTemp}
+			</if>
+		</where>
+		UNION SELECT f.id id,f.create_user,f.CREATE_USER_DEPT,f.CREATE_USER_ORG FROM tty_po_taskfinish f
+		<where>
+			<if test="id != null">
+				 f.ID = #{id}
+			</if>
+			<if test="taskName !='' and taskName != null">
+				and f.TASK_NAME like  <![CDATA['%${taskName}%']]>
+			</if>
+			<if test="content !='' and content != null">
+				and f.CONTENT like  <![CDATA['%${content}%']]>
+			</if>
+			<if test="parentTaskid != null">
+				and f.PARENT_TASKID = #{parentTaskid}
+			</if>
+	        <if test="sponsorId != null and directorId==null">
+				and f.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId != null and sponsorId==null">
+				and f.DIRECTOR_ID = #{directorId}
+			</if>
+			<if test="directorId != null and sponsorId !=null">
+				and f.DIRECTOR_ID = #{directorId} and f.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId == null and sponsorId ==null and userId !=null">
+				and (f.DIRECTOR_ID = #{userId} or f.SPONSOR_ID = #{userId})
+			</if>
+			<if test="startTime != null and endTime != null">
+				and f.START_TIME between  #{startTime} and #{endTime}
+			</if>
+			<if test="startTime != null and endTime == null">
+				<![CDATA[and f.START_TIME >=  #{startTime}]]>
+			</if>
+			<if test="startTime == null and endTime != null">
+				<![CDATA[and f.START_TIME <=  #{endTime}]]>
+			</if>
+			<if test="status != null">
+				and f.STATUS = #{status}
+			</if>
+			<if test="status == null and infoStatus==null">
+				and f.STATUS=3
+			</if>
+			<if test="status == null and infoStatus != null">
+				and f.STATUS in 
+				 <foreach item="infoStatu" index="index" collection="infoStatus" open="(" separator="," close=")">  
+				  #{infoStatu}  
+				 </foreach>
+			</if>
+			<if test="isTemplet != null">
+				and f.is_Templet = #{isTemplet}
+			</if>
+			<if test="deleteFlag != null">
+				and f.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and f.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and f.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and f.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and f.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and f.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and f.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="taskNameTemp !='' and taskNameTemp != null">
+				and f.TASK_NAME = #{taskNameTemp}
+			</if>
+		</where>
+		) t
+		 where 1=1
+			<if test="dataAccessDynamicSQL != null">
+				${dataAccessDynamicSQL}
+			</if>
+	</select><delete id="deletePhysical" parameterType="com.jc.oa.po.workTask.domain.WorkTask">
+    	delete from tty_po_task
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete><update id="deleteLogic" parameterType="com.jc.oa.po.workTask.domain.WorkTask">
+    	UPDATE tty_po_task t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update><insert id="insert" parameterType="com.jc.oa.po.workTask.domain.WorkTask"><selectKey resultType="long" keyProperty="id" order="BEFORE">SELECT TTY_PO_TASK_ID_SEQ.NEXTVAL FROM DUAL</selectKey>
+		INSERT INTO tty_po_task(ID,TASK_NAME,PARENT_TASKID,TASK_IMP_CODE,SPONSOR_ID,DIRECTOR_ID,PRTICIPANTS_ID,CONTENT,STANDARD,START_TIME,END_TIME,ACT_START_TIME,ACT_END_TIME,TASK_PROC,REPORT_TYPE,REPORT_DAY,REPORT_TIME,STATUS,TASK_ORIGIN,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,is_Templet,REMIND_TYPE,is_Import_Diary,remind_Per_Id,remind_Content,delay_Status)
+			VALUES (#{id},#{taskName,jdbcType=VARCHAR},#{parentTaskid,jdbcType=NUMERIC},#{taskImpCode,jdbcType=VARCHAR},#{sponsorId,jdbcType=NUMERIC},#{directorId,jdbcType=NUMERIC},#{prticipantsId,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{standard,jdbcType=VARCHAR},#{startTime,jdbcType=TIMESTAMP},#{endTime,jdbcType=TIMESTAMP},#{actStartTime,jdbcType=TIMESTAMP},#{actEndTime,jdbcType=TIMESTAMP},#{taskProc,jdbcType=NUMERIC},#{reportType,jdbcType=VARCHAR},#{reportDay,jdbcType=NUMERIC},#{reportTime,jdbcType=TIMESTAMP},#{status,jdbcType=VARCHAR},#{taskOrigin,jdbcType=VARCHAR},#{deleteFlag,jdbcType=NUMERIC},#{createUser,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createUserOrg,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extDate1,jdbcType=TIMESTAMP},#{extDate2,jdbcType=TIMESTAMP},#{extNum1,jdbcType=NUMERIC},#{extNum2,jdbcType=NUMERIC},#{extNum3,jdbcType=NUMERIC},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr5,jdbcType=VARCHAR},#{isTemplet,jdbcType=NUMERIC},#{remindType,jdbcType=VARCHAR},#{isImportDiary,jdbcType=VARCHAR},#{remindPerId,jdbcType=VARCHAR},#{remindContent,jdbcType=VARCHAR},#{delayStatus,jdbcType=VARCHAR})
+	</insert><insert id="insertList" parameterType="list">
+		INSERT INTO tty_po_task(ID,TASK_NAME,PARENT_TASKID,TASK_IMP_CODE,SPONSOR_ID,DIRECTOR_ID,PRTICIPANTS_ID,CONTENT,STANDARD,START_TIME,END_TIME,ACT_START_TIME,ACT_END_TIME,TASK_PROC,REPORT_TYPE,REPORT_DAY,REPORT_TIME,STATUS,TASK_ORIGIN,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,is_Templet,REMIND_TYPE,is_Import_Diary,remind_Per_Id,remind_Content,delay_Status)
+			VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(TTY_PO_TASK_ID_SEQ.nextval,#{item.taskName,jdbcType=VARCHAR},#{item.parentTaskid,jdbcType=NUMERIC},#{item.taskImpCode,jdbcType=VARCHAR},#{item.sponsorId,jdbcType=NUMERIC},#{item.directorId,jdbcType=NUMERIC},#{item.prticipantsId,jdbcType=VARCHAR},#{item.content,jdbcType=VARCHAR},#{item.standard,jdbcType=VARCHAR},#{item.startTime,jdbcType=TIMESTAMP},#{item.endTime,jdbcType=TIMESTAMP},#{item.actStartTime,jdbcType=TIMESTAMP},#{item.actEndTime,jdbcType=TIMESTAMP},#{item.taskProc,jdbcType=NUMERIC},#{item.reportType,jdbcType=VARCHAR},#{item.reportDay,jdbcType=NUMERIC},#{item.reportTime,jdbcType=TIMESTAMP},#{item.status,jdbcType=VARCHAR},#{item.taskOrigin,jdbcType=VARCHAR},#{item.deleteFlag,jdbcType=NUMERIC},#{item.createUser,jdbcType=NUMERIC},#{item.createUserDept,jdbcType=NUMERIC},#{item.createUserOrg,jdbcType=NUMERIC},#{item.createDate,jdbcType=TIMESTAMP},#{item.modifyUser,jdbcType=NUMERIC},#{item.modifyDate,jdbcType=TIMESTAMP},#{item.extDate1,jdbcType=TIMESTAMP},#{item.extDate2,jdbcType=TIMESTAMP},#{item.extNum1,jdbcType=NUMERIC},#{item.extNum2,jdbcType=NUMERIC},#{item.extNum3,jdbcType=NUMERIC},#{item.extStr1,jdbcType=VARCHAR},#{item.extStr2,jdbcType=VARCHAR},#{item.extStr3,jdbcType=VARCHAR},#{item.extStr4,jdbcType=VARCHAR},#{item.extStr5,jdbcType=VARCHAR},#{item.isTemplet,jdbcType=NUMERIC},#{item.remindType,jdbcType=VARCHAR},#{item.isImportDiary,jdbcType=VARCHAR},#{item.remindPerId,jdbcType=VARCHAR},#{item.remindContent,jdbcType=VARCHAR},#{item.delayStatus,jdbcType=VARCHAR})
+			</foreach> 
+	</insert><update id="update" parameterType="com.jc.oa.po.workTask.domain.WorkTask">
+	UPDATE tty_po_task
+	   <set>
+	   	<if test="taskName != null">
+	   		TASK_NAME = #{taskName},
+	   	</if>
+	   	<if test="parentTaskid != null">
+	   		PARENT_TASKID = #{parentTaskid},
+	   	</if>
+	   	<if test="taskImpCode != null">
+	   		TASK_IMP_CODE = #{taskImpCode},
+	   	</if>
+	   	<if test="sponsorId != null">
+	   		SPONSOR_ID = #{sponsorId},
+	   	</if>
+	   	<if test="directorId != null">
+	   		DIRECTOR_ID = #{directorId},
+	   	</if>
+	   	<if test="prticipantsId != null">
+	   		PRTICIPANTS_ID = #{prticipantsId},
+	   	</if>
+	   	<if test="content != null">
+	   		CONTENT = #{content},
+	   	</if>
+	   	<if test="standard != null">
+	   		STANDARD = #{standard},
+	   	</if>
+	   	<if test="startTime != null">
+	   		START_TIME = #{startTime},
+	   	</if>
+	   	<if test="endTime != null">
+	   		END_TIME = #{endTime},
+	   	</if>
+	   	<if test="actStartTime != null">
+	   		ACT_START_TIME = #{actStartTime},
+	   	</if>
+	   	<if test="actEndTime != null">
+	   		ACT_END_TIME = #{actEndTime},
+	   	</if>
+	   	<if test="taskProc != null">
+	   		TASK_PROC = #{taskProc},
+	   	</if>
+	   	<if test="reportType != null">
+	   		REPORT_TYPE = #{reportType},
+	   	</if>
+	   	<if test="reportDay != null">
+	   		REPORT_DAY = #{reportDay},
+	   	</if>
+	   	<if test="reportTime != null">
+	   		REPORT_TIME = #{reportTime},
+	   	</if>
+	   	<if test="status != null">
+	   		STATUS = #{status},
+	   	</if>
+	   	<if test="taskOrigin != null">
+			TASK_ORIGIN = #{taskOrigin},
+		</if>
+	   	<if test="deleteFlag != null">
+	   		DELETE_FLAG = #{deleteFlag},
+	   	</if>
+	   	<if test="modifyUser != null">
+	   		MODIFY_USER = #{modifyUser},
+	   	</if>
+	   	<if test="modifyDate != null">
+	   		MODIFY_DATE = #{modifyDate},
+	   	</if>
+	   	<if test="extDate1 != null">
+	   		EXT_DATE1 = #{extDate1},
+	   	</if>
+	   	<if test="extDate2 != null">
+	   		EXT_DATE2 = #{extDate2},
+	   	</if>
+	   	<if test="extNum1 != null">
+	   		EXT_NUM1 = #{extNum1},
+	   	</if>
+	   	<if test="extNum2 != null">
+	   		EXT_NUM2 = #{extNum2},
+	   	</if>
+	   	<if test="extNum3 != null">
+	   		EXT_NUM3 = #{extNum3},
+	   	</if>
+	   	<if test="extStr1 != null">
+	   		EXT_STR1 = #{extStr1},
+	   	</if>
+	   	<if test="extStr2 != null">
+	   		EXT_STR2 = #{extStr2},
+	   	</if>
+	   	<if test="extStr3 != null">
+	   		EXT_STR3 = #{extStr3},
+	   	</if>
+	   	<if test="extStr4 != null">
+	   		EXT_STR4 = #{extStr4},
+	   	</if>
+	   	<if test="extStr5 != null">
+	   		EXT_STR5 = #{extStr5},
+	   	</if>
+	   	<if test="isTemplet != null">
+			is_Templet = #{isTemplet},
+		</if>
+		<if test="remindType != null">
+			REMIND_TYPE = #{remindType},
+		</if>
+		<if test="isImportDiary!= null">
+			is_Import_Diary = #{isImportDiary},
+		</if>
+		<if test="remindPerId!=null">
+			remind_Per_Id = #{remindPerId},
+		</if>
+		<if test="remindContent!=null">
+			remind_Content= #{remindContent},
+		</if>
+		<if test="delayStatus!=null">
+			delay_Status= #{delayStatus}
+		</if>
+	   </set>
+	   where ID = #{id} and MODIFY_DATE = #{modifyDate}
+	</update><update id="deleteFlagByIds" parameterType="com.jc.oa.po.workTask.domain.WorkTask">
+		<![CDATA[
+    		UPDATE tty_po_task set DELETE_FLAG = 1, MODIFY_USER = #{modifyUser}, MODIFY_DATE = #{modifyDate}
+    	]]>
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update><select id="queryTaskTotCount" parameterType="com.jc.oa.po.workTask.domain.WorkTask" resultType="java.lang.Integer">
+	    SELECT COUNT(DISTINCT t.directorId) AS counts FROM (
+		 SELECT  tt.DIRECTOR_ID AS directorId,tt.create_user,tt.CREATE_USER_DEPT,tt.CREATE_USER_ORG
+		 FROM tty_po_task tt
+		<where>
+		    tt.status IN (0,1,2,6) AND tt.DELETE_FLAG=0
+			<if test="directorId != null">
+				and tt.DIRECTOR_ID = #{directorId}
+			</if>
+			<if test="startTime != null and endTime != null">
+				and tt.START_TIME between  #{startTime} and #{endTime}
+			</if>
+			<if test="startTime != null and endTime == null">
+				<![CDATA[and tt.START_TIME >=  #{startTime}]]>
+			</if>
+			<if test="startTime == null and endTime != null">
+				<![CDATA[and tt.START_TIME <=  #{endTime}]]>
+			</if>
+			<if test="createUser != null">
+				and f.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and tt.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and tt.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and tt.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and tt.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and tt.MODIFY_DATE = #{modifyDate}
+			</if>
+		</where>
+		GROUP BY tt.DIRECTOR_ID,tt.status
+		UNION
+		SELECT f.DIRECTOR_ID AS directorId,f.create_user,f.CREATE_USER_DEPT,f.CREATE_USER_ORG
+		 FROM tty_po_taskfinish f
+		<where>
+		    f.status=3 AND f.DELETE_FLAG=0
+			<if test="directorId != null">
+				and f.DIRECTOR_ID = #{directorId}
+			</if>
+			<if test="startTime != null and endTime != null">
+				and f.START_TIME between  #{startTime} and #{endTime}
+			</if>
+			<if test="startTime != null and endTime == null">
+				<![CDATA[and f.START_TIME >=  #{startTime}]]>
+			</if>
+			<if test="startTime == null and endTime != null">
+				<![CDATA[and f.START_TIME <=  #{endTime}]]>
+			</if>
+			<if test="createUser != null">
+				and f.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and f.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and f.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and f.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and f.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and f.MODIFY_DATE = #{modifyDate}
+			</if>
+		</where>
+		GROUP BY  f.DIRECTOR_ID
+		) t
+		 where 1=1
+			<if test="dataAccessDynamicSQL != null">
+				${dataAccessDynamicSQL}
+			</if>
+	</select><select id="queryTaskTotal" parameterType="com.jc.oa.po.workTask.domain.WorkTask" resultType="com.jc.oa.po.workTask.domain.WorkTask">
+		SELECT m.directorId AS directorId,m.director AS director,SUM(m.notReceiveTask) AS notReceiveTask, SUM(m.receiveTask) AS receiveTask,
+		  SUM(m.extensionTask) AS extensionTask,SUM(m.extendedTask) AS extendedTask,SUM(m.finishedTask) AS finishedTask,m.createUser,
+        m.createUserDept,m.createUserOrg  
+		FROM (
+		 SELECT  tt.DIRECTOR_ID AS directorId,
+		 (SELECT tsu.DISPLAY_NAME FROM tty_sys_user tsu WHERE tsu.ID =tt.DIRECTOR_ID) AS director,
+		CASE WHEN tt.status=0 THEN (
+		SELECT COUNT(*) FROM tty_po_task t
+		WHERE t.status=0 AND t.DELETE_FLAG=0 AND t.DIRECTOR_ID=tt.DIRECTOR_ID 
+		<if test="startTime != null or  endTime != null">
+			AND t.START_TIME=tt.START_TIME
+		</if>
+		) ELSE 0 END AS notReceiveTask,
+		CASE WHEN tt.status=1 THEN (
+		SELECT COUNT(*) FROM tty_po_task t
+		WHERE t.status=1 AND t.DELETE_FLAG=0 AND t.DIRECTOR_ID=tt.DIRECTOR_ID 
+		<if test="startTime != null or  endTime != null">
+			AND t.START_TIME=tt.START_TIME
+		</if>
+		) ELSE 0 END AS  receiveTask,
+		CASE WHEN tt.status=2 THEN (
+		SELECT COUNT(*) FROM tty_po_task t
+		WHERE t.status=2 AND t.DELETE_FLAG=0 AND t.DIRECTOR_ID=tt.DIRECTOR_ID 
+		<if test="startTime != null or  endTime != null">
+			AND t.START_TIME=tt.START_TIME
+		</if>
+		) ELSE 0 END AS extensionTask,
+		CASE WHEN tt.status=6 THEN (
+		SELECT COUNT(*) FROM tty_po_task t
+		WHERE t.status=6 AND t.DELETE_FLAG=0 AND t.DIRECTOR_ID=tt.DIRECTOR_ID 
+		<if test="startTime != null or  endTime != null">
+			AND t.START_TIME=tt.START_TIME
+		</if>
+		) ELSE 0 END AS extendedTask,
+		CASE WHEN tt.status=3 THEN (
+		SELECT COUNT(*) FROM tty_po_taskfinish tf
+		WHERE tf.STATUS=3  AND tf.DELETE_FLAG=0 AND tf.DIRECTOR_ID=tt.DIRECTOR_ID 
+		<if test="startTime != null or  endTime != null">
+			AND tf.START_TIME=tt.START_TIME
+		</if>
+		) ELSE 0 END AS finishedTask,
+		tt.CREATE_USER createUser,
+        tt.CREATE_USER_DEPT createUserDept,
+        tt.CREATE_USER_ORG createUserOrg
+		FROM tty_po_task tt 
+		<where>
+		    tt.status IN (0,1,2,6) AND tt.DELETE_FLAG=0
+			<if test="directorId != null">
+				and tt.DIRECTOR_ID = #{directorId}
+			</if>
+			<if test="startTime != null and endTime != null">
+				and tt.START_TIME between  #{startTime} and #{endTime}
+			</if>
+			<if test="startTime != null and endTime == null">
+				<![CDATA[and tt.START_TIME >=  #{startTime}]]>
+			</if>
+			<if test="startTime == null and endTime != null">
+				<![CDATA[and tt.START_TIME <=  #{endTime}]]>
+			</if>
+			<if test="createUser != null">
+				and tt.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and tt.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and tt.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and tt.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and tt.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and tt.MODIFY_DATE = #{modifyDate}
+			</if>
+		</where>
+		GROUP BY tt.DIRECTOR_ID,tt.status
+		UNION
+		SELECT f.DIRECTOR_ID AS directorId,
+		(SELECT tsu.DISPLAY_NAME FROM tty_sys_user tsu WHERE tsu.ID =f.DIRECTOR_ID) AS director,
+		0 AS notReceiveTask,
+		0 AS receiveTask,
+		0 AS extensionTask,
+		0 AS extendedTask,
+		COUNT(*) AS finishedTask,
+		f.CREATE_USER createUser,
+        f.CREATE_USER_DEPT createUserDept,
+        f.CREATE_USER_ORG createUserOrg
+		FROM tty_po_taskfinish f
+		<where>
+		    f.status=3 AND f.DELETE_FLAG=0
+			<if test="directorId != null">
+				and f.DIRECTOR_ID = #{directorId}
+			</if>
+			<if test="startTime != null and endTime != null">
+				and f.START_TIME between  #{startTime} and #{endTime}
+			</if>
+			<if test="startTime != null and endTime == null">
+				<![CDATA[and f.START_TIME >=  #{startTime}]]>
+			</if>
+			<if test="startTime == null and endTime != null">
+				<![CDATA[and f.START_TIME <=  #{endTime}]]>
+			</if>
+			<if test="createUser != null">
+				and f.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and f.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and f.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and f.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and f.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and f.MODIFY_DATE = #{modifyDate}
+			</if>
+		</where>
+		GROUP BY  f.DIRECTOR_ID
+		) m GROUP BY directorId
+	</select><select id="queryCountOut" parameterType="com.jc.oa.po.workTask.domain.WorkTask" resultType="java.lang.Integer">
+		SELECT count(ID) 
+		FROM tty_po_task t
+		<where>
+			 t.DELETE_FLAG=0 and t.status in (1,2,6)
+			<if test="sponsorId != null and directorId==null">
+				and t.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId != null and sponsorId==null">
+				and t.DIRECTOR_ID = #{directorId}
+			</if>
+			<if test="directorId != null and sponsorId !=null">
+				and t.DIRECTOR_ID = #{directorId} and t.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId == null and sponsorId ==null and userId !=null">
+				and (t.DIRECTOR_ID = #{userId} or t.SPONSOR_ID = #{userId})
+			</if>
+			<if test="startDate != null">
+				<![CDATA[and t.START_TIME <=#{startDate}]]>
+			</if>
+		</where>
+	</select><select id="queryWorkTaskListOut" parameterType="com.jc.oa.po.workTask.domain.WorkTask" resultType="com.jc.oa.po.workTask.domain.WorkTask">
+		SELECT 
+			t.ID id,
+			t.ID taskId,
+			t.TASK_NAME taskName,
+			t.PARENT_TASKID parentTaskid,
+			t.TASK_IMP_CODE taskImpCode,
+			t.SPONSOR_ID sponsorId,
+			t.DIRECTOR_ID directorId,
+			t.PRTICIPANTS_ID prticipantsId,
+			t.CONTENT content,
+			t.STANDARD standard,
+			t.START_TIME startTime,
+			t.END_TIME endTime,
+			t.ACT_START_TIME actStartTime,
+			t.ACT_END_TIME actEndTime,
+			t.TASK_PROC taskProc,
+			t.REPORT_TYPE reportType,
+			t.REPORT_DAY reportDay,
+			t.REPORT_TIME reportTime,
+			t.STATUS STATUS,
+			t.TASK_ORIGIN taskOrigin,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5,
+			(SELECT tt.TASK_NAME FROM tty_po_task tt WHERE tt.id=t.PARENT_TASKID) AS parentTaskName,
+			(SELECT su.display_name FROM toa_sys_user su WHERE su.id=t.SPONSOR_ID) AS sponsor,
+			(SELECT su.display_name FROM toa_sys_user su WHERE su.id=t.DIRECTOR_ID) AS director,
+			t.is_Templet isTemplet,
+			t.REMIND_TYPE remindType,
+			(SELECT COUNT(*) FROM tty_po_task tt WHERE tt.PARENT_TASKID=t.id AND tt.STATUS IN ('1','2','6') AND tt.DELETE_FLAG=0 ) AS totalCount,
+			t.is_Import_Diary isImportDiary,
+			(SELECT tt.task_Imp_Code FROM tty_po_task tt WHERE tt.id=t.PARENT_TASKID) AS parentTaskImpCode,
+			t.remind_Per_Id  remindPerId,
+            t.remind_Content remindContent,
+            t.delay_Status delayStatus,
+            (SELECT COUNT(*) FROM tty_po_task tt WHERE tt.PARENT_TASKID=t.id AND tt.STATUS IN ('0','1','2','6') AND tt.DELETE_FLAG=0 ) AS normalToCount
+		FROM tty_po_task t
+		<where>
+		       t.DELETE_FLAG=0 and t.status in (1,2,6)
+			<if test="sponsorId != null and directorId==null">
+				and t.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId != null and sponsorId==null">
+				and t.DIRECTOR_ID = #{directorId}
+			</if>
+			<if test="directorId != null and sponsorId !=null">
+				and t.DIRECTOR_ID = #{directorId} and t.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId == null and sponsorId ==null and userId !=null">
+				and (t.DIRECTOR_ID = #{userId} or t.SPONSOR_ID = #{userId})
+			</if>
+			<if test="startDate != null">
+				<![CDATA[and t.ACT_START_TIME <=#{startDate}]]>
+			</if>
+		</where>
+		UNION SELECT 
+			f.id id ,
+			f.task_Id taskId,
+			f.TASK_NAME taskName,
+			f.PARENT_TASKID parentTaskid,
+			f.TASK_IMP_CODE taskImpCode,
+			f.SPONSOR_ID sponsorId,
+			f.DIRECTOR_ID directorId,
+			f.PRTICIPANTS_ID prticipantsId,
+			f.CONTENT content,
+			f.STANDARD standard,
+			f.START_TIME startTime,
+			f.END_TIME endTime,
+			f.ACT_START_TIME actStartTime,
+			f.ACT_END_TIME actEndTime,
+			f.TASK_PROC taskProc,
+			f.REPORT_TYPE reportType,
+			f.REPORT_DAY reportDay,
+			f.REPORT_TIME reportTime,
+			f.STATUS STATUS,
+			f.TASK_ORIGIN taskOrigin,
+			f.DELETE_FLAG deleteFlag,
+			f.CREATE_USER createUser,
+			f.CREATE_USER_DEPT createUserDept,
+			f.CREATE_USER_ORG createUserOrg,
+			f.CREATE_DATE createDate,
+			f.MODIFY_USER modifyUser,
+			f.MODIFY_DATE modifyDate,
+			f.EXT_DATE1 extDate1,
+			f.EXT_DATE2 extDate2,
+			f.EXT_NUM1 extNum1,
+			f.EXT_NUM2 extNum2,
+			f.EXT_NUM3 extNum3,
+			f.EXT_STR1 extStr1,
+			f.EXT_STR2 extStr2,
+			f.EXT_STR3 extStr3,
+			f.EXT_STR4 extStr4,
+			f.EXT_STR5 extStr5,
+			(SELECT tt.TASK_NAME FROM tty_po_taskfinish tt WHERE tt.task_id=f.PARENT_TASKID) AS parentTaskName,
+			(SELECT su.display_name FROM toa_sys_user su WHERE su.id=f.SPONSOR_ID) AS sponsor,
+			(SELECT su.display_name FROM toa_sys_user su WHERE su.id=f.DIRECTOR_ID) AS director,
+			f.is_Templet isTemplet,
+			f.REMIND_TYPE remindType,
+			(SELECT COUNT(*) FROM tty_po_taskfinish tt WHERE tt.PARENT_TASKID=f.task_id AND tt.STATUS IN ('0','1','2','3','4','6','7') AND tt.DELETE_FLAG=0 ) AS totalCount,
+			f.is_Import_Diary isImportDiary,
+			(SELECT tt.task_Imp_Code FROM tty_po_task tt WHERE tt.id=f.PARENT_TASKID) AS parentTaskImpCode,
+			f.remind_Per_Id  remindPerId,
+            f.remind_Content remindContent,
+            f.delay_Status delayStatus,
+            0 as normalToCount 
+			FROM tty_po_taskfinish f
+			<where>
+		       f.DELETE_FLAG=0 and f.status=3
+			<if test="sponsorId != null and directorId==null">
+				and f.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId != null and sponsorId==null">
+				and f.DIRECTOR_ID = #{directorId}
+			</if>
+			<if test="directorId != null and sponsorId !=null">
+				and f.DIRECTOR_ID = #{directorId} and f.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId == null and sponsorId ==null and userId !=null">
+				and (f.DIRECTOR_ID = #{userId} or f.SPONSOR_ID = #{userId})
+			</if>
+			<if test="startDate != null">
+				<![CDATA[and f.ACT_START_TIME <=#{startDate}]]>
+			</if>
+			<if test="startDate != null">
+				<![CDATA[and f.ACT_END_TIME >=#{startDate}]]>
+			</if>
+		</where>
+	</select><select id="queryTaskProc" parameterType="com.jc.oa.po.workTask.domain.WorkTask" resultType="com.jc.oa.po.workTask.domain.WorkTask">
+		SELECT m.id AS id,m.taskId AS taskId,m.status AS STATUS,m.parentTaskid AS parentTaskid,SUM(m.taskImpCode2) AS taskImpCode2, SUM(m.taskImpCode4) AS taskImpCode4,
+		  SUM(m.taskImpCode6) AS taskImpCode6,SUM(m.taskImpCode8) AS taskImpCode8,taskProc
+		FROM (
+		 SELECT  tt.id AS id,tt.id AS taskId,tt.status STATUS,tt.parent_taskid parentTaskid,
+		CASE WHEN tt.task_imp_code='2' THEN (
+		SELECT CASE WHEN COUNT(*)&gt;0 THEN 2 ELSE 0 END FROM tty_po_task t
+		WHERE t.task_imp_code='2' AND  t.DELETE_FLAG=0 AND t.status IN ('0','1','2','3','6') AND t.PARENT_TASKID=tt.PARENT_TASKID
+		) ELSE 0 END AS taskImpCode2,
+		CASE WHEN tt.task_imp_code='4' THEN (
+		SELECT CASE WHEN COUNT(*)&gt;0 THEN 4 ELSE 0 END  FROM tty_po_task t
+		WHERE t.task_imp_code='4' AND  t.DELETE_FLAG=0 AND t.status IN ('0','1','2','3','6') AND t.PARENT_TASKID=tt.PARENT_TASKID
+		) ELSE 0 END AS  taskImpCode4,
+		CASE WHEN tt.task_imp_code='6' THEN (
+		SELECT CASE WHEN COUNT(*)&gt;0 THEN 6 ELSE 0 END  FROM tty_po_task t
+		WHERE t.task_imp_code='6' AND  t.DELETE_FLAG=0 AND t.status IN ('0','1','2','3','6') AND t.PARENT_TASKID=tt.PARENT_TASKID
+		) ELSE 0 END AS taskImpCode6,
+		CASE WHEN tt.task_imp_code='8' THEN (
+		SELECT CASE WHEN COUNT(*)&gt;0 THEN 8 ELSE 0 END  FROM tty_po_task t
+		WHERE t.task_imp_code='8' AND  t.DELETE_FLAG=0 AND t.status IN ('0','1','2','3','6') AND t.PARENT_TASKID=tt.PARENT_TASKID
+		) ELSE 0 END AS taskImpCode8,
+		tt.task_Proc AS taskProc
+		 FROM tty_po_task tt 
+		<where>
+		     tt.status IN ('0','1','2','3','6') and tt.DELETE_FLAG=0
+			<if test="parentTaskid != null">
+				and tt.PARENT_TASKID = #{parentTaskid}
+			</if>
+		</where>
+		GROUP BY tt.id
+		) m GROUP BY id
+		UNION 
+		SELECT m.id AS id,m.taskId AS taskId,m.status AS STATUS,m.parentTaskid AS parentTaskid,SUM(m.taskImpCode2) AS taskImpCode2, SUM(m.taskImpCode4) AS taskImpCode4,
+		  SUM(m.taskImpCode6) AS taskImpCode6,SUM(m.taskImpCode8) AS taskImpCode8,taskProc
+		FROM (
+		 SELECT  
+		 tt.id AS id,tt.task_id AS taskId,tt.status STATUS,tt.parent_taskid parentTaskid,
+		CASE WHEN tt.task_imp_code='2' THEN (
+		SELECT CASE WHEN COUNT(*)&gt;0 THEN 2 ELSE 0 END FROM tty_po_taskfinish t
+		WHERE t.task_imp_code='2' AND  t.DELETE_FLAG=0 AND t.status='3' AND t.PARENT_TASKID=tt.PARENT_TASKID
+		) ELSE 0 END AS taskImpCode2,
+		CASE WHEN tt.task_imp_code='4' THEN (
+		SELECT CASE WHEN COUNT(*)&gt;0 THEN 4 ELSE 0 END  FROM tty_po_taskfinish t
+		WHERE t.task_imp_code='4' AND  t.DELETE_FLAG=0 AND t.status='3' AND t.PARENT_TASKID=tt.PARENT_TASKID
+		) ELSE 0 END AS  taskImpCode4,
+		CASE WHEN tt.task_imp_code='6' THEN (
+		SELECT CASE WHEN COUNT(*)&gt;0 THEN 6 ELSE 0 END  FROM tty_po_taskfinish t
+		WHERE t.task_imp_code='6' AND  t.DELETE_FLAG=0 AND t.status='3' AND t.PARENT_TASKID=tt.PARENT_TASKID
+		) ELSE 0 END AS taskImpCode6,
+		CASE WHEN tt.task_imp_code='8' THEN (
+		SELECT CASE WHEN COUNT(*)&gt;0 THEN 8 ELSE 0 END  FROM tty_po_taskfinish t
+		WHERE t.task_imp_code='8' AND  t.DELETE_FLAG=0 AND t.status='3' AND t.PARENT_TASKID=tt.PARENT_TASKID
+		) ELSE 0 END AS taskImpCode8,
+		tt.task_Proc AS taskProc
+		 FROM tty_po_taskfinish tt 
+		 <where>
+		     tt.status='3' and tt.DELETE_FLAG=0
+			<if test="parentTaskid != null">
+				and tt.PARENT_TASKID = #{parentTaskid}
+			</if>
+		</where>
+		GROUP BY tt.id
+		) m GROUP BY id
+	</select><select id="queryParentTask" parameterType="com.jc.oa.po.workTask.domain.WorkTask" resultType="com.jc.oa.po.workTask.domain.WorkTask">
+	    SELECT t.PARENT_TASKID parentTaskid  FROM tty_po_task t
+		<where>
+		    t.DELETE_FLAG=0 and t.id = #{taskId}
+		</where>
+		UNION SELECT tf.PARENT_TASKID parentTaskid  FROM tty_po_taskfinish tf	
+		<where>
+		    tf.DELETE_FLAG=0  and tf.task_Id =#{taskId}
+		</where>
+	</select><update id="cancalTemplate" parameterType="com.jc.oa.po.workTask.domain.WorkTask">
+    		UPDATE tty_po_task set is_Templet =1 where ID =#{id}
+ 	</update><select id="queryRelevance" parameterType="com.jc.oa.po.workTask.domain.WorkTask" resultType="com.jc.oa.po.workTask.domain.WorkTask">
+		SELECT 
+			t.ID id,
+			t.ID taskId,
+			t.TASK_NAME taskName,
+			t.PARENT_TASKID parentTaskid,
+			t.TASK_IMP_CODE taskImpCode,
+			t.SPONSOR_ID sponsorId,
+			t.DIRECTOR_ID directorId,
+			t.PRTICIPANTS_ID prticipantsId,
+			t.CONTENT content,
+			t.STANDARD standard,
+			t.START_TIME startTime,
+			t.END_TIME endTime,
+			t.ACT_START_TIME actStartTime,
+			t.ACT_END_TIME actEndTime,
+			t.TASK_PROC taskProc,
+			t.REPORT_TYPE reportType,
+			t.REPORT_DAY reportDay,
+			t.REPORT_TIME reportTime,
+			t.STATUS STATUS,
+			t.TASK_ORIGIN taskOrigin,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5,
+			(SELECT tt.TASK_NAME FROM tty_po_task tt WHERE tt.id=t.PARENT_TASKID) AS parentTaskName,
+			(SELECT su.display_name FROM toa_sys_user su WHERE su.id=t.SPONSOR_ID) AS sponsor,
+			(SELECT su.display_name FROM toa_sys_user su WHERE su.id=t.DIRECTOR_ID) AS director,
+			t.is_Templet isTemplet,
+			(SELECT COUNT(*) FROM tty_po_task tt WHERE tt.PARENT_TASKID=t.id AND tt.STATUS IN ('0','1','2','3','4','6','7') AND tt.DELETE_FLAG=0 ) AS totalCount,
+			t.is_Import_Diary isImportDiary,
+			(SELECT tt.task_Imp_Code FROM tty_po_task tt WHERE tt.id=t.PARENT_TASKID) as parentTaskImpCode,
+			t.remind_Per_Id  remindPerId,
+            t.remind_Content remindContent,
+            t.delay_Status delayStatus,
+            (SELECT COUNT(*) FROM tty_po_task tt WHERE tt.PARENT_TASKID=t.id AND tt.STATUS IN ('0','1','2','6') AND tt.DELETE_FLAG=0 ) AS normalToCount 
+		FROM tty_po_task t INNER JOIN tty_po_task_relevance tr ON t.ID=tr.TASK_ID
+		<where>
+			tr.DELETE_FLAG=0 AND tr.IS_PARENT='1'
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="taskName !='' and taskName != null">
+				and t.TASK_NAME like  <![CDATA['%${taskName}%']]>
+			</if>
+			<if test="parentTaskid != null">
+				and t.PARENT_TASKID = #{parentTaskid}
+			</if>
+			<if test="taskImpCode != null">
+				and t.TASK_IMP_CODE = #{taskImpCode}
+			</if>
+	        <if test="sponsorId != null and directorId==null">
+				and t.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId != null and sponsorId==null">
+				and t.DIRECTOR_ID = #{directorId}
+			</if>
+			<if test="directorId != null and sponsorId !=null">
+				and t.DIRECTOR_ID = #{directorId} and t.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId == null and sponsorId ==null and userId !=null">
+				and (t.DIRECTOR_ID = #{userId} or t.SPONSOR_ID = #{userId})
+			</if>
+			<if test="prticipantsId != null">
+				and t.PRTICIPANTS_ID = #{prticipantsId}
+			</if>
+			<if test="content !='' and content != null">
+				and t.CONTENT like  <![CDATA['%${content}%']]>
+			</if>
+			<if test="standard != null">
+				and t.STANDARD = #{standard}
+			</if>
+			<if test="startTime != null and endTime != null">
+				and t.START_TIME between  #{startTime} and #{endTime}
+			</if>
+			<if test="startTime != null and endTime == null">
+				<![CDATA[and t.START_TIME >=  #{startTime}]]>
+			</if>
+			<if test="startTime == null and endTime != null">
+				<![CDATA[and t.START_TIME <=  #{endTime}]]>
+			</if>
+			<if test="actStartTime != null">
+				and t.ACT_START_TIME = #{actStartTime}
+			</if>
+			<if test="actEndTime != null">
+				and t.ACT_END_TIME = #{actEndTime}
+			</if>
+			<if test="taskProc != null">
+				and t.TASK_PROC = #{taskProc}
+			</if>
+			<if test="reportType != null">
+				and t.REPORT_TYPE = #{reportType}
+			</if>
+			<if test="reportDay != null">
+				and t.REPORT_DAY = #{reportDay}
+			</if>
+			<if test="reportTime != null">
+				and t.REPORT_TIME = #{reportTime}
+			</if>
+			<if test="status != null">
+				and t.STATUS = #{status}
+			</if>
+			<if test="status ==null and infoStatus==null">
+				and t.STATUS in ('0','1','2','3','4','6','7')
+			</if>
+			<if test="status ==null and infoStatus != null">
+				and t.STATUS in 
+				 <foreach item="infoStatu" index="index" collection="infoStatus" open="(" separator="," close=")">  
+				  #{infoStatu}  
+				 </foreach>
+			</if>
+			<if test="taskOrigin != null">
+				and t.TASK_ORIGIN = #{taskOrigin}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="isTemplet != null">
+				and t.is_Templet = #{isTemplet}
+			</if>
+			<if test="taskIds != null">
+				and t.ID in 
+				 <foreach item="taskId" index="index" collection="taskIds" open="(" separator="," close=")">  
+				  #{taskId}  
+				 </foreach>
+			</if>
+			<if test="taskPersonId!= null">
+				and tr.TASK_PERSON_ID= #{taskPersonId}
+			</if>
+			<if test="taskType!= null">
+				and  tr.TASK_TYPE= #{taskType}
+			</if>
+		</where>
+		UNION
+			SELECT 
+			f.id id ,
+			f.task_Id taskId,
+			f.TASK_NAME taskName,
+			f.PARENT_TASKID parentTaskid,
+			f.TASK_IMP_CODE taskImpCode,
+			f.SPONSOR_ID sponsorId,
+			f.DIRECTOR_ID directorId,
+			f.PRTICIPANTS_ID prticipantsId,
+			f.CONTENT content,
+			f.STANDARD standard,
+			f.START_TIME startTime,
+			f.END_TIME endTime,
+			f.ACT_START_TIME actStartTime,
+			f.ACT_END_TIME actEndTime,
+			f.TASK_PROC taskProc,
+			f.REPORT_TYPE reportType,
+			f.REPORT_DAY reportDay,
+			f.REPORT_TIME reportTime,
+			f.STATUS STATUS,
+			f.TASK_ORIGIN taskOrigin,
+			f.DELETE_FLAG deleteFlag,
+			f.CREATE_USER createUser,
+			f.CREATE_USER_DEPT createUserDept,
+			f.CREATE_USER_ORG createUserOrg,
+			f.CREATE_DATE createDate,
+			f.MODIFY_USER modifyUser,
+			f.MODIFY_DATE modifyDate,
+			f.EXT_DATE1 extDate1,
+			f.EXT_DATE2 extDate2,
+			f.EXT_NUM1 extNum1,
+			f.EXT_NUM2 extNum2,
+			f.EXT_NUM3 extNum3,
+			f.EXT_STR1 extStr1,
+			f.EXT_STR2 extStr2,
+			f.EXT_STR3 extStr3,
+			f.EXT_STR4 extStr4,
+			f.EXT_STR5 extStr5,
+			(SELECT tt.TASK_NAME FROM tty_po_taskfinish tt WHERE tt.task_id=f.PARENT_TASKID
+			  UNION SELECT tt.TASK_NAME FROM tty_po_task tt WHERE tt.id=f.PARENT_TASKID 	
+			) AS parentTaskName,
+			(SELECT su.display_name FROM toa_sys_user su WHERE su.id=f.SPONSOR_ID) AS sponsor,
+			(SELECT su.display_name FROM toa_sys_user su WHERE su.id=f.DIRECTOR_ID) AS director,
+			f.is_Templet isTemplet,
+			(SELECT COUNT(*) FROM tty_po_taskfinish tt WHERE tt.PARENT_TASKID=f.task_id AND tt.STATUS IN ('0','1','2','3','4','6','7') AND tt.DELETE_FLAG=0 ) AS totalCount,
+			f.is_Import_Diary isImportDiary,
+			(SELECT tt.task_Imp_Code FROM tty_po_task tt WHERE tt.id=f.PARENT_TASKID) as parentTaskImpCode,
+			f.remind_Per_Id  remindPerId,
+            f.remind_Content remindContent,
+            f.delay_Status delayStatus,
+            0 as normalToCount 
+			FROM tty_po_taskfinish f INNER JOIN tty_po_task_relevance tr ON f.TASK_ID=tr.TASK_ID
+		 <where>
+		 	tr.DELETE_FLAG=0 AND tr.IS_PARENT='1'
+			<if test="id != null">
+				and f.ID = #{id}
+			</if>
+			<if test="taskName !='' and taskName != null">
+				and f.TASK_NAME like  <![CDATA['%${taskName}%']]>
+			</if>
+			<if test="content !='' and content != null">
+				and f.CONTENT like  <![CDATA['%${content}%']]>
+			</if>
+			<if test="parentTaskid != null">
+				and f.PARENT_TASKID = #{parentTaskid}
+			</if>
+	        <if test="sponsorId != null and directorId==null">
+				and f.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId != null and sponsorId==null">
+				and f.DIRECTOR_ID = #{directorId}
+			</if>
+			<if test="directorId != null and sponsorId !=null">
+				and f.DIRECTOR_ID = #{directorId} and f.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId == null and sponsorId ==null and userId !=null">
+				and (f.DIRECTOR_ID = #{userId} or f.SPONSOR_ID = #{userId})
+			</if>
+			<if test="startTime != null and endTime != null">
+				and f.START_TIME between  #{startTime} and #{endTime}
+			</if>
+			<if test="startTime != null and endTime == null">
+				<![CDATA[and f.START_TIME >=  #{startTime}]]>
+			</if>
+			<if test="startTime == null and endTime != null">
+				<![CDATA[and f.START_TIME <=  #{endTime}]]>
+			</if>
+			<if test="status != null">
+				and f.STATUS = #{status}
+			</if>
+			<if test="status == null and infoStatus==null">
+				and f.STATUS=3
+			</if>
+			<if test="status == null and infoStatus != null">
+				and f.STATUS in 
+				 <foreach item="infoStatu" index="index" collection="infoStatus" open="(" separator="," close=")">  
+				  #{infoStatu}  
+				 </foreach>
+			</if>
+			<if test="isTemplet != null">
+				and f.is_Templet = #{isTemplet}
+			</if>
+			<if test="deleteFlag != null">
+				and f.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and f.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and f.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and f.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and f.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and f.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and f.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="taskPersonId!= null">
+				and tr.TASK_PERSON_ID= #{taskPersonId}
+			</if>
+			<if test="taskType!= null">
+				and  tr.TASK_TYPE= #{taskType}
+			</if>
+		</where>
+		<!-- ORDER BY createDate DESC -->
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+	</select><select id="queryRelevanceCount" parameterType="com.jc.oa.po.workTask.domain.WorkTask" resultType="java.lang.Integer">
+		SELECT COUNT(id) FROM (
+		SELECT tt.ID id,tt.create_user,tt.CREATE_USER_DEPT,tt.CREATE_USER_ORG  FROM tty_po_task tt  INNER JOIN tty_po_task_relevance tr ON tt.ID=tr.TASK_ID
+		<where>
+			tr.DELETE_FLAG=0 AND tr.IS_PARENT='1'
+			<if test="id != null">
+				and tt.ID = #{id}
+			</if>
+			<if test="taskName !='' and taskName != null">
+				and tt.TASK_NAME like  <![CDATA['%${taskName}%']]>
+			</if>
+			<if test="parentTaskid != null">
+				and tt.PARENT_TASKID = #{parentTaskid}
+			</if>
+			<if test="taskImpCode != null">
+				and tt.TASK_IMP_CODE = #{taskImpCode}
+			</if>
+	        <if test="sponsorId != null and directorId==null">
+				and tt.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId != null and sponsorId==null">
+				and tt.DIRECTOR_ID = #{directorId}
+			</if>
+			<if test="directorId != null and sponsorId !=null">
+				and tt.DIRECTOR_ID = #{directorId} and tt.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId == null and sponsorId ==null and userId !=null">
+				and (tt.DIRECTOR_ID = #{userId} or tt.SPONSOR_ID = #{userId})
+			</if>
+			<if test="prticipantsId != null">
+				and tt.PRTICIPANTS_ID = #{prticipantsId}
+			</if>
+			<if test="content !='' and content != null">
+				and tt.CONTENT like  <![CDATA['%${content}%']]>
+			</if>
+			<if test="standard != null">
+				and tt.STANDARD = #{standard}
+			</if>
+			<if test="startTime != null and endTime != null">
+				and tt.START_TIME between  #{startTime} and #{endTime}
+			</if>
+			<if test="startTime != null and endTime == null">
+				<![CDATA[and tt.START_TIME >=  #{startTime}]]>
+			</if>
+			<if test="startTime == null and endTime != null">
+				<![CDATA[and tt.START_TIME <=  #{endTime}]]>
+			</if>
+			<if test="actStartTime != null">
+				and tt.ACT_START_TIME = #{actStartTime}
+			</if>
+			<if test="actEndTime != null">
+				and tt.ACT_END_TIME = #{actEndTime}
+			</if>
+			<if test="taskProc != null">
+				and tt.TASK_PROC = #{taskProc}
+			</if>
+			<if test="reportType != null">
+				and tt.REPORT_TYPE = #{reportType}
+			</if>
+			<if test="reportDay != null">
+				and tt.REPORT_DAY = #{reportDay}
+			</if>
+			<if test="reportTime != null">
+				and tt.REPORT_TIME = #{reportTime}
+			</if>
+			<if test="status != null">
+				and tt.STATUS = #{status}
+			</if>
+			<if test="status ==null and infoStatus==null">
+				and tt.STATUS in ('0','1','2','3','4','6','7')
+			</if>
+			<if test="status ==null and infoStatus != null">
+				and tt.STATUS in 
+				 <foreach item="infoStatu" index="index" collection="infoStatus" open="(" separator="," close=")">  
+				  #{infoStatu}  
+				 </foreach>
+			</if>
+			<if test="taskOrigin != null">
+				and tt.TASK_ORIGIN = #{taskOrigin}
+			</if>
+			<if test="deleteFlag != null">
+				and tt.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and tt.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and tt.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and tt.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and tt.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and tt.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and tt.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and tt.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and tt.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and tt.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and tt.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and tt.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and tt.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and tt.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and tt.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and tt.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and tt.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="isTemplet != null">
+				and tt.is_Templet = #{isTemplet}
+			</if>
+			<if test="taskIds != null">
+				and tt.ID in 
+				 <foreach item="taskId" index="index" collection="taskIds" open="(" separator="," close=")">  
+				  #{taskId}  
+				 </foreach>
+			</if>
+			<if test="taskPersonId!= null">
+				and tr.TASK_PERSON_ID= #{taskPersonId}
+			</if>
+			<if test="taskType!= null">
+				and  tr.TASK_TYPE= #{taskType}
+			</if>
+		</where>
+		UNION SELECT f.id id,f.create_user,f.CREATE_USER_DEPT,f.CREATE_USER_ORG FROM tty_po_taskfinish f INNER JOIN tty_po_task_relevance tr   ON f.TASK_ID=tr.TASK_ID
+		<where>
+			tr.DELETE_FLAG=0 AND tr.IS_PARENT='1'
+			<if test="id != null">
+				 f.ID = #{id}
+			</if>
+			<if test="taskName !='' and taskName != null">
+				and f.TASK_NAME like  <![CDATA['%${taskName}%']]>
+			</if>
+			<if test="content !='' and content != null">
+				and f.CONTENT like  <![CDATA['%${content}%']]>
+			</if>
+			<if test="parentTaskid != null">
+				and f.PARENT_TASKID = #{parentTaskid}
+			</if>
+	        <if test="sponsorId != null and directorId==null">
+				and f.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId != null and sponsorId==null">
+				and f.DIRECTOR_ID = #{directorId}
+			</if>
+			<if test="directorId != null and sponsorId !=null">
+				and f.DIRECTOR_ID = #{directorId} and f.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId == null and sponsorId ==null and userId !=null">
+				and (f.DIRECTOR_ID = #{userId} or f.SPONSOR_ID = #{userId})
+			</if>
+			<if test="startTime != null and endTime != null">
+				and f.START_TIME between  #{startTime} and #{endTime}
+			</if>
+			<if test="startTime != null and endTime == null">
+				<![CDATA[and f.START_TIME >=  #{startTime}]]>
+			</if>
+			<if test="startTime == null and endTime != null">
+				<![CDATA[and f.START_TIME <=  #{endTime}]]>
+			</if>
+			<if test="status != null">
+				and f.STATUS = #{status}
+			</if>
+			<if test="status == null and infoStatus==null">
+				and f.STATUS=3
+			</if>
+			<if test="status == null and infoStatus != null">
+				and f.STATUS in 
+				 <foreach item="infoStatu" index="index" collection="infoStatus" open="(" separator="," close=")">  
+				  #{infoStatu}  
+				 </foreach>
+			</if>
+			<if test="isTemplet != null">
+				and f.is_Templet = #{isTemplet}
+			</if>
+			<if test="deleteFlag != null">
+				and f.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and f.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and f.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and f.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and f.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and f.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and f.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="taskPersonId!= null">
+				and tr.TASK_PERSON_ID= #{taskPersonId}
+			</if>
+			<if test="taskType!= null">
+				and  tr.TASK_TYPE= #{taskType}
+			</if>
+		</where>
+		)  t
+		 where 1=1
+			<if test="dataAccessDynamicSQL != null">
+				${dataAccessDynamicSQL}
+			</if>
+	</select><select id="queryAbeyanceTaskListOut" parameterType="com.jc.oa.po.workTask.domain.WorkTask" resultType="com.jc.oa.po.workTask.domain.WorkTask">
+		SELECT 
+			t.ID id,
+			t.ID taskId,
+			t.TASK_NAME taskName,
+			t.PARENT_TASKID parentTaskid,
+			t.TASK_IMP_CODE taskImpCode,
+			t.SPONSOR_ID sponsorId,
+			t.DIRECTOR_ID directorId,
+			t.PRTICIPANTS_ID prticipantsId,
+			t.CONTENT content,
+			t.STANDARD standard,
+			t.START_TIME startTime,
+			t.END_TIME endTime,
+			t.ACT_START_TIME actStartTime,
+			t.ACT_END_TIME actEndTime,
+			t.TASK_PROC taskProc,
+			t.REPORT_TYPE reportType,
+			t.REPORT_DAY reportDay,
+			t.REPORT_TIME reportTime,
+			t.STATUS STATUS,
+			t.TASK_ORIGIN taskOrigin,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5,
+			(SELECT tt.TASK_NAME FROM tty_po_task tt WHERE tt.id=t.PARENT_TASKID) AS parentTaskName,
+			(SELECT su.display_name FROM toa_sys_user su WHERE su.id=t.SPONSOR_ID) AS sponsor,
+			(SELECT su.display_name FROM toa_sys_user su WHERE su.id=t.DIRECTOR_ID) AS director,
+			t.is_Templet isTemplet,
+			t.REMIND_TYPE remindType,
+			(SELECT COUNT(*) FROM tty_po_task tt WHERE tt.PARENT_TASKID=t.id AND tt.STATUS IN ('1','2','6') AND tt.DELETE_FLAG=0 ) AS totalCount,
+			t.is_Import_Diary isImportDiary,
+			(SELECT tt.task_Imp_Code FROM tty_po_task tt WHERE tt.id=t.PARENT_TASKID) AS parentTaskImpCode,
+			t.remind_Per_Id  remindPerId,
+            t.remind_Content remindContent,
+            t.delay_Status delayStatus,
+            (SELECT COUNT(*) FROM tty_po_task tt WHERE tt.PARENT_TASKID=t.id AND tt.STATUS IN ('0','1','2','6') AND tt.DELETE_FLAG=0 ) AS normalToCount
+		FROM tty_po_task t
+		<where>
+		       t.DELETE_FLAG=0 and t.status in (1,2,6)
+			<if test="sponsorId != null and directorId==null">
+				and t.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId != null and sponsorId==null">
+				and t.DIRECTOR_ID = #{directorId}
+			</if>
+			<if test="directorId != null and sponsorId !=null">
+				and t.DIRECTOR_ID = #{directorId} and t.SPONSOR_ID = #{sponsorId}
+			</if>
+			<if test="directorId == null and sponsorId ==null and userId !=null">
+				and (t.DIRECTOR_ID = #{userId} or t.SPONSOR_ID = #{userId})
+			</if>
+			<if test="startDate != null">
+				<![CDATA[and t.ACT_START_TIME <=#{startDate}]]>
+			</if>
+		</where>
+	</select></mapper>

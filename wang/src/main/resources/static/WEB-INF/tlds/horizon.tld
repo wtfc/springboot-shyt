@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE taglib
+  PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+  "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+
+<taglib>
+
+    <tlibversion>1.0</tlibversion>
+    <jspversion>1.1</jspversion>
+    <shortname>horizon-taglib</shortname>
+    <uri>http://www.horizon.cn/taglib/path</uri>
+
+    <!--
+      Usage :
+      <%@ taglib uri="http://www.horizon.cn/taglib/horizon" prefix="path" %>
+      <path:js file="public.js"/>
+      <path:css file="lianav3.css"/>
+      <img border=0 src='<path:img file="position_icon.gif"/>' />
+      <img border=0 src='<path:ctx file="/images/default/position_icon.gif"/>' />
+      <img border=0 src='<path:ctx/>/images/default/position_icon.gif' />
+    -->
+
+    <tag>
+        <name>ctx</name>
+        <tagclass>com.horizon.taglib.ContextPathTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <attribute>
+            <name>file</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>root</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>css</name>
+        <tagclass>com.horizon.taglib.CssPathTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <attribute>
+            <name>file</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>root</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+         <attribute>
+            <name>manage</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>           
+    </tag>
+
+    <tag>
+        <name>img</name>
+        <tagclass>com.horizon.taglib.ImagePathTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <attribute>
+            <name>file</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>root</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+         <attribute>
+            <name>manage</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>    
+    </tag>
+
+    <tag>
+        <name>js</name>
+        <tagclass>com.horizon.taglib.JavaScriptPathTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <attribute>
+            <name>file</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>root</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
+    <tag>
+        <name>jsskins</name>
+        <tagclass>com.horizon.taglib.JavaScriptSkinsPathTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <attribute>
+            <name>file</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>root</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>jslang</name>
+        <tagclass>com.horizon.taglib.JavaScriptLangPathTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <attribute>
+            <name>file</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>root</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>xtreeConfig</name>
+        <tagclass>com.horizon.taglib.XtreeImagePathTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <attribute>
+            <name>xtreeImg</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>root</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+         <attribute>
+            <name>manage</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>page</name>
+        <tagclass>com.horizon.taglib.PageTag</tagclass>
+        <bodycontent>scriptless</bodycontent>
+        <attribute>
+            <name>pageSize</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>requestKey</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+   </tag>
+   
+   <tag>
+        <name>position</name>
+        <tagclass>com.horizon.taglib.PositionTag</tagclass>
+        <bodycontent>scriptless</bodycontent>
+        <attribute>
+            <name>splitor</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>txt</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>file</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>styleClass</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>imgClass</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>parameterKey</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>root</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>dict</name>
+        <tagclass>com.horizon.taglib.DictTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <attribute>
+            <name>code</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>type</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>valueType</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>defaultValue</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>styleClass</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>onchange</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>emptyOption</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>title</name>
+        <tagclass>com.horizon.taglib.ProjectTitleTag</tagclass>
+        <bodycontent>empty</bodycontent>
+    </tag>
+
+</taglib>

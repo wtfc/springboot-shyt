@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.android.oa.exception.domain.Exception4M">
+
+	<insert id="insert" parameterType="com.jc.android.oa.exception.domain.Exception4M" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO toa_android_exception(ID,EXCE_TIME,EXCE_DETAIL,USER_ID)
+			VALUES (#{id,jdbcType=NUMERIC},#{exceTime,jdbcType=TIMESTAMP},#{exceDetail,jdbcType=VARCHAR},#{userId,jdbcType=NUMERIC})
+	</insert>
+
+	<insert id="insertList" parameterType="list">
+		INSERT INTO toa_android_exception(ID,EXCE_TIME,EXCE_DETAIL,USER_ID)
+			VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(#{item.id,jdbcType=NUMERIC},#{item.exceTime,jdbcType=TIMESTAMP},#{item.exceDetail,jdbcType=VARCHAR},#{item.userId,jdbcType=NUMERIC})
+			</foreach> 
+	</insert>
+
+	<update id="update" parameterType="com.jc.android.oa.exception.domain.Exception4M">
+	UPDATE toa_android_exception set
+	   	<if test="exceTime != null">
+	   		EXCE_TIME = #{exceTime},
+	   	</if>
+	   	<if test="exceDetail != null">
+	   		EXCE_DETAIL = #{exceDetail},
+	   	</if>
+	   	<if test="userId != null">
+	   		USER_ID = #{userId},
+	   	</if>
+	   	MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+	</update>
+
+	<select id="query" parameterType="com.jc.android.oa.exception.domain.Exception4M" resultType="com.jc.android.oa.exception.domain.Exception4M">
+		SELECT 
+			t.ID id,
+			t.EXCE_TIME exceTime,
+			t.EXCE_DETAIL exceDetail,
+			t.USER_ID userId
+			
+		FROM toa_android_exception t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+
+			<if test="exceTime != null">
+				and t.EXCE_TIME = #{exceTime}
+			</if>
+			<if test="exceTimeBegin != null">
+				and t.EXCE_TIME &gt;= #{exceTimeBegin}
+			</if>
+			<if test="exceTimeEnd != null">
+				and t.EXCE_TIME &lt;= #{exceTimeEnd}
+			</if>
+
+			<if test="exceDetail != null">
+				and t.EXCE_DETAIL = #{exceDetail}
+			</if>
+
+			<if test="userId != null">
+				and t.USER_ID = #{userId}
+			</if>
+		</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+	</select>
+	
+	
+	<select id="queryCount" parameterType="com.jc.android.oa.exception.domain.Exception4M" resultType="java.lang.Long">
+		SELECT count(ID) 
+		FROM toa_android_exception t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+
+			<if test="exceTime != null">
+				and t.EXCE_TIME = #{exceTime}
+			</if>
+			<if test="exceTimeBegin != null">
+				and t.EXCE_TIME &gt;= #{exceTimeBegin}
+			</if>
+			<if test="exceTimeEnd != null">
+				and t.EXCE_TIME &lt;= #{exceTimeEnd}
+			</if>
+
+			<if test="exceDetail != null">
+				and t.EXCE_DETAIL = #{exceDetail}
+			</if>
+
+			<if test="userId != null">
+				and t.USER_ID = #{userId}
+			</if>
+		</where>
+	</select>
+
+	<delete id="deletePhysical"  parameterType="com.jc.android.oa.exception.domain.Exception4M">
+    	delete from toa_android_exception
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete>
+
+	<update id="deleteLogic"  parameterType="com.jc.android.oa.exception.domain.Exception4M">
+    	UPDATE toa_android_exception t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+
+</mapper>

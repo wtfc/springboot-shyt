@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.shyt.domain.Visit" > 
+
+<insert id="insert" parameterType="com.jc.oa.shyt.domain.Visit"
+		useGeneratedKeys="true" keyProperty="id">
+  		insert into toa_shyt_visit(id,COMPANY_NAME,COMPANY_ADDRESS,CUSTOMER_ID,COMPLAIN_NUMBER,VISIT_PAY,VISIT_PRICE,VISIT_DATE,VISIT_STATUS,VISIT_MODE,STATUS,VISIT,RETURN_NAME,RETURN_DEPT,PERSON_NAME,POSITION,CONTACT_WAY,VISIT_IS_RETURN,CONTENT_MAIN,CONTENT_ACCESS,CONTENT_COMMENT,VISIT_FIND,VISIT_PROBLEM,VISIT_THE_PROBLEM,SOLUTION_REPLATION,SOLUTION_DISPOSE,SOLUTION_SLOVE,CUSTOMER_JUDGE,CUSTOMER_EVALUATION,CUSTOMER_REVIEWS,SUBSTANCE_ONE,SUBSTANCE_TWO,SUBSTANCE_THREE,INVOLVOED_BRANCH,INVOLVOED_DIVISION,INVOLVOED_SECTION,SCHEME_PLAN,SCHEME_BLUE,SCHEME_PROJECT,REPLY_ANSWER,REPLY_RESTORE,REPLY_REFLEXT,CUSTOM_TICKLING,CUSTOM_FEED,CUSTOM_COUPLE,VISIT_PEOPLE,SERVICE_STATUS,REMARK,DELETE_FLAG,CREATE_USER,CREATE_USER_ORG,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3)
+ values(#{id},#{companyName},#{companyAddress},#{customerId},#{complainNumber},#{visitPay},#{visitPrice},#{visitDate},#{visitStatus},#{visitMode},#{status},#{visit},#{returnName},#{returnDept},#{personName},#{position},#{contactWay},#{visitIsReturn},#{contentMain},#{contentAccess},#{contentComment},#{visitFind},#{visitProblem},#{visitTheProblem},#{solutionReplation},#{solutionDispose},#{solutionSlove},#{customerJudge},#{customerEvaluation},#{customerReviews},#{substanceOne},#{substanceTwo},#{substanceThree},#{involvoedBranch},#{involvoedDivision},#{involvoedSection},#{schemePlan},#{schemeBlue},#{schemeProject},#{replyAnswer},#{replyRestore},#{replyReflext},#{customTickling},#{customFeed},#{customCouple},#{visitPeople},#{serviceStatus},#{remark},#{deleteFlag},#{createUser},#{createUserOrg},#{createUserDept},#{createDate},#{modifyUser},#{modifyDate},#{extStr1},#{extStr2},#{extStr3},#{extStr4},#{extStr5},#{extDate1},#{extDate2},#{extNum1},#{extNum2},#{extNum3})
+</insert>
+
+<update id="update" parameterType="com.jc.oa.shyt.domain.Visit">
+		update toa_shyt_visit set 
+	<if test="companyName != null ">
+		COMPANY_NAME=#{companyName},
+	</if>
+	<if test="companyAddress != null ">
+		COMPANY_ADDRESS=#{companyAddress},
+	</if>
+	<if test="customerId != null ">
+		CUSTOMER_ID=#{customerId},
+	</if>
+	<if test="complainNumber != null ">
+		COMPLAIN_NUMBER=#{complainNumber},
+	</if>
+	<if test="visitPay != null ">
+		VISIT_PAY=#{visitPay},
+	</if>
+	<if test="visitPrice != null ">
+		VISIT_PRICE=#{visitPrice},
+	</if>
+	<if test="visitDate != null ">
+		VISIT_DATE=#{visitDate},
+	</if>
+	<if test="visitStatus != null ">
+		VISIT_STATUS=#{visitStatus},
+	</if>
+	<if test="visitMode != null ">
+		VISIT_MODE=#{visitMode},
+	</if>
+	<if test="status != null ">
+		STATUS=#{status},
+	</if>
+	<if test="visit != null ">
+		VISIT=#{visit},
+	</if>
+	<if test="returnName != null ">
+		RETURN_NAME=#{returnName},
+	</if>
+	<if test="returnDept != null ">
+		RETURN_DEPT=#{returnDept},
+	</if>
+	<if test="personName != null ">
+		PERSON_NAME=#{personName},
+	</if>
+	<if test="position != null ">
+		POSITION=#{position},
+	</if>
+	<if test="contactWay != null ">
+		CONTACT_WAY=#{contactWay},
+	</if>
+	<if test="visitIsReturn != null ">
+		VISIT_IS_RETURN=#{visitIsReturn},
+	</if>
+	<if test="contentMain != null ">
+		CONTENT_MAIN=#{contentMain},
+	</if>
+	<if test="contentAccess != null ">
+		CONTENT_ACCESS=#{contentAccess},
+	</if>
+	<if test="contentComment != null ">
+		CONTENT_COMMENT=#{contentComment},
+	</if>
+	<if test="visitFind != null ">
+		VISIT_FIND=#{visitFind},
+	</if>
+	<if test="visitProblem != null ">
+		VISIT_PROBLEM=#{visitProblem},
+	</if>
+	<if test="visitTheProblem != null ">
+		VISIT_THE_PROBLEM=#{visitTheProblem},
+	</if>
+	<if test="solutionReplation != null ">
+		SOLUTION_REPLATION=#{solutionReplation},
+	</if>
+	<if test="solutionDispose != null ">
+		SOLUTION_DISPOSE=#{solutionDispose},
+	</if>
+	<if test="solutionSlove != null ">
+		SOLUTION_SLOVE=#{solutionSlove},
+	</if>
+	<if test="customerJudge != null ">
+		CUSTOMER_JUDGE=#{customerJudge},
+	</if>
+	<if test="customerEvaluation != null ">
+		CUSTOMER_EVALUATION=#{customerEvaluation},
+	</if>
+	<if test="customerReviews != null ">
+		CUSTOMER_REVIEWS=#{customerReviews},
+	</if>
+	<if test="substanceOne != null ">
+		SUBSTANCE_ONE=#{substanceOne},
+	</if>
+	<if test="substanceTwo != null ">
+		SUBSTANCE_TWO=#{substanceTwo},
+	</if>
+	<if test="substanceThree != null ">
+		SUBSTANCE_THREE=#{substanceThree},
+	</if>
+	<if test="involvoedBranch != null ">
+		INVOLVOED_BRANCH=#{involvoedBranch},
+	</if>
+	<if test="involvoedDivision != null ">
+		INVOLVOED_DIVISION=#{involvoedDivision},
+	</if>
+	<if test="involvoedSection != null ">
+		INVOLVOED_SECTION=#{involvoedSection},
+	</if>
+	<if test="schemePlan != null ">
+		SCHEME_PLAN=#{schemePlan},
+	</if>
+	<if test="schemeBlue != null ">
+		SCHEME_BLUE=#{schemeBlue},
+	</if>
+	<if test="schemeProject != null ">
+		SCHEME_PROJECT=#{schemeProject},
+	</if>
+	<if test="replyAnswer != null ">
+		REPLY_ANSWER=#{replyAnswer},
+	</if>
+	<if test="replyRestore != null ">
+		REPLY_RESTORE=#{replyRestore},
+	</if>
+	<if test="replyReflext != null ">
+		REPLY_REFLEXT=#{replyReflext},
+	</if>
+	<if test="customTickling != null ">
+		CUSTOM_TICKLING=#{customTickling},
+	</if>
+	<if test="customFeed != null ">
+		CUSTOM_FEED=#{customFeed},
+	</if>
+	<if test="customCouple != null ">
+		CUSTOM_COUPLE=#{customCouple},
+	</if>
+	<if test="visitPeople != null ">
+		VISIT_PEOPLE=#{visitPeople},
+	</if>
+	<if test="serviceStatus != null ">
+		SERVICE_STATUS=#{serviceStatus},
+	</if>
+	<if test="remark != null ">
+		REMARK=#{remark},
+	</if>
+	<if test="deleteFlag != null ">
+		DELETE_FLAG=#{deleteFlag},
+	</if>
+	<if test="createUser != null ">
+		CREATE_USER=#{createUser},
+	</if>
+	<if test="createUserOrg != null ">
+		CREATE_USER_ORG=#{createUserOrg},
+	</if>
+	<if test="createUserDept != null ">
+		CREATE_USER_DEPT=#{createUserDept},
+	</if>
+	<if test="createDate != null ">
+		CREATE_DATE=#{createDate},
+	</if>
+	<if test="modifyUser != null ">
+		MODIFY_USER=#{modifyUser},
+	</if>
+	<if test="modifyDate != null ">
+		MODIFY_DATE=#{modifyDate},
+	</if>
+	<if test="extStr1 != null ">
+		EXT_STR1=#{extStr1},
+	</if>
+	<if test="extStr2 != null ">
+		EXT_STR2=#{extStr2},
+	</if>
+	<if test="extStr3 != null ">
+		EXT_STR3=#{extStr3},
+	</if>
+	<if test="extStr4 != null ">
+		EXT_STR4=#{extStr4},
+	</if>
+	<if test="extStr5 != null ">
+		EXT_STR5=#{extStr5},
+	</if>
+	<if test="extDate1 != null ">
+		EXT_DATE1=#{extDate1},
+	</if>
+	<if test="extDate2 != null ">
+		EXT_DATE2=#{extDate2},
+	</if>
+	<if test="extNum1 != null ">
+		EXT_NUM1=#{extNum1},
+	</if>
+	<if test="extNum2 != null ">
+		EXT_NUM2=#{extNum2},
+	</if>
+	<if test="extNum3 != null ">
+		EXT_NUM3=#{extNum3},
+	</if>
+
+	 MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+</update>
+
+<select id="query" parameterType="com.jc.oa.shyt.domain.Visit" resultType="com.jc.oa.shyt.domain.Visit">
+		SELECT 
+		 t.ID id
+		,t.COMPANY_NAME companyName
+		,t.COMPANY_ADDRESS companyAddress
+		,t.CUSTOMER_ID customerId
+		,t.COMPLAIN_NUMBER complainNumber
+		,t.VISIT_PAY visitPay
+		,t.VISIT_PRICE visitPrice
+		,t.VISIT_DATE visitDate
+		,t.VISIT_STATUS visitStatus
+		,t.VISIT_MODE visitMode
+		,t.STATUS status
+		,t.VISIT visit
+		,t.RETURN_NAME returnName
+		,t.RETURN_DEPT returnDept
+		,t.PERSON_NAME personName
+		,t.POSITION position
+		,t.CONTACT_WAY contactWay
+		,t.VISIT_IS_RETURN visitIsReturn
+		,t.CONTENT_MAIN contentMain
+		,t.CONTENT_ACCESS contentAccess
+		,t.CONTENT_COMMENT contentComment
+		,t.VISIT_FIND visitFind
+		,t.VISIT_PROBLEM visitProblem
+		,t.VISIT_THE_PROBLEM visitTheProblem
+		,t.SOLUTION_REPLATION solutionReplation
+		,t.SOLUTION_DISPOSE solutionDispose
+		,t.SOLUTION_SLOVE solutionSlove
+		,t.CUSTOMER_JUDGE customerJudge
+		,t.CUSTOMER_EVALUATION customerEvaluation
+		,t.CUSTOMER_REVIEWS customerReviews
+		,t.SUBSTANCE_ONE substanceOne
+		,t.SUBSTANCE_TWO substanceTwo
+		,t.SUBSTANCE_THREE substanceThree
+		,t.INVOLVOED_BRANCH involvoedBranch
+		,t.INVOLVOED_DIVISION involvoedDivision
+		,t.INVOLVOED_SECTION involvoedSection
+		,t.SCHEME_PLAN schemePlan
+		,t.SCHEME_BLUE schemeBlue
+		,t.SCHEME_PROJECT schemeProject
+		,t.REPLY_ANSWER replyAnswer
+		,t.REPLY_RESTORE replyRestore
+		,t.REPLY_REFLEXT replyReflext
+		,t.CUSTOM_TICKLING customTickling
+		,t.CUSTOM_FEED customFeed
+		,t.CUSTOM_COUPLE customCouple
+		,t.VISIT_PEOPLE visitPeople
+		,t.SERVICE_STATUS serviceStatus
+		,t.REMARK remark
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_ORG createUserOrg
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.EXT_NUM1 extNum1
+		,t.EXT_NUM2 extNum2
+		,t.EXT_NUM3 extNum3
+ FROM toa_shyt_visit t
+<where>
+	<if test="id != null ">
+		and t.id=#{id}
+	</if>
+	<if test="companyName != null ">
+		and t.COMPANY_NAME like <![CDATA['%${companyName}%']]>
+	</if>
+	<if test="companyAddress != null ">
+		and t.COMPANY_ADDRESS=#{companyAddress}
+	</if>
+	<if test="customerId != null ">
+		and t.CUSTOMER_ID=#{customerId}
+	</if>
+	<if test="complainNumber != null ">
+		and t.COMPLAIN_NUMBER=#{complainNumber}
+	</if>
+	<if test="visitPay != null ">
+		and t.VISIT_PAY=#{visitPay}
+	</if>
+	<if test="visitPrice != null ">
+		and t.VISIT_PRICE=#{visitPrice}
+	</if>
+	<if test="visitDate != null ">
+		and t.VISIT_DATE=#{visitDate}
+	</if>
+	<if test="visitStatus != null ">
+		and t.VISIT_STATUS=#{visitStatus}
+	</if>
+	<if test="visitMode != null ">
+		and t.VISIT_MODE=#{visitMode}
+	</if>
+	<if test="status != null ">
+		and t.STATUS=#{status}
+	</if>
+	<if test="visit != null ">
+		and t.VISIT=#{visit}
+	</if>
+	<if test="returnName != null ">
+		and t.RETURN_NAME=#{returnName}
+	</if>
+	<if test="returnDept != null ">
+		and t.RETURN_DEPT=#{returnDept}
+	</if>
+	<if test="personName != null ">
+		and t.PERSON_NAME=#{personName}
+	</if>
+	<if test="position != null ">
+		and t.POSITION=#{position}
+	</if>
+	<if test="contactWay != null ">
+		and t.CONTACT_WAY=#{contactWay}
+	</if>
+	<if test="visitIsReturn != null ">
+		and t.VISIT_IS_RETURN=#{visitIsReturn}
+	</if>
+	<if test="contentMain != null ">
+		and t.CONTENT_MAIN=#{contentMain}
+	</if>
+	<if test="contentAccess != null ">
+		and t.CONTENT_ACCESS=#{contentAccess}
+	</if>
+	<if test="contentComment != null ">
+		and t.CONTENT_COMMENT=#{contentComment}
+	</if>
+	<if test="visitFind != null ">
+		and t.VISIT_FIND=#{visitFind}
+	</if>
+	<if test="visitProblem != null ">
+		and t.VISIT_PROBLEM=#{visitProblem}
+	</if>
+	<if test="visitTheProblem != null ">
+		and t.VISIT_THE_PROBLEM=#{visitTheProblem}
+	</if>
+	<if test="solutionReplation != null ">
+		and t.SOLUTION_REPLATION=#{solutionReplation}
+	</if>
+	<if test="solutionDispose != null ">
+		and t.SOLUTION_DISPOSE=#{solutionDispose}
+	</if>
+	<if test="solutionSlove != null ">
+		and t.SOLUTION_SLOVE=#{solutionSlove}
+	</if>
+	<if test="customerJudge != null ">
+		and t.CUSTOMER_JUDGE=#{customerJudge}
+	</if>
+	<if test="customerEvaluation != null ">
+		and t.CUSTOMER_EVALUATION=#{customerEvaluation}
+	</if>
+	<if test="customerReviews != null ">
+		and t.CUSTOMER_REVIEWS=#{customerReviews}
+	</if>
+	<if test="substanceOne != null ">
+		and t.SUBSTANCE_ONE=#{substanceOne}
+	</if>
+	<if test="substanceTwo != null ">
+		and t.SUBSTANCE_TWO=#{substanceTwo}
+	</if>
+	<if test="substanceThree != null ">
+		and t.SUBSTANCE_THREE=#{substanceThree}
+	</if>
+	<if test="involvoedBranch != null ">
+		and t.INVOLVOED_BRANCH=#{involvoedBranch}
+	</if>
+	<if test="involvoedDivision != null ">
+		and t.INVOLVOED_DIVISION=#{involvoedDivision}
+	</if>
+	<if test="involvoedSection != null ">
+		and t.INVOLVOED_SECTION=#{involvoedSection}
+	</if>
+	<if test="schemePlan != null ">
+		and t.SCHEME_PLAN=#{schemePlan}
+	</if>
+	<if test="schemeBlue != null ">
+		and t.SCHEME_BLUE=#{schemeBlue}
+	</if>
+	<if test="schemeProject != null ">
+		and t.SCHEME_PROJECT=#{schemeProject}
+	</if>
+	<if test="replyAnswer != null ">
+		and t.REPLY_ANSWER=#{replyAnswer}
+	</if>
+	<if test="replyRestore != null ">
+		and t.REPLY_RESTORE=#{replyRestore}
+	</if>
+	<if test="replyReflext != null ">
+		and t.REPLY_REFLEXT=#{replyReflext}
+	</if>
+	<if test="customTickling != null ">
+		and t.CUSTOM_TICKLING=#{customTickling}
+	</if>
+	<if test="customFeed != null ">
+		and t.CUSTOM_FEED=#{customFeed}
+	</if>
+	<if test="customCouple != null ">
+		and t.CUSTOM_COUPLE=#{customCouple}
+	</if>
+	<if test="visitPeople != null ">
+		and t.VISIT_PEOPLE=#{visitPeople}
+	</if>
+	<if test="serviceStatus != null ">
+		and t.SERVICE_STATUS=#{serviceStatus}
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserOrg != null ">
+		and t.CREATE_USER_ORG=#{createUserOrg}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+</select>
+	
+<select id="queryCount" parameterType="com.jc.oa.shyt.domain.Visit" resultType="java.lang.Long">
+		SELECT COUNT(ID) 
+	 FROM toa_shyt_visit t
+<where>
+	<if test="id != null ">
+		and t.id=#{id}
+	</if>
+	<if test="companyName != null ">
+		and t.COMPANY_NAME like <![CDATA['%${companyName}%']]>
+	</if>
+	<if test="companyAddress != null ">
+		and t.COMPANY_ADDRESS=#{companyAddress}
+	</if>
+	<if test="customerId != null ">
+		and t.CUSTOMER_ID=#{customerId}
+	</if>
+	<if test="complainNumber != null ">
+		and t.COMPLAIN_NUMBER=#{complainNumber}
+	</if>
+	<if test="visitPay != null ">
+		and t.VISIT_PAY=#{visitPay}
+	</if>
+	<if test="visitPrice != null ">
+		and t.VISIT_PRICE=#{visitPrice}
+	</if>
+	<if test="visitDate != null ">
+		and t.VISIT_DATE=#{visitDate}
+	</if>
+	<if test="visitStatus != null ">
+		and t.VISIT_STATUS=#{visitStatus}
+	</if>
+	<if test="visitMode != null ">
+		and t.VISIT_MODE=#{visitMode}
+	</if>
+	<if test="status != null ">
+		and t.STATUS=#{status}
+	</if>
+	<if test="visit != null ">
+		and t.VISIT=#{visit}
+	</if>
+	<if test="returnName != null ">
+		and t.RETURN_NAME=#{returnName}
+	</if>
+	<if test="returnDept != null ">
+		and t.RETURN_DEPT=#{returnDept}
+	</if>
+	<if test="personName != null ">
+		and t.PERSON_NAME=#{personName}
+	</if>
+	<if test="position != null ">
+		and t.POSITION=#{position}
+	</if>
+	<if test="contactWay != null ">
+		and t.CONTACT_WAY=#{contactWay}
+	</if>
+	<if test="visitIsReturn != null ">
+		and t.VISIT_IS_RETURN=#{visitIsReturn}
+	</if>
+	<if test="contentMain != null ">
+		and t.CONTENT_MAIN=#{contentMain}
+	</if>
+	<if test="contentAccess != null ">
+		and t.CONTENT_ACCESS=#{contentAccess}
+	</if>
+	<if test="contentComment != null ">
+		and t.CONTENT_COMMENT=#{contentComment}
+	</if>
+	<if test="visitFind != null ">
+		and t.VISIT_FIND=#{visitFind}
+	</if>
+	<if test="visitProblem != null ">
+		and t.VISIT_PROBLEM=#{visitProblem}
+	</if>
+	<if test="visitTheProblem != null ">
+		and t.VISIT_THE_PROBLEM=#{visitTheProblem}
+	</if>
+	<if test="solutionReplation != null ">
+		and t.SOLUTION_REPLATION=#{solutionReplation}
+	</if>
+	<if test="solutionDispose != null ">
+		and t.SOLUTION_DISPOSE=#{solutionDispose}
+	</if>
+	<if test="solutionSlove != null ">
+		and t.SOLUTION_SLOVE=#{solutionSlove}
+	</if>
+	<if test="customerJudge != null ">
+		and t.CUSTOMER_JUDGE=#{customerJudge}
+	</if>
+	<if test="customerEvaluation != null ">
+		and t.CUSTOMER_EVALUATION=#{customerEvaluation}
+	</if>
+	<if test="customerReviews != null ">
+		and t.CUSTOMER_REVIEWS=#{customerReviews}
+	</if>
+	<if test="substanceOne != null ">
+		and t.SUBSTANCE_ONE=#{substanceOne}
+	</if>
+	<if test="substanceTwo != null ">
+		and t.SUBSTANCE_TWO=#{substanceTwo}
+	</if>
+	<if test="substanceThree != null ">
+		and t.SUBSTANCE_THREE=#{substanceThree}
+	</if>
+	<if test="involvoedBranch != null ">
+		and t.INVOLVOED_BRANCH=#{involvoedBranch}
+	</if>
+	<if test="involvoedDivision != null ">
+		and t.INVOLVOED_DIVISION=#{involvoedDivision}
+	</if>
+	<if test="involvoedSection != null ">
+		and t.INVOLVOED_SECTION=#{involvoedSection}
+	</if>
+	<if test="schemePlan != null ">
+		and t.SCHEME_PLAN=#{schemePlan}
+	</if>
+	<if test="schemeBlue != null ">
+		and t.SCHEME_BLUE=#{schemeBlue}
+	</if>
+	<if test="schemeProject != null ">
+		and t.SCHEME_PROJECT=#{schemeProject}
+	</if>
+	<if test="replyAnswer != null ">
+		and t.REPLY_ANSWER=#{replyAnswer}
+	</if>
+	<if test="replyRestore != null ">
+		and t.REPLY_RESTORE=#{replyRestore}
+	</if>
+	<if test="replyReflext != null ">
+		and t.REPLY_REFLEXT=#{replyReflext}
+	</if>
+	<if test="customTickling != null ">
+		and t.CUSTOM_TICKLING=#{customTickling}
+	</if>
+	<if test="customFeed != null ">
+		and t.CUSTOM_FEED=#{customFeed}
+	</if>
+	<if test="customCouple != null ">
+		and t.CUSTOM_COUPLE=#{customCouple}
+	</if>
+	<if test="visitPeople != null ">
+		and t.VISIT_PEOPLE=#{visitPeople}
+	</if>
+	<if test="serviceStatus != null ">
+		and t.SERVICE_STATUS=#{serviceStatus}
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserOrg != null ">
+		and t.CREATE_USER_ORG=#{createUserOrg}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+	<if test="dataAccessDynamicSQL != null">
+		${dataAccessDynamicSQL}
+	</if>
+</where>
+
+</select>
+
+<update id="deleteLogic"  parameterType="com.jc.oa.shyt.domain.Visit">
+	     UPDATE toa_shyt_visit t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+ 			where ID in
+ 			<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=","> 
+				 #{primaryKey}
+			</foreach>
+</update>
+<!-- 修改客维信息 -->
+<update id="updateCustomer"  parameterType="com.jc.oa.shyt.domain.Visit">
+	     UPDATE toa_shyt_visit set create_user =#{createUser}
+ 			where customer_id=#{customerId}
+</update>
+  	
+</mapper>   

@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.common.domain.FormSuggest">
+
+	<select id="query" parameterType="com.jc.oa.common.domain.FormSuggest" resultType="com.jc.oa.common.domain.FormSuggest">
+		SELECT 
+			t.ID id,
+			t.PI_ID piId,
+			t.NODE_NAME nodeName,
+			t.TASK_ID taskId,
+			t.MESSAGE message,
+			t.USER_NAME userName,
+			t.FormSuggest_ID suggestId,
+			t.SIGN_CONTAINER_ID signContainerId,
+			t.CREATE_USER_DUTY createUserDuty,
+			t.CREATE_USER_LEVEL createUserLevel,
+			t.QUEUE queue,
+			t.SUB_TYPE subType,
+			t.MAIN_TYPE mainType,
+			t.SIGN_INFO signInfo,
+			t.QUEUE_ROLE queueRole,
+			t.DELETE_USER deleteUser,
+			t.DELETE_DATE deleteDate,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER createUser,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_STR5 extStr5,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2
+			
+		FROM tty_workflow_suggest t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="piId != null">
+				and t.PI_ID = #{piId}
+			</if>
+			<if test="nodeName != null">
+				and t.NODE_NAME = #{nodeName}
+			</if>
+			<if test="taskId != null">
+				and t.TASK_ID = #{taskId}
+			</if>
+			<if test="message != null">
+				and t.MESSAGE = #{message}
+			</if>
+			<if test="userName != null">
+				and t.USER_NAME = #{userName}
+			</if>
+			<if test="suggestId != null">
+				and t.FormSuggest_ID = #{suggestId}
+			</if>
+			<if test="signContainerId != null">
+				and t.SIGN_CONTAINER_ID = #{signContainerId}
+			</if>
+			<if test="createUserDuty != null">
+				and t.CREATE_USER_DUTY = #{createUserDuty}
+			</if>
+			<if test="createUserLevel != null">
+				and t.CREATE_USER_LEVEL = #{createUserLevel}
+			</if>
+			<if test="queue != null">
+				and t.QUEUE = #{queue}
+			</if>
+			<if test="subType != null">
+				and t.SUB_TYPE = #{subType}
+			</if>
+			<if test="mainType != null">
+				and t.MAIN_TYPE = #{mainType}
+			</if>
+			<if test="signInfo != null">
+				and t.SIGN_INFO = #{signInfo}
+			</if>
+			<if test="queueRole != null">
+				and t.QUEUE_ROLE = #{queueRole}
+			</if>
+			<if test="deleteUser != null">
+				and t.DELETE_USER = #{deleteUser}
+			</if>
+			<if test="deleteDate != null">
+				and t.DELETE_DATE = #{deleteDate}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+		</where>
+	</select>
+	
+	
+	<select id="queryCount" parameterType="com.jc.oa.common.domain.FormSuggest" resultType="java.lang.Integer">
+		SELECT count(ID) 
+		FROM tty_workflow_suggest t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="piId != null">
+				and t.PI_ID = #{piId}
+			</if>
+			<if test="nodeName != null">
+				and t.NODE_NAME = #{nodeName}
+			</if>
+			<if test="taskId != null">
+				and t.TASK_ID = #{taskId}
+			</if>
+			<if test="message != null">
+				and t.MESSAGE = #{message}
+			</if>
+			<if test="userName != null">
+				and t.USER_NAME = #{userName}
+			</if>
+			<if test="suggestId != null">
+				and t.FormSuggest_ID = #{suggestId}
+			</if>
+			<if test="signContainerId != null">
+				and t.SIGN_CONTAINER_ID = #{signContainerId}
+			</if>
+			<if test="createUserDuty != null">
+				and t.CREATE_USER_DUTY = #{createUserDuty}
+			</if>
+			<if test="createUserLevel != null">
+				and t.CREATE_USER_LEVEL = #{createUserLevel}
+			</if>
+			<if test="queue != null">
+				and t.QUEUE = #{queue}
+			</if>
+			<if test="subType != null">
+				and t.SUB_TYPE = #{subType}
+			</if>
+			<if test="mainType != null">
+				and t.MAIN_TYPE = #{mainType}
+			</if>
+			<if test="signInfo != null">
+				and t.SIGN_INFO = #{signInfo}
+			</if>
+			<if test="queueRole != null">
+				and t.QUEUE_ROLE = #{queueRole}
+			</if>
+			<if test="deleteUser != null">
+				and t.DELETE_USER = #{deleteUser}
+			</if>
+			<if test="deleteDate != null">
+				and t.DELETE_DATE = #{deleteDate}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+		</where>
+	</select>
+
+	<delete id="deleteByIds"  parameterType="com.jc.oa.common.domain.FormSuggest">
+    	delete from tty_workflow_suggest
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete>
+
+	<update id="delete"  parameterType="com.jc.oa.common.domain.FormSuggest">
+    	UPDATE tty_workflow_suggest t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+
+	<insert id="insert" parameterType="com.jc.oa.common.domain.FormSuggest" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tty_workflow_suggest(ID,PI_ID,NODE_NAME,TASK_ID,MESSAGE,USER_NAME,SUGGEST_ID,SIGN_CONTAINER_ID,CREATE_USER_DUTY,CREATE_USER_LEVEL,QUEUE,SUB_TYPE,MAIN_TYPE,SIGN_INFO,QUEUE_ROLE,DELETE_USER,DELETE_DATE,DELETE_FLAG,CREATE_USER_ORG,CREATE_USER_DEPT,CREATE_USER,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR5,EXT_STR3,EXT_STR4,EXT_STR1,EXT_STR2)
+			VALUES (#{id,jdbcType=NUMERIC},#{piId,jdbcType=VARCHAR},#{nodeName,jdbcType=VARCHAR},#{taskId,jdbcType=VARCHAR},#{message,jdbcType=VARCHAR},#{userName,jdbcType=VARCHAR},#{suggestId,jdbcType=VARCHAR},#{signContainerId,jdbcType=VARCHAR},#{createUserDuty,jdbcType=VARCHAR},#{createUserLevel,jdbcType=VARCHAR},#{queue,jdbcType=NUMERIC},#{subType,jdbcType=NUMERIC},#{mainType,jdbcType=NUMERIC},#{signInfo,jdbcType=VARCHAR},#{queueRole,jdbcType=NUMERIC},#{deleteUser,jdbcType=NUMERIC},#{deleteDate,jdbcType=TIMESTAMP},#{deleteFlag,jdbcType=NUMERIC},#{createUserOrg,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createUser,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extStr5,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertList" parameterType="list">
+		INSERT INTO tty_workflow_suggest(ID,PI_ID,NODE_NAME,TASK_ID,MESSAGE,USER_NAME,SUGGEST_ID,SIGN_CONTAINER_ID,CREATE_USER_DUTY,CREATE_USER_LEVEL,QUEUE,SUB_TYPE,MAIN_TYPE,SIGN_INFO,QUEUE_ROLE,DELETE_USER,DELETE_DATE,DELETE_FLAG,CREATE_USER_ORG,CREATE_USER_DEPT,CREATE_USER,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR5,EXT_STR3,EXT_STR4,EXT_STR1,EXT_STR2)
+			VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(#{item.id,jdbcType=NUMERIC},#{item.piId,jdbcType=VARCHAR},#{item.nodeName,jdbcType=VARCHAR},#{item.taskId,jdbcType=VARCHAR},#{item.message,jdbcType=VARCHAR},#{item.userName,jdbcType=VARCHAR},#{item.FormSuggestId,jdbcType=VARCHAR},#{item.signContainerId,jdbcType=VARCHAR},#{item.createUserDuty,jdbcType=VARCHAR},#{item.createUserLevel,jdbcType=VARCHAR},#{item.queue,jdbcType=NUMERIC},#{item.subType,jdbcType=NUMERIC},#{item.mainType,jdbcType=NUMERIC},#{item.signInfo,jdbcType=VARCHAR},#{item.queueRole,jdbcType=NUMERIC},#{item.deleteUser,jdbcType=NUMERIC},#{item.deleteDate,jdbcType=TIMESTAMP},#{item.deleteFlag,jdbcType=NUMERIC},#{item.createUserOrg,jdbcType=NUMERIC},#{item.createUserDept,jdbcType=NUMERIC},#{item.createUser,jdbcType=NUMERIC},#{item.createDate,jdbcType=TIMESTAMP},#{item.modifyUser,jdbcType=NUMERIC},#{item.modifyDate,jdbcType=TIMESTAMP},#{item.extStr5,jdbcType=VARCHAR},#{item.extStr3,jdbcType=VARCHAR},#{item.extStr4,jdbcType=VARCHAR},#{item.extStr1,jdbcType=VARCHAR},#{item.extStr2,jdbcType=VARCHAR})
+			</foreach> 
+	</insert>
+
+	<update id="update" parameterType="com.jc.oa.common.domain.FormSuggest">
+	UPDATE tty_workflow_suggest
+	   <set>
+	   	<if test="piId != null">
+	   		PI_ID = #{piId},
+	   	</if>
+	   	<if test="nodeName != null">
+	   		NODE_NAME = #{nodeName},
+	   	</if>
+	   	<if test="taskId != null">
+	   		TASK_ID = #{taskId},
+	   	</if>
+	   	<if test="message != null">
+	   		MESSAGE = #{message},
+	   	</if>
+	   	<if test="userName != null">
+	   		USER_NAME = #{userName},
+	   	</if>
+	   	<if test="suggestId != null">
+	   		SUGGEST_ID = #{suggestId},
+	   	</if>
+	   	<if test="signContainerId != null">
+	   		SIGN_CONTAINER_ID = #{signContainerId},
+	   	</if>
+	   	<if test="createUserDuty != null">
+	   		CREATE_USER_DUTY = #{createUserDuty},
+	   	</if>
+	   	<if test="createUserLevel != null">
+	   		CREATE_USER_LEVEL = #{createUserLevel},
+	   	</if>
+	   	<if test="queue != null">
+	   		QUEUE = #{queue},
+	   	</if>
+	   	<if test="subType != null">
+	   		SUB_TYPE = #{subType},
+	   	</if>
+	   	<if test="mainType != null">
+	   		MAIN_TYPE = #{mainType},
+	   	</if>
+	   	<if test="signInfo != null">
+	   		SIGN_INFO = #{signInfo},
+	   	</if>
+	   	<if test="queueRole != null">
+	   		QUEUE_ROLE = #{queueRole},
+	   	</if>
+	   	<if test="deleteUser != null">
+	   		DELETE_USER = #{deleteUser},
+	   	</if>
+	   	<if test="deleteDate != null">
+	   		DELETE_DATE = #{deleteDate},
+	   	</if>
+	   	<if test="deleteFlag != null">
+	   		DELETE_FLAG = #{deleteFlag},
+	   	</if>
+	   	<if test="createUserOrg != null">
+	   		CREATE_USER_ORG = #{createUserOrg},
+	   	</if>
+	   	<if test="createUserDept != null">
+	   		CREATE_USER_DEPT = #{createUserDept},
+	   	</if>
+	   	<if test="createUser != null">
+	   		CREATE_USER = #{createUser},
+	   	</if>
+	   	<if test="createDate != null">
+	   		CREATE_DATE = #{createDate},
+	   	</if>
+	   	<if test="modifyUser != null">
+	   		MODIFY_USER = #{modifyUser},
+	   	</if>
+	   	<if test="modifyDate != null">
+	   		MODIFY_DATE = #{modifyDate},
+	   	</if>
+	   	<if test="extStr5 != null">
+	   		EXT_STR5 = #{extStr5},
+	   	</if>
+	   	<if test="extStr3 != null">
+	   		EXT_STR3 = #{extStr3},
+	   	</if>
+	   	<if test="extStr4 != null">
+	   		EXT_STR4 = #{extStr4},
+	   	</if>
+	   	<if test="extStr1 != null">
+	   		EXT_STR1 = #{extStr1},
+	   	</if>
+	   	<if test="extStr2 != null">
+	   		EXT_STR2 = #{extStr2},
+	   	</if>
+	   </set>
+	   where ID = #{id}
+	</update>
+
+</mapper>

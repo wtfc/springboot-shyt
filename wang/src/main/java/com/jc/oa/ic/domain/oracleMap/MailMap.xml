@@ -1,0 +1,6331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.ic.domain.Mail">
+	<resultMap type="com.jc.oa.ic.domain.Mail" id="mail_with_record">
+		<result column="id" property="id" />
+		<result column="contactsId" property="contactsId" />
+		<result column="mailboxId" property="mailboxId" />
+		<result column="mailTitle" property="mailTitle" />
+		<result column="mailContent" property="mailContent" />
+		<result column="senderUserId" property="senderUserId" />
+		<result column="senderMail" property="senderMail" />
+		<result column="sendType" property="sendType" />
+		<result column="isfile" property="isfile" />
+		<result column="smsAlert" property="smsAlert" />
+		<result column="signature" property="signature" />
+		<result column="pressing" property="pressing" />
+		<result column="encryption" property="encryption" />
+		<result column="encryptionPass" property="encryptionPass" />
+		<result column="replyTexting" property="replyTexting" />
+		<result column="replyTextingTime" property="replyTextingTime" />
+		<result column="mailStatus" property="mailStatus" />
+		<result column="senderTime" property="senderTime" />
+		<result column="receiveTime2" property="receiveTime2" />
+		<result column="messageId" property="messageId" />
+		<result column="deleteFlag" property="deleteFlag" />
+		<result column="createUser" property="createUser" />
+		<result column="createUserOrg" property="createUserOrg" />
+		<result column="createUserDept" property="createUserDept" />
+		<result column="createDate" property="createDate" />
+		<result column="modifyUser" property="modifyUser" />
+		<result column="modifyDate" property="modifyDate" />
+		<result column="extDate1" property="extDate1" />
+		<result column="extDate2" property="extDate2" />
+		<result column="extNum1" property="extNum1" />
+		<result column="extNum2" property="extNum2" />
+		<result column="extNum3" property="extNum3" />
+		<result column="extStr1" property="extStr1" />
+		<result column="extStr2" property="extStr2" />
+		<result column="extStr3" property="extStr3" />
+		<result column="extStr4" property="extStr4" />
+		<result column="extStr5" property="extStr5" />
+		<result column="senderUserName" property="senderUserName" />
+		<collection property="receivers" javaType="ArrayList"
+			ofType="com.jc.oa.ic.domain.MailRecord">
+			<result column="mrid" property="id" />
+			<result column="mailId" property="mailId" />
+			<result column="receiveUserId" property="receiveUserId" />
+			<result column="receiveMail" property="receiveMail" />
+			<result column="receiveType" property="receiveType" />
+			<result column="readFlag" property="readFlag" />
+			<result column="starMail" property="starMail" />
+			<result column="folderId" property="folderId" />
+			<result column="displayName" property="receiveUserName" />
+			<result column="readDate" property="readDate" />
+			<result column="remindFlag" property="remindFlag" />
+		</collection>
+	</resultMap>
+	<resultMap type="com.jc.oa.ic.domain.Mail" id="mail_star">
+		<result column="id" property="id" />
+		<result column="contactsId" property="contactsId" />
+		<result column="mailboxId" property="mailboxId" />
+		<result column="mailTitle" property="mailTitle" />
+		<result column="mailContent" property="mailContent" />
+		<result column="senderUserId" property="senderUserId" />
+		<result column="senderMail" property="senderMail" />
+		<result column="sendType" property="sendType" />
+		<result column="isfile" property="isfile" />
+		<result column="smsAlert" property="smsAlert" />
+		<result column="signature" property="signature" />
+		<result column="pressing" property="pressing" />
+		<result column="encryption" property="encryption" />
+		<result column="encryptionPass" property="encryptionPass" />
+		<result column="replyTexting" property="replyTexting" />
+		<result column="replyTextingTime" property="replyTextingTime" />
+		<result column="mailStatus" property="mailStatus" />
+		<result column="senderTime" property="senderTime" />
+		<result column="receiveTime2" property="receiveTime2" />
+		<result column="messageId" property="messageId" />
+		<result column="deleteFlag" property="deleteFlag" />
+		<result column="createUser" property="createUser" />
+		<result column="createUserOrg" property="createUserOrg" />
+		<result column="createUserDept" property="createUserDept" />
+		<result column="createDate" property="createDate" />
+		<result column="modifyUser" property="modifyUser" />
+		<result column="modifyDate" property="modifyDate" />
+		<result column="extDate1" property="extDate1" />
+		<result column="extDate2" property="extDate2" />
+		<result column="extNum1" property="extNum1" />
+		<result column="extNum2" property="extNum2" />
+		<result column="extNum3" property="extNum3" />
+		<result column="extStr1" property="extStr1" />
+		<result column="extStr2" property="extStr2" />
+		<result column="extStr3" property="extStr3" />
+		<result column="extStr4" property="extStr4" />
+		<result column="extStr5" property="extStr5" />
+		<result column="senderUserName" property="senderUserName" />
+		<result column="receiveUsers" property="receiveUsers" />
+		<result column="mrid" property="mrid" />
+		<collection property="receivers" javaType="ArrayList"
+			ofType="com.jc.oa.ic.domain.MailRecord">
+			<result column="mrid" property="id" />
+			<result column="mailId" property="mailId" />
+			<result column="receiveUserId" property="receiveUserId" />
+			<result column="receiveMail" property="receiveMail" />
+			<result column="receiveType" property="receiveType" />
+			<result column="readFlag" property="readFlag" />
+			<result column="starMail" property="starMail" />
+			<result column="folderId" property="folderId" />
+			<result column="displayName" property="receiveUserName" />
+			<result column="readDate" property="readDate" />
+			<result column="remindFlag" property="remindFlag" />
+		</collection>
+	</resultMap>
+	<select id="query" parameterType="com.jc.oa.ic.domain.Mail"
+		resultMap="mail_with_record">
+		SELECT
+		t.ID id,
+		t.CONTACTS_ID contactsId,
+		t.MAILBOX_ID mailboxId,
+		t.MAIL_TITLE mailTitle,
+		t.MAIL_CONTENT mailContent,
+		t.SENDER_USER_ID senderUserId,
+		t.SENDER_MAIL senderMail,
+		t.SEND_TYPE sendType,
+		t.ISFILE isfile,
+		t.SMS_ALERT smsAlert,
+		t.SIGNATURE signature,
+		t.PRESSING pressing,
+		t.ENCRYPTION encryption,
+		t.ENCRYPTION_PASS encryptionPass,
+		t.REPLY_TEXTING replyTexting,
+		t.REPLY_TEXTING_TIME replyTextingTime,
+		t.MAIL_STATUS mailStatus,
+		t.SENDER_TIME senderTime,
+		t.RECEIVE_TIME2 receiveTime2,
+		t.MESSAGE_ID messageId,
+		t.DELETE_FLAG deleteFlag,
+		t.CREATE_USER createUser,
+		t.CREATE_USER_ORG createUserOrg,
+		t.CREATE_USER_DEPT createUserDept,
+		t.CREATE_DATE createDate,
+		t.MODIFY_USER modifyUser,
+		t.MODIFY_DATE modifyDate,
+		t.EXT_DATE1 extDate1,
+		t.EXT_DATE2 extDate2,
+		t.EXT_NUM1 extNum1,
+		t.EXT_NUM2 extNum2,
+		t.EXT_NUM3 extNum3,
+		t.EXT_STR1 extStr1,
+		t.EXT_STR2 extStr2,
+		t.EXT_STR3 extStr3,
+		t.EXT_STR4 extStr4,
+		t.EXT_STR5 extStr5,
+		mr.ID mrid,
+		mr.MAIL_ID mailId,
+		mr.RECEIVE_USER_ID receiveUserId,
+		mr.RECEIVE_MAIL receiveMail,
+		mr.RECEIVE_TYPE receiveType,
+		mr.READ_FLAG readFlag,
+		mr.STAR_MAIL starMail,
+		mr.FOLDER_ID folderId,
+		mr.READ_DATE readDate,
+		mr.REMIND_FLAG remindFlag,
+		mr.RECOVER_FLAG recoverFlag,
+		u.DISPLAY_NAME displayName,
+		user1.DISPLAY_NAME senderUserName,
+		box.id
+
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID
+		LEFT JOIN tty_ic_mailbox box ON t.MAILBOX_ID = box.ID,
+		tty_ic_mail_record mr left join TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE = #{mailTitle}
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT = #{mailContent}
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL = #{senderMail}
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and t.RECEIVE_TIME2>=#{searchReceiveTimeBegin}]]>
+			</if>
+			<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and t.RECEIVE_TIME2<=#{searchReceiveTimeEnd}]]>
+			</if>
+			<if test="excludeFolderId!=null">
+				and mr.FOLDER_ID !=#{excludeFolderId}
+			</if>
+			<if test="mailbox != null">
+				and
+				<foreach collection="mailbox" item="box" index="index" open="("
+					close=")" separator=" or ">
+					(1=1
+					<if test="box.id != null">
+						and t.MAILBOX_ID = #{box.id}
+					</if>
+					)
+				</foreach>
+			</if>
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					<if test="rec.folderId!=null">
+						and
+						mr.FOLDER_ID =#{rec.folderId}
+					</if>
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="rec.readFlag!=null">
+						and mr.READ_FLAG=#{rec.readFlag}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<when test="rec.receiveUserId!=null">
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</when>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+						</if>
+					</if>
+					)
+				</foreach>
+
+			</if>
+		</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+	</select>
+	<select id="queryCount" parameterType="com.jc.oa.ic.domain.Mail"
+		resultType="java.lang.Integer">
+		SELECT count(t.ID)
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID
+		LEFT JOIN tty_ic_mailbox box ON t.MAILBOX_ID = box.ID,
+		tty_ic_mail_record mr left join TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE = #{mailTitle}
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT = #{mailContent}
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL = #{senderMail}
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and t.RECEIVE_TIME2>=#{searchReceiveTimeBegin}]]>
+			</if>
+			<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and t.RECEIVE_TIME2<=#{searchReceiveTimeEnd}]]>
+			</if>
+			<if test="excludeFolderId!=null">
+				and mr.FOLDER_ID !=#{excludeFolderId}
+			</if>
+			<if test="mailbox != null">
+				and
+				<foreach collection="mailbox" item="box" index="index" open="("
+					close=")" separator=" or ">
+					(1=1
+					<if test="box.id != null">
+						and t.MAILBOX_ID = #{box.id}
+					</if>
+					)
+				</foreach>
+			</if>
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					<if test="rec.folderId!=null">
+						and
+						mr.FOLDER_ID =#{rec.folderId}
+					</if>
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="rec.readFlag!=null">
+						and mr.READ_FLAG=#{rec.readFlag}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<when test="rec.receiveUserId!=null">
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</when>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+						</if>
+					</if>
+					)
+				</foreach>
+
+			</if>
+		</where>
+	</select>
+	<select id="queryMail" parameterType="com.jc.oa.ic.domain.Mail"
+		resultMap="mail_star">
+		SELECT
+		v.id id,
+		v.contactsId contactsId,
+		v.mailboxId mailboxId,
+		v.mailTitle mailTitle,
+		v.mailContent mailContent,
+		v.senderUserId senderUserId,
+		v.senderMail senderMail,
+		v.sendType sendType,
+		v.ISFILE isfile,
+		v.smsAlert smsAlert,
+		v.signature signature,
+		v.pressing pressing,
+		v.encryption encryption,
+		v.encryptionPass encryptionPass,
+		v.replyTexting replyTexting,
+		v.replyTextingTime replyTextingTime,
+		v.mailStatus mailStatus,
+		v.senderTime senderTime,
+		v.receiveTime2 receiveTime2,
+		v.messageId messageId,
+		v.deleteFlag deleteFlag,
+		v.createUser createUser,
+		v.createUserOrg createUserOrg,
+		v.createUserDept createUserDept,
+		v.createDate createDate,
+		v.modifyUser modifyUser,
+		v.modifyDate modifyDate,
+		v.extDate1 extDate1,
+		v.extDate2 extDate2,
+		v.extNum1 extNum1,
+		v.extNum2 extNum2,
+		v.extNum3 extNum3,
+		v.extStr1 extStr1,
+		v.extStr2 extStr2,
+		v.extStr3 extStr3,
+		v.extStr4 extStr4,
+		v.extStr5 extStr5,
+		v.mrid mrid,
+		v.mailId mailId,
+		v.receiveUserId receiveUserId,
+		v.receiveMail receiveMail,
+		v.receiveType receiveType,
+		v.readFlag readFlag,
+		v.starMail starMail,
+		v.folderId folderId,
+		v.readDate readDate,
+		v.displayName displayName,
+		v.senderUserName senderUserName,
+		v.boxId boxId,
+	    decode (v.FOLDERID,'3' ,
+        (SELECT LISTAGG( su.DISPLAY_NAME,',')  WITHIN GROUP(ORDER BY  su.DISPLAY_NAME) AS receives
+         FROM tty_ic_mail_record g
+         LEFT JOIN TOA_SYS_USER su
+         ON g.RECEIVE_USER_ID = su.ID
+         WHERE g.MAIL_ID = v.id
+         AND g.RECEIVE_TYPE != 4
+		),
+		NULL
+		) receiveUsers
+		FROM (SELECT
+		t.ID id,
+		t.CONTACTS_ID contactsId,
+		t.MAILBOX_ID mailboxId,
+		t.MAIL_TITLE mailTitle,
+		t.MAIL_CONTENT mailContent,
+		t.SENDER_USER_ID senderUserId,
+		t.SENDER_MAIL senderMail,
+		t.SEND_TYPE sendType,
+		t.ISFILE isfile,
+		t.SMS_ALERT smsAlert,
+		t.SIGNATURE signature,
+		t.PRESSING pressing,
+		t.ENCRYPTION encryption,
+		t.ENCRYPTION_PASS encryptionPass,
+		t.REPLY_TEXTING replyTexting,
+		t.REPLY_TEXTING_TIME replyTextingTime,
+		t.MAIL_STATUS mailStatus,
+		t.SENDER_TIME senderTime,
+		t.RECEIVE_TIME2 receiveTime2,
+		t.MESSAGE_ID messageId,
+		t.DELETE_FLAG deleteFlag,
+		t.CREATE_USER createUser,
+		t.CREATE_USER_ORG createUserOrg,
+		t.CREATE_USER_DEPT createUserDept,
+		t.CREATE_DATE createDate,
+		t.MODIFY_USER modifyUser,
+		t.MODIFY_DATE modifyDate,
+		t.EXT_DATE1 extDate1,
+		t.EXT_DATE2 extDate2,
+		t.EXT_NUM1 extNum1,
+		t.EXT_NUM2 extNum2,
+		t.EXT_NUM3 extNum3,
+		t.EXT_STR1 extStr1,
+		t.EXT_STR2 extStr2,
+		t.EXT_STR3 extStr3,
+		t.EXT_STR4 extStr4,
+		t.EXT_STR5 extStr5,
+		mr.ID mrid,
+		mr.MAIL_ID mailId,
+		mr.RECEIVE_USER_ID receiveUserId,
+		mr.RECEIVE_MAIL receiveMail,
+		mr.RECEIVE_TYPE receiveType,
+		mr.READ_FLAG readFlag,
+		mr.STAR_MAIL starMail,
+		mr.FOLDER_ID folderId,
+		mr.READ_DATE readDate,
+		u.DISPLAY_NAME displayName,
+		user1.DISPLAY_NAME senderUserName,
+		box.id boxId
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID
+		LEFT JOIN tty_ic_mailbox box ON t.MAILBOX_ID = box.ID,
+		tty_ic_mail_record mr left join TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID
+			<!-- and t.RECEIVE_TIME2 is not null -->
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE like <![CDATA['%${mailTitle}%']]>
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT = #{mailContent}
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL like <![CDATA['%${senderMail}%']]>
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and t.RECEIVE_TIME2>=#{searchReceiveTimeBegin}]]>
+			</if>
+			<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and t.RECEIVE_TIME2<=#{searchReceiveTimeEnd}]]>
+			</if>
+			<if test="excludeFolderId!=null">
+				and mr.FOLDER_ID !=#{excludeFolderId}
+			</if>
+			<if test="mailbox != null">
+				and
+				<foreach collection="mailbox" item="box" index="index" open="("
+					close=")" separator=" or ">
+					(1=1
+					<if test="box.id != null">
+						and t.MAILBOX_ID = #{box.id}
+					</if>
+					)
+				</foreach>
+			</if>
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					<if test="rec.folderId!=null">
+						and
+						mr.FOLDER_ID =#{rec.folderId}
+						<if test="rec.folderId==1">
+							and t.RECEIVE_TIME2 IS NOT NULL
+						</if>
+					</if>
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="rec.readFlag!=null">
+						and mr.READ_FLAG=#{rec.readFlag}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<when test="rec.receiveUserId!=null">
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</when>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							<if test="rec.folderId==3 and rec.receiveMailSearch!=null">
+								AND mr.MAIL_ID IN(
+								SELECT c.id FROM tty_ic_mail c LEFT JOIN tty_ic_mail_record m
+								ON c.id = m.mail_id WHERE m.RECEIVE_MAIL =
+								#{rec.receiveMailSearch}
+								AND (m.RECEIVE_TYPE=0 OR m.RECEIVE_TYPE=1
+								OR m.RECEIVE_TYPE = 2 OR m.RECEIVE_TYPE = 3)
+								<if test="rec.receiveMail!=rec.receiveMailSearch">
+									AND c.id NOT IN (
+									SELECT
+									s.ID
+									FROM
+									tty_ic_mail s
+									LEFT JOIN tty_ic_mail_record d
+									ON s.id = d.mail_id
+									WHERE d.RECEIVE_MAIL = #{rec.receiveMailSearch}
+									AND (
+									d.RECEIVE_TYPE = 0
+									OR d.RECEIVE_TYPE = 1
+									OR d.RECEIVE_TYPE = 2
+									OR d.RECEIVE_TYPE = 3
+									)
+									AND ((s.SENDER_MAIL !=#{rec.receiveMail} AND d.receive_type = 2)
+									or (s.SENDER_MAIL !=#{rec.receiveMail} AND d.receive_type = 3)
+									)
+									)
+								</if>
+								)
+							</if>
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							<if test="rec.folderId==3 and rec.receiveUserIdSearch!=null">
+								AND mr.MAIL_ID IN(
+								SELECT c.id FROM tty_ic_mail c LEFT JOIN tty_ic_mail_record m
+								ON c.id = m.mail_id WHERE m.RECEIVE_USER_ID =
+								#{rec.receiveUserIdSearch}
+								AND (m.RECEIVE_TYPE=0 OR m.RECEIVE_TYPE=1
+								OR m.RECEIVE_TYPE = 2 OR m.RECEIVE_TYPE = 3)
+								<if test="rec.receiveUserId!=rec.receiveUserIdSearch">
+									AND c.id NOT IN (
+									SELECT
+									s.ID
+									FROM
+									tty_ic_mail s
+									LEFT JOIN tty_ic_mail_record d
+									ON s.id = d.mail_id
+									WHERE d.RECEIVE_USER_ID = #{rec.receiveUserIdSearch}
+									AND (
+									d.RECEIVE_TYPE = 0
+									OR d.RECEIVE_TYPE = 1
+									OR d.RECEIVE_TYPE = 2
+									OR d.RECEIVE_TYPE = 3
+									)
+									AND ((s.SENDER_USER_ID !=#{rec.receiveUserId} AND d.receive_type =
+									2)
+									or (s.SENDER_USER_ID !=#{rec.receiveUserId} AND d.receive_type =
+									3)
+									)
+									)
+								</if>
+								)
+							</if>
+						</if>
+					</if>
+					)
+				</foreach>
+
+			</if>
+		</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+		) v
+	</select>
+	<select id="queryMailCount" parameterType="com.jc.oa.ic.domain.Mail"
+		resultType="java.lang.Integer">
+		SELECT count(t.ID)
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID
+		LEFT JOIN tty_ic_mailbox box ON t.MAILBOX_ID = box.ID,
+		tty_ic_mail_record mr left join TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID
+			<!-- and t.RECEIVE_TIME2 is not null -->
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE like <![CDATA['%${mailTitle}%']]>
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT = #{mailContent}
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL like <![CDATA['%${senderMail}%']]>
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and t.RECEIVE_TIME2>=#{searchReceiveTimeBegin}]]>
+			</if>
+			<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and t.RECEIVE_TIME2<=#{searchReceiveTimeEnd}]]>
+			</if>
+			<if test="excludeFolderId!=null">
+				and mr.FOLDER_ID !=#{excludeFolderId}
+			</if>
+			<if test="mailbox != null">
+				and
+				<foreach collection="mailbox" item="box" index="index" open="("
+					close=")" separator=" or ">
+					(1=1
+					<if test="box.id != null">
+						and t.MAILBOX_ID = #{box.id}
+					</if>
+					)
+				</foreach>
+			</if>
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					<if test="rec.folderId!=null">
+						and
+						mr.FOLDER_ID =#{rec.folderId}
+						<if test="rec.folderId==1">
+							and t.RECEIVE_TIME2 IS NOT NULL
+						</if>
+					</if>
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="rec.readFlag!=null">
+						and mr.READ_FLAG=#{rec.readFlag}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<when test="rec.receiveUserId!=null">
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</when>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							<if test="rec.folderId==3 and rec.receiveMailSearch!=null">
+								AND mr.MAIL_ID IN(
+								SELECT c.id FROM tty_ic_mail c LEFT JOIN tty_ic_mail_record m
+								ON c.id = m.mail_id WHERE m.RECEIVE_MAIL =
+								#{rec.receiveMailSearch}
+								AND (m.RECEIVE_TYPE=0 OR m.RECEIVE_TYPE=1
+								OR m.RECEIVE_TYPE = 2 OR m.RECEIVE_TYPE = 3)
+								<if test="rec.receiveMail!=rec.receiveMailSearch">
+									AND c.id NOT IN (
+									SELECT
+									s.ID
+									FROM
+									tty_ic_mail s
+									LEFT JOIN tty_ic_mail_record d
+									ON s.id = d.mail_id
+									WHERE d.RECEIVE_MAIL = #{rec.receiveMailSearch}
+									AND (
+									d.RECEIVE_TYPE = 0
+									OR d.RECEIVE_TYPE = 1
+									OR d.RECEIVE_TYPE = 2
+									OR d.RECEIVE_TYPE = 3
+									)
+									AND ((s.SENDER_MAIL !=#{rec.receiveMail} AND d.receive_type = 2)
+									or (s.SENDER_MAIL !=#{rec.receiveMail} AND d.receive_type = 3)
+									)
+									)
+								</if>
+								)
+							</if>
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							<if test="rec.folderId==3 and rec.receiveUserIdSearch!=null">
+								AND mr.MAIL_ID IN(
+								SELECT c.id FROM tty_ic_mail c LEFT JOIN tty_ic_mail_record m
+								ON c.id = m.mail_id WHERE m.RECEIVE_USER_ID =
+								#{rec.receiveUserIdSearch}
+								AND (m.RECEIVE_TYPE=0 OR m.RECEIVE_TYPE=1
+								OR m.RECEIVE_TYPE = 2 OR m.RECEIVE_TYPE = 3)
+								<if test="rec.receiveUserId!=rec.receiveUserIdSearch">
+									AND c.id NOT IN (
+									SELECT
+									s.ID
+									FROM
+									tty_ic_mail s
+									LEFT JOIN tty_ic_mail_record d
+									ON s.id = d.mail_id
+									WHERE d.RECEIVE_USER_ID = #{rec.receiveUserIdSearch}
+									AND (
+									d.RECEIVE_TYPE = 0
+									OR d.RECEIVE_TYPE = 1
+									OR d.RECEIVE_TYPE = 2
+									OR d.RECEIVE_TYPE = 3
+									)
+									AND ((s.SENDER_USER_ID !=#{rec.receiveUserId} AND d.receive_type =
+									2)
+									or (s.SENDER_USER_ID !=#{rec.receiveUserId} AND d.receive_type =
+									3)
+									)
+									)
+								</if>
+								)
+							</if>
+						</if>
+					</if>
+					)
+				</foreach>
+
+			</if>
+		</where>
+	</select><!-- 回复提醒查询 start -->
+	<select id="queryReplyTexting" parameterType="com.jc.oa.ic.domain.Mail"
+		resultMap="mail_with_record">
+		SELECT
+		t.ID id,
+		t.CONTACTS_ID contactsId,
+		t.MAILBOX_ID mailboxId,
+		t.MAIL_TITLE mailTitle,
+		t.MAIL_CONTENT mailContent,
+		t.SENDER_USER_ID senderUserId,
+		t.SENDER_MAIL senderMail,
+		t.SEND_TYPE sendType,
+		t.ISFILE isfile,
+		t.SMS_ALERT smsAlert,
+		t.SIGNATURE signature,
+		t.PRESSING pressing,
+		t.ENCRYPTION encryption,
+		t.ENCRYPTION_PASS encryptionPass,
+		t.REPLY_TEXTING replyTexting,
+		t.REPLY_TEXTING_TIME replyTextingTime,
+		t.MAIL_STATUS mailStatus,
+		t.SENDER_TIME senderTime,
+		t.RECEIVE_TIME2 receiveTime2,
+		t.MESSAGE_ID messageId,
+		t.DELETE_FLAG deleteFlag,
+		t.CREATE_USER createUser,
+		t.CREATE_USER_ORG createUserOrg,
+		t.CREATE_USER_DEPT createUserDept,
+		t.CREATE_DATE createDate,
+		t.MODIFY_USER modifyUser,
+		t.MODIFY_DATE modifyDate,
+		t.EXT_DATE1 extDate1,
+		t.EXT_DATE2 extDate2,
+		t.EXT_NUM1 extNum1,
+		t.EXT_NUM2 extNum2,
+		t.EXT_NUM3 extNum3,
+		t.EXT_STR1 extStr1,
+		t.EXT_STR2 extStr2,
+		t.EXT_STR3 extStr3,
+		t.EXT_STR4 extStr4,
+		t.EXT_STR5 extStr5,
+		mr.ID mrid,
+		mr.MAIL_ID mailId,
+		mr.RECEIVE_USER_ID receiveUserId,
+		mr.RECEIVE_MAIL receiveMail,
+		mr.RECEIVE_TYPE receiveType,
+		mr.READ_FLAG readFlag,
+		mr.STAR_MAIL starMail,
+		mr.FOLDER_ID folderId,
+		mr.READ_DATE readDate,
+		mr.REMIND_FLAG remindFlag,
+		mr.RECOVER_FLAG recoverFlag,
+		u.DISPLAY_NAME displayName,
+		user1.DISPLAY_NAME senderUserName,
+		box.id,
+		mr.REPLY_FLAG
+
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID
+		LEFT JOIN tty_ic_mailbox box ON t.MAILBOX_ID = box.ID,
+		tty_ic_mail_record mr left join TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID and mr.delete_flag=0
+			and t.REPLY_TEXTING = 1
+			and
+			mr.FOLDER_ID = 1
+			and mr.REMIND_FLAG = 0
+			<![CDATA[and mr.RECEIVE_TYPE <> 4]]>
+			<![CDATA[and mr.REPLY_FLAG <> 1]]>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE = #{mailTitle}
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT = #{mailContent}
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL = #{senderMail}
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and t.RECEIVE_TIME2>=#{searchReceiveTimeBegin}]]>
+			</if>
+			<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and t.RECEIVE_TIME2<=#{searchReceiveTimeEnd}]]>
+			</if>
+			<if test="excludeFolderId!=null">
+				and mr.FOLDER_ID !=#{excludeFolderId}
+			</if>
+		</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+	</select>
+	<select id="queryReplyTextingCount" parameterType="com.jc.oa.ic.domain.Mail"
+		resultType="java.lang.Integer">
+		SELECT count(t.ID)
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID
+		LEFT JOIN tty_ic_mailbox box ON t.MAILBOX_ID = box.ID,
+		tty_ic_mail_record mr left join TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID and mr.delete_flag=0
+			and t.REPLY_TEXTING = 1
+			and
+			mr.FOLDER_ID = 1
+			and mr.REMIND_FLAG = 0
+			<![CDATA[and mr.RECEIVE_TYPE <> 4]]>
+			<![CDATA[and mr.REPLY_FLAG <> 1]]>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE = #{mailTitle}
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT = #{mailContent}
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL = #{senderMail}
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and t.RECEIVE_TIME2>=#{searchReceiveTimeBegin}]]>
+			</if>
+			<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and t.RECEIVE_TIME2<=#{searchReceiveTimeEnd}]]>
+			</if>
+			<if test="excludeFolderId!=null">
+				and mr.FOLDER_ID !=#{excludeFolderId}
+			</if>
+		</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+	</select><!-- 回复提醒查询 end --><!-- 未读邮件查询start add by songht -->
+	<select id="queryUnReadMail" parameterType="com.jc.oa.ic.domain.Mail"
+		resultMap="mail_star">
+		SELECT
+		v.id id,
+		v.contactsId contactsId,
+		v.mailboxId mailboxId,
+		v.mailTitle mailTitle,
+		v.mailContent mailContent,
+		v.senderUserId senderUserId,
+		v.senderMail senderMail,
+		v.sendType sendType,
+		v.isfile isfile,
+		v.smsAlert smsAlert,
+		v.signature signature,
+		v.pressing pressing,
+		v.encryption encryption,
+		v.encryptionPass encryptionPass,
+		v.replyTexting replyTexting,
+		v.replyTextingTime replyTextingTime,
+		v.mailStatus mailStatus,
+		v.senderTime senderTime,
+		nvl2(v.receiveTime2, v.senderTime, v.receiveTime2) receiveTime2,
+		v.messageId messageId,
+		v.deleteFlag deleteFlag,
+		v.createUser createUser,
+		v.createUserOrg createUserOrg,
+		v.createUserDept createUserDept,
+		v.createDate createDate,
+		v.modifyUser modifyUser,
+		v.modifyDate modifyDate,
+		v.extDate1 extDate1,
+		v.extDate2 extDate2,
+		v.extNum1 extNum1,
+		v.extNum2 extNum2,
+		v.extNum3 extNum3,
+		v.extStr1 extStr1,
+		v.extStr2 extStr2,
+		v.extStr3 extStr3,
+		v.extStr4 extStr4,
+		v.extStr5 extStr5,
+		v.mrid mrid,
+		v.mailId mailId,
+		v.receiveUserId receiveUserId,
+		v.receiveMail receiveMail,
+		v.receiveType receiveType,
+		v.readFlag readFlag,
+		v.starMail starMail,
+		v.folderId folderId,
+		v.readDate readDate,
+		v.remindFlag remindFlag,
+		v.recoverFlag recoverFlag,
+		v.displayName displayName,
+		v.senderUserName senderUserName,
+		v.boxId boxId
+
+		FROM
+		(SELECT
+		t.ID id,
+		t.CONTACTS_ID contactsId,
+		t.MAILBOX_ID mailboxId,
+		t.MAIL_TITLE mailTitle,
+		t.MAIL_CONTENT mailContent,
+		t.SENDER_USER_ID senderUserId,
+		t.SENDER_MAIL senderMail,
+		t.SEND_TYPE sendType,
+		t.ISFILE isfile,
+		t.SMS_ALERT smsAlert,
+		t.SIGNATURE signature,
+		t.PRESSING pressing,
+		t.ENCRYPTION encryption,
+		t.ENCRYPTION_PASS encryptionPass,
+		t.REPLY_TEXTING replyTexting,
+		t.REPLY_TEXTING_TIME replyTextingTime,
+		t.MAIL_STATUS mailStatus,
+		t.SENDER_TIME senderTime,
+		t.RECEIVE_TIME2 receiveTime2,
+		t.MESSAGE_ID messageId,
+		t.DELETE_FLAG deleteFlag,
+		t.CREATE_USER createUser,
+		t.CREATE_USER_ORG createUserOrg,
+		t.CREATE_USER_DEPT createUserDept,
+		t.CREATE_DATE createDate,
+		t.MODIFY_USER modifyUser,
+		t.MODIFY_DATE modifyDate,
+		t.EXT_DATE1 extDate1,
+		t.EXT_DATE2 extDate2,
+		t.EXT_NUM1 extNum1,
+		t.EXT_NUM2 extNum2,
+		t.EXT_NUM3 extNum3,
+		t.EXT_STR1 extStr1,
+		t.EXT_STR2 extStr2,
+		t.EXT_STR3 extStr3,
+		t.EXT_STR4 extStr4,
+		t.EXT_STR5 extStr5,
+		mr.ID mrid,
+		mr.MAIL_ID mailId,
+		mr.RECEIVE_USER_ID receiveUserId,
+		mr.RECEIVE_MAIL receiveMail,
+		mr.RECEIVE_TYPE receiveType,
+		mr.READ_FLAG readFlag,
+		mr.STAR_MAIL starMail,
+		mr.FOLDER_ID folderId,
+		mr.READ_DATE readDate,
+		mr.REMIND_FLAG remindFlag,
+		mr.RECOVER_FLAG recoverFlag,
+		u.DISPLAY_NAME displayName,
+		user1.DISPLAY_NAME senderUserName,
+		box.id boxId
+
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID
+		LEFT JOIN tty_ic_mailbox box ON t.MAILBOX_ID = box.ID,
+		tty_ic_mail_record mr left join TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID
+			<![CDATA[and mr.FOLDER_ID<>4]]>
+			<![CDATA[and mr.FOLDER_ID<>2]]>
+			<![CDATA[and mr.FOLDER_ID<>0]]>
+			<![CDATA[and mr.FOLDER_ID<>-1]]>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE like <![CDATA['%${mailTitle}%']]>
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT = #{mailContent}
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL like <![CDATA['%${senderMail}%']]>
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="excludeFolderId!=null">
+				and mr.FOLDER_ID !=#{excludeFolderId}
+			</if>
+			<if test="mailbox != null">
+				and
+				<foreach collection="mailbox" item="box" index="index" open="("
+					close=")" separator=" or ">
+					(1=1
+					<if test="box.id != null">
+						and t.MAILBOX_ID = #{box.id}
+					</if>
+					)
+				</foreach>
+			</if>
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					and mr.READ_FLAG=0
+					<!-- <if test="rec.folderId!=null"> and mr.FOLDER_ID =#{rec.folderId} 
+						</if> -->
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<when test="rec.receiveUserId!=null">
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</when>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+						</if>
+					</if>
+					)
+				</foreach>
+
+			</if>
+		</where>
+		) v
+		WHERE (
+		v.receiveType=4
+		OR (v.receiveType=0 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 1 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 2 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 3 AND v.receiveTime2 IS NOT NULL)
+		)
+		<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and receiveTime2>=#{searchReceiveTimeBegin}]]>
+		</if>
+		<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and receiveTime2<=#{searchReceiveTimeEnd}]]>
+		</if>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+	</select>
+	<select id="queryUnReadMailCount" parameterType="com.jc.oa.ic.domain.Mail"
+		resultType="java.lang.Integer">
+		SELECT
+		COUNT(m.id) FROM
+		(SELECT
+		v.id id,
+		nvl2(v.receiveTime2, v.senderTime, v.receiveTime2) receiveTime2,
+		v.receiveType receiveType
+		FROM
+		(SELECT
+		t.ID id,
+		t.SENDER_TIME senderTime,
+		t.RECEIVE_TIME2 receiveTime2,
+		mr.RECEIVE_TYPE receiveType
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID
+		LEFT JOIN tty_ic_mailbox box ON t.MAILBOX_ID = box.ID,
+		tty_ic_mail_record mr left join TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID
+			<![CDATA[and mr.FOLDER_ID<>4]]>
+			<![CDATA[and mr.FOLDER_ID<>2]]>
+			<![CDATA[and mr.FOLDER_ID<>0]]>
+			<![CDATA[and mr.FOLDER_ID<>-1]]>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE like <![CDATA['%${mailTitle}%']]>
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT = #{mailContent}
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL like <![CDATA['%${senderMail}%']]>
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and t.RECEIVE_TIME2>=#{searchReceiveTimeBegin}]]>
+			</if>
+			<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and t.RECEIVE_TIME2<=#{searchReceiveTimeEnd}]]>
+			</if>
+			<if test="excludeFolderId!=null">
+				and mr.FOLDER_ID !=#{excludeFolderId}
+			</if>
+			<if test="mailbox != null">
+				and
+				<foreach collection="mailbox" item="box" index="index" open="("
+					close=")" separator=" or ">
+					(1=1
+					<if test="box.id != null">
+						and t.MAILBOX_ID = #{box.id}
+					</if>
+					)
+				</foreach>
+			</if>
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					and mr.READ_FLAG=0
+					<!-- <if test="rec.folderId!=null"> and mr.FOLDER_ID =#{rec.folderId} 
+						</if> -->
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<when test="rec.receiveUserId!=null">
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</when>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+						</if>
+					</if>
+					)
+				</foreach>
+
+			</if>
+		</where>
+		) v
+		WHERE (
+		v.receiveType = 4
+		OR (v.receiveType = 0 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 1 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 2 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 3 AND v.receiveTime2 IS NOT NULL)
+		)
+		<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and receiveTime2>=#{searchReceiveTimeBegin}]]>
+		</if>
+		<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and receiveTime2<=#{searchReceiveTimeEnd}]]>
+		</if>
+		) m
+	</select><!-- 未读邮件查询end add by songht --><!-- 星标邮件查询start add by songht -->
+	<select id="queryStarMail" parameterType="com.jc.oa.ic.domain.Mail"
+		resultMap="mail_star">
+		SELECT
+		t.ID id,
+		t.CONTACTS_ID contactsId,
+		t.MAILBOX_ID mailboxId,
+		t.MAIL_TITLE mailTitle,
+		t.MAIL_CONTENT mailContent,
+		t.SENDER_USER_ID senderUserId,
+		t.SENDER_MAIL senderMail,
+		t.SEND_TYPE sendType,
+		t.ISFILE isfile,
+		t.SMS_ALERT smsAlert,
+		t.SIGNATURE signature,
+		t.PRESSING pressing,
+		t.ENCRYPTION encryption,
+		t.ENCRYPTION_PASS encryptionPass,
+		t.REPLY_TEXTING replyTexting,
+		t.REPLY_TEXTING_TIME replyTextingTime,
+		t.MAIL_STATUS mailStatus,
+		t.SENDER_TIME senderTime,
+		t.RECEIVE_TIME2 receiveTime2,
+		t.MESSAGE_ID messageId,
+		t.DELETE_FLAG deleteFlag,
+		t.CREATE_USER createUser,
+		t.CREATE_USER_ORG createUserOrg,
+		t.CREATE_USER_DEPT createUserDept,
+		t.CREATE_DATE createDate,
+		t.MODIFY_USER modifyUser,
+		t.MODIFY_DATE modifyDate,
+		t.EXT_DATE1 extDate1,
+		t.EXT_DATE2 extDate2,
+		t.EXT_NUM1 extNum1,
+		t.EXT_NUM2 extNum2,
+		t.EXT_NUM3 extNum3,
+		t.EXT_STR1 extStr1,
+		t.EXT_STR2 extStr2,
+		t.EXT_STR3 extStr3,
+		t.EXT_STR4 extStr4,
+		t.EXT_STR5 extStr5,
+		mr.ID mrid,
+		mr.MAIL_ID mailId,
+		mr.RECEIVE_USER_ID receiveUserId,
+		mr.RECEIVE_MAIL receiveMail,
+		mr.RECEIVE_TYPE receiveType,
+		mr.READ_FLAG readFlag,
+		mr.STAR_MAIL starMail,
+		mr.FOLDER_ID folderId,
+		mr.READ_DATE readDate,
+		mr.REMIND_FLAG remindFlag,
+		mr.RECOVER_FLAG recoverFlag,
+		u.DISPLAY_NAME displayName,
+		user1.DISPLAY_NAME senderUserName,
+		box.id
+
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID
+		LEFT JOIN tty_ic_mailbox box ON t.MAILBOX_ID = box.ID,
+		tty_ic_mail_record mr left join TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID
+			<![CDATA[and mr.FOLDER_ID<>4]]>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE like <![CDATA['%${mailTitle}%']]>
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT = #{mailContent}
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL like <![CDATA['%${senderMail}%']]>
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and t.RECEIVE_TIME2>=#{searchReceiveTimeBegin}]]>
+			</if>
+			<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and t.RECEIVE_TIME2<=#{searchReceiveTimeEnd}]]>
+			</if>
+			<if test="excludeFolderId!=null">
+				and mr.FOLDER_ID !=#{excludeFolderId}
+			</if>
+			<if test="mailbox != null">
+				and
+				<foreach collection="mailbox" item="box" index="index" open="("
+					close=")" separator=" or ">
+					(1=1
+					<if test="box.id != null">
+						and t.MAILBOX_ID = #{box.id}
+					</if>
+					)
+				</foreach>
+			</if>
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					<!-- <if test="rec.folderId!=null"> and mr.FOLDER_ID =#{rec.folderId} 
+						</if> -->
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="rec.readFlag!=null">
+						and mr.READ_FLAG=#{rec.readFlag}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<when test="rec.receiveUserId!=null">
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</when>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+						</if>
+					</if>
+					)
+				</foreach>
+
+			</if>
+		</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+	</select>
+	<select id="queryStarMailCount" parameterType="com.jc.oa.ic.domain.Mail"
+		resultType="java.lang.Integer">
+		SELECT count(t.ID)
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID
+		LEFT JOIN tty_ic_mailbox box ON t.MAILBOX_ID = box.ID,
+		tty_ic_mail_record mr left join TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID
+			<![CDATA[and mr.FOLDER_ID<>4]]>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE like <![CDATA['%${mailTitle}%']]>
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT = #{mailContent}
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL like <![CDATA['%${senderMail}%']]>
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and t.RECEIVE_TIME2>=#{searchReceiveTimeBegin}]]>
+			</if>
+			<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and t.RECEIVE_TIME2<=#{searchReceiveTimeEnd}]]>
+			</if>
+			<if test="excludeFolderId!=null">
+				and mr.FOLDER_ID !=#{excludeFolderId}
+			</if>
+			<if test="mailbox != null">
+				and
+				<foreach collection="mailbox" item="box" index="index" open="("
+					close=")" separator=" or ">
+					(1=1
+					<if test="box.id != null">
+						and t.MAILBOX_ID = #{box.id}
+					</if>
+					)
+				</foreach>
+			</if>
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					<!-- <if test="rec.folderId!=null"> and mr.FOLDER_ID =#{rec.folderId} 
+						</if> -->
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="rec.readFlag!=null">
+						and mr.READ_FLAG=#{rec.readFlag}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<when test="rec.receiveUserId!=null">
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</when>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+						</if>
+					</if>
+					)
+				</foreach>
+
+			</if>
+		</where>
+	</select><!-- 星标邮件查询end add by songht -->
+	<delete id="deleteLogic" parameterType="com.jc.oa.ic.domain.Mail">
+		UPDATE tty_ic_mail t set t.delete_flag = 1,t.modify_user =
+		#{modifyUser},t.modify_date = #{modifyDate}
+		where ID in
+		<foreach collection="primaryKeys" item="primaryKey" index="index"
+			open="(" close=")" separator=",">
+			#{primaryKey}
+		</foreach>
+	</delete>
+	<update id="delete" parameterType="com.jc.oa.ic.domain.Mail">
+		UPDATE tty_ic_mail t set t.delete_flag = 1,t.modify_user =
+		#{modifyUser},t.modify_date = #{modifyDate}
+		where ID in
+		<foreach collection="primaryKeys" item="primaryKey" index="index"
+			open="(" close=")" separator=",">
+			#{primaryKey}
+		</foreach>
+	</update>
+	<insert id="insert" parameterType="com.jc.oa.ic.domain.Mail"
+		 keyProperty="id">
+		<selectKey resultType="long" keyProperty="id"  order="BEFORE">  
+              select TTY_IC_MAIL_ID_SEQ.nextval id from dual  
+          </selectKey> 
+		INSERT INTO
+		tty_ic_mail(ID,CONTACTS_ID,MAILBOX_ID,MAIL_TITLE,MAIL_CONTENT,SENDER_USER_ID,SENDER_MAIL,SEND_TYPE,ISFILE,STAR_MAIL,SMS_ALERT,SIGNATURE,PRESSING,ENCRYPTION,ENCRYPTION_PASS,REPLY_TEXTING,REPLY_TEXTING_TIME,MAIL_STATUS,SENDER_TIME,RECEIVE_TIME2,MESSAGE_ID,MAIL_FOLDER_ID,DELETE_FLAG,CREATE_USER,CREATE_USER_ORG,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+		VALUES
+		(#{id,jdbcType=NUMERIC},#{contactsId,jdbcType=NUMERIC},#{mailboxId,jdbcType=NUMERIC},#{mailTitle,jdbcType=VARCHAR},#{mailContent,jdbcType=VARCHAR},#{senderUserId,jdbcType=NUMERIC},#{senderMail,jdbcType=VARCHAR},#{sendType,jdbcType=VARCHAR},#{isfile,jdbcType=NUMERIC},#{starMail,jdbcType=NUMERIC},#{smsAlert,jdbcType=NUMERIC},#{signature,jdbcType=NUMERIC},#{pressing,jdbcType=NUMERIC},#{encryption,jdbcType=NUMERIC},#{encryptionPass,jdbcType=VARCHAR},#{replyTexting,jdbcType=NUMERIC},#{replyTextingTime,jdbcType=NUMERIC},#{mailStatus,jdbcType=NUMERIC},#{senderTime,jdbcType=TIMESTAMP},#{receiveTime2,jdbcType=TIMESTAMP},#{messageId,jdbcType=VARCHAR},#{mailFolderId,jdbcType=NUMERIC},#{deleteFlag,jdbcType=NUMERIC},#{createUser,jdbcType=NUMERIC},#{createUserOrg,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extDate1,jdbcType=TIMESTAMP},#{extDate2,jdbcType=TIMESTAMP},#{extNum1,jdbcType=NUMERIC},#{extNum2,jdbcType=NUMERIC},#{extNum3,jdbcType=NUMERIC},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr5,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertList" parameterType="list">
+		INSERT INTO
+		tty_ic_mail(ID,CONTACTS_ID,MAILBOX_ID,MAIL_TITLE,MAIL_CONTENT,SENDER_USER_ID,SENDER_MAIL,SEND_TYPE,ISFILE,STAR_MAIL,SMS_ALERT,SIGNATURE,PRESSING,ENCRYPTION,ENCRYPTION_PASS,REPLY_TEXTING,REPLY_TEXTING_TIME,MAIL_STATUS,SENDER_TIME,RECEIVE_TIME2,MESSAGE_ID,DELETE_FLAG,CREATE_USER,CREATE_USER_ORG,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+		VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(TTY_IC_MAIL_ID_SEQ.nextval,#{item.contactsId,jdbcType=NUMERIC},#{item.mailboxId,jdbcType=NUMERIC},#{item.mailTitle,jdbcType=VARCHAR},#{item.mailContent,jdbcType=VARCHAR},#{item.senderUserId,jdbcType=NUMERIC},#{item.senderMail,jdbcType=VARCHAR},#{item.sendType,jdbcType=VARCHAR},#{item.isfile,jdbcType=NUMERIC},#{item.starMail,jdbcType=NUMERIC},#{item.smsAlert,jdbcType=NUMERIC},#{item.signature,jdbcType=NUMERIC},#{item.pressing,jdbcType=NUMERIC},#{item.encryption,jdbcType=NUMERIC},#{item.encryptionPass,jdbcType=VARCHAR},#{item.replyTexting,jdbcType=NUMERIC},#{item.replyTextingTime,jdbcType=NUMERIC},#{item.mailStatus,jdbcType=NUMERIC},#{item.senderTime,jdbcType=TIMESTAMP},#{item.receiveTime2,jdbcType=TIMESTAMP},#{messageId,jdbcType=VARCHAR},#{mailFolderId,jdbcType=NUMERIC},#{item.deleteFlag,jdbcType=NUMERIC},#{item.createUser,jdbcType=NUMERIC},#{item.createUserOrg,jdbcType=NUMERIC},#{item.createUserDept,jdbcType=NUMERIC},#{item.createDate,jdbcType=TIMESTAMP},#{item.modifyUser,jdbcType=NUMERIC},#{item.modifyDate,jdbcType=TIMESTAMP},#{item.extDate1,jdbcType=TIMESTAMP},#{item.extDate2,jdbcType=TIMESTAMP},#{item.extNum1,jdbcType=NUMERIC},#{item.extNum2,jdbcType=NUMERIC},#{item.extNum3,jdbcType=NUMERIC},#{item.extStr1,jdbcType=VARCHAR},#{item.extStr2,jdbcType=VARCHAR},#{item.extStr3,jdbcType=VARCHAR},#{item.extStr4,jdbcType=VARCHAR},#{item.extStr5,jdbcType=VARCHAR})
+		</foreach>
+	</insert>
+	<update id="update" parameterType="com.jc.oa.ic.domain.Mail">
+		UPDATE tty_ic_mail
+		<set>
+			<if test="contactsId != null">
+				CONTACTS_ID = #{contactsId},
+			</if>
+			<if test="mailboxId != null">
+				MAILBOX_ID = #{mailboxId},
+			</if>
+			<if test="mailTitle != null">
+				MAIL_TITLE = #{mailTitle},
+			</if>
+			<if test="mailContent != null">
+				MAIL_CONTENT = #{mailContent},
+			</if>
+			<if test="senderUserId != null">
+				SENDER_USER_ID = #{senderUserId},
+			</if>
+			<if test="senderMail != null">
+				SENDER_MAIL = #{senderMail},
+			</if>
+			<if test="sendType != null">
+				SENDE_TYPE = #{sendType},
+			</if>
+			<if test="isfile != null">
+				ISFILE = #{isfile},
+			</if>
+			<if test="starMail != null">
+				STAR_MAIL = #{starMail},
+			</if>
+			<if test="smsAlert != null">
+				SMS_ALERT = #{smsAlert},
+			</if>
+			<if test="signature != null">
+				SIGNATURE = #{signature},
+			</if>
+			<if test="pressing != null">
+				PRESSING = #{pressing},
+			</if>
+			<if test="encryption != null">
+				ENCRYPTION = #{encryption},
+			</if>
+			<if test="encryptionPass != null">
+				ENCRYPTION_PASS = #{encryptionPass},
+			</if>
+			<if test="replyTexting != null">
+				REPLY_TEXTING = #{replyTexting},
+			</if>
+			<if test="replyTextingTime != null">
+				REPLY_TEXTING_TIME = #{replyTextingTime},
+			</if>
+			<if test="mailStatus != null">
+				MAIL_STATUS = #{mailStatus},
+			</if>
+			<if test="senderTime != null">
+				SENDER_TIME = #{senderTime},
+			</if>
+			<if test="receiveTime2 != null">
+				RECEIVE_TIME2 = #{receiveTime2},
+			</if>
+			<if test="messageId != null">
+				MESSAGE_ID = #{messageId},
+			</if>
+			<if test="mailFolderId != null">
+				MAIL_FOLDER_ID = #{mailFolderId},
+			</if>
+			<if test="deleteFlag != null">
+				DELETE_FLAG = #{deleteFlag},
+			</if>
+
+			<if test="modifyUser != null">
+				MODIFY_USER = #{modifyUser},
+			</if>
+			<if test="modifyDate != null">
+				MODIFY_DATE = #{modifyDate},
+			</if>
+			<if test="extDate1 != null">
+				EXT_DATE1 = #{extDate1},
+			</if>
+			<if test="extDate2 != null">
+				EXT_DATE2 = #{extDate2},
+			</if>
+			<if test="extNum1 != null">
+				EXT_NUM1 = #{extNum1},
+			</if>
+			<if test="extNum2 != null">
+				EXT_NUM2 = #{extNum2},
+			</if>
+			<if test="extNum3 != null">
+				EXT_NUM3 = #{extNum3},
+			</if>
+			<if test="extStr1 != null">
+				EXT_STR1 = #{extStr1},
+			</if>
+			<if test="extStr2 != null">
+				EXT_STR2 = #{extStr2},
+			</if>
+			<if test="extStr3 != null">
+				EXT_STR3 = #{extStr3},
+			</if>
+			<if test="extStr4 != null">
+				EXT_STR4 = #{extStr4},
+			</if>
+			<if test="extStr5 != null">
+				EXT_STR5 = #{extStr5},
+			</if>
+		</set>
+		where ID = #{id}
+	</update>
+	<update id="setReadFlag" parameterType="com.jc.oa.ic.domain.Mail">
+		UPDATE tty_ic_mail t SET t.MAIL_STATUS=#{mailStatus} WHERE t.id in
+		<foreach collection="primaryKeys" item="primaryKey" index="index"
+			open="(" close=")" separator=",">
+			#{primaryKey}
+		</foreach>
+	</update>
+	<update id="setStarFlag" parameterType="com.jc.oa.ic.domain.Mail">
+		UPDATE tty_ic_mail t SET t.STAR_MAIL=(!t.STAR_MAIL) WHERE t.id in
+		<foreach collection="primaryKeys" item="primaryKey" index="index"
+			open="(" close=")" separator=",">
+			#{primaryKey}
+		</foreach>
+	</update>
+	<update id="moveTo" parameterType="com.jc.oa.ic.domain.Mail">
+		UPDATE tty_ic_mail t SET t.MAIL_FOLDER_ID=#{mailFolderId} WHERE t.id
+		in
+		<foreach collection="primaryKeys" item="primaryKey" index="index"
+			open="(" close=")" separator=",">
+			#{primaryKey}
+		</foreach>
+	</update>
+	<select id="navigate" parameterType="com.jc.oa.ic.domain.Mail"
+		resultType="com.jc.oa.ic.domain.Mail">
+		SELECT
+		t.ID id,
+		t.CONTACTS_ID contactsId,
+		t.MAILBOX_ID mailboxId,
+		t.MAIL_TITLE mailTitle,
+		t.MAIL_CONTENT mailContent,
+		t.SENDER_USER_ID senderUserId,
+		t.SENDER_MAIL senderMail,
+		t.SEND_TYPE sendType,
+		t.ISFILE isfile,
+		t.STAR_MAIL starMail,
+		t.SMS_ALERT smsAlert,
+		t.SIGNATURE signature,
+		t.PRESSING pressing,
+		t.ENCRYPTION encryption,
+		t.ENCRYPTION_PASS encryptionPass,
+		t.REPLY_TEXTING replyTexting,
+		t.REPLY_TEXTING_TIME replyTextingTime,
+		t.MAIL_STATUS mailStatus,
+		t.SENDER_TIME senderTime,
+		t.RECEIVE_TIME2 receiveTime2,
+		t.MESSAGE_ID messageId,
+		t.MAIL_FOLDER_ID mailFolderId,
+		t.DELETE_FLAG deleteFlag,
+		t.CREATE_USER createUser,
+		t.CREATE_USER_ORG createUserOrg,
+		t.CREATE_USER_DEPT createUserDept,
+		t.CREATE_DATE createDate,
+		t.MODIFY_USER modifyUser,
+		t.MODIFY_DATE modifyDate,
+		t.EXT_DATE1 extDate1,
+		t.EXT_DATE2 extDate2,
+		t.EXT_NUM1 extNum1,
+		t.EXT_NUM2 extNum2,
+		t.EXT_NUM3 extNum3,
+		t.EXT_STR1 extStr1,
+		t.EXT_STR2 extStr2,
+		t.EXT_STR3 extStr3,
+		t.EXT_STR4 extStr4,
+		t.EXT_STR5 extStr5
+
+		FROM tty_ic_mail t
+		<where>
+
+			<choose>
+				<when test="forward&gt;0">
+					<![CDATA[and t.ID< #{id}]]>
+				</when>
+				<otherwise>
+					<![CDATA[and t.ID > #{id}]]>
+				</otherwise>
+			</choose>
+
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE = #{mailTitle}
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT = #{mailContent}
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL = #{senderMail}
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+		ORDER BY ID DESC LIMIT 1
+	</select>
+	<select id="search" parameterType="com.jc.oa.ic.domain.Mail"
+		resultMap="mail_star">
+		SELECT
+		v.id id,
+		v.contactsId contactsId,
+		v.mailboxId mailboxId,
+		v.mailTitle mailTitle,
+		v.mailContent mailContent,
+		v.senderUserId senderUserId,
+		v.senderMail senderMail,
+		v.sendType sendType,
+		v.ISFILE isfile,
+		v.smsAlert smsAlert,
+		v.signature signature,
+		v.pressing pressing,
+		v.encryption encryption,
+		v.encryptionPass encryptionPass,
+		v.replyTexting replyTexting,
+		v.replyTextingTime replyTextingTime,
+		v.mailStatus mailStatus,
+		v.senderTime senderTime,
+		v.receiveTime2 receiveTime2,
+		v.messageId messageId,
+		v.deleteFlag deleteFlag,
+		v.createUser createUser,
+		v.createUserOrg createUserOrg,
+		v.createUserDept createUserDept,
+		v.createDate createDate,
+		v.modifyUser modifyUser,
+		v.modifyDate modifyDate,
+		v.extDate1 extDate1,
+		v.extDate2 extDate2,
+		v.extNum1 extNum1,
+		v.extNum2 extNum2,
+		v.extNum3 extNum3,
+		v.extStr1 extStr1,
+		v.extStr2 extStr2,
+		v.extStr3 extStr3,
+		v.extStr4 extStr4,
+		v.extStr5 extStr5,
+		v.mrid mrid,
+		v.mailId mailId,
+		v.receiveUserId receiveUserId,
+		v.receiveMail receiveMail,
+		v.receiveType receiveType,
+		v.readFlag readFlag,
+		v.starMail starMail,
+		v.folderId folderId,
+		v.readDate readDate,
+		v.displayName displayName,
+		v.senderUserName senderUserName,
+		decode (v.FOLDERID,'3' ,
+        (SELECT LISTAGG( su.DISPLAY_NAME,',')  WITHIN GROUP(ORDER BY  su.DISPLAY_NAME) AS receives
+         FROM tty_ic_mail_record g
+         LEFT JOIN TOA_SYS_USER su
+         ON g.RECEIVE_USER_ID = su.ID
+         WHERE g.MAIL_ID = v.id
+         AND g.RECEIVE_TYPE != 4
+		),
+		NULL
+		) receiveUsers
+		FROM (SELECT
+		t.ID id,
+		t.CONTACTS_ID contactsId,
+		t.MAILBOX_ID mailboxId,
+		t.MAIL_TITLE mailTitle,
+		t.MAIL_CONTENT mailContent,
+		t.SENDER_USER_ID senderUserId,
+		t.SENDER_MAIL senderMail,
+		t.SEND_TYPE sendType,
+		t.ISFILE isfile,
+		t.SMS_ALERT smsAlert,
+		t.SIGNATURE signature,
+		t.PRESSING pressing,
+		t.ENCRYPTION encryption,
+		t.ENCRYPTION_PASS encryptionPass,
+		t.REPLY_TEXTING replyTexting,
+		t.REPLY_TEXTING_TIME replyTextingTime,
+		t.MAIL_STATUS mailStatus,
+		t.SENDER_TIME senderTime,
+		t.RECEIVE_TIME2 receiveTime2,
+		t.MESSAGE_ID messageId,
+		t.MAIL_FOLDER_ID mailFolderId,
+		t.DELETE_FLAG deleteFlag,
+		t.CREATE_USER createUser,
+		t.CREATE_USER_ORG createUserOrg,
+		t.CREATE_USER_DEPT createUserDept,
+		t.CREATE_DATE createDate,
+		t.MODIFY_USER modifyUser,
+		t.MODIFY_DATE modifyDate,
+		t.EXT_DATE1 extDate1,
+		t.EXT_DATE2 extDate2,
+		t.EXT_NUM1 extNum1,
+		t.EXT_NUM2 extNum2,
+		t.EXT_NUM3 extNum3,
+		t.EXT_STR1 extStr1,
+		t.EXT_STR2 extStr2,
+		t.EXT_STR3 extStr3,
+		t.EXT_STR4 extStr4,
+		t.EXT_STR5 extStr5,
+		mr.ID mrid,
+		mr.MAIL_ID mailId,
+		mr.RECEIVE_USER_ID receiveUserId,
+		mr.RECEIVE_MAIL receiveMail,
+		mr.RECEIVE_TYPE receiveType,
+		mr.READ_FLAG readFlag,
+		mr.STAR_MAIL starMail,
+		mr.FOLDER_ID folderId,
+		mr.READ_DATE readDate,
+		mr.REMIND_FLAG remindFlag,
+		mr.RECOVER_FLAG recoverFlag,
+		u.DISPLAY_NAME displayName,
+		user1.DISPLAY_NAME senderUserName
+
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID ,tty_ic_mail_record mr left join
+		TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE like <![CDATA['%${mailTitle}%']]>
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT like <![CDATA['%${mailContent}%']]>
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL like <![CDATA['%${senderMail}%']]>
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					<if test="rec.folderId!=null">
+						and
+						mr.FOLDER_ID =#{rec.folderId}
+						<if test="rec.folderId==1">
+							and t.RECEIVE_TIME2 IS NOT NULL
+						</if>
+						<if test="rec.folderId==3">
+							<if test="searchReceiveTimeBegin!=null">
+								<![CDATA[and t.SENDER_TIME>=#{searchReceiveTimeBegin}]]>
+							</if>
+							<if test="searchReceiveTimeEnd!=null">
+								<![CDATA[and t.SENDER_TIME<=#{searchReceiveTimeEnd}]]>
+							</if>
+						</if>
+						<if test="rec.folderId!=3">
+							<if test="searchReceiveTimeBegin!=null">
+								<![CDATA[and t.RECEIVE_TIME2>=#{searchReceiveTimeBegin}]]>
+							</if>
+							<if test="searchReceiveTimeEnd!=null">
+								<![CDATA[and t.RECEIVE_TIME2<=#{searchReceiveTimeEnd}]]>
+							</if>
+						</if>
+					</if>
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="rec.readFlag!=null">
+						and mr.READ_FLAG=#{rec.readFlag}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<otherwise>
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</otherwise>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							<if test="rec.folderId==3 and rec.receiveMailSearch!=null">
+								AND mr.MAIL_ID IN(
+								SELECT c.id FROM tty_ic_mail c LEFT JOIN tty_ic_mail_record m
+								ON c.id = m.mail_id WHERE m.RECEIVE_MAIL =
+								#{rec.receiveMailSearch}
+								AND (m.RECEIVE_TYPE=0 OR m.RECEIVE_TYPE=1
+								OR m.RECEIVE_TYPE = 2 OR m.RECEIVE_TYPE = 3)
+								<if test="rec.receiveMail!=rec.receiveMailSearch">
+									AND c.id NOT IN (
+									SELECT
+									s.ID
+									FROM
+									tty_ic_mail s
+									LEFT JOIN tty_ic_mail_record d
+									ON s.id = d.mail_id
+									WHERE d.RECEIVE_MAIL = #{rec.receiveMailSearch}
+									AND (
+									d.RECEIVE_TYPE = 0
+									OR d.RECEIVE_TYPE = 1
+									OR d.RECEIVE_TYPE = 2
+									OR d.RECEIVE_TYPE = 3
+									)
+									AND ((s.SENDER_MAIL !=#{rec.receiveMail} AND d.receive_type = 2)
+									or (s.SENDER_MAIL !=#{rec.receiveMail} AND d.receive_type = 3)
+									)
+									)
+								</if>
+								)
+							</if>
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							<if test="rec.folderId==3 and rec.receiveUserIdSearch!=null">
+								AND mr.MAIL_ID IN(
+								SELECT c.id FROM tty_ic_mail c LEFT JOIN
+								tty_ic_mail_record m
+								ON c.id = m.mail_id WHERE m.RECEIVE_USER_ID =
+								#{rec.receiveUserIdSearch}
+								AND (m.RECEIVE_TYPE=0 OR m.RECEIVE_TYPE=1
+								OR m.RECEIVE_TYPE = 2 OR m.RECEIVE_TYPE = 3
+								)
+								<if test="rec.receiveUserId!=rec.receiveUserIdSearch">
+									AND c.id NOT IN (
+									SELECT
+									s.ID
+									FROM
+									tty_ic_mail s
+									LEFT JOIN tty_ic_mail_record d
+									ON s.id = d.mail_id
+									WHERE d.RECEIVE_USER_ID = #{rec.receiveUserIdSearch}
+									AND (
+									d.RECEIVE_TYPE = 0
+									OR d.RECEIVE_TYPE = 1
+									OR d.RECEIVE_TYPE = 2
+									OR d.RECEIVE_TYPE = 3
+									)
+									AND ((s.SENDER_USER_ID !=#{rec.receiveUserId} AND d.receive_type =
+									2)
+									or (s.SENDER_USER_ID !=#{rec.receiveUserId} AND d.receive_type =
+									3)
+									)
+									)
+								</if>
+								)
+							</if>
+						</if>
+					</if>
+					)
+				</foreach>
+
+			</if>
+		</where>
+		order by t.RECEIVE_TIME2 DESC,t.SENDER_TIME DESC) v
+
+	</select>
+	<select id="searchCount" parameterType="com.jc.oa.ic.domain.Mail"
+		resultType="java.lang.Integer">
+		SELECT count(t.ID)
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID ,tty_ic_mail_record mr left join
+		TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE like <![CDATA['%${mailTitle}%']]>
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT like <![CDATA['%${mailContent}%']]>
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL like <![CDATA['%${senderMail}%']]>
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and t.RECEIVE_TIME2>=#{searchReceiveTimeBegin}]]>
+			</if>
+			<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and t.RECEIVE_TIME2<=#{searchReceiveTimeEnd}]]>
+			</if>
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					<if test="rec.folderId!=null">
+						and
+						mr.FOLDER_ID =#{rec.folderId}
+						<if test="rec.folderId==1">
+							and t.RECEIVE_TIME2 IS NOT NULL
+						</if>
+					</if>
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="rec.readFlag!=null">
+						and mr.READ_FLAG=#{rec.readFlag}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<otherwise>
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</otherwise>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							<if test="rec.folderId==3 and rec.receiveMailSearch!=null">
+								AND mr.MAIL_ID IN(
+								SELECT c.id FROM tty_ic_mail c LEFT JOIN tty_ic_mail_record m
+								ON c.id = m.mail_id WHERE m.RECEIVE_MAIL =
+								#{rec.receiveMailSearch}
+								AND (m.RECEIVE_TYPE=0 OR m.RECEIVE_TYPE=1
+								OR m.RECEIVE_TYPE = 2 OR m.RECEIVE_TYPE = 3)
+								<if test="rec.receiveMail!=rec.receiveMailSearch">
+									AND c.id NOT IN (
+									SELECT
+									s.ID
+									FROM
+									tty_ic_mail s
+									LEFT JOIN tty_ic_mail_record d
+									ON s.id = d.mail_id
+									WHERE d.RECEIVE_MAIL = #{rec.receiveMailSearch}
+									AND (
+									d.RECEIVE_TYPE = 0
+									OR d.RECEIVE_TYPE = 1
+									OR d.RECEIVE_TYPE = 2
+									OR d.RECEIVE_TYPE = 3
+									)
+									AND ((s.SENDER_MAIL !=#{rec.receiveMail} AND d.receive_type = 2)
+									or (s.SENDER_MAIL !=#{rec.receiveMail} AND d.receive_type = 3)
+									)
+									)
+								</if>
+								)
+							</if>
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							<if test="rec.folderId==3 and rec.receiveUserIdSearch!=null">
+								AND mr.MAIL_ID IN(
+								SELECT c.id FROM tty_ic_mail c LEFT JOIN tty_ic_mail_record m
+								ON c.id = m.mail_id WHERE m.RECEIVE_USER_ID =
+								#{rec.receiveUserIdSearch}
+								AND (m.RECEIVE_TYPE=0 OR m.RECEIVE_TYPE=1
+								OR m.RECEIVE_TYPE = 2 OR m.RECEIVE_TYPE = 3)
+								<if test="rec.receiveUserId!=rec.receiveUserIdSearch">
+									AND c.id NOT IN (
+									SELECT
+									s.ID
+									FROM
+									tty_ic_mail s
+									LEFT JOIN tty_ic_mail_record d
+									ON s.id = d.mail_id
+									WHERE d.RECEIVE_USER_ID = #{rec.receiveUserIdSearch}
+									AND (
+									d.RECEIVE_TYPE = 0
+									OR d.RECEIVE_TYPE = 1
+									OR d.RECEIVE_TYPE = 2
+									OR d.RECEIVE_TYPE = 3
+									)
+									AND ((s.SENDER_USER_ID !=#{rec.receiveUserId} AND d.receive_type =
+									2)
+									or (s.SENDER_USER_ID !=#{rec.receiveUserId} AND d.receive_type =
+									3)
+									)
+									)
+								</if>
+								)
+							</if>
+						</if>
+					</if>
+
+					)
+				</foreach>
+
+			</if>
+		</where>
+
+
+	</select>
+	<select id="viewToAndFrom" parameterType="com.jc.oa.ic.domain.Mail"
+		resultMap="mail_with_record">
+		SELECT
+		v.id id,
+		v.contactsId contactsId,
+		v.mailboxId mailboxId,
+		v.mailTitle mailTitle,
+		v.mailContent mailContent,
+		v.senderUserId senderUserId,
+		v.senderMail senderMail,
+		v.sendType sendType,
+		v.isfile isfile,
+		v.smsAlert smsAlert,
+		v.signature signature,
+		v.pressing pressing,
+		v.encryption encryption,
+		v.encryptionPass encryptionPass,
+		v.replyTexting replyTexting,
+		v.replyTextingTime replyTextingTime,
+		v.mailStatus mailStatus,
+		v.senderTime senderTime,
+		v.receiveTime2 receiveTime2,
+		v.messageId messageId,
+		v.mailFolderId mailFolderId,
+		v.deleteFlag deleteFlag,
+		v.createUser createUser,
+		v.createUserOrg createUserOrg,
+		v.createUserDept createUserDept,
+		v.createDate createDate,
+		v.modifyUser modifyUser,
+		v.modifyDate modifyDate,
+		v.mrid mrid,
+		v.mailId mailId,
+		v.receiveUserId receiveUserId,
+		v.receiveMail receiveMail,
+		v.receiveType receiveType,
+		v.readFlag readFlag,
+		v.starMail starMail,
+		v.folderId folderId,
+		v.readDate readDate,
+		v.remindFlag remindFlag,
+		v.recoverFlag recoverFlag,
+		v.displayName displayName,
+		v.senderUserName senderUserName
+		FROM (
+		SELECT
+		t.ID id,
+		t.CONTACTS_ID contactsId,
+		t.MAILBOX_ID mailboxId,
+		t.MAIL_TITLE mailTitle,
+		t.MAIL_CONTENT mailContent,
+		t.SENDER_USER_ID senderUserId,
+		t.SENDER_MAIL senderMail,
+		t.SEND_TYPE sendType,
+		t.ISFILE isfile,
+		t.SMS_ALERT smsAlert,
+		t.SIGNATURE signature,
+		t.PRESSING pressing,
+		t.ENCRYPTION encryption,
+		t.ENCRYPTION_PASS encryptionPass,
+		t.REPLY_TEXTING replyTexting,
+		t.REPLY_TEXTING_TIME replyTextingTime,
+		t.MAIL_STATUS mailStatus,
+		t.SENDER_TIME senderTime,
+		t.RECEIVE_TIME2 receiveTime2,
+		t.MESSAGE_ID messageId,
+		t.MAIL_FOLDER_ID mailFolderId,
+		t.DELETE_FLAG deleteFlag,
+		t.CREATE_USER createUser,
+		t.CREATE_USER_ORG createUserOrg,
+		t.CREATE_USER_DEPT createUserDept,
+		t.CREATE_DATE createDate,
+		t.MODIFY_USER modifyUser,
+		t.MODIFY_DATE modifyDate,
+		mr.ID mrid,
+		mr.MAIL_ID mailId,
+		mr.RECEIVE_USER_ID receiveUserId,
+		mr.RECEIVE_MAIL receiveMail,
+		mr.RECEIVE_TYPE receiveType,
+		mr.READ_FLAG readFlag,
+		mr.STAR_MAIL starMail,
+		mr.FOLDER_ID folderId,
+		mr.READ_DATE readDate,
+		mr.REMIND_FLAG remindFlag,
+		mr.RECOVER_FLAG recoverFlag,
+		u.DISPLAY_NAME displayName,
+		user1.DISPLAY_NAME senderUserName
+
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID ,tty_ic_mail_record mr left join
+		TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		WHERE
+		t.ID=mr.MAIL_ID
+		AND mr.READ_FLAG = 1
+		<if test="mailboxId ==1 ">
+			AND ( (mr.RECEIVE_USER_ID=#{createUser} AND t.SENDER_USER_ID =
+			#{senderUserId}) OR(mr.RECEIVE_USER_ID=#{senderUserId} AND
+			t.SENDER_USER_ID = #{createUser}))
+		</if>
+		<if test="mailboxId != 1">
+			AND t.MAILBOX_ID = #{mailboxId}
+			AND mr.RECEIVE_MAIL =#{receiveMail}
+			AND t.SENDER_MAIL = #{senderMail}
+			UNION
+			SELECT t.ID id,
+			t.CONTACTS_ID contactsId,t.MAILBOX_ID mailboxId,t.MAIL_TITLE mailTitle,
+			t.MAIL_CONTENT mailContent,t.SENDER_USER_ID senderUserId,
+			t.SENDER_MAIL senderMail,t.SEND_TYPE sendType,t.ISFILE
+			isfile,t.SMS_ALERT smsAlert,t.SIGNATURE signature,t.PRESSING
+			pressing,
+			t.ENCRYPTION encryption,t.ENCRYPTION_PASS encryptionPass,t.REPLY_TEXTING
+			replyTexting,t.REPLY_TEXTING_TIME replyTextingTime,
+			t.MAIL_STATUS mailStatus,t.SENDER_TIME senderTime,t.RECEIVE_TIME2 receiveTime2,
+			t.MESSAGE_ID messageId,t.MAIL_FOLDER_ID mailFolderId,t.DELETE_FLAG
+			deleteFlag,t.CREATE_USER createUser,
+			t.CREATE_USER_ORG createUserOrg,t.CREATE_USER_DEPT createUserDept,t.CREATE_DATE
+			createDate,
+			t.MODIFY_USER modifyUser,t.MODIFY_DATE modifyDate,mr.ID mrid,mr.MAIL_ID mailId,
+			mr.RECEIVE_USER_ID receiveUserId,mr.RECEIVE_MAIL
+			receiveMail,mr.RECEIVE_TYPE receiveType,mr.READ_FLAG readFlag,
+			mr.STAR_MAIL starMail,mr.FOLDER_ID folderId,mr.READ_DATE
+			readDate,mr.REMIND_FLAG remindFlag,mr.RECOVER_FLAG
+			recoverFlag,u.DISPLAY_NAME displayName,user1.DISPLAY_NAME
+			senderUserName
+			FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER USER ON
+			t.SENDER_USER_ID=user1.ID ,tty_ic_mail_record mr LEFT JOIN
+			TOA_SYS_USER u ON mr.RECEIVE_USER_ID=u.ID
+			WHERE t.ID=mr.MAIL_ID
+			AND t.DELETE_FLAG = 0
+			AND t.MAILBOX_ID = #{mailboxId}
+			AND mr.RECEIVE_MAIL = #{senderMail}
+			AND t.SENDER_MAIL = #{receiveMail}
+			and mr.delete_flag=0
+		</if>
+		) v
+		WHERE v.recoverFlag != 1
+		order by receiveTime2 DESC, senderTime DESC
+	</select><!--未读邮件搜索start add by songht -->
+	<select id="searchUnRead" parameterType="com.jc.oa.ic.domain.Mail"
+		resultMap="mail_star">
+		SELECT
+		v.id id,
+		v.contactsId contactsId,
+		v.mailboxId mailboxId,
+		v.mailTitle mailTitle,
+		v.mailContent mailContent,
+		v.senderUserId senderUserId,
+		v.senderMail senderMail,
+		v.sendType sendType,
+		v.isfile isfile,
+		v.smsAlert smsAlert,
+		v.signature signature,
+		v.pressing pressing,
+		v.encryption encryption,
+		v.encryptionPass encryptionPass,
+		v.replyTexting replyTexting,
+		v.replyTextingTime replyTextingTime,
+		v.mailStatus mailStatus,
+		v.senderTime senderTime,
+		nvl2(v.receiveTime2,v.senderTime, v.receiveTime2) receiveTime2,
+		v.messageId messageId,
+		v.deleteFlag deleteFlag,
+		v.createUser createUser,
+		v.createUserOrg createUserOrg,
+		v.createUserDept createUserDept,
+		v.createDate createDate,
+		v.modifyUser modifyUser,
+		v.modifyDate modifyDate,
+		v.extDate1 extDate1,
+		v.extDate2 extDate2,
+		v.extNum1 extNum1,
+		v.extNum2 extNum2,
+		v.extNum3 extNum3,
+		v.extStr1 extStr1,
+		v.extStr2 extStr2,
+		v.extStr3 extStr3,
+		v.extStr4 extStr4,
+		v.extStr5 extStr5,
+		v.mrid mrid,
+		v.mailId mailId,
+		v.receiveUserId receiveUserId,
+		v.receiveMail receiveMail,
+		v.receiveType receiveType,
+		v.readFlag readFlag,
+		v.starMail starMail,
+		v.folderId folderId,
+		v.readDate readDate,
+		v.remindFlag remindFlag,
+		v.recoverFlag recoverFlag,
+		v.displayName displayName,
+		v.senderUserName senderUserName
+		FROM
+		(SELECT
+		t.ID id,
+		t.CONTACTS_ID contactsId,
+		t.MAILBOX_ID mailboxId,
+		t.MAIL_TITLE mailTitle,
+		t.MAIL_CONTENT mailContent,
+		t.SENDER_USER_ID senderUserId,
+		t.SENDER_MAIL senderMail,
+		t.SEND_TYPE sendType,
+		t.ISFILE isfile,
+		t.SMS_ALERT smsAlert,
+		t.SIGNATURE signature,
+		t.PRESSING pressing,
+		t.ENCRYPTION encryption,
+		t.ENCRYPTION_PASS encryptionPass,
+		t.REPLY_TEXTING replyTexting,
+		t.REPLY_TEXTING_TIME replyTextingTime,
+		t.MAIL_STATUS mailStatus,
+		t.SENDER_TIME senderTime,
+		t.RECEIVE_TIME2 receiveTime2,
+		t.MESSAGE_ID messageId,
+		t.MAIL_FOLDER_ID mailFolderId,
+		t.DELETE_FLAG deleteFlag,
+		t.CREATE_USER createUser,
+		t.CREATE_USER_ORG createUserOrg,
+		t.CREATE_USER_DEPT createUserDept,
+		t.CREATE_DATE createDate,
+		t.MODIFY_USER modifyUser,
+		t.MODIFY_DATE modifyDate,
+		t.EXT_DATE1 extDate1,
+		t.EXT_DATE2 extDate2,
+		t.EXT_NUM1 extNum1,
+		t.EXT_NUM2 extNum2,
+		t.EXT_NUM3 extNum3,
+		t.EXT_STR1 extStr1,
+		t.EXT_STR2 extStr2,
+		t.EXT_STR3 extStr3,
+		t.EXT_STR4 extStr4,
+		t.EXT_STR5 extStr5,
+		mr.ID mrid,
+		mr.MAIL_ID mailId,
+		mr.RECEIVE_USER_ID receiveUserId,
+		mr.RECEIVE_MAIL receiveMail,
+		mr.RECEIVE_TYPE receiveType,
+		mr.READ_FLAG readFlag,
+		mr.STAR_MAIL starMail,
+		mr.FOLDER_ID folderId,
+		mr.READ_DATE readDate,
+		mr.REMIND_FLAG remindFlag,
+		mr.RECOVER_FLAG recoverFlag,
+		u.DISPLAY_NAME displayName,
+		user1.DISPLAY_NAME senderUserName
+
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID ,tty_ic_mail_record mr left join
+		TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID
+			<![CDATA[and mr.FOLDER_ID<>4]]>
+			<![CDATA[and mr.FOLDER_ID<>2]]>
+			<![CDATA[and mr.FOLDER_ID<>0]]>
+			<![CDATA[and mr.FOLDER_ID<>-1]]>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE like <![CDATA['%${mailTitle}%']]>
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT like <![CDATA['%${mailContent}%']]>
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL like <![CDATA['%${senderMail}%']]>
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<!-- <if test="searchReceiveTimeBegin!=null"> <![CDATA[and t.RECEIVE_TIME2>=#{searchReceiveTimeBegin}]]> 
+				</if> <if test="searchReceiveTimeEnd!=null"> <![CDATA[and t.RECEIVE_TIME2<=#{searchReceiveTimeEnd}]]> 
+				</if> -->
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					and mr.READ_FLAG=0
+					<if test="rec.folderId!=null">
+						and
+						mr.FOLDER_ID =#{rec.folderId}
+					</if>
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<otherwise>
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</otherwise>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+						</if>
+					</if>
+					)
+				</foreach>
+
+			</if>
+		</where>
+		) v
+
+		WHERE (
+		v.receiveType = 4
+		OR (v.receiveType = 0 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 1 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 2 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 3 AND v.receiveTime2 IS NOT NULL)
+		)
+		<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and receiveTime2>=#{searchReceiveTimeBegin}]]>
+		</if>
+		<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and receiveTime2<=#{searchReceiveTimeEnd}]]>
+		</if>
+		order by receiveTime2 DESC
+
+	</select>
+	<select id="searchUnReadCount" parameterType="com.jc.oa.ic.domain.Mail"
+		resultType="java.lang.Integer">
+		SELECT
+		COUNT(m.id) FROM
+		(SELECT
+		v.id id,
+		nvl2(v.receiveTime2, v.senderTime, v.receiveTime2) receiveTime2,
+		v.receiveType receiveType
+		FROM
+		(SELECT
+		t.ID id,
+		t.SENDER_TIME senderTime,
+		t.RECEIVE_TIME2 receiveTime2,
+		mr.RECEIVE_TYPE receiveType
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID ,tty_ic_mail_record mr left join
+		TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID
+			<![CDATA[and mr.FOLDER_ID<>4]]>
+			<![CDATA[and mr.FOLDER_ID<>2]]>
+			<![CDATA[and mr.FOLDER_ID<>0]]>
+			<![CDATA[and mr.FOLDER_ID<>-1]]>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE like <![CDATA['%${mailTitle}%']]>
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT like <![CDATA['%${mailContent}%']]>
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL like <![CDATA['%${senderMail}%']]>
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<!-- <if test="searchReceiveTimeBegin!=null"> <![CDATA[and t.RECEIVE_TIME2>=#{searchReceiveTimeBegin}]]> 
+				</if> <if test="searchReceiveTimeEnd!=null"> <![CDATA[and t.RECEIVE_TIME2<=#{searchReceiveTimeEnd}]]> 
+				</if> -->
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					and mr.READ_FLAG=0
+					<if test="rec.folderId!=null">
+						and
+						mr.FOLDER_ID =#{rec.folderId}
+					</if>
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<otherwise>
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</otherwise>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+						</if>
+					</if>
+					)
+				</foreach>
+
+			</if>
+		</where>
+		) v
+
+		WHERE (
+		v.receiveType = 4
+		OR (v.receiveType = 0 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 1 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 2 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 3 AND v.receiveTime2 IS NOT NULL)
+		)
+		<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and receiveTime2>=#{searchReceiveTimeBegin}]]>
+		</if>
+		<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and receiveTime2<=#{searchReceiveTimeEnd}]]>
+		</if>
+		) m
+
+	</select><!--未读邮件搜索end add by songht --><!--星标邮件搜索start add by songht -->
+	<select id="searchStar" parameterType="com.jc.oa.ic.domain.Mail"
+		resultMap="mail_star">
+		SELECT
+		t.ID id,
+		t.CONTACTS_ID contactsId,
+		t.MAILBOX_ID mailboxId,
+		t.MAIL_TITLE mailTitle,
+		t.MAIL_CONTENT mailContent,
+		t.SENDER_USER_ID senderUserId,
+		t.SENDER_MAIL senderMail,
+		t.SEND_TYPE sendType,
+		t.ISFILE isfile,
+		t.SMS_ALERT smsAlert,
+		t.SIGNATURE signature,
+		t.PRESSING pressing,
+		t.ENCRYPTION encryption,
+		t.ENCRYPTION_PASS encryptionPass,
+		t.REPLY_TEXTING replyTexting,
+		t.REPLY_TEXTING_TIME replyTextingTime,
+		t.MAIL_STATUS mailStatus,
+		t.SENDER_TIME senderTime,
+		t.RECEIVE_TIME2 receiveTime2,
+		t.MESSAGE_ID messageId,
+		t.MAIL_FOLDER_ID mailFolderId,
+		t.DELETE_FLAG deleteFlag,
+		t.CREATE_USER createUser,
+		t.CREATE_USER_ORG createUserOrg,
+		t.CREATE_USER_DEPT createUserDept,
+		t.CREATE_DATE createDate,
+		t.MODIFY_USER modifyUser,
+		t.MODIFY_DATE modifyDate,
+		t.EXT_DATE1 extDate1,
+		t.EXT_DATE2 extDate2,
+		t.EXT_NUM1 extNum1,
+		t.EXT_NUM2 extNum2,
+		t.EXT_NUM3 extNum3,
+		t.EXT_STR1 extStr1,
+		t.EXT_STR2 extStr2,
+		t.EXT_STR3 extStr3,
+		t.EXT_STR4 extStr4,
+		t.EXT_STR5 extStr5,
+		mr.ID mrid,
+		mr.MAIL_ID mailId,
+		mr.RECEIVE_USER_ID receiveUserId,
+		mr.RECEIVE_MAIL receiveMail,
+		mr.RECEIVE_TYPE receiveType,
+		mr.READ_FLAG readFlag,
+		mr.STAR_MAIL starMail,
+		mr.FOLDER_ID folderId,
+		mr.READ_DATE readDate,
+		mr.REMIND_FLAG remindFlag,
+		mr.RECOVER_FLAG recoverFlag,
+		u.DISPLAY_NAME displayName,
+		user1.DISPLAY_NAME senderUserName
+
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user.ID ,tty_ic_mail_record mr left join TOA_SYS_USER
+		u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID
+			<![CDATA[and mr.FOLDER_ID<>4]]>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE like <![CDATA['%${mailTitle}%']]>
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT like <![CDATA['%${mailContent}%']]>
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL like <![CDATA['%${senderMail}%']]>
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and t.RECEIVE_TIME2>=#{searchReceiveTimeBegin}]]>
+			</if>
+			<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and t.RECEIVE_TIME2<=#{searchReceiveTimeEnd}]]>
+			</if>
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					<!-- <if test="rec.folderId!=null"> and mr.FOLDER_ID =#{rec.folderId} 
+						</if> -->
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="rec.readFlag!=null">
+						and mr.READ_FLAG=#{rec.readFlag}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<otherwise>
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</otherwise>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+						</if>
+					</if>
+					)
+				</foreach>
+
+			</if>
+		</where>
+		order by t.RECEIVE_TIME2 DESC,t.SENDER_TIME DESC
+
+	</select>
+	<select id="searchStarCount" parameterType="com.jc.oa.ic.domain.Mail"
+		resultType="java.lang.Integer">
+		SELECT count(t.ID)
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID ,tty_ic_mail_record mr left join
+		TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID
+			<![CDATA[and mr.FOLDER_ID<>4]]>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE like <![CDATA['%${mailTitle}%']]>
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT like <![CDATA['%${mailContent}%']]>
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL like <![CDATA['%${senderMail}%']]>
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and t.RECEIVE_TIME2>=#{searchReceiveTimeBegin}]]>
+			</if>
+			<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and t.RECEIVE_TIME2<=#{searchReceiveTimeEnd}]]>
+			</if>
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					<!-- <if test="rec.folderId!=null"> and mr.FOLDER_ID =#{rec.folderId} 
+						</if> -->
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="rec.readFlag!=null">
+						and mr.READ_FLAG=#{rec.readFlag}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<otherwise>
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</otherwise>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+						</if>
+					</if>
+					)
+				</foreach>
+
+			</if>
+		</where>
+		order by t.RECEIVE_TIME2 DESC,t.SENDER_TIME DESC
+
+	</select><!--星标邮件搜索end add by songht -->
+	<select id="mailDelete" parameterType="com.jc.oa.ic.domain.Mail"
+		resultMap="mail_with_record">
+		SELECT
+		t.ID id
+		FROM tty_ic_mail t ,tty_ic_mail_record mr
+		<where>
+			t.ID=mr.MAIL_ID
+			and mr.DELETE_FLAG=1
+			<if test="senderUserId != null">
+				and mr.RECEIVE_USER_ID=#{senderUserId}
+			</if>
+		</where>
+
+	</select><!-- 已读邮件查询start add by zhanglg -->
+	<select id="queryReadedMail" parameterType="com.jc.oa.ic.domain.Mail"
+		resultMap="mail_star">
+		SELECT
+		v.id id,
+		v.contactsId contactsId,
+		v.mailboxId mailboxId,
+		v.mailTitle mailTitle,
+		v.mailContent mailContent,
+		v.senderUserId senderUserId,
+		v.senderMail senderMail,
+		v.sendType sendType,
+		v.isfile isfile,
+		v.smsAlert smsAlert,
+		v.signature signature,
+		v.pressing pressing,
+		v.encryption encryption,
+		v.encryptionPass encryptionPass,
+		v.replyTexting replyTexting,
+		v.replyTextingTime replyTextingTime,
+		v.mailStatus mailStatus,
+		v.senderTime senderTime,
+		nvl2(v.receiveTime2,v.senderTime,v.receiveTime2) receiveTime2,
+		v.messageId messageId,
+		v.deleteFlag deleteFlag,
+		v.createUser createUser,
+		v.createUserOrg createUserOrg,
+		v.createUserDept createUserDept,
+		v.createDate createDate,
+		v.modifyUser modifyUser,
+		v.modifyDate modifyDate,
+		v.extDate1 extDate1,
+		v.extDate2 extDate2,
+		v.extNum1 extNum1,
+		v.extNum2 extNum2,
+		v.extNum3 extNum3,
+		v.extStr1 extStr1,
+		v.extStr2 extStr2,
+		v.extStr3 extStr3,
+		v.extStr4 extStr4,
+		v.extStr5 extStr5,
+		v.mrid mrid,
+		v.mailId mailId,
+		v.receiveUserId receiveUserId,
+		v.receiveMail receiveMail,
+		v.receiveType receiveType,
+		v.readFlag readFlag,
+		v.starMail starMail,
+		v.folderId folderId,
+		v.readDate readDate,
+		v.remindFlag remindFlag,
+		v.recoverFlag recoverFlag,
+		v.displayName displayName,
+		v.senderUserName senderUserName,
+		v.boxId boxId
+
+		FROM
+		(SELECT
+		t.ID id,
+		t.CONTACTS_ID contactsId,
+		t.MAILBOX_ID mailboxId,
+		t.MAIL_TITLE mailTitle,
+		t.MAIL_CONTENT mailContent,
+		t.SENDER_USER_ID senderUserId,
+		t.SENDER_MAIL senderMail,
+		t.SEND_TYPE sendType,
+		t.ISFILE isfile,
+		t.SMS_ALERT smsAlert,
+		t.SIGNATURE signature,
+		t.PRESSING pressing,
+		t.ENCRYPTION encryption,
+		t.ENCRYPTION_PASS encryptionPass,
+		t.REPLY_TEXTING replyTexting,
+		t.REPLY_TEXTING_TIME replyTextingTime,
+		t.MAIL_STATUS mailStatus,
+		t.SENDER_TIME senderTime,
+		t.RECEIVE_TIME2 receiveTime2,
+		t.MESSAGE_ID messageId,
+		t.DELETE_FLAG deleteFlag,
+		t.CREATE_USER createUser,
+		t.CREATE_USER_ORG createUserOrg,
+		t.CREATE_USER_DEPT createUserDept,
+		t.CREATE_DATE createDate,
+		t.MODIFY_USER modifyUser,
+		t.MODIFY_DATE modifyDate,
+		t.EXT_DATE1 extDate1,
+		t.EXT_DATE2 extDate2,
+		t.EXT_NUM1 extNum1,
+		t.EXT_NUM2 extNum2,
+		t.EXT_NUM3 extNum3,
+		t.EXT_STR1 extStr1,
+		t.EXT_STR2 extStr2,
+		t.EXT_STR3 extStr3,
+		t.EXT_STR4 extStr4,
+		t.EXT_STR5 extStr5,
+		mr.ID mrid,
+		mr.MAIL_ID mailId,
+		mr.RECEIVE_USER_ID receiveUserId,
+		mr.RECEIVE_MAIL receiveMail,
+		mr.RECEIVE_TYPE receiveType,
+		mr.READ_FLAG readFlag,
+		mr.STAR_MAIL starMail,
+		mr.FOLDER_ID folderId,
+		mr.READ_DATE readDate,
+		mr.REMIND_FLAG remindFlag,
+		mr.RECOVER_FLAG recoverFlag,
+		u.DISPLAY_NAME displayName,
+		user1.DISPLAY_NAME senderUserName,
+		box.id boxId
+
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID
+		LEFT JOIN tty_ic_mailbox box ON t.MAILBOX_ID = box.ID,
+		tty_ic_mail_record mr left join TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID and mr.FOLDER_ID=1
+			<![CDATA[and mr.FOLDER_ID<>4]]>
+			<![CDATA[and mr.FOLDER_ID<>2]]>
+			<![CDATA[and mr.FOLDER_ID<>0]]>
+			<![CDATA[and mr.FOLDER_ID<>-1]]>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE like <![CDATA['%${mailTitle}%']]>
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT = #{mailContent}
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL like <![CDATA['%${senderMail}%']]>
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="excludeFolderId!=null">
+				and mr.FOLDER_ID !=#{excludeFolderId}
+			</if>
+			<if test="mailbox != null">
+				and
+				<foreach collection="mailbox" item="box" index="index" open="("
+					close=")" separator=" or ">
+					(1=1
+					<if test="box.id != null">
+						and t.MAILBOX_ID = #{box.id}
+					</if>
+					)
+				</foreach>
+			</if>
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					and mr.READ_FLAG=1
+					<!-- <if test="rec.folderId!=null"> and mr.FOLDER_ID =#{rec.folderId} 
+						</if> -->
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<when test="rec.receiveUserId!=null">
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</when>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+						</if>
+					</if>
+					)
+				</foreach>
+
+			</if>
+		</where>
+		) v
+		WHERE (
+		v.receiveType=4
+		OR (v.receiveType=0 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 1 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 2 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 3 AND v.receiveTime2 IS NOT NULL)
+		)
+		<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and receiveTime2>=#{searchReceiveTimeBegin}]]>
+		</if>
+		<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and receiveTime2<=#{searchReceiveTimeEnd}]]>
+		</if>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+	</select>
+	<select id="queryReadedMailCount" parameterType="com.jc.oa.ic.domain.Mail"
+		resultType="java.lang.Integer">
+		SELECT
+		COUNT(m.id) FROM
+		(SELECT
+		v.id id,
+		nvl2(v.receiveTime2, v.senderTime, v.receiveTime2) receiveTime2,
+		v.receiveType receiveType
+		FROM
+		(SELECT
+		t.ID id,
+		t.SENDER_TIME senderTime,
+		t.RECEIVE_TIME2 receiveTime2,
+		mr.RECEIVE_TYPE receiveType
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID
+		LEFT JOIN tty_ic_mailbox box ON t.MAILBOX_ID = box.ID,
+		tty_ic_mail_record mr left join TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID  and mr.FOLDER_ID=1
+			<![CDATA[and mr.FOLDER_ID<>4]]>
+			<![CDATA[and mr.FOLDER_ID<>2]]>
+			<![CDATA[and mr.FOLDER_ID<>0]]>
+			<![CDATA[and mr.FOLDER_ID<>-1]]>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE like <![CDATA['%${mailTitle}%']]>
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT = #{mailContent}
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL like <![CDATA['%${senderMail}%']]>
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and t.RECEIVE_TIME2>=#{searchReceiveTimeBegin}]]>
+			</if>
+			<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and t.RECEIVE_TIME2<=#{searchReceiveTimeEnd}]]>
+			</if>
+			<if test="excludeFolderId!=null">
+				and mr.FOLDER_ID !=#{excludeFolderId}
+			</if>
+			<if test="mailbox != null">
+				and
+				<foreach collection="mailbox" item="box" index="index" open="("
+					close=")" separator=" or ">
+					(1=1
+					<if test="box.id != null">
+						and t.MAILBOX_ID = #{box.id}
+					</if>
+					)
+				</foreach>
+			</if>
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					and mr.READ_FLAG=1
+					<!-- <if test="rec.folderId!=null"> and mr.FOLDER_ID =#{rec.folderId} 
+						</if> -->
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<when test="rec.receiveUserId!=null">
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</when>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+						</if>
+					</if>
+					)
+				</foreach>
+
+			</if>
+		</where>
+		) v
+		WHERE (
+		v.receiveType = 4
+		OR (v.receiveType = 0 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 1 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 2 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 3 AND v.receiveTime2 IS NOT NULL)
+		)
+		<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and receiveTime2>=#{searchReceiveTimeBegin}]]>
+		</if>
+		<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and receiveTime2<=#{searchReceiveTimeEnd}]]>
+		</if>
+		) m
+	</select><!-- 已读邮件查询end add by zhanglg --><!-- 已读邮件搜索start add by zhanglg -->
+	<select id="searchReaded" parameterType="com.jc.oa.ic.domain.Mail"
+		resultMap="mail_star">
+		SELECT
+		v.id id,
+		v.contactsId contactsId,
+		v.mailboxId mailboxId,
+		v.mailTitle mailTitle,
+		v.mailContent mailContent,
+		v.senderUserId senderUserId,
+		v.senderMail senderMail,
+		v.sendType sendType,
+		v.isfile isfile,
+		v.smsAlert smsAlert,
+		v.signature signature,
+		v.pressing pressing,
+		v.encryption encryption,
+		v.encryptionPass encryptionPass,
+		v.replyTexting replyTexting,
+		v.replyTextingTime replyTextingTime,
+		v.mailStatus mailStatus,
+		v.senderTime senderTime,
+		nvl2(v.receiveTime2 , v.senderTime, v.receiveTime2) receiveTime2,
+		v.messageId messageId,
+		v.deleteFlag deleteFlag,
+		v.createUser createUser,
+		v.createUserOrg createUserOrg,
+		v.createUserDept createUserDept,
+		v.createDate createDate,
+		v.modifyUser modifyUser,
+		v.modifyDate modifyDate,
+		v.extDate1 extDate1,
+		v.extDate2 extDate2,
+		v.extNum1 extNum1,
+		v.extNum2 extNum2,
+		v.extNum3 extNum3,
+		v.extStr1 extStr1,
+		v.extStr2 extStr2,
+		v.extStr3 extStr3,
+		v.extStr4 extStr4,
+		v.extStr5 extStr5,
+		v.mrid mrid,
+		v.mailId mailId,
+		v.receiveUserId receiveUserId,
+		v.receiveMail receiveMail,
+		v.receiveType receiveType,
+		v.readFlag readFlag,
+		v.starMail starMail,
+		v.folderId folderId,
+		v.readDate readDate,
+		v.remindFlag remindFlag,
+		v.recoverFlag recoverFlag,
+		v.displayName displayName,
+		v.senderUserName senderUserName
+		FROM
+		(SELECT
+		t.ID id,
+		t.CONTACTS_ID contactsId,
+		t.MAILBOX_ID mailboxId,
+		t.MAIL_TITLE mailTitle,
+		t.MAIL_CONTENT mailContent,
+		t.SENDER_USER_ID senderUserId,
+		t.SENDER_MAIL senderMail,
+		t.SEND_TYPE sendType,
+		t.ISFILE isfile,
+		t.SMS_ALERT smsAlert,
+		t.SIGNATURE signature,
+		t.PRESSING pressing,
+		t.ENCRYPTION encryption,
+		t.ENCRYPTION_PASS encryptionPass,
+		t.REPLY_TEXTING replyTexting,
+		t.REPLY_TEXTING_TIME replyTextingTime,
+		t.MAIL_STATUS mailStatus,
+		t.SENDER_TIME senderTime,
+		t.RECEIVE_TIME2 receiveTime2,
+		t.MESSAGE_ID messageId,
+		t.MAIL_FOLDER_ID mailFolderId,
+		t.DELETE_FLAG deleteFlag,
+		t.CREATE_USER createUser,
+		t.CREATE_USER_ORG createUserOrg,
+		t.CREATE_USER_DEPT createUserDept,
+		t.CREATE_DATE createDate,
+		t.MODIFY_USER modifyUser,
+		t.MODIFY_DATE modifyDate,
+		t.EXT_DATE1 extDate1,
+		t.EXT_DATE2 extDate2,
+		t.EXT_NUM1 extNum1,
+		t.EXT_NUM2 extNum2,
+		t.EXT_NUM3 extNum3,
+		t.EXT_STR1 extStr1,
+		t.EXT_STR2 extStr2,
+		t.EXT_STR3 extStr3,
+		t.EXT_STR4 extStr4,
+		t.EXT_STR5 extStr5,
+		mr.ID mrid,
+		mr.MAIL_ID mailId,
+		mr.RECEIVE_USER_ID receiveUserId,
+		mr.RECEIVE_MAIL receiveMail,
+		mr.RECEIVE_TYPE receiveType,
+		mr.READ_FLAG readFlag,
+		mr.STAR_MAIL starMail,
+		mr.FOLDER_ID folderId,
+		mr.READ_DATE readDate,
+		mr.REMIND_FLAG remindFlag,
+		mr.RECOVER_FLAG recoverFlag,
+		u.DISPLAY_NAME displayName,
+		user1.DISPLAY_NAME senderUserName
+
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID ,tty_ic_mail_record mr left join
+		TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID and mr.FOLDER_ID=1
+			<![CDATA[and mr.FOLDER_ID<>4]]>
+			<![CDATA[and mr.FOLDER_ID<>2]]>
+			<![CDATA[and mr.FOLDER_ID<>0]]>
+			<![CDATA[and mr.FOLDER_ID<>-1]]>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE like <![CDATA['%${mailTitle}%']]>
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT like <![CDATA['%${mailContent}%']]>
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL like <![CDATA['%${senderMail}%']]>
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<!-- <if test="searchReceiveTimeBegin!=null"> <![CDATA[and t.RECEIVE_TIME2>=#{searchReceiveTimeBegin}]]> 
+				</if> <if test="searchReceiveTimeEnd!=null"> <![CDATA[and t.RECEIVE_TIME2<=#{searchReceiveTimeEnd}]]> 
+				</if> -->
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					and mr.READ_FLAG=1
+					<if test="rec.folderId!=null">
+						and
+						mr.FOLDER_ID =#{rec.folderId}
+					</if>
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<otherwise>
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</otherwise>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+						</if>
+					</if>
+					)
+				</foreach>
+
+			</if>
+		</where>
+		) v
+
+		WHERE (
+		v.receiveType = 4
+		OR (v.receiveType = 0 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 1 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 2 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 3 AND v.receiveTime2 IS NOT NULL)
+		)
+		<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and receiveTime2>=#{searchReceiveTimeBegin}]]>
+		</if>
+		<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and receiveTime2<=#{searchReceiveTimeEnd}]]>
+		</if>
+		order by receiveTime2 DESC
+
+	</select>
+	<select id="searchReadedCount" parameterType="com.jc.oa.ic.domain.Mail"
+		resultType="java.lang.Integer">
+		SELECT
+		COUNT(m.id) FROM
+		(SELECT
+		v.id id,
+		nvl2(v.receiveTime2, v.senderTime, v.receiveTime2) receiveTime2,
+		v.receiveType receiveType
+		FROM
+		(SELECT
+		t.ID id,
+		t.SENDER_TIME senderTime,
+		t.RECEIVE_TIME2 receiveTime2,
+		mr.RECEIVE_TYPE receiveType
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID ,tty_ic_mail_record mr left join
+		TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID  and mr.FOLDER_ID=1
+			<![CDATA[and mr.FOLDER_ID<>4]]>
+			<![CDATA[and mr.FOLDER_ID<>2]]>
+			<![CDATA[and mr.FOLDER_ID<>0]]>
+			<![CDATA[and mr.FOLDER_ID<>-1]]>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE like <![CDATA['%${mailTitle}%']]>
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT like <![CDATA['%${mailContent}%']]>
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL like <![CDATA['%${senderMail}%']]>
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<!-- <if test="searchReceiveTimeBegin!=null"> <![CDATA[and t.RECEIVE_TIME2>=#{searchReceiveTimeBegin}]]> 
+				</if> <if test="searchReceiveTimeEnd!=null"> <![CDATA[and t.RECEIVE_TIME2<=#{searchReceiveTimeEnd}]]> 
+				</if> -->
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					and mr.READ_FLAG=1
+					<if test="rec.folderId!=null">
+						and
+						mr.FOLDER_ID =#{rec.folderId}
+					</if>
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<otherwise>
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</otherwise>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+						</if>
+					</if>
+					)
+				</foreach>
+
+			</if>
+		</where>
+		) v
+
+		WHERE (
+		v.receiveType = 4
+		OR (v.receiveType = 0 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 1 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 2 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 3 AND v.receiveTime2 IS NOT NULL)
+		)
+		<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and receiveTime2>=#{searchReceiveTimeBegin}]]>
+		</if>
+		<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and receiveTime2<=#{searchReceiveTimeEnd}]]>
+		</if>
+		) m
+
+	</select><!--已读邮件搜索end add by zhanglg --><!-- 我的邮件查询start add by zhanglg -->
+	<select id="myMail" parameterType="com.jc.oa.ic.domain.Mail"
+		resultMap="mail_star">
+		SELECT
+		v.id id,
+		v.contactsId contactsId,
+		v.mailboxId mailboxId,
+		v.mailTitle mailTitle,
+		v.mailContent mailContent,
+		v.senderUserId senderUserId,
+		v.senderMail senderMail,
+		v.sendType sendType,
+		v.isfile isfile,
+		v.smsAlert smsAlert,
+		v.signature signature,
+		v.pressing pressing,
+		v.encryption encryption,
+		v.encryptionPass encryptionPass,
+		v.replyTexting replyTexting,
+		v.replyTextingTime replyTextingTime,
+		v.mailStatus mailStatus,
+		v.senderTime senderTime,
+		nvl2(v.receiveTime2, v.senderTime, v.receiveTime2) receiveTime2,
+		v.messageId messageId,
+		v.deleteFlag deleteFlag,
+		v.createUser createUser,
+		v.createUserOrg createUserOrg,
+		v.createUserDept createUserDept,
+		v.createDate createDate,
+		v.modifyUser modifyUser,
+		v.modifyDate modifyDate,
+		v.extDate1 extDate1,
+		v.extDate2 extDate2,
+		v.extNum1 extNum1,
+		v.extNum2 extNum2,
+		v.extNum3 extNum3,
+		v.extStr1 extStr1,
+		v.extStr2 extStr2,
+		v.extStr3 extStr3,
+		v.extStr4 extStr4,
+		v.extStr5 extStr5,
+		v.mrid mrid,
+		v.mailId mailId,
+		v.receiveUserId receiveUserId,
+		v.receiveMail receiveMail,
+		v.receiveType receiveType,
+		v.readFlag readFlag,
+		v.starMail starMail,
+		v.folderId folderId,
+		v.readDate readDate,
+		v.remindFlag remindFlag,
+		v.recoverFlag recoverFlag,
+		v.displayName displayName,
+		v.senderUserName senderUserName,
+		v.boxId boxId
+
+		FROM
+		(SELECT
+		t.ID id,
+		t.CONTACTS_ID contactsId,
+		t.MAILBOX_ID mailboxId,
+		t.MAIL_TITLE mailTitle,
+		t.MAIL_CONTENT mailContent,
+		t.SENDER_USER_ID senderUserId,
+		t.SENDER_MAIL senderMail,
+		t.SEND_TYPE sendType,
+		t.ISFILE isfile,
+		t.SMS_ALERT smsAlert,
+		t.SIGNATURE signature,
+		t.PRESSING pressing,
+		t.ENCRYPTION encryption,
+		t.ENCRYPTION_PASS encryptionPass,
+		t.REPLY_TEXTING replyTexting,
+		t.REPLY_TEXTING_TIME replyTextingTime,
+		t.MAIL_STATUS mailStatus,
+		t.SENDER_TIME senderTime,
+		t.RECEIVE_TIME2 receiveTime2,
+		t.MESSAGE_ID messageId,
+		t.DELETE_FLAG deleteFlag,
+		t.CREATE_USER createUser,
+		t.CREATE_USER_ORG createUserOrg,
+		t.CREATE_USER_DEPT createUserDept,
+		t.CREATE_DATE createDate,
+		t.MODIFY_USER modifyUser,
+		t.MODIFY_DATE modifyDate,
+		t.EXT_DATE1 extDate1,
+		t.EXT_DATE2 extDate2,
+		t.EXT_NUM1 extNum1,
+		t.EXT_NUM2 extNum2,
+		t.EXT_NUM3 extNum3,
+		t.EXT_STR1 extStr1,
+		t.EXT_STR2 extStr2,
+		t.EXT_STR3 extStr3,
+		t.EXT_STR4 extStr4,
+		t.EXT_STR5 extStr5,
+		mr.ID mrid,
+		mr.MAIL_ID mailId,
+		mr.RECEIVE_USER_ID receiveUserId,
+		mr.RECEIVE_MAIL receiveMail,
+		mr.RECEIVE_TYPE receiveType,
+		mr.READ_FLAG readFlag,
+		mr.STAR_MAIL starMail,
+		mr.FOLDER_ID folderId,
+		mr.READ_DATE readDate,
+		mr.REMIND_FLAG remindFlag,
+		mr.RECOVER_FLAG recoverFlag,
+		u.DISPLAY_NAME displayName,
+		user1.DISPLAY_NAME senderUserName,
+		box.id boxId
+
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID
+		LEFT JOIN tty_ic_mailbox box ON t.MAILBOX_ID = box.ID,
+		tty_ic_mail_record mr left join TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID
+			<![CDATA[and mr.FOLDER_ID<>4]]>
+			<![CDATA[and mr.FOLDER_ID<>2]]>
+			<![CDATA[and mr.FOLDER_ID<>0]]>
+			<![CDATA[and mr.FOLDER_ID<>-1]]>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE like <![CDATA['%${mailTitle}%']]>
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT = #{mailContent}
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL like <![CDATA['%${senderMail}%']]>
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="excludeFolderId!=null">
+				and mr.FOLDER_ID !=#{excludeFolderId}
+			</if>
+			<if test="mailbox != null">
+				and
+				<foreach collection="mailbox" item="box" index="index" open="("
+					close=")" separator=" or ">
+					(1=1
+					<if test="box.id != null">
+						and t.MAILBOX_ID = #{box.id}
+					</if>
+					)
+				</foreach>
+			</if>
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					<!-- <if test="rec.folderId!=null"> and mr.FOLDER_ID =#{rec.folderId} 
+						</if> -->
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<when test="rec.receiveUserId!=null">
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</when>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+						</if>
+					</if>
+					)
+				</foreach>
+
+			</if>
+		</where>
+		) v
+		WHERE (
+		v.receiveType=4
+		OR (v.receiveType=0 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 1 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 2 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 3 AND v.receiveTime2 IS NOT NULL)
+		)
+		<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and receiveTime2>=#{searchReceiveTimeBegin}]]>
+		</if>
+		<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and receiveTime2<=#{searchReceiveTimeEnd}]]>
+		</if>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+	</select>
+	<select id="myMailCount" parameterType="com.jc.oa.ic.domain.Mail"
+		resultType="java.lang.Integer">
+		SELECT
+		COUNT(m.id) FROM
+		(SELECT
+		v.id id,
+		nvl2(v.receiveTime2 , v.senderTime, v.receiveTime2) receiveTime2,
+		v.receiveType receiveType
+		FROM
+		(SELECT
+		t.ID id,
+		t.SENDER_TIME senderTime,
+		t.RECEIVE_TIME2 receiveTime2,
+		mr.RECEIVE_TYPE receiveType
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID
+		LEFT JOIN tty_ic_mailbox box ON t.MAILBOX_ID = box.ID,
+		tty_ic_mail_record mr left join TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID
+			<![CDATA[and mr.FOLDER_ID<>4]]>
+			<![CDATA[and mr.FOLDER_ID<>2]]>
+			<![CDATA[and mr.FOLDER_ID<>0]]>
+			<![CDATA[and mr.FOLDER_ID<>-1]]>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE like <![CDATA['%${mailTitle}%']]>
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT = #{mailContent}
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL like <![CDATA['%${senderMail}%']]>
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and t.RECEIVE_TIME2>=#{searchReceiveTimeBegin}]]>
+			</if>
+			<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and t.RECEIVE_TIME2<=#{searchReceiveTimeEnd}]]>
+			</if>
+			<if test="excludeFolderId!=null">
+				and mr.FOLDER_ID !=#{excludeFolderId}
+			</if>
+			<if test="mailbox != null">
+				and
+				<foreach collection="mailbox" item="box" index="index" open="("
+					close=")" separator=" or ">
+					(1=1
+					<if test="box.id != null">
+						and t.MAILBOX_ID = #{box.id}
+					</if>
+					)
+				</foreach>
+			</if>
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					<!-- <if test="rec.folderId!=null"> and mr.FOLDER_ID =#{rec.folderId} 
+						</if> -->
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<when test="rec.receiveUserId!=null">
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</when>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+						</if>
+					</if>
+					)
+				</foreach>
+
+			</if>
+		</where>
+		) v
+		WHERE (
+		v.receiveType = 4
+		OR (v.receiveType = 0 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 1 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 2 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 3 AND v.receiveTime2 IS NOT NULL)
+		)
+		<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and receiveTime2>=#{searchReceiveTimeBegin}]]>
+		</if>
+		<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and receiveTime2<=#{searchReceiveTimeEnd}]]>
+		</if>
+		) m
+	</select><!-- 我的邮件查询end add by zhanglg --><!--我的邮件搜索start add by zhanglg -->
+	<select id="searchMymail" parameterType="com.jc.oa.ic.domain.Mail"
+		resultMap="mail_star">
+		SELECT
+		v.id id,
+		v.contactsId contactsId,
+		v.mailboxId mailboxId,
+		v.mailTitle mailTitle,
+		v.mailContent mailContent,
+		v.senderUserId senderUserId,
+		v.senderMail senderMail,
+		v.sendType sendType,
+		v.isfile isfile,
+		v.smsAlert smsAlert,
+		v.signature signature,
+		v.pressing pressing,
+		v.encryption encryption,
+		v.encryptionPass encryptionPass,
+		v.replyTexting replyTexting,
+		v.replyTextingTime replyTextingTime,
+		v.mailStatus mailStatus,
+		v.senderTime senderTime,
+		nvl2(v.receiveTime2, v.senderTime, v.receiveTime2) receiveTime2,
+		v.messageId messageId,
+		v.deleteFlag deleteFlag,
+		v.createUser createUser,
+		v.createUserOrg createUserOrg,
+		v.createUserDept createUserDept,
+		v.createDate createDate,
+		v.modifyUser modifyUser,
+		v.modifyDate modifyDate,
+		v.extDate1 extDate1,
+		v.extDate2 extDate2,
+		v.extNum1 extNum1,
+		v.extNum2 extNum2,
+		v.extNum3 extNum3,
+		v.extStr1 extStr1,
+		v.extStr2 extStr2,
+		v.extStr3 extStr3,
+		v.extStr4 extStr4,
+		v.extStr5 extStr5,
+		v.mrid mrid,
+		v.mailId mailId,
+		v.receiveUserId receiveUserId,
+		v.receiveMail receiveMail,
+		v.receiveType receiveType,
+		v.readFlag readFlag,
+		v.starMail starMail,
+		v.folderId folderId,
+		v.readDate readDate,
+		v.remindFlag remindFlag,
+		v.recoverFlag recoverFlag,
+		v.displayName displayName,
+		v.senderUserName senderUserName
+		FROM
+		(SELECT
+		t.ID id,
+		t.CONTACTS_ID contactsId,
+		t.MAILBOX_ID mailboxId,
+		t.MAIL_TITLE mailTitle,
+		t.MAIL_CONTENT mailContent,
+		t.SENDER_USER_ID senderUserId,
+		t.SENDER_MAIL senderMail,
+		t.SEND_TYPE sendType,
+		t.ISFILE isfile,
+		t.SMS_ALERT smsAlert,
+		t.SIGNATURE signature,
+		t.PRESSING pressing,
+		t.ENCRYPTION encryption,
+		t.ENCRYPTION_PASS encryptionPass,
+		t.REPLY_TEXTING replyTexting,
+		t.REPLY_TEXTING_TIME replyTextingTime,
+		t.MAIL_STATUS mailStatus,
+		t.SENDER_TIME senderTime,
+		t.RECEIVE_TIME2 receiveTime2,
+		t.MESSAGE_ID messageId,
+		t.MAIL_FOLDER_ID mailFolderId,
+		t.DELETE_FLAG deleteFlag,
+		t.CREATE_USER createUser,
+		t.CREATE_USER_ORG createUserOrg,
+		t.CREATE_USER_DEPT createUserDept,
+		t.CREATE_DATE createDate,
+		t.MODIFY_USER modifyUser,
+		t.MODIFY_DATE modifyDate,
+		t.EXT_DATE1 extDate1,
+		t.EXT_DATE2 extDate2,
+		t.EXT_NUM1 extNum1,
+		t.EXT_NUM2 extNum2,
+		t.EXT_NUM3 extNum3,
+		t.EXT_STR1 extStr1,
+		t.EXT_STR2 extStr2,
+		t.EXT_STR3 extStr3,
+		t.EXT_STR4 extStr4,
+		t.EXT_STR5 extStr5,
+		mr.ID mrid,
+		mr.MAIL_ID mailId,
+		mr.RECEIVE_USER_ID receiveUserId,
+		mr.RECEIVE_MAIL receiveMail,
+		mr.RECEIVE_TYPE receiveType,
+		mr.READ_FLAG readFlag,
+		mr.STAR_MAIL starMail,
+		mr.FOLDER_ID folderId,
+		mr.READ_DATE readDate,
+		mr.REMIND_FLAG remindFlag,
+		mr.RECOVER_FLAG recoverFlag,
+		u.DISPLAY_NAME displayName,
+		user1.DISPLAY_NAME senderUserName
+
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID ,tty_ic_mail_record mr left join
+		TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID
+			<![CDATA[and mr.FOLDER_ID<>4]]>
+			<![CDATA[and mr.FOLDER_ID<>2]]>
+			<![CDATA[and mr.FOLDER_ID<>0]]>
+			<![CDATA[and mr.FOLDER_ID<>-1]]>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE like <![CDATA['%${mailTitle}%']]>
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT like <![CDATA['%${mailContent}%']]>
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL like <![CDATA['%${senderMail}%']]>
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<!-- <if test="searchReceiveTimeBegin!=null"> <![CDATA[and t.RECEIVE_TIME2>=#{searchReceiveTimeBegin}]]> 
+				</if> <if test="searchReceiveTimeEnd!=null"> <![CDATA[and t.RECEIVE_TIME2<=#{searchReceiveTimeEnd}]]> 
+				</if> -->
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					<!-- and mr.READ_FLAG=0 <if test="rec.folderId!=null"> and mr.FOLDER_ID 
+						=#{rec.folderId} </if> -->
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<otherwise>
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</otherwise>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+						</if>
+					</if>
+					)
+				</foreach>
+
+			</if>
+		</where>
+		) v
+
+		WHERE (
+		v.receiveType = 4
+		OR (v.receiveType = 0 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 1 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 2 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 3 AND v.receiveTime2 IS NOT NULL)
+		)
+		<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and receiveTime2>=#{searchReceiveTimeBegin}]]>
+		</if>
+		<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and receiveTime2<=#{searchReceiveTimeEnd}]]>
+		</if>
+		order by receiveTime2 DESC
+
+	</select>
+	<select id="searchMymailCount" parameterType="com.jc.oa.ic.domain.Mail"
+		resultType="java.lang.Integer">
+		SELECT
+		COUNT(m.id) FROM
+		(SELECT
+		v.id id,
+		nvl2(v.receiveTime2, v.senderTime, v.receiveTime2) receiveTime2,
+		v.receiveType receiveType
+		FROM
+		(SELECT
+		t.ID id,
+		t.SENDER_TIME senderTime,
+		t.RECEIVE_TIME2 receiveTime2,
+		mr.RECEIVE_TYPE receiveType
+		FROM tty_ic_mail t LEFT JOIN TOA_SYS_USER user1 on
+		t.SENDER_USER_ID=user1.ID ,tty_ic_mail_record mr left join
+		TOA_SYS_USER u on mr.RECEIVE_USER_ID=u.ID
+		<where>
+			t.ID=mr.MAIL_ID
+			<![CDATA[and mr.FOLDER_ID<>4]]>
+			<![CDATA[and mr.FOLDER_ID<>2]]>
+			<![CDATA[and mr.FOLDER_ID<>0]]>
+			<![CDATA[and mr.FOLDER_ID<>-1]]>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="contactsId != null">
+				and t.CONTACTS_ID = #{contactsId}
+			</if>
+			<if test="mailboxId != null">
+				and t.MAILBOX_ID = #{mailboxId}
+			</if>
+			<if test="mailTitle != null">
+				and t.MAIL_TITLE like <![CDATA['%${mailTitle}%']]>
+			</if>
+			<if test="mailContent != null">
+				and t.MAIL_CONTENT like <![CDATA['%${mailContent}%']]>
+			</if>
+			<if test="senderUserId != null">
+				and t.SENDER_USER_ID = #{senderUserId}
+			</if>
+			<if test="senderMail != null">
+				and t.SENDER_MAIL like <![CDATA['%${senderMail}%']]>
+			</if>
+			<if test="isfile != null">
+				and t.ISFILE = #{isfile}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+			<if test="smsAlert != null">
+				and t.SMS_ALERT = #{smsAlert}
+			</if>
+			<if test="signature != null">
+				and t.SIGNATURE = #{signature}
+			</if>
+			<if test="pressing != null">
+				and t.PRESSING = #{pressing}
+			</if>
+			<if test="encryption != null">
+				and t.ENCRYPTION = #{encryption}
+			</if>
+			<if test="encryptionPass != null">
+				and t.ENCRYPTION_PASS = #{encryptionPass}
+			</if>
+			<if test="replyTexting != null">
+				and t.REPLY_TEXTING = #{replyTexting}
+			</if>
+			<if test="replyTextingTime != null">
+				and t.REPLY_TEXTING_TIME = #{replyTextingTime}
+			</if>
+			<if test="mailStatus != null">
+				and t.MAIL_STATUS = #{mailStatus}
+			</if>
+			<if test="senderTime != null">
+				and t.SENDER_TIME = #{senderTime}
+			</if>
+			<if test="receiveTime2 != null">
+				and t.RECEIVE_TIME2 = #{receiveTime2}
+			</if>
+			<if test="messageId != null">
+				and t.MESSAGE_ID = #{messageId}
+			</if>
+			<if test="mailFolderId != null">
+				and t.MAIL_FOLDER_ID = #{mailFolderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<!-- <if test="searchReceiveTimeBegin!=null"> <![CDATA[and t.RECEIVE_TIME2>=#{searchReceiveTimeBegin}]]> 
+				</if> <if test="searchReceiveTimeEnd!=null"> <![CDATA[and t.RECEIVE_TIME2<=#{searchReceiveTimeEnd}]]> 
+				</if> -->
+			<if test="receivers!=null ">
+
+				and
+				<foreach collection="receivers" item="rec" index="index"
+					open="(" close=")" separator=" or ">
+					(1=1 and mr.delete_flag=0
+					<!-- and mr.READ_FLAG=0 <if test="rec.folderId!=null"> and mr.FOLDER_ID 
+						=#{rec.folderId} </if> -->
+					<if test="rec.starMail!=null">
+						and mr.STAR_MAIL=#{rec.starMail}
+					</if>
+					<if test="mailboxId==null">
+						<choose>
+							<when test="rec.receiveMail!=null">
+								and mr.RECEIVE_MAIL=#{rec.receiveMail}
+							</when>
+							<otherwise>
+								and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+							</otherwise>
+						</choose>
+					</if>
+					<if test="mailboxId!=null">
+						<if test="mailboxId&gt;1 and rec.receiveMail!=null">
+							and mr.RECEIVE_MAIL=#{rec.receiveMail}
+						</if>
+						<if test="mailboxId==1 and rec.receiveUserId!=null">
+							and mr.RECEIVE_USER_ID=#{rec.receiveUserId}
+						</if>
+					</if>
+					)
+				</foreach>
+
+			</if>
+		</where>
+		) v
+
+		WHERE (
+		v.receiveType = 4
+		OR (v.receiveType = 0 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 1 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 2 AND v.receiveTime2 IS NOT NULL)
+		OR (v.receiveType = 3 AND v.receiveTime2 IS NOT NULL)
+		)
+		<if test="searchReceiveTimeBegin!=null">
+				<![CDATA[and receiveTime2>=#{searchReceiveTimeBegin}]]>
+		</if>
+		<if test="searchReceiveTimeEnd!=null">
+				<![CDATA[and receiveTime2<=#{searchReceiveTimeEnd}]]>
+		</if>
+		) m
+
+	</select><!--我的邮件搜索end add by zhanglg -->
+</mapper>

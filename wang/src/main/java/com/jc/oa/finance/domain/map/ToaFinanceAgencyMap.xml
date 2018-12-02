@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.finance.domain.ToaFinanceAgency" > 
+
+<insert id="insert" parameterType="com.jc.oa.finance.domain.ToaFinanceAgency"
+		useGeneratedKeys="true" keyProperty="id">
+  	insert into toa_finance_agency(id,order_no,customer_id,customer_name,department,sale,maintenan_sale,cycle_start,cycle_end,card_no,card_amount,incontract_start,incontract_end,room_name,resources,pay_type,before_tax,before_little,paee,pay_state,pay_date,not_pay,order_remark,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3)
+ values(#{id},#{orderNo},#{customerId},#{customerName},#{department},#{sale},#{maintenanSale},#{cycleStart},#{cycleEnd},#{cardNo},#{cardAmount},#{incontractStart},#{incontractEnd},#{roomName},#{resources},#{payType},#{beforeTax},#{beforeLittle},#{paee},#{payState},#{payDate},#{notPay},#{orderRemark},#{deleteFlag},#{createUser},#{createUserDept},#{createDate},#{modifyUser},#{modifyDate},#{extStr1},#{extStr2},#{extStr3},#{extStr4},#{extStr5},#{extDate1},#{extDate2},#{extNum1},#{extNum2},#{extNum3})
+</insert>
+
+<update id="update" parameterType="com.jc.oa.finance.domain.ToaFinanceAgency">
+	update toa_finance_agency set 
+	<if test="orderNo != null ">
+		order_no=#{orderNo},
+	</if>
+	<if test="customerId != null ">
+		customer_id=#{customerId},
+	</if>
+	<if test="customerName != null ">
+		customer_name=#{customerName},
+	</if>
+	<if test="department != null ">
+		department=#{department},
+	</if>
+	<if test="sale != null ">
+		sale=#{sale},
+	</if>
+	<if test="maintenanSale != null ">
+		maintenan_sale=#{maintenanSale},
+	</if>
+	<if test="cycleStart != null ">
+		cycle_start=#{cycleStart},
+	</if>
+	<if test="cycleEnd != null ">
+		cycle_end=#{cycleEnd},
+	</if>
+	<if test="cardNo != null ">
+		card_no=#{cardNo},
+	</if>
+	<if test="cardAmount != null ">
+		card_amount=#{cardAmount},
+	</if>
+	<if test="incontractStart != null ">
+		incontract_start=#{incontractStart},
+	</if>
+	<if test="incontractEnd != null ">
+		incontract_end=#{incontractEnd},
+	</if>
+	<if test="roomName != null ">
+		room_name=#{roomName},
+	</if>
+	<if test="resources != null ">
+		resources=#{resources},
+	</if>
+	<if test="payType != null ">
+		pay_type=#{payType},
+	</if>
+	<if test="beforeTax != null ">
+		before_tax=#{beforeTax},
+	</if>
+	<if test="beforeLittle != null ">
+		before_little=#{beforeLittle},
+	</if>
+	<if test="paee != null ">
+		paee=#{paee},
+	</if>
+	<if test="payState != null ">
+		pay_state=#{payState},
+	</if>
+	<if test="payDate != null ">
+		pay_date=#{payDate},
+	</if>
+	<if test="notPay != null ">
+		not_pay=#{notPay},
+	</if>
+	<if test="orderRemark != null ">
+		order_remark=#{orderRemark},
+	</if>
+	<if test="deleteFlag != null ">
+		DELETE_FLAG=#{deleteFlag},
+	</if>
+	<if test="createUser != null ">
+		CREATE_USER=#{createUser},
+	</if>
+	<if test="createUserDept != null ">
+		CREATE_USER_DEPT=#{createUserDept},
+	</if>
+	<if test="createDate != null ">
+		CREATE_DATE=#{createDate},
+	</if>
+	<if test="modifyUser != null ">
+		MODIFY_USER=#{modifyUser},
+	</if>
+	<if test="modifyDate != null ">
+		MODIFY_DATE=#{modifyDate},
+	</if>
+	<if test="extStr1 != null ">
+		EXT_STR1=#{extStr1},
+	</if>
+	<if test="extStr2 != null ">
+		EXT_STR2=#{extStr2},
+	</if>
+	<if test="extStr3 != null ">
+		EXT_STR3=#{extStr3},
+	</if>
+	<if test="extStr4 != null ">
+		EXT_STR4=#{extStr4},
+	</if>
+	<if test="extStr5 != null ">
+		EXT_STR5=#{extStr5},
+	</if>
+	<if test="extDate1 != null ">
+		EXT_DATE1=#{extDate1},
+	</if>
+	<if test="extDate2 != null ">
+		EXT_DATE2=#{extDate2},
+	</if>
+	<if test="extNum1 != null ">
+		EXT_NUM1=#{extNum1},
+	</if>
+	<if test="extNum2 != null ">
+		EXT_NUM2=#{extNum2},
+	</if>
+	<if test="extNum3 != null ">
+		EXT_NUM3=#{extNum3},
+	</if>
+
+	 MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+</update>
+
+<select id="query" parameterType="com.jc.oa.finance.domain.ToaFinanceAgency" resultType="com.jc.oa.finance.domain.ToaFinanceAgency">
+	SELECT 
+		 t.ID id
+		,t.order_no orderNo
+		,t.customer_id customerId
+		,t.customer_name customerName
+		,t.department department
+		,t.sale sale
+		,t.maintenan_sale maintenanSale
+		,t.cycle_start cycleStart
+		,t.cycle_end cycleEnd
+		,t.card_no cardNo
+		,t.card_amount cardAmount
+		,t.incontract_start incontractStart
+		,t.incontract_end incontractEnd
+		,t.room_name roomName
+		,t.resources resources
+		,t.pay_type payType
+		,t.before_tax beforeTax
+		,t.before_little beforeLittle
+		,t.paee paee
+		,t.pay_state payState
+		,t.pay_date payDate
+		,t.not_pay notPay
+		,t.order_remark orderRemark
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.EXT_NUM1 extNum1
+		,t.EXT_NUM2 extNum2
+		,t.EXT_NUM3 extNum3
+ FROM toa_finance_agency t
+<where>
+	<if test="id != null ">
+		and t.id=#{id}
+	</if>
+	<if test="orderNo != null ">
+		and t.order_no=#{orderNo}
+	</if>
+	<if test="customerId != null ">
+		and t.customer_id=#{customerId}
+	</if>
+	<if test="customerName != null ">
+		and t.customer_name=#{customerName}
+	</if>
+	<if test="department != null ">
+		and t.department=#{department}
+	</if>
+	<if test="sale != null ">
+		and t.sale=#{sale}
+	</if>
+	<if test="maintenanSale != null ">
+		and t.maintenan_sale=#{maintenanSale}
+	</if>
+	<if test="cycleStart != null ">
+		and t.cycle_start=#{cycleStart}
+	</if>
+	<if test="cycleEnd != null ">
+		and t.cycle_end=#{cycleEnd}
+	</if>
+	<if test="cardNo != null ">
+		and t.card_no=#{cardNo}
+	</if>
+	<if test="cardAmount != null ">
+		and t.card_amount=#{cardAmount}
+	</if>
+	<if test="incontractStart != null ">
+		and t.incontract_start=#{incontractStart}
+	</if>
+	<if test="incontractEnd != null ">
+		and t.incontract_end=#{incontractEnd}
+	</if>
+	<if test="roomName != null ">
+		and t.room_name=#{roomName}
+	</if>
+	<if test="resources != null ">
+		and t.resources=#{resources}
+	</if>
+	<if test="payType != null ">
+		and t.pay_type=#{payType}
+	</if>
+	<if test="beforeTax != null ">
+		and t.before_tax=#{beforeTax}
+	</if>
+	<if test="beforeLittle != null ">
+		and t.before_little=#{beforeLittle}
+	</if>
+	<if test="paee != null ">
+		and t.paee=#{paee}
+	</if>
+	<if test="payState != null ">
+		and t.pay_state=#{payState}
+	</if>
+	<if test="payDate != null ">
+		and t.pay_date=#{payDate}
+	</if>
+	<if test="notPay != null ">
+		and t.not_pay=#{notPay}
+	</if>
+	<if test="orderRemark != null ">
+		and t.order_remark=#{orderRemark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+</select>
+	
+<select id="queryCount" parameterType="com.jc.oa.finance.domain.ToaFinanceAgency" resultType="java.lang.Long">
+	SELECT COUNT(ID) 
+	 FROM toa_finance_agency t
+<where>
+	<if test="id != null ">
+		and t.id=#{id}
+	</if>
+	<if test="orderNo != null ">
+		and t.order_no=#{orderNo}
+	</if>
+	<if test="customerId != null ">
+		and t.customer_id=#{customerId}
+	</if>
+	<if test="customerName != null ">
+		and t.customer_name=#{customerName}
+	</if>
+	<if test="department != null ">
+		and t.department=#{department}
+	</if>
+	<if test="sale != null ">
+		and t.sale=#{sale}
+	</if>
+	<if test="maintenanSale != null ">
+		and t.maintenan_sale=#{maintenanSale}
+	</if>
+	<if test="cycleStart != null ">
+		and t.cycle_start=#{cycleStart}
+	</if>
+	<if test="cycleEnd != null ">
+		and t.cycle_end=#{cycleEnd}
+	</if>
+	<if test="cardNo != null ">
+		and t.card_no=#{cardNo}
+	</if>
+	<if test="cardAmount != null ">
+		and t.card_amount=#{cardAmount}
+	</if>
+	<if test="incontractStart != null ">
+		and t.incontract_start=#{incontractStart}
+	</if>
+	<if test="incontractEnd != null ">
+		and t.incontract_end=#{incontractEnd}
+	</if>
+	<if test="roomName != null ">
+		and t.room_name=#{roomName}
+	</if>
+	<if test="resources != null ">
+		and t.resources=#{resources}
+	</if>
+	<if test="payType != null ">
+		and t.pay_type=#{payType}
+	</if>
+	<if test="beforeTax != null ">
+		and t.before_tax=#{beforeTax}
+	</if>
+	<if test="beforeLittle != null ">
+		and t.before_little=#{beforeLittle}
+	</if>
+	<if test="paee != null ">
+		and t.paee=#{paee}
+	</if>
+	<if test="payState != null ">
+		and t.pay_state=#{payState}
+	</if>
+	<if test="payDate != null ">
+		and t.pay_date=#{payDate}
+	</if>
+	<if test="notPay != null ">
+		and t.not_pay=#{notPay}
+	</if>
+	<if test="orderRemark != null ">
+		and t.order_remark=#{orderRemark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+
+</select>
+
+<update id="deleteLogic"  parameterType="com.jc.oa.finance.domain.ToaFinanceAgency">
+	     UPDATE toa_finance_agency t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+ 			where ID in
+ 			<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=","> 
+				 #{primaryKey}
+			</foreach>
+</update>
+  	
+</mapper>   

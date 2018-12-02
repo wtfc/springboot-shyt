@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.shyt.domain.ToaShytAsset" > 
+
+<insert id="insert" parameterType="com.jc.oa.shyt.domain.ToaShytAsset"
+		useGeneratedKeys="true" keyProperty="id">
+  		insert into toa_shyt_asset(ID,assets_Name,Type,bard,assets_Num,machine_num,unit,NUMBER,PRICE,IN_DATE,USE_DEPT,Address,tiaoboneirong,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,EXT_DATE1,EXT_DATE2,ext_num1,ext_num2,ext_num3)
+ values(#{id},#{assetsName},#{type},#{bard},#{assetsNum},#{machineNum},#{unit},#{number},#{price},#{inDate},#{useDept},#{address},#{tiaoboneirong},#{deleteFlag},#{createUser},#{createUserDept},#{createUserOrg},#{createDate},#{modifyUser},#{modifyDate},#{extStr1},#{extStr2},#{extStr3},#{extStr4},#{extStr5},#{extDate1},#{extDate2},#{extNum1},#{extNum2},#{extNum3})
+</insert>
+
+<update id="update" parameterType="com.jc.oa.shyt.domain.ToaShytAsset">
+		update toa_shyt_asset set 
+	<if test="assetsName != null ">
+		assets_Name=#{assetsName},
+	</if>
+	<if test="type != null ">
+		Type=#{type},
+	</if>
+	<if test="bard != null ">
+		bard=#{bard},
+	</if>
+	<if test="assetsNum != null ">
+		assets_Num=#{assetsNum},
+	</if>
+	<if test="machineNum != null ">
+		machine_num=#{machineNum},
+	</if>
+	<if test="unit != null ">
+		unit=#{unit},
+	</if>
+	<if test="number != null ">
+		NUMBER=#{number},
+	</if>
+	<if test="price != null ">
+		PRICE=#{price},
+	</if>
+	<if test="inDate != null ">
+		IN_DATE=#{inDate},
+	</if>
+	<if test="useDept != null ">
+		USE_DEPT=#{useDept},
+	</if>
+	<if test="address != null ">
+		Address=#{address},
+	</if>
+	<if test="tiaoboneirong != null ">
+		tiaoboneirong=#{tiaoboneirong},
+	</if>
+	<if test="deleteFlag != null ">
+		DELETE_FLAG=#{deleteFlag},
+	</if>
+	<if test="createUser != null ">
+		CREATE_USER=#{createUser},
+	</if>
+	<if test="createUserDept != null ">
+		CREATE_USER_DEPT=#{createUserDept},
+	</if>
+	<if test="createUserOrg != null ">
+		CREATE_USER_ORG=#{createUserOrg},
+	</if>
+	<if test="createDate != null ">
+		CREATE_DATE=#{createDate},
+	</if>
+	<if test="modifyUser != null ">
+		MODIFY_USER=#{modifyUser},
+	</if>
+	<if test="modifyDate != null ">
+		MODIFY_DATE=#{modifyDate},
+	</if>
+	<if test="extStr1 != null ">
+		EXT_STR1=#{extStr1},
+	</if>
+	<if test="extStr2 != null ">
+		EXT_STR2=#{extStr2},
+	</if>
+	<if test="extStr3 != null ">
+		EXT_STR3=#{extStr3},
+	</if>
+	<if test="extStr4 != null ">
+		EXT_STR4=#{extStr4},
+	</if>
+	<if test="extStr5 != null ">
+		EXT_STR5=#{extStr5},
+	</if>
+	<if test="extDate1 != null ">
+		EXT_DATE1=#{extDate1},
+	</if>
+	<if test="extDate2 != null ">
+		EXT_DATE2=#{extDate2},
+	</if>
+	<if test="extNum1 != null ">
+		ext_num1=#{extNum1},
+	</if>
+	<if test="extNum2 != null ">
+		ext_num2=#{extNum2},
+	</if>
+	<if test="extNum3 != null ">
+		ext_num3=#{extNum3},
+	</if>
+
+	 MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+</update>
+
+<select id="query" parameterType="com.jc.oa.shyt.domain.ToaShytAsset" resultType="com.jc.oa.shyt.domain.ToaShytAsset">
+		SELECT 
+		 t.ID id
+		,t.assets_Name assetsName
+		,t.Type type
+		,t.bard bard
+		,t.assets_Num assetsNum
+		,t.machine_num machineNum
+		,t.unit unit
+		,t.NUMBER number
+		,t.PRICE price
+		,t.IN_DATE inDate
+		,t.USE_DEPT useDept
+		,t.Address address
+		,t.tiaoboneirong tiaoboneirong
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_USER_ORG createUserOrg
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.ext_num1 extNum1
+		,t.ext_num2 extNum2
+		,t.ext_num3 extNum3
+ FROM toa_shyt_asset t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="assetsName != null ">
+		and t.assets_Name=#{assetsName}
+	</if>
+	<if test="type != null ">
+		and t.Type=#{type}
+	</if>
+	<if test="bard != null ">
+		and t.bard=#{bard}
+	</if>
+	<if test="assetsNum != null ">
+		and t.assets_Num=#{assetsNum}
+	</if>
+	<if test="machineNum != null ">
+		and t.machine_num=#{machineNum}
+	</if>
+	<if test="unit != null ">
+		and t.unit=#{unit}
+	</if>
+	<if test="number != null ">
+		and t.NUMBER=#{number}
+	</if>
+	<if test="price != null ">
+		and t.PRICE=#{price}
+	</if>
+	<if test="inDate != null ">
+		and t.IN_DATE=#{inDate}
+	</if>
+	<if test="useDept != null ">
+		and t.USE_DEPT=#{useDept}
+	</if>
+	<if test="address != null ">
+		and t.Address=#{address}
+	</if>
+	<if test="tiaoboneirong != null ">
+		and t.tiaoboneirong=#{tiaoboneirong}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createUserOrg != null ">
+		and t.CREATE_USER_ORG=#{createUserOrg}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.ext_num1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.ext_num2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.ext_num3=#{extNum3}
+	</if>
+</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+</select>
+	
+<select id="queryCount" parameterType="com.jc.oa.shyt.domain.ToaShytAsset" resultType="java.lang.Long">
+		SELECT COUNT(ID) 
+	 FROM toa_shyt_asset t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="assetsName != null ">
+		and t.assets_Name=#{assetsName}
+	</if>
+	<if test="type != null ">
+		and t.Type=#{type}
+	</if>
+	<if test="bard != null ">
+		and t.bard=#{bard}
+	</if>
+	<if test="assetsNum != null ">
+		and t.assets_Num=#{assetsNum}
+	</if>
+	<if test="machineNum != null ">
+		and t.machine_num=#{machineNum}
+	</if>
+	<if test="unit != null ">
+		and t.unit=#{unit}
+	</if>
+	<if test="number != null ">
+		and t.NUMBER=#{number}
+	</if>
+	<if test="price != null ">
+		and t.PRICE=#{price}
+	</if>
+	<if test="inDate != null ">
+		and t.IN_DATE=#{inDate}
+	</if>
+	<if test="useDept != null ">
+		and t.USE_DEPT=#{useDept}
+	</if>
+	<if test="address != null ">
+		and t.Address=#{address}
+	</if>
+	<if test="tiaoboneirong != null ">
+		and t.tiaoboneirong=#{tiaoboneirong}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createUserOrg != null ">
+		and t.CREATE_USER_ORG=#{createUserOrg}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.ext_num1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.ext_num2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.ext_num3=#{extNum3}
+	</if>
+</where>
+
+</select>
+
+<update id="deleteLogic"  parameterType="com.jc.oa.shyt.domain.ToaShytAsset">
+	     UPDATE toa_shyt_asset t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+ 			where ID in
+ 			<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=","> 
+				 #{primaryKey}
+			</foreach>
+</update>
+  	
+</mapper>   

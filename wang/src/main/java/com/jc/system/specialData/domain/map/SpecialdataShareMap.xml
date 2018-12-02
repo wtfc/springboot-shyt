@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.system.specialData.domain.SpecialdataShare">
+
+	<select id="query" parameterType="com.jc.system.specialData.domain.SpecialdataShare" resultType="com.jc.system.specialData.domain.SpecialdataShare">
+		SELECT 
+			t.ID id,
+			t.specialData_Id specialdataId,
+			t.share_dept shareDept,
+			t.share_users shareUsers,
+			t.share_org shareOrg
+			
+		FROM tty_sys_specialdata_share t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+
+			<if test="specialdataId != null">
+				and t.specialData_Id = #{specialdataId}
+			</if>
+
+			<if test="shareDept != null">
+				and t.share_dept = #{shareDept}
+			</if>
+
+			<if test="shareUsers != null">
+				and t.share_users = #{shareUsers}
+			</if>
+
+			<if test="shareOrg != null">
+				and t.share_org = #{shareOrg}
+			</if>
+		</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+	</select>
+	
+	
+	<select id="queryCount" parameterType="com.jc.system.specialData.domain.SpecialdataShare" resultType="java.lang.Long">
+		SELECT count(ID) 
+		FROM tty_sys_specialdata_share t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+
+			<if test="specialdataId != null">
+				and t.specialData_Id = #{specialdataId}
+			</if>
+
+			<if test="shareDept != null">
+				and t.share_dept = #{shareDept}
+			</if>
+
+			<if test="shareUsers != null">
+				and t.share_users = #{shareUsers}
+			</if>
+
+			<if test="shareOrg != null">
+				and t.share_org = #{shareOrg}
+			</if>
+		</where>
+	</select>
+
+	<delete id="deletePhysical"  parameterType="com.jc.system.specialData.domain.SpecialdataShare">
+    	delete from tty_sys_specialdata_share
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete>
+
+	<update id="deleteLogic"  parameterType="com.jc.system.specialData.domain.SpecialdataShare">
+    	UPDATE tty_sys_specialdata_share t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+ 	
+ 	<delete id="deleteforspecialId"  parameterType="com.jc.system.specialData.domain.SpecialdataShare">
+    	delete from tty_sys_specialdata_share
+      		where specialData_Id = #{specialdataId}
+ 	</delete>
+
+	<insert id="insert" parameterType="com.jc.system.specialData.domain.SpecialdataShare" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tty_sys_specialdata_share(ID,specialData_Id,share_dept,share_users,share_org)
+			VALUES (#{id,jdbcType=NUMERIC},#{specialdataId,jdbcType=NUMERIC},#{shareDept,jdbcType=NUMERIC},#{shareUsers,jdbcType=NUMERIC},#{shareOrg,jdbcType=NUMERIC})
+	</insert>
+
+	<insert id="insertList" parameterType="list">
+		INSERT INTO tty_sys_specialdata_share(ID,specialData_Id,share_dept,share_users,share_org)
+			VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(#{item.id,jdbcType=NUMERIC},#{item.specialdataId,jdbcType=NUMERIC},#{item.shareDept,jdbcType=NUMERIC},#{item.shareUsers,jdbcType=NUMERIC},#{item.shareOrg,jdbcType=NUMERIC})
+			</foreach> 
+	</insert>
+
+	<update id="update" parameterType="com.jc.system.specialData.domain.SpecialdataShare">
+	UPDATE tty_sys_specialdata_share set
+	   	<if test="specialdataId != null">
+	   		specialData_Id = #{specialdataId},
+	   	</if>
+	   	<if test="shareDept != null">
+	   		share_dept = #{shareDept},
+	   	</if>
+	   	<if test="shareUsers != null">
+	   		share_users = #{shareUsers},
+	   	</if>
+	   	<if test="shareOrg != null">
+	   		share_org = #{shareOrg},
+	   	</if>
+	   	MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+	</update>
+
+</mapper>

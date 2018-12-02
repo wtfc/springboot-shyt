@@ -1,0 +1,50 @@
+/* fade */
+.jbox-fade{background-color:#cccccc;}
+/* drag */
+.jbox-drag{border:1px dashed #376EA5;}
+/* jbox */
+div.jbox {padding:0px;border:none;font-size:12px;}
+/* border */
+div.jbox .jbox-border{background: none repeat scroll 0 0 #ff6a59;}
+/* container */
+div.jbox .jbox-container{background-color:#ff6a59;}
+/* title-panel */
+div.jbox .jbox-title-panel{padding: 8px 15px;background-color:#ff6a59;display: none;}
+div.jbox .jbox-title{color:#fff; font-size: 14px; line-height: 27px;padding-top:0px;}
+div.jbox .jbox-title-icon{background:url(../../images/demoimg/jbox-title-icon.gif) no-repeat scroll 3px 5px transparent;}
+div.jbox .jbox-close,div.jbox .jbox-close-hover{color: #fff;font-size: 19px;}
+div.jbox .jbox-close:before,div.jbox .jbox-close-hover:before{content:"\e69f"}
+/* content */
+div.jbox .jbox-content{min-height:24px;line-height:24px;color:#fff;font-size:18px;min-width: 380px;min-height: 105px;}
+div.jbox .jbox-content-loading{background-color:#E6E6E6;}
+div.jbox .jbox-content-loading-image{background:url(../../images/demoimg/jbox-content-loading.gif) no-repeat bottom center;}
+/* button-panel */
+div.jbox .jbox-button-panel{}
+div.jbox .jbox-bottom-text{text-indent:10px;color:#444444;}
+div.jbox .jbox-button{border:none;color:#555;margin:0px 10px 0px 0px;width: 60px; height:26px;background-color: #fff}
+div.jbox .jbox-button-hover{color:#555;}
+div.jbox .jbox-button-active{color:#555;}
+div.jbox-warning .jbox .jbox-container{background-color: #eee;}
+/* tip-color */
+div.jbox .jbox-tip-color{background-color:#ff6a59;color:#ffffff;}
+div.jbox .jbox-tip-box .jbox-content{min-width: 0;min-height: 0;height: 80px !important;}
+div.jbox .jbox-g-color{background-color:#00ad37;color:#ffffff;}
+/* icons */
+div.jbox span.fa{font-size: 35px}
+div.jbox span.jbox-icon-info:before{content:"\e6a2"}
+div.jbox span.jbox-icon-question:before{content:"\e6a1"}
+div.jbox span.jbox-icon-success:before{content:"\e6a0"}
+div.jbox span.jbox-icon-warning:before{content:"\e6a3"}
+div.jbox span.jbox-icon-error:before{content:"\e69f"}
+div.jbox span.jbox-icon-none {display: none; overflow:hidden;}
+div.jbox span.jbox-icon-loading {background:url(../../images/demoimg/jbox-loading1.gif) no-repeat scroll 0 0 transparent;}
+div.jbox .jbox-content b.badge{width:32px;height:32px;padding:0;border-radius:100px;color:#ff6a59;text-align:center;line-height:32px;font-size:20px;margin-right:20px;float:left;}
+div.jbox .jbox-content span{}
+
+/* 已提交人员框 */
+.msg-div{font-size: 14px;padding-top: 10px;margin-left: -30px;height: 85px;overflow: hidden;}
+.msg-div.no-p{padding-top:0;display:none;height: auto;}
+.msg-div p{margin-bottom: 0;line-height: 25px}
+.msg-div p span{margin-right: 22px;}
+.msg-b{line-height: 20px;height: auto;}
+.msg-b button{background: none;font-size: 16px;color: #fff;border: 0 none;margin-left: 10px;outline: none;}

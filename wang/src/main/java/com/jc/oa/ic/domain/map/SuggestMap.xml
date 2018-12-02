@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.ic.domain.Suggest">
+
+	<select id="query" parameterType="com.jc.oa.ic.domain.Suggest" resultType="com.jc.oa.ic.domain.Suggest">
+		SELECT DISTINCT
+			t.ID id,
+			t.SUGGEST_TYPE_ID suggestTypeId,
+			t.SUGGEST_TITLE suggestTitle,
+			t.SUGGEST_CONTENT suggestContent,
+			t.SUGGEST_WAY suggestWay,
+			t.SINGLE_SHOW singleShow,
+			t.REP_STATUS repStatus,
+			t.DISPOSE_TYPE disposeType,
+			t.SUGGEST_USER_ID suggestUserId,
+			t.SUGGEST_TEL suggestTel,
+			t.SUGGEST_MAIL suggestMail,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5,
+			st.TYPE_NAME suggestTypeName,
+			u.DISPLAY_NAME displayName
+			<if test="userId !=null and userId !=''">
+				,(SELECT COUNT(1) FROM  toa_ic_sug_rep rep WHERE rep.suggest_id = t.ID AND rep.create_user = #{userId}) isRep,
+				(SELECT COUNT(1) FROM  toa_ic_sug_rep rep WHERE rep.suggest_id = t.ID AND rep.create_user = t.CREATE_USER) createUserRep
+			</if>
+		FROM toa_ic_suggest t,toa_ic_suggest_type st,toa_sys_user u,toa_ic_sug_recipient re
+		<where>
+			 t.SUGGEST_TYPE_ID = st.ID
+			 and t.CREATE_USER = u.ID
+			 and re.suggest_id = t.id
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="suggestTypeId != null">
+				and t.SUGGEST_TYPE_ID = #{suggestTypeId}
+			</if>
+			<if test="suggestTitle != null">
+				and t.SUGGEST_TITLE like <![CDATA['%${suggestTitle}%']]>
+			</if>
+			<if test="suggestContent != null">
+				and t.SUGGEST_CONTENT = #{suggestContent}
+			</if>
+			<if test="suggestWay != null and suggestWay !=''">
+				and t.SUGGEST_WAY = #{suggestWay}
+			</if>
+			<if test="singleShow != null">
+				and t.SINGLE_SHOW = #{singleShow}
+			</if>
+			<if test="repStatus == 1">
+				and t.REP_STATUS = #{repStatus}
+				AND ((SELECT  COUNT(1) FROM toa_ic_sug_rep rep WHERE rep.suggest_id = t.ID AND rep.create_user = #{userId})>0 OR (SELECT  COUNT(1) FROM toa_ic_sug_rep rep WHERE rep.suggest_id = t.ID AND rep.create_user = t.CREATE_USER)>0 OR t.`CREATE_USER`=#{userId})
+			</if>
+			<if test="repStatus == 0">
+				and (t.REP_STATUS = #{repStatus}
+				and ((SELECT  COUNT(1) FROM toa_ic_sug_rep rep WHERE rep.suggest_id = t.ID AND rep.create_user = #{userId})<![CDATA[<]]>1 and (SELECT  COUNT(1) FROM toa_ic_sug_rep rep WHERE rep.suggest_id = t.ID AND rep.create_user = t.CREATE_USER)<![CDATA[<]]>1))
+			</if>
+			<if test="disposeType != null and disposeType !=''">
+				<choose>
+					<when test="disposeType== 1">
+						and t.CREATE_USER = #{userId}
+						<if test="createUser != null and createUser !=''">
+							and EXISTS(select 1 from toa_ic_sug_recipient recipient where recipient.suggest_id = t.id and recipient.CREATE_USER=#{createUser})
+						</if>
+					</when>
+					<when test="disposeType== 0">
+						and t.CREATE_USER != #{userId}
+						<if test="createUser != null and createUser !=''">
+							and EXISTS(select 1 from toa_ic_sug_recipient recipient where recipient.suggest_id = t.id and recipient.CREATE_USER=#{createUser})
+						</if>
+					</when>
+				</choose>
+			</if>
+			<if test="suggestUserId != null">
+				and t.SUGGEST_USER_ID = #{suggestUserId}
+			</if>
+			<if test="suggestTel != null">
+				and t.SUGGEST_TEL = #{suggestTel} 
+			</if>
+			<if test="suggestMail != null">
+				and t.SUGGEST_MAIL = #{suggestMail}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="disposeType == null or disposeType == ''">
+				<if test="createUser != null">
+					and t.CREATE_USER = #{createUser}
+				</if>
+			</if>
+			<if test="userId !=null and userId !=''">
+				AND ( t.`CREATE_USER` = #{userId}
+						OR re.`RECIPIENT_ID`=#{userId})
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+<!-- 			
+ -->			<if test="startCreateDate != null">
+				<![CDATA[ and t.CREATE_DATE>= #{startCreateDate} ]]>
+			</if>
+			<if test="endCreateDate != null">
+				<![CDATA[ and t.CREATE_DATE <= #{endCreateDate} ]]>
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+			<if test="orderBy != null">
+				order by ${orderBy}
+			</if>
+	</select>
+	
+	
+	<select id="queryCount" parameterType="com.jc.oa.ic.domain.Suggest" resultType="java.lang.Integer">
+		SELECT count(DISTINCT t.ID) 
+		FROM toa_ic_suggest t,toa_ic_suggest_type st,toa_sys_user u,toa_ic_sug_recipient re
+		<where>
+			 t.SUGGEST_TYPE_ID = st.ID
+			 and t.CREATE_USER = u.ID
+			 and re.suggest_id = t.id
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="suggestTypeId != null">
+				and t.SUGGEST_TYPE_ID = #{suggestTypeId}
+			</if>
+			<if test="suggestTitle != null">
+				and t.SUGGEST_TITLE like <![CDATA['%${suggestTitle}%']]>
+			</if>
+			<if test="suggestContent != null">
+				and t.SUGGEST_CONTENT = #{suggestContent}
+			</if>
+			<if test="suggestWay != null and suggestWay !=''">
+				and t.SUGGEST_WAY = #{suggestWay}
+			</if>
+			<if test="singleShow != null">
+				and t.SINGLE_SHOW = #{singleShow}
+			</if>
+			<if test="repStatus == 1">
+				and t.REP_STATUS = #{repStatus}
+				AND ((SELECT  COUNT(1) FROM toa_ic_sug_rep rep WHERE rep.suggest_id = t.ID AND rep.create_user = #{userId})>0 OR (SELECT  COUNT(1) FROM toa_ic_sug_rep rep WHERE rep.suggest_id = t.ID AND rep.create_user = t.CREATE_USER)>0 OR t.`CREATE_USER`=#{userId})
+			</if>
+			<if test="repStatus == 0">
+				and (t.REP_STATUS = #{repStatus}
+				and ((SELECT  COUNT(1) FROM toa_ic_sug_rep rep WHERE rep.suggest_id = t.ID AND rep.create_user = #{userId})<![CDATA[<]]>1 and (SELECT  COUNT(1) FROM toa_ic_sug_rep rep WHERE rep.suggest_id = t.ID AND rep.create_user = t.CREATE_USER)<![CDATA[<]]>1))
+			</if>
+			<if test="disposeType != null and disposeType !=''">
+				<choose>
+					<when test="disposeType== 1">
+						and t.CREATE_USER = #{userId}
+						<if test="createUser != null and createUser !=''">
+							and EXISTS(select 1 from toa_ic_sug_recipient recipient where recipient.suggest_id = t.id and recipient.CREATE_USER=#{createUser})
+						</if>
+					</when>
+					<when test="disposeType== 0">
+						and t.CREATE_USER != #{userId}
+						<if test="createUser != null and createUser !=''">
+							and EXISTS(select 1 from toa_ic_sug_recipient recipient where recipient.suggest_id = t.id and recipient.CREATE_USER=#{createUser})
+						</if>
+					</when>
+				</choose>
+			</if>
+			<if test="suggestUserId != null">
+				and t.SUGGEST_USER_ID = #{suggestUserId}
+			</if>
+			<if test="suggestTel != null">
+				and t.SUGGEST_TEL = #{suggestTel}
+			</if>
+			<if test="suggestMail != null">
+				and t.SUGGEST_MAIL = #{suggestMail}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="disposeType == null or disposeType == ''">
+				<if test="createUser != null">
+					and t.CREATE_USER = #{createUser}
+				</if>
+			</if>
+			<if test="userId !=null and userId !=''">
+				AND ( t.`CREATE_USER` = #{userId}
+						OR re.`RECIPIENT_ID`=#{userId})
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+<!-- 			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+ -->			<if test="startCreateDate != null">
+				<![CDATA[ and t.CREATE_DATE>= #{startCreateDate} ]]>
+			</if>
+			<if test="endCreateDate != null">
+				<![CDATA[ and t.CREATE_DATE <= #{endCreateDate} ]]>
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+	</select>
+	<select id="selectOne" parameterType="com.jc.oa.ic.domain.Suggest" resultType="com.jc.oa.ic.domain.Suggest">
+		SELECT DISTINCT
+			t.ID id,
+			t.SUGGEST_TYPE_ID suggestTypeId,
+			t.SUGGEST_TITLE suggestTitle,
+			t.SUGGEST_CONTENT suggestContent,
+			t.SUGGEST_WAY suggestWay,
+			t.SINGLE_SHOW singleShow,
+			t.REP_STATUS repStatus,
+			t.DISPOSE_TYPE disposeType,
+			t.SUGGEST_USER_ID suggestUserId,
+			t.SUGGEST_TEL suggestTel,
+			t.SUGGEST_MAIL suggestMail,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5,
+			st.TYPE_NAME suggestTypeName,
+			u.DISPLAY_NAME displayName
+			
+		FROM toa_ic_suggest t,toa_ic_suggest_type st,toa_sys_user u,toa_ic_sug_recipient re
+		<where>
+			 t.SUGGEST_TYPE_ID = st.ID
+			 and t.CREATE_USER = u.ID
+			 and re.suggest_id = t.id
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="suggestTypeId != null">
+				and t.SUGGEST_TYPE_ID = #{suggestTypeId}
+			</if>
+			<if test="suggestTitle != null">
+				and t.SUGGEST_TITLE = #{suggestTitle}
+			</if>
+			<if test="suggestContent != null">
+				and t.SUGGEST_CONTENT = #{suggestContent}
+			</if>
+			<if test="suggestWay != null">
+				and t.SUGGEST_WAY = #{suggestWay}
+			</if>
+			<if test="singleShow != null">
+				and t.SINGLE_SHOW = #{singleShow}
+			</if>
+			<if test="repStatus != null and repStatus !=''">
+				and t.REP_STATUS = #{repStatus}
+			</if>
+			<if test="disposeType != null and disposeType !=''">
+				<choose>
+					<when test="disposeType== 1">
+						and t.CREATE_USER = #{createUser}
+					</when>
+					<when test="disposeType== 0">
+						and t.CREATE_USER != #{createUser}
+						and EXISTS(select 1 from toa_ic_sug_recipient recipient where recipient.suggest_id = t.id and recipient.recipient_id=#{createUser})
+					</when>
+				</choose>
+			</if>
+			<if test="suggestUserId != null">
+				and t.SUGGEST_USER_ID = #{suggestUserId}
+			</if>
+			<if test="suggestTel != null">
+				and t.SUGGEST_TEL = #{suggestTel}
+			</if>
+			<if test="suggestMail != null">
+				and t.SUGGEST_MAIL = #{suggestMail}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="disposeType == null or disposeType == ''">
+				<if test="createUser != null">
+					and t.CREATE_USER = #{createUser}
+				</if>
+			</if>
+			<if test="userId !=null and userId !=''">
+				AND ( t.`CREATE_USER` = #{userId}
+						OR re.`RECIPIENT_ID`=#{userId})
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+<!-- 			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+ -->			<if test="startCreateDate != null">
+				<![CDATA[ and t.CREATE_DATE>= #{startCreateDate} ]]>
+			</if>
+			<if test="endCreateDate != null">
+				<![CDATA[ and t.CREATE_DATE <= #{endCreateDate} ]]>
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+			<if test="orderBy != null">
+				order by ${orderBy}
+			</if>
+	</select>
+	<!-- 物理删除 -->
+	<delete id="deletePhysical"  parameterType="com.jc.oa.ic.domain.Suggest">
+    	delete from toa_ic_suggest
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete>
+ 	<!-- 逻辑删除 -->
+	<update id="deleteLogic"  parameterType="com.jc.oa.ic.domain.Suggest">
+		<![CDATA[
+    		UPDATE toa_ic_suggest set DELETE_FLAG = 1, MODIFY_USER = #{modifyUser}, MODIFY_DATE = #{modifyDate}
+    	]]>
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+
+	<insert id="insert" parameterType="com.jc.oa.ic.domain.Suggest" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO toa_ic_suggest(SUGGEST_TYPE_ID,SUGGEST_TITLE,SUGGEST_CONTENT,SUGGEST_WAY,SINGLE_SHOW,REP_STATUS,DISPOSE_TYPE,SUGGEST_USER_ID,SUGGEST_TEL,SUGGEST_MAIL,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES (#{suggestTypeId,jdbcType=NUMERIC},#{suggestTitle,jdbcType=VARCHAR},#{suggestContent,jdbcType=VARCHAR},#{suggestWay,jdbcType=VARCHAR},#{singleShow,jdbcType=VARCHAR},'0',#{disposeType,jdbcType=VARCHAR},#{suggestUserId,jdbcType=NUMERIC},#{suggestTel,jdbcType=VARCHAR},#{suggestMail,jdbcType=VARCHAR},#{deleteFlag,jdbcType=NUMERIC},#{createUser,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createUserOrg,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extDate1,jdbcType=TIMESTAMP},#{extDate2,jdbcType=TIMESTAMP},#{extNum1,jdbcType=NUMERIC},#{extNum2,jdbcType=NUMERIC},#{extNum3,jdbcType=NUMERIC},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr5,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertList" parameterType="list">
+		INSERT INTO toa_ic_suggest(SUGGEST_TYPE_ID,SUGGEST_TITLE,SUGGEST_CONTENT,SUGGEST_WAY,SINGLE_SHOW,REP_STATUS,DISPOSE_TYPE,SUGGEST_USER_ID,SUGGEST_TEL,SUGGEST_MAIL,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(#{item.suggestTypeId,jdbcType=NUMERIC},#{item.suggestTitle,jdbcType=VARCHAR},#{item.suggestContent,jdbcType=VARCHAR},#{item.suggestWay,jdbcType=VARCHAR},#{item.singleShow,jdbcType=VARCHAR},#{item.repStatus,jdbcType=VARCHAR},#{item.disposeType,jdbcType=VARCHAR},#{item.suggestUserId,jdbcType=NUMERIC},#{item.suggestTel,jdbcType=VARCHAR},#{item.suggestMail,jdbcType=VARCHAR},#{item.deleteFlag,jdbcType=NUMERIC},#{item.createUser,jdbcType=NUMERIC},#{item.createUserDept,jdbcType=NUMERIC},#{item.createUserOrg,jdbcType=NUMERIC},#{item.createDate,jdbcType=TIMESTAMP},#{item.modifyUser,jdbcType=NUMERIC},#{item.modifyDate,jdbcType=TIMESTAMP},#{item.extDate1,jdbcType=TIMESTAMP},#{item.extDate2,jdbcType=TIMESTAMP},#{item.extNum1,jdbcType=NUMERIC},#{item.extNum2,jdbcType=NUMERIC},#{item.extNum3,jdbcType=NUMERIC},#{item.extStr1,jdbcType=VARCHAR},#{item.extStr2,jdbcType=VARCHAR},#{item.extStr3,jdbcType=VARCHAR},#{item.extStr4,jdbcType=VARCHAR},#{item.extStr5,jdbcType=VARCHAR})
+			</foreach> 
+	</insert>
+
+	<update id="update" parameterType="com.jc.oa.ic.domain.Suggest">
+	UPDATE toa_ic_suggest
+	   <set>
+	   	<if test="suggestTitle != null">
+	   		SUGGEST_TITLE = #{suggestTitle},
+	   	</if>
+	   	<if test="suggestContent != null">
+	   		SUGGEST_CONTENT = #{suggestContent},
+	   	</if>
+	   	<if test="suggestWay != null">
+	   		SUGGEST_WAY = #{suggestWay},
+	   	</if>
+	   	<if test="singleShow != null">
+	   		SINGLE_SHOW = #{singleShow},
+	   	</if>
+	   	<if test="repStatus != null">
+	   		REP_STATUS = #{repStatus},
+	   	</if>
+	   	<if test="disposeType != null">
+	   		DISPOSE_TYPE = #{disposeType},
+	   	</if>
+	   	<if test="suggestUserId != null">
+	   		SUGGEST_USER_ID = #{suggestUserId},
+	   	</if>
+	   	<if test="suggestTel != null">
+	   		SUGGEST_TEL = #{suggestTel},
+	   	</if>
+	   	<if test="suggestMail != null">
+	   		SUGGEST_MAIL = #{suggestMail},
+	   	</if>
+	   	<if test="deleteFlag != null">
+	   		DELETE_FLAG = #{deleteFlag},
+	   	</if>
+	   	<if test="modifyUser != null">
+	   		MODIFY_USER = #{modifyUser},
+	   	</if>
+	   	<if test="extDate1 != null">
+	   		EXT_DATE1 = #{extDate1},
+	   	</if>
+	   	<if test="extDate2 != null">
+	   		EXT_DATE2 = #{extDate2},
+	   	</if>
+	   	<if test="extNum1 != null">
+	   		EXT_NUM1 = #{extNum1},
+	   	</if>
+	   	<if test="extNum2 != null">
+	   		EXT_NUM2 = #{extNum2},
+	   	</if>
+	   	<if test="extNum3 != null">
+	   		EXT_NUM3 = #{extNum3},
+	   	</if>
+	   	<if test="extStr1 != null">
+	   		EXT_STR1 = #{extStr1},
+	   	</if>
+	   	<if test="extStr2 != null">
+	   		EXT_STR2 = #{extStr2},
+	   	</if>
+	   	<if test="extStr3 != null">
+	   		EXT_STR3 = #{extStr3},
+	   	</if>
+	   	<if test="extStr4 != null">
+	   		EXT_STR4 = #{extStr4},
+	   	</if>
+	   	<if test="extStr5 != null">
+	   		EXT_STR5 = #{extStr5},
+	   	</if>
+	   </set>
+	   ,MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+	</update>
+
+</mapper>

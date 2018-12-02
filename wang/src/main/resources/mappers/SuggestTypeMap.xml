@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.ic.domain.SuggestType">
+
+	<select id="query" parameterType="com.jc.oa.ic.domain.SuggestType" resultType="com.jc.oa.ic.domain.SuggestType">
+		SELECT 
+			t.ID id,
+			t.TYPE_NAME typeName,
+			t.IS_FIXED isFixed,
+			t.RECIPIENT_IDS recipientIds,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5
+			
+		FROM toa_ic_suggest_type t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="typeName != null">
+				and t.TYPE_NAME like <![CDATA['%${typeName}%']]>
+			</if>
+			<if test="isFixed != null and isFixed != ''">
+				and t.IS_FIXED = #{isFixed}
+			</if>
+			<if test="recipientIds != null">
+				and t.RECIPIENT_IDS = #{recipientIds}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+		<if test="orderBy != null">
+				order by ${orderBy}
+			</if>
+	</select>
+	
+	
+	<select id="queryCount" parameterType="com.jc.oa.ic.domain.SuggestType" resultType="java.lang.Integer">
+		SELECT count(ID) 
+		FROM toa_ic_suggest_type t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="typeName != null">
+				and t.TYPE_NAME like <![CDATA['%${typeName}%']]>
+			</if>
+			<if test="isFixed != null and isFixed != ''">
+				and t.IS_FIXED = #{isFixed}
+			</if>
+			<if test="recipientIds != null">
+				and t.RECIPIENT_IDS = #{recipientIds}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+	</select>
+	<select id="selectOne" parameterType="com.jc.oa.ic.domain.SuggestType" resultType="com.jc.oa.ic.domain.SuggestType">
+		SELECT 
+			t.ID id,
+			t.TYPE_NAME typeName,
+			t.IS_FIXED isFixed,
+			t.RECIPIENT_IDS recipientIds,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5
+			
+		FROM toa_ic_suggest_type t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="typeName != null">
+				and t.TYPE_NAME = #{typeName}
+			</if>
+			<if test="isFixed != null">
+				and t.IS_FIXED = #{isFixed}
+			</if>
+			<if test="recipientIds != null">
+				and t.RECIPIENT_IDS = #{recipientIds}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+		<if test="orderBy != null">
+				order by ${orderBy}
+			</if>
+	</select>
+	<delete id="deletePhysical"  parameterType="com.jc.oa.ic.domain.SuggestType">
+    	delete from toa_ic_suggest_type
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete>
+
+	<update id="deleteLogic"  parameterType="com.jc.oa.ic.domain.SuggestType">
+    	UPDATE toa_ic_suggest_type t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+
+	<insert id="insert" parameterType="com.jc.oa.ic.domain.SuggestType" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO toa_ic_suggest_type(TYPE_NAME,IS_FIXED,RECIPIENT_IDS,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES (#{typeName,jdbcType=VARCHAR},#{isFixed,jdbcType=CHAR},#{recipientIds,jdbcType=VARCHAR},#{deleteFlag,jdbcType=NUMERIC},#{createUser,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createUserOrg,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extDate1,jdbcType=TIMESTAMP},#{extDate2,jdbcType=TIMESTAMP},#{extNum1,jdbcType=NUMERIC},#{extNum2,jdbcType=NUMERIC},#{extNum3,jdbcType=NUMERIC},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr5,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertList" parameterType="list">
+		INSERT INTO toa_ic_suggest_type(TYPE_NAME,IS_FIXED,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(#{item.typeName,jdbcType=VARCHAR},#{item.isFixed,jdbcType=CHAR},#{recipientIds,jdbcType=VARCHAR},#{item.deleteFlag,jdbcType=NUMERIC},#{item.createUser,jdbcType=NUMERIC},#{item.createUserDept,jdbcType=NUMERIC},#{item.createUserOrg,jdbcType=NUMERIC},#{item.createDate,jdbcType=TIMESTAMP},#{item.modifyUser,jdbcType=NUMERIC},#{item.modifyDate,jdbcType=TIMESTAMP},#{item.extDate1,jdbcType=TIMESTAMP},#{item.extDate2,jdbcType=TIMESTAMP},#{item.extNum1,jdbcType=NUMERIC},#{item.extNum2,jdbcType=NUMERIC},#{item.extNum3,jdbcType=NUMERIC},#{item.extStr1,jdbcType=VARCHAR},#{item.extStr2,jdbcType=VARCHAR},#{item.extStr3,jdbcType=VARCHAR},#{item.extStr4,jdbcType=VARCHAR},#{item.extStr5,jdbcType=VARCHAR})
+			</foreach> 
+	</insert>
+
+	<update id="update" parameterType="com.jc.oa.ic.domain.SuggestType">
+	UPDATE toa_ic_suggest_type
+	   <set>
+	   	<if test="typeName != null">
+	   		TYPE_NAME = #{typeName},
+	   	</if>
+	   	<if test="isFixed != null">
+	   		IS_FIXED = #{isFixed},
+	   	</if>
+	   	<if test="recipientIds != null">
+			RECIPIENT_IDS = #{recipientIds},
+		</if>
+	   	<if test="deleteFlag != null">
+	   		DELETE_FLAG = #{deleteFlag},
+	   	</if>
+	   	<if test="modifyUser != null">
+	   		MODIFY_USER = #{modifyUser},
+	   	</if>
+	   	<if test="extDate1 != null">
+	   		EXT_DATE1 = #{extDate1},
+	   	</if>
+	   	<if test="extDate2 != null">
+	   		EXT_DATE2 = #{extDate2},
+	   	</if>
+	   	<if test="extNum1 != null">
+	   		EXT_NUM1 = #{extNum1},
+	   	</if>
+	   	<if test="extNum2 != null">
+	   		EXT_NUM2 = #{extNum2},
+	   	</if>
+	   	<if test="extNum3 != null">
+	   		EXT_NUM3 = #{extNum3},
+	   	</if>
+	   	<if test="extStr1 != null">
+	   		EXT_STR1 = #{extStr1},
+	   	</if>
+	   	<if test="extStr2 != null">
+	   		EXT_STR2 = #{extStr2},
+	   	</if>
+	   	<if test="extStr3 != null">
+	   		EXT_STR3 = #{extStr3},
+	   	</if>
+	   	<if test="extStr4 != null">
+	   		EXT_STR4 = #{extStr4},
+	   	</if>
+	   	<if test="extStr5 != null">
+	   		EXT_STR5 = #{extStr5},
+	   	</if>
+	   </set>
+	   ,MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+	</update>
+
+</mapper>

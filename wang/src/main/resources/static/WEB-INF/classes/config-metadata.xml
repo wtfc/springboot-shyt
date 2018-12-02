@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <remind>
+        <control id="unread"  iclass="fa fa-mail" dataoriginaltitle="未读邮件" onclickurl="/ic/mail/manageUnread.action" tegartClass="com.jc.oa.ic.service.impl.MailRemindImpl"/>
+        <control id="renwu" iclass="fa fa-stack" dataoriginaltitle="待办任务" onclickurl="/po/workTask/queryTask.action?firstQuery=yes&amp;fromPortal=yes" tegartClass="com.jc.oa.po.workTask.service.impl.WorkTaskRemindImpl"/>	  
+        <control id="myWorklog"  iclass="fa fa-clipboard" dataoriginaltitle="我的日志" onclickurl="/po/worklog/myWorklogCalendarSkip.action" tegartClass="com.jc.system.remind.service.impl.NoRemindImpl"/>	
+        <control id="Mydoc"  iclass="fa fa-my-documents" dataoriginaltitle="我的文档" onclickurl="/archive/folder/manageMydoc.action" tegartClass="com.jc.system.remind.service.impl.NoRemindImpl"/>	   						
+        <control id="email"  iclass="fa fa-paste" dataoriginaltitle="写邮件" onclickurl="/ic/mail/manageSend.action" tegartClass="com.jc.system.remind.service.impl.NoRemindImpl"/>	
+	</remind>
+</config>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.system.security.domain.Role">
+
+
+	<select id="query" parameterType="com.jc.system.security.domain.Role" resultType="com.jc.system.security.domain.Role">
+		SELECT
+				t.ID as id ,
+				t.NAME as name ,
+				t.dept_id as deptId,
+				t1.name as deptName,
+				t.DESCRIPTION as description ,
+				t.DELETE_FLAG as deleteFlag ,
+				t.CREATE_USER as createUser ,
+				t.CREATE_DATE as createDate,
+				t.CREATE_USER_DEPT createUserDept,
+				t.MODIFY_USER modifyUser,
+				t.MODIFY_DATE modifyDate,
+				COUNT(t2.ROLE_ID) personNum 
+		FROM 
+				toa_sys_role t left join tty_sys_department t1 on t.dept_id = t1.id  AND t1.DELETE_FLAG = 0
+				LEFT JOIN toa_sys_user_role t2 ON t.ID = t2.ROLE_ID AND t2.DELETE_FLAG = 0 
+				WHERE 1 = 1
+				
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="name != null">
+				and t.NAME = #{name}
+			</if>
+			<if test="deptIds != null">
+				and t.dept_id in (${deptIds})
+			</if>
+			<if test="description != null">
+				and t.DESCRIPTION = #{description}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATA = #{createDate}
+			</if>
+			GROUP BY id,deptId,description,createUser,createUserDept,modifyDate
+			<if test="orderBy != null">
+				order by ${orderBy}
+			</if>
+	</select>
+
+	<select id="queryCount" parameterType="com.jc.system.security.domain.Role" resultType="java.lang.Integer">
+		SELECT count(t.ID) 
+		FROM 
+				toa_sys_role t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="name != null">
+				and t.NAME = #{name}
+			</if>
+			<if test="deptIds != null">
+				and t.DEPT_ID in (${deptIds})
+			</if>
+			<if test="description != null">
+				and t.DESCRIPTION = #{description}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATA = #{createDate}
+			</if>
+		</where>
+	</select>
+	
+	<select id="getForUpdate" parameterType="com.jc.system.security.domain.Role" resultType="java.lang.Integer">
+		SELECT t.ID AS id, t.NAME AS NAME, t.DESCRIPTION description,t1.ROLE_ID AS roleId, t1.MENU_ID AS menuId 
+		FROM t_role t , t_role_menus t1 WHERE t.ID = t1.ROLE_ID 
+		AND t.DELETE_FLAG = 0 AND t1.DELETE_FLAG = 0
+		AND t.ID = #{id}
+	</select>
+	
+	<insert id="insert" parameterType="com.jc.system.security.domain.Role">
+		INSERT INTO toa_sys_role(NAME,DESCRIPTION,DEPT_ID,CREATE_USER,CREATE_DATE,CREATE_USER_DEPT,MODIFY_USER,MODIFY_DATE,DELETE_FLAG)
+		VALUES (#{name,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR},#{deptId,jdbcType=NUMERIC},#{createUser,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{createUserDept,jdbcType=NUMERIC},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},0)
+	</insert>
+	
+	<update id="update" parameterType="com.jc.system.security.domain.Role">
+		UPDATE toa_sys_role
+		   <set>
+		   <if test="id != null">
+				 ID = #{id},
+			</if>
+			<if test="name != null">
+				 NAME = #{name},
+			</if>
+			<if test="description != null">
+				 DESCRIPTION = #{description},
+			</if>
+			<if test="deleteFlag != null">
+				 DELETE_FLAG = #{deleteFlag},
+			</if>
+			<if test="createUser != null">
+				 CREATE_USER = #{createUser},
+			</if>
+			<if test="createDate != null">
+				 CREATE_DATA = #{createDate},
+			</if>
+		   </set>
+		  , MODIFY_DATE = #{modifyDateNew} where ID = #{id}  and MODIFY_DATE = #{modifyDate}
+	</update>
+	
+		<update id="deleteLogic"  parameterType="com.jc.system.security.domain.Role">
+		<![CDATA[
+    		UPDATE toa_sys_role set DELETE_FLAG = 1,  MODIFY_USER = #{modifyUser}, MODIFY_DATE = #{modifyDate}
+    	]]>
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+ 	
+ 	<select id="getRolesForUser" parameterType="com.jc.system.security.domain.Role" resultType="com.jc.system.security.domain.Role">
+		SELECT
+				t.ID as id ,
+				t.NAME as name ,
+				t.dept_id as deptId
+				
+		FROM 
+				toa_sys_role t  WHERE t.DELETE_FLAG = 0
+				
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="name != null">
+				and t.NAME = #{name}
+			</if>
+			<if test="deptIds != null">
+				and t.dept_id in (${deptIds})
+			</if>
+
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATA = #{createDate}
+			</if>
+			
+			<if test="orderBy != null">
+				order by ${orderBy}
+			</if>
+	</select>
+
+</mapper>

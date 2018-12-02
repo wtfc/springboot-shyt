@@ -1,0 +1,101 @@
+2018-12-01 19:09:07,735:INFO main (StartupInfoLogger.java:50) - Starting WangApplication on Wang with PID 35680 (started by Fei in D:\My Work\shyt\workspace\myeclipse2018\shyt\wang)
+2018-12-01 19:09:07,815:INFO main (SpringApplication.java:675) - No active profile set, falling back to default profiles: default
+2018-12-01 19:09:27,973:INFO main (RepositoryConfigurationDelegate.java:244) - Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-01 19:09:27,988:INFO main (RepositoryConfigurationDelegate.java:126) - Bootstrapping Spring Data repositories in DEFAULT mode.
+2018-12-01 19:09:32,125:INFO main (RepositoryConfigurationDelegate.java:182) - Finished Spring Data repository scanning in 4091ms. Found 0 repository interfaces.
+2018-12-01 19:09:33,152:INFO main (PostProcessorRegistrationDelegate.java:330) - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$5d6fc37c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-01 19:09:35,319:INFO main (TomcatWebServer.java:90) - Tomcat initialized with port(s): 8080 (http)
+2018-12-01 19:09:35,346:INFO main (DirectJDKLog.java:173) - Initializing ProtocolHandler ["http-nio-127.0.0.1-8080"]
+2018-12-01 19:09:35,362:INFO main (DirectJDKLog.java:173) - Starting service [Tomcat]
+2018-12-01 19:09:35,364:INFO main (DirectJDKLog.java:173) - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-01 19:09:35,385:INFO main (DirectJDKLog.java:173) - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_31\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\app\Fei\product\11.2.0\dbhome_1\bin;C:\Program Files\Java\jdk1.8.0_31\bin;C:\Program Files (x86)\Java\jdk1.8.0_31\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\VSShell\Common7\IDE\;C:\Program Files (x86)\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Microsoft Visual Studio 9.0\Common7\IDE\PrivateAssemblies\;C:\Program Files (x86)\Java\jdk1.7.0_45\bin;D:\My Work\Java\littletest\maventest\package\apache-maven-3.3.9\bin;D:\software\Git\PortableGit\bin;D:\software\Git\PortableGit\usr\bin;D:\software\TortoiseSVN\bin;D:\software\python\install;D:\software\python\install\Scripts;C:\WINDOWS\System32\OpenSSH\;D:\Program Files\Microsoft VS Code\bin;C:\Program Files\nodejs\;C:\Users\Fei\AppData\Local\Microsoft\WindowsApps;;D:\Program Files\Microsoft VS Code\bin;C:\Users\Fei\AppData\Roaming\npm;.]
+2018-12-01 19:09:36,018:INFO main (DirectJDKLog.java:173) - Initializing Spring embedded WebApplicationContext
+2018-12-01 19:09:36,020:INFO main (ServletWebServerApplicationContext.java:285) - Root WebApplicationContext: initialization completed in 28040 ms
+2018-12-01 19:09:36,236:INFO main (ServletRegistrationBean.java:186) - Servlet statViewServlet mapped to [/druid/*]
+2018-12-01 19:09:36,240:INFO main (ServletRegistrationBean.java:186) - Servlet dispatcherServlet mapped to [/]
+2018-12-01 19:09:36,242:INFO main (ServletRegistrationBean.java:186) - Servlet statViewServlet mapped to [/druid/*]
+2018-12-01 19:09:36,243:INFO main (DynamicRegistrationBean.java:111) - Servlet statViewServlet was not registered (possibly already registered?)
+2018-12-01 19:09:36,267:INFO main (AbstractFilterRegistrationBean.java:248) - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-01 19:09:36,268:INFO main (AbstractFilterRegistrationBean.java:248) - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-01 19:09:36,269:INFO main (AbstractFilterRegistrationBean.java:248) - Mapping filter: 'formContentFilter' to: [/*]
+2018-12-01 19:09:36,270:INFO main (AbstractFilterRegistrationBean.java:248) - Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-01 19:09:36,272:INFO main (AbstractFilterRegistrationBean.java:261) - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-12-01 19:09:36,273:INFO main (DynamicRegistrationBean.java:111) - Filter webStatFilter was not registered (possibly already registered?)
+2018-12-01 19:09:49,774:INFO main (DruidDataSource.java:928) - {dataSource-1,mybatisProdDataSource} inited
+2018-12-01 19:09:49,903:INFO main (StdSchedulerFactory.java:1208) - Using default implementation for ThreadExecutor
+2018-12-01 19:09:49,960:INFO main (SchedulerSignalerImpl.java:61) - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2018-12-01 19:09:49,961:INFO main (QuartzScheduler.java:229) - Quartz Scheduler v.2.3.0 created.
+2018-12-01 19:09:49,963:INFO main (RAMJobStore.java:155) - RAMJobStore initialized.
+2018-12-01 19:09:49,966:INFO main (QuartzScheduler.java:294) - Scheduler meta-data: Quartz Scheduler (v2.3.0) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2018-12-01 19:09:49,967:INFO main (StdSchedulerFactory.java:1362) - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2018-12-01 19:09:49,967:INFO main (StdSchedulerFactory.java:1366) - Quartz scheduler version: 2.3.0
+2018-12-01 19:09:49,968:INFO main (QuartzScheduler.java:2287) - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@27ebe541
+2018-12-01 19:09:51,742:INFO main (ExecutorConfigurationSupport.java:171) - Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-01 19:09:56,394:INFO main (SchedulerFactoryBean.java:726) - Starting Quartz Scheduler now
+2018-12-01 19:09:56,396:INFO main (QuartzScheduler.java:547) - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2018-12-01 19:09:56,419:INFO main (DirectJDKLog.java:173) - Starting ProtocolHandler ["http-nio-127.0.0.1-8080"]
+2018-12-01 19:09:56,454:INFO main (DirectJDKLog.java:173) - Using a shared selector for servlet write/read
+2018-12-01 19:09:56,534:INFO main (TomcatWebServer.java:204) - Tomcat started on port(s): 8080 (http) with context path ''
+2018-12-01 19:09:56,547:INFO main (StartupInfoLogger.java:59) - Started WangApplication in 49.838 seconds (JVM running for 52.58)
+2018-12-01 19:10:51,877:INFO http-nio-127.0.0.1-8080-exec-1 (DirectJDKLog.java:173) - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-12-01 19:10:51,878:INFO http-nio-127.0.0.1-8080-exec-1 (FrameworkServlet.java:521) - Initializing Servlet 'dispatcherServlet'
+2018-12-01 19:10:51,905:INFO http-nio-127.0.0.1-8080-exec-1 (FrameworkServlet.java:543) - Completed initialization in 27 ms
+2018-12-01 19:10:52,564:WARN http-nio-127.0.0.1-8080-exec-1 (DispatcherServlet.java:1248) - No mapping for GET /system/error/500
+2018-12-01 20:00:31,907:INFO main (StartupInfoLogger.java:50) - Starting WangApplication on Wang with PID 3916 (started by Fei in D:\My Work\shyt\workspace\myeclipse2018\shyt\wang)
+2018-12-01 20:00:31,965:INFO main (SpringApplication.java:675) - No active profile set, falling back to default profiles: default
+2018-12-01 20:00:59,916:INFO main (RepositoryConfigurationDelegate.java:244) - Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-01 20:00:59,924:INFO main (RepositoryConfigurationDelegate.java:126) - Bootstrapping Spring Data repositories in DEFAULT mode.
+2018-12-01 20:01:04,102:INFO main (RepositoryConfigurationDelegate.java:182) - Finished Spring Data repository scanning in 4102ms. Found 0 repository interfaces.
+2018-12-01 20:01:05,624:INFO main (PostProcessorRegistrationDelegate.java:330) - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a22d4f39] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-01 20:01:10,754:INFO main (TomcatWebServer.java:90) - Tomcat initialized with port(s): 8080 (http)
+2018-12-01 20:01:10,890:INFO main (DirectJDKLog.java:173) - Initializing ProtocolHandler ["http-nio-127.0.0.1-8080"]
+2018-12-01 20:01:10,982:INFO main (DirectJDKLog.java:173) - Starting service [Tomcat]
+2018-12-01 20:01:10,984:INFO main (DirectJDKLog.java:173) - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-01 20:01:11,106:INFO main (DirectJDKLog.java:173) - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_31\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\app\Fei\product\11.2.0\dbhome_1\bin;C:\Program Files\Java\jdk1.8.0_31\bin;C:\Program Files (x86)\Java\jdk1.8.0_31\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\VSShell\Common7\IDE\;C:\Program Files (x86)\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Microsoft Visual Studio 9.0\Common7\IDE\PrivateAssemblies\;C:\Program Files (x86)\Java\jdk1.7.0_45\bin;D:\My Work\Java\littletest\maventest\package\apache-maven-3.3.9\bin;D:\software\Git\PortableGit\bin;D:\software\Git\PortableGit\usr\bin;D:\software\TortoiseSVN\bin;D:\software\python\install;D:\software\python\install\Scripts;C:\WINDOWS\System32\OpenSSH\;D:\Program Files\Microsoft VS Code\bin;C:\Program Files\nodejs\;C:\Users\Fei\AppData\Local\Microsoft\WindowsApps;;D:\Program Files\Microsoft VS Code\bin;C:\Users\Fei\AppData\Roaming\npm;.]
+2018-12-01 20:01:12,182:INFO main (DirectJDKLog.java:173) - Initializing Spring embedded WebApplicationContext
+2018-12-01 20:01:12,183:INFO main (ServletWebServerApplicationContext.java:285) - Root WebApplicationContext: initialization completed in 39966 ms
+2018-12-01 20:01:12,654:INFO main (ServletRegistrationBean.java:186) - Servlet statViewServlet mapped to [/druid/*]
+2018-12-01 20:01:12,682:INFO main (ServletRegistrationBean.java:186) - Servlet dispatcherServlet mapped to [/]
+2018-12-01 20:01:12,684:INFO main (ServletRegistrationBean.java:186) - Servlet statViewServlet mapped to [/druid/*]
+2018-12-01 20:01:12,685:INFO main (DynamicRegistrationBean.java:111) - Servlet statViewServlet was not registered (possibly already registered?)
+2018-12-01 20:01:12,884:INFO main (AbstractFilterRegistrationBean.java:248) - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-01 20:01:12,886:INFO main (AbstractFilterRegistrationBean.java:248) - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-01 20:01:12,887:INFO main (AbstractFilterRegistrationBean.java:248) - Mapping filter: 'formContentFilter' to: [/*]
+2018-12-01 20:01:12,888:INFO main (AbstractFilterRegistrationBean.java:248) - Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-01 20:01:12,889:INFO main (AbstractFilterRegistrationBean.java:261) - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-12-01 20:01:12,891:INFO main (DynamicRegistrationBean.java:111) - Filter webStatFilter was not registered (possibly already registered?)
+2018-12-01 20:01:29,591:INFO main (DruidDataSource.java:928) - {dataSource-1,mybatisProdDataSource} inited
+2018-12-01 20:01:29,823:INFO main (StdSchedulerFactory.java:1208) - Using default implementation for ThreadExecutor
+2018-12-01 20:01:29,910:INFO main (SchedulerSignalerImpl.java:61) - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2018-12-01 20:01:29,911:INFO main (QuartzScheduler.java:229) - Quartz Scheduler v.2.3.0 created.
+2018-12-01 20:01:29,915:INFO main (RAMJobStore.java:155) - RAMJobStore initialized.
+2018-12-01 20:01:29,920:INFO main (QuartzScheduler.java:294) - Scheduler meta-data: Quartz Scheduler (v2.3.0) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2018-12-01 20:01:29,922:INFO main (StdSchedulerFactory.java:1362) - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2018-12-01 20:01:29,923:INFO main (StdSchedulerFactory.java:1366) - Quartz scheduler version: 2.3.0
+2018-12-01 20:01:29,927:INFO main (QuartzScheduler.java:2287) - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@42f2c28d
+2018-12-01 20:01:31,328:INFO main (ExecutorConfigurationSupport.java:171) - Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-01 20:01:35,495:INFO main (SchedulerFactoryBean.java:726) - Starting Quartz Scheduler now
+2018-12-01 20:01:35,496:INFO main (QuartzScheduler.java:547) - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2018-12-01 20:01:35,510:INFO main (DirectJDKLog.java:173) - Starting ProtocolHandler ["http-nio-127.0.0.1-8080"]
+2018-12-01 20:01:35,620:INFO main (DirectJDKLog.java:173) - Using a shared selector for servlet write/read
+2018-12-01 20:01:35,690:INFO main (TomcatWebServer.java:204) - Tomcat started on port(s): 8080 (http) with context path ''
+2018-12-01 20:01:35,697:INFO main (StartupInfoLogger.java:59) - Started WangApplication in 64.846 seconds (JVM running for 67.694)
+2018-12-01 20:03:56,103:INFO http-nio-127.0.0.1-8080-exec-1 (DirectJDKLog.java:173) - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-12-01 20:03:56,104:INFO http-nio-127.0.0.1-8080-exec-1 (FrameworkServlet.java:521) - Initializing Servlet 'dispatcherServlet'
+2018-12-01 20:03:56,179:INFO http-nio-127.0.0.1-8080-exec-1 (FrameworkServlet.java:543) - Completed initialization in 74 ms
+2018-12-01 20:03:56,887:WARN http-nio-127.0.0.1-8080-exec-2 (DispatcherServlet.java:1248) - No mapping for GET /system/error/500
+2018-12-01 20:03:58,855:WARN http-nio-127.0.0.1-8080-exec-3 (DispatcherServlet.java:1248) - No mapping for GET /wang

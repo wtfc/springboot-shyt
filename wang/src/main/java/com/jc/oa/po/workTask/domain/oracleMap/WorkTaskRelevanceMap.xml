@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"><mapper namespace="com.jc.oa.po.workTask.domain.WorkTaskRelevance"><select id="query" parameterType="com.jc.oa.po.workTask.domain.WorkTaskRelevance" resultType="com.jc.oa.po.workTask.domain.WorkTaskRelevance">
+		SELECT 
+			t.ID id,
+			t.TASK_ID taskId,
+			t.TASK_PERSON_ID taskPersonId,
+			t.IS_PARENT isParent,
+			t.TASK_TYPE taskType,
+			t.DELETE_FLAG deleteFlag,
+			t.EXT_DATE1 extDate1,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2
+		FROM tty_po_task_relevance t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="taskId != null">
+				and t.TASK_ID = #{taskId}
+			</if>
+			<if test="taskPersonId!= null">
+				and t.TASK_PERSON_ID = #{taskPersonId}
+			</if>
+			<if test="isParent != null">
+				and t.IS_PARENT = #{isParent}
+			</if>
+			<if test="taskType != null">
+				and t.TASK_TYPE = #{taskType}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+		</where>
+		
+	</select><select id="queryCount" parameterType="com.jc.oa.po.workTask.domain.WorkTaskRelevance" resultType="java.lang.Integer">
+		SELECT count(ID) 
+		FROM tty_po_task_relevance t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="taskId != null">
+				and t.TASK_ID = #{taskId}
+			</if>
+			<if test="taskPersonId!= null">
+				and t.TASK_PERSON_ID = #{taskPersonId}
+			</if>
+			<if test="isParent != null">
+				and t.IS_PARENT = #{isParent}
+			</if>
+			<if test="taskType != null">
+				and t.TASK_TYPE = #{taskType}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+		</where>
+	</select><insert id="insert" parameterType="com.jc.oa.po.workTask.domain.WorkTaskRelevance"><selectKey resultType="long" keyProperty="id" order="BEFORE">SELECT TTY_PO_TASK_RELEVANCE_ID_SEQ.NEXTVAL FROM DUAL</selectKey>
+		INSERT INTO tty_po_task_relevance(ID,TASK_ID,TASK_PERSON_ID,IS_PARENT,TASK_TYPE,DELETE_FLAG)
+			VALUES (#{id},#{taskId,jdbcType=NUMERIC},#{taskPersonId,jdbcType=NUMERIC},#{isParent,jdbcType=VARCHAR},#{taskType,jdbcType=VARCHAR},#{deleteFlag,jdbcType=NUMERIC})
+	</insert><insert id="insertList" parameterType="list">
+		INSERT INTO tty_po_task_relevance(ID,TASK_ID,TASK_PERSON_ID,IS_PARENT,TASK_TYPE,DELETE_FLAG)
+			VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(TTY_PO_TASK_RELEVANCE_ID_SEQ.nextval,#{item.taskId,jdbcType=NUMERIC},#{item.taskPersonId,jdbcType=NUMERIC},#{item.isParent,jdbcType=VARCHAR},#{item.taskType,jdbcType=VARCHAR},#{item.deleteFlag,jdbcType=NUMERIC})
+			</foreach> 
+	</insert><update id="update" parameterType="com.jc.oa.po.workTask.domain.WorkTaskRelevance">
+	UPDATE tty_po_task_relevance
+	   <set>
+	   	<if test="taskId != null">
+	   		TASK_ID=#{taskId},
+	   	</if>
+		<if test="taskPersonId != null">
+	   		TASK_PERSON_ID=#{taskPersonId},
+	   	</if>
+	   	<if test="isParent != null">
+	   		IS_PARENT=#{isParent},
+	   	</if>
+	   	<if test="taskType!= null">
+	   		TASK_TYPE=#{taskType},
+	   	</if>
+	   	<if test="deleteFlag != null">
+	   		DELETE_FLAG=#{deleteFlag}
+	   	</if>
+	   </set>
+	   where ID = #{id}
+	</update><delete id="deletePhysical" parameterType="com.jc.oa.po.workTask.domain.WorkTaskRelevance">
+    	delete from tty_po_task_relevance
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete><update id="deleteLogic" parameterType="com.jc.oa.po.workTask.domain.WorkTaskRelevance">
+    	UPDATE tty_po_task_relevance t set t.delete_flag = 1 
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update></mapper>

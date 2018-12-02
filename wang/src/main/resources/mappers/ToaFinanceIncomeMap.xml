@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.finance.domain.ToaFinanceIncome" > 
+
+<insert id="insert" parameterType="com.jc.oa.finance.domain.ToaFinanceIncome"
+		useGeneratedKeys="true" keyProperty="id">
+  		insert into toa_finance_income(id,order_no,resource_type,company_name,old_department,card_no,card_amount,room_name,pay_type,cycle_start,cycle_end,order_date,months,start_intel,line_category,single_charg,overflow_category,performance_amount,card_stock_amount,prestore_amount,discount,order_remark,product_resources,min_bandwidth,min_bandwidth_price,port_bandwidth,port_bandwidth_price,overflow_bandwidth,overflow_bandwidth_price,cabinet_num,cabinet_price,service_num,service_price,ip_num,ip_price,switch_num,switch_price,odf_num,odf_price,port_num,port_price,memory_num,memory_price,cpu_num,cpu_price,disk_num,disk_price,cycle,timing_status,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3)
+ values(#{id},#{orderNo},#{resourceType},#{companyName},#{oldDepartment},#{cardNo},#{cardAmount},#{roomName},#{payType},#{cycleStart},#{cycleEnd},#{orderDate},#{months},#{startIntel},#{lineCategory},#{singleCharg},#{overflowCategory},#{performanceAmount},#{cardStockAmount},#{prestoreAmount},#{discount},#{orderRemark},#{productResources},#{minBandwidth},#{minBandwidthPrice},#{portBandwidth},#{portBandwidthPrice},#{overflowBandwidth},#{overflowBandwidthPrice},#{cabinetNum},#{cabinetPrice},#{serviceNum},#{servicePrice},#{ipNum},#{ipPrice},#{switchNum},#{switchPrice},#{odfNum},#{odfPrice},#{portNum},#{portPrice},#{memoryNum},#{memoryPrice},#{cpuNum},#{cpuPrice},#{diskNum},#{diskPrice},#{cycle},#{timingStatus},#{deleteFlag},#{createUser},#{createUserDept},#{createDate},#{modifyUser},#{modifyDate},#{extStr1},#{extStr2},#{extStr3},#{extStr4},#{extStr5},#{extDate1},#{extDate2},#{extNum1},#{extNum2},#{extNum3})
+</insert>
+<!--去除company_id，company_id，department,sale,maintenan_sale,   -->
+<update id="update" parameterType="com.jc.oa.finance.domain.ToaFinanceIncome">
+		update toa_finance_income set 
+	<if test="orderNo != null ">
+		order_no=#{orderNo},
+	</if>
+	<if test="resourceType != null ">
+		resource_type=#{resourceType},
+	</if>
+	<!-- <if test="companyId != null ">
+		company_id=#{companyId},
+	</if> -->
+	<if test="companyName != null ">
+		company_name=#{companyName},
+	</if>
+	<!-- <if test="companyType != null ">
+		company_type=#{companyType},
+	</if> -->
+	<if test="oldDepartment != null ">
+		old_department=#{oldDepartment},
+	</if>
+	<!-- <if test="department != null ">
+		department=#{department},
+	</if>
+	<if test="sale != null ">
+		sale=#{sale},
+	</if>
+	<if test="maintenanSale != null ">
+		maintenan_sale=#{maintenanSale},
+	</if> -->
+	<if test="cardNo != null ">
+		card_no=#{cardNo},
+	</if>
+	<if test="cardAmount != null ">
+		card_amount=#{cardAmount},
+	</if>
+	<if test="roomName != null ">
+		room_name=#{roomName},
+	</if>
+	<if test="payType != null ">
+		pay_type=#{payType},
+	</if>
+	<if test="cycleStart != null ">
+		cycle_start=#{cycleStart},
+	</if>
+	<if test="cycleEnd != null ">
+		cycle_end=#{cycleEnd},
+	</if>
+	<if test="orderDate != null ">
+		order_date=#{orderDate},
+	</if>
+	<if test="months != null ">
+		months=#{months},
+	</if>
+	<if test="startIntel != null ">
+		start_intel=#{startIntel},
+	</if>
+	<if test="lineCategory != null ">
+		line_category=#{lineCategory},
+	</if>
+	<if test="singleCharg != null ">
+		single_charg=#{singleCharg},
+	</if>
+	<if test="overflowCategory != null ">
+		overflow_category=#{overflowCategory},
+	</if>
+	<if test="performanceAmount != null ">
+		performance_amount=#{performanceAmount},
+	</if>
+	<if test="cardStockAmount != null ">
+		card_stock_amount=#{cardStockAmount},
+	</if>
+	<if test="prestoreAmount != null ">
+		prestore_amount=#{prestoreAmount},
+	</if>
+	<if test="discount != null ">
+		discount=#{discount},
+	</if>
+	<if test="orderRemark != null ">
+		order_remark=#{orderRemark},
+	</if>
+	<if test="productResources != null ">
+		product_resources=#{productResources},
+	</if>
+	<if test="minBandwidth != null ">
+		min_bandwidth=#{minBandwidth},
+	</if>
+	<if test="minBandwidthPrice != null ">
+		min_bandwidth_price=#{minBandwidthPrice},
+	</if>
+	<if test="portBandwidth != null ">
+		port_bandwidth=#{portBandwidth},
+	</if>
+	<if test="portBandwidthPrice != null ">
+		port_bandwidth_price=#{portBandwidthPrice},
+	</if>
+	<if test="overflowBandwidth != null ">
+		overflow_bandwidth=#{overflowBandwidth},
+	</if>
+	<if test="overflowBandwidthPrice != null ">
+		overflow_bandwidth_price=#{overflowBandwidthPrice},
+	</if>
+	<if test="cabinetNum != null ">
+		cabinet_num=#{cabinetNum},
+	</if>
+	<if test="cabinetPrice != null ">
+		cabinet_price=#{cabinetPrice},
+	</if>
+	<if test="serviceNum != null ">
+		service_num=#{serviceNum},
+	</if>
+	<if test="servicePrice != null ">
+		service_price=#{servicePrice},
+	</if>
+	<if test="ipNum != null ">
+		ip_num=#{ipNum},
+	</if>
+	<if test="ipPrice != null ">
+		ip_price=#{ipPrice},
+	</if>
+	<if test="switchNum != null ">
+		switch_num=#{switchNum},
+	</if>
+	<if test="switchPrice != null ">
+		switch_price=#{switchPrice},
+	</if>
+	<if test="odfNum != null ">
+		odf_num=#{odfNum},
+	</if>
+	<if test="odfPrice != null ">
+		odf_price=#{odfPrice},
+	</if>
+	<if test="portNum != null ">
+		port_num=#{portNum},
+	</if>
+	<if test="portPrice != null ">
+		port_price=#{portPrice},
+	</if>
+	<if test="memoryNum != null ">
+		memory_num=#{memoryNum},
+	</if>
+	<if test="memoryPrice != null ">
+		memory_price=#{memoryPrice},
+	</if>
+	<if test="cpuNum != null ">
+		cpu_num=#{cpuNum},
+	</if>
+	<if test="cpuPrice != null ">
+		cpu_price=#{cpuPrice},
+	</if>
+	<if test="diskNum != null ">
+		disk_num=#{diskNum},
+	</if>
+	<if test="diskPrice != null ">
+		disk_price=#{diskPrice},
+	</if>
+	<if test="cycle != null ">
+		cycle=#{cycle},
+	</if>
+	<if test="timingStatus != null ">
+		timing_status=#{timingStatus},
+	</if>
+	<if test="deleteFlag != null ">
+		DELETE_FLAG=#{deleteFlag},
+	</if>
+	<if test="createUser != null ">
+		CREATE_USER=#{createUser},
+	</if>
+	<if test="createUserDept != null ">
+		CREATE_USER_DEPT=#{createUserDept},
+	</if>
+	<if test="createDate != null ">
+		CREATE_DATE=#{createDate},
+	</if>
+	<if test="modifyUser != null ">
+		MODIFY_USER=#{modifyUser},
+	</if>
+	<if test="modifyDate != null ">
+		MODIFY_DATE=#{modifyDate},
+	</if>
+	<if test="extStr1 != null ">
+		EXT_STR1=#{extStr1},
+	</if>
+	<if test="extStr2 != null ">
+		EXT_STR2=#{extStr2},
+	</if>
+	<if test="extStr3 != null ">
+		EXT_STR3=#{extStr3},
+	</if>
+	<if test="extStr4 != null ">
+		EXT_STR4=#{extStr4},
+	</if>
+	<if test="extStr5 != null ">
+		EXT_STR5=#{extStr5},
+	</if>
+	<if test="extDate1 != null ">
+		EXT_DATE1=#{extDate1},
+	</if>
+	<if test="extDate2 != null ">
+		EXT_DATE2=#{extDate2},
+	</if>
+	<if test="extNum1 != null ">
+		EXT_NUM1=#{extNum1},
+	</if>
+	<if test="extNum2 != null ">
+		EXT_NUM2=#{extNum2},
+	</if>
+	<if test="extNum3 != null ">
+		EXT_NUM3=#{extNum3},
+	</if>
+
+	 MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+</update>
+
+<select id="query" parameterType="com.jc.oa.finance.domain.ToaFinanceIncome" resultType="com.jc.oa.finance.domain.ToaFinanceIncome">
+		SELECT 
+		 t.ID id
+		,t.order_no orderNo
+		,t.resource_type resourceType
+		<!-- ,t.company_id companyId -->
+		,t.company_name companyName
+		<!-- ,t.company_type companyType -->
+		,t.old_department oldDepartment
+		<!-- ,t.department department
+		,t.sale sale
+		,t.maintenan_sale maintenanSale -->
+		,t.card_no cardNo
+		,t.card_amount cardAmount
+		,t.room_name roomName
+		,t.pay_type payType
+		,t.cycle_start cycleStart
+		,t.cycle_end cycleEnd
+		,t.order_date orderDate
+		,t.months months
+		,t.start_intel startIntel
+		,t.line_category lineCategory
+		,t.single_charg singleCharg
+		,t.overflow_category overflowCategory
+		,t.performance_amount performanceAmount
+		,t.card_stock_amount cardStockAmount
+		,t.prestore_amount prestoreAmount
+		,t.discount discount
+		,t.order_remark orderRemark
+		,t.product_resources productResources
+		,t.min_bandwidth minBandwidth
+		,t.min_bandwidth_price minBandwidthPrice
+		,t.port_bandwidth portBandwidth
+		,t.port_bandwidth_price portBandwidthPrice
+		,t.overflow_bandwidth overflowBandwidth
+		,t.overflow_bandwidth_price overflowBandwidthPrice
+		,t.cabinet_num cabinetNum
+		,t.cabinet_price cabinetPrice
+		,t.service_num serviceNum
+		,t.service_price servicePrice
+		,t.ip_num ipNum
+		,t.ip_price ipPrice
+		,t.switch_num switchNum
+		,t.switch_price switchPrice
+		,t.odf_num odfNum
+		,t.odf_price odfPrice
+		,t.port_num portNum
+		,t.port_price portPrice
+		,t.memory_num memoryNum
+		,t.memory_price memoryPrice
+		,t.cpu_num cpuNum
+		,t.cpu_price cpuPrice
+		,t.disk_num diskNum
+		,t.disk_price diskPrice
+		,t.cycle cycle
+		,t.timing_status timingStatus
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.EXT_NUM1 extNum1
+		,t.EXT_NUM2 extNum2
+		,t.EXT_NUM3 extNum3
+ FROM toa_finance_income t
+<where>
+	<if test="id != null ">
+		and t.id=#{id}
+	</if>
+	<if test="orderNo != null ">
+		and t.order_no=#{orderNo}
+	</if>
+	<if test="resourceType != null ">
+		and t.resource_type=#{resourceType}
+	</if>
+	<!-- <if test="companyId != null ">
+		and t.company_id=#{companyId}
+	</if> -->
+	<if test="companyName != null ">
+		and t.company_name=#{companyName}
+	</if>
+	<!-- <if test="companyType != null ">
+		and t.company_type=#{companyType}
+	</if> -->
+	<if test="oldDepartment != null ">
+		and t.old_department=#{oldDepartment}
+	</if>
+	<!-- <if test="department != null ">
+		and t.department=#{department}
+	</if>
+	<if test="sale != null ">
+		and t.sale=#{sale}
+	</if>
+	<if test="maintenanSale != null ">
+		and t.maintenan_sale=#{maintenanSale}
+	</if> -->
+	<if test="cardNo != null ">
+		and t.card_no=#{cardNo}
+	</if>
+	<if test="cardAmount != null ">
+		and t.card_amount=#{cardAmount}
+	</if>
+	<if test="roomName != null ">
+		and t.room_name=#{roomName}
+	</if>
+	<if test="payType != null ">
+		and t.pay_type=#{payType}
+	</if>
+	<if test="cycleStart != null ">
+		and t.cycle_start=#{cycleStart}
+	</if>
+	<if test="cycleEnd != null ">
+		and t.cycle_end=#{cycleEnd}
+	</if>
+	<if test="orderDate != null ">
+		and t.order_date=#{orderDate}
+	</if>
+	<if test="months != null ">
+		and t.months=#{months}
+	</if>
+	<if test="startIntel != null ">
+		and t.start_intel=#{startIntel}
+	</if>
+	<if test="lineCategory != null ">
+		and t.line_category=#{lineCategory}
+	</if>
+	<if test="singleCharg != null ">
+		and t.single_charg=#{singleCharg}
+	</if>
+	<if test="overflowCategory != null ">
+		and t.overflow_category=#{overflowCategory}
+	</if>
+	<if test="performanceAmount != null ">
+		and t.performance_amount=#{performanceAmount}
+	</if>
+	<if test="cardStockAmount != null ">
+		and t.card_stock_amount=#{cardStockAmount}
+	</if>
+	<if test="prestoreAmount != null ">
+		and t.prestore_amount=#{prestoreAmount}
+	</if>
+	<if test="discount != null ">
+		and t.discount=#{discount}
+	</if>
+	<if test="orderRemark != null ">
+		and t.order_remark=#{orderRemark}
+	</if>
+	<if test="productResources != null ">
+		and t.product_resources=#{productResources}
+	</if>
+	<if test="minBandwidth != null ">
+		and t.min_bandwidth=#{minBandwidth}
+	</if>
+	<if test="minBandwidthPrice != null ">
+		and t.min_bandwidth_price=#{minBandwidthPrice}
+	</if>
+	<if test="portBandwidth != null ">
+		and t.port_bandwidth=#{portBandwidth}
+	</if>
+	<if test="portBandwidthPrice != null ">
+		and t.port_bandwidth_price=#{portBandwidthPrice}
+	</if>
+	<if test="overflowBandwidth != null ">
+		and t.overflow_bandwidth=#{overflowBandwidth}
+	</if>
+	<if test="overflowBandwidthPrice != null ">
+		and t.overflow_bandwidth_price=#{overflowBandwidthPrice}
+	</if>
+	<if test="cabinetNum != null ">
+		and t.cabinet_num=#{cabinetNum}
+	</if>
+	<if test="cabinetPrice != null ">
+		and t.cabinet_price=#{cabinetPrice}
+	</if>
+	<if test="serviceNum != null ">
+		and t.service_num=#{serviceNum}
+	</if>
+	<if test="servicePrice != null ">
+		and t.service_price=#{servicePrice}
+	</if>
+	<if test="ipNum != null ">
+		and t.ip_num=#{ipNum}
+	</if>
+	<if test="ipPrice != null ">
+		and t.ip_price=#{ipPrice}
+	</if>
+	<if test="switchNum != null ">
+		and t.switch_num=#{switchNum}
+	</if>
+	<if test="switchPrice != null ">
+		and t.switch_price=#{switchPrice}
+	</if>
+	<if test="odfNum != null ">
+		and t.odf_num=#{odfNum}
+	</if>
+	<if test="odfPrice != null ">
+		and t.odf_price=#{odfPrice}
+	</if>
+	<if test="portNum != null ">
+		and t.port_num=#{portNum}
+	</if>
+	<if test="portPrice != null ">
+		and t.port_price=#{portPrice}
+	</if>
+	<if test="memoryNum != null ">
+		and t.memory_num=#{memoryNum}
+	</if>
+	<if test="memoryPrice != null ">
+		and t.memory_price=#{memoryPrice}
+	</if>
+	<if test="cpuNum != null ">
+		and t.cpu_num=#{cpuNum}
+	</if>
+	<if test="cpuPrice != null ">
+		and t.cpu_price=#{cpuPrice}
+	</if>
+	<if test="diskNum != null ">
+		and t.disk_num=#{diskNum}
+	</if>
+	<if test="diskPrice != null ">
+		and t.disk_price=#{diskPrice}
+	</if>
+	<if test="cycle != null ">
+		and t.cycle=#{cycle}
+	</if>
+	<if test="timingStatus != null ">
+		and t.timing_status=#{timingStatus}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+</select>
+	
+<select id="queryCount" parameterType="com.jc.oa.finance.domain.ToaFinanceIncome" resultType="java.lang.Long">
+		SELECT COUNT(ID) 
+	 FROM toa_finance_income t
+<where>
+	<if test="id != null ">
+		and t.id=#{id}
+	</if>
+	<if test="orderNo != null ">
+		and t.order_no=#{orderNo}
+	</if>
+	<if test="resourceType != null ">
+		and t.resource_type=#{resourceType}
+	</if>
+	<!-- <if test="companyId != null ">
+		and t.company_id=#{companyId}
+	</if> -->
+	<if test="companyName != null ">
+		and t.company_name=#{companyName}
+	</if>
+	<!-- <if test="companyType != null ">
+		and t.company_type=#{companyType}
+	</if> -->
+	<if test="oldDepartment != null ">
+		and t.old_department=#{oldDepartment}
+	</if>
+	<!-- <if test="department != null ">
+		and t.department=#{department}
+	</if>
+	<if test="sale != null ">
+		and t.sale=#{sale}
+	</if>
+	<if test="maintenanSale != null ">
+		and t.maintenan_sale=#{maintenanSale}
+	</if> -->
+	<if test="cardNo != null ">
+		and t.card_no=#{cardNo}
+	</if>
+	<if test="cardAmount != null ">
+		and t.card_amount=#{cardAmount}
+	</if>
+	<if test="roomName != null ">
+		and t.room_name=#{roomName}
+	</if>
+	<if test="payType != null ">
+		and t.pay_type=#{payType}
+	</if>
+	<if test="cycleStart != null ">
+		and t.cycle_start=#{cycleStart}
+	</if>
+	<if test="cycleEnd != null ">
+		and t.cycle_end=#{cycleEnd}
+	</if>
+	<if test="orderDate != null ">
+		and t.order_date=#{orderDate}
+	</if>
+	<if test="months != null ">
+		and t.months=#{months}
+	</if>
+	<if test="startIntel != null ">
+		and t.start_intel=#{startIntel}
+	</if>
+	<if test="lineCategory != null ">
+		and t.line_category=#{lineCategory}
+	</if>
+	<if test="singleCharg != null ">
+		and t.single_charg=#{singleCharg}
+	</if>
+	<if test="overflowCategory != null ">
+		and t.overflow_category=#{overflowCategory}
+	</if>
+	<if test="performanceAmount != null ">
+		and t.performance_amount=#{performanceAmount}
+	</if>
+	<if test="cardStockAmount != null ">
+		and t.card_stock_amount=#{cardStockAmount}
+	</if>
+	<if test="prestoreAmount != null ">
+		and t.prestore_amount=#{prestoreAmount}
+	</if>
+	<if test="discount != null ">
+		and t.discount=#{discount}
+	</if>
+	<if test="orderRemark != null ">
+		and t.order_remark=#{orderRemark}
+	</if>
+	<if test="productResources != null ">
+		and t.product_resources=#{productResources}
+	</if>
+	<if test="minBandwidth != null ">
+		and t.min_bandwidth=#{minBandwidth}
+	</if>
+	<if test="minBandwidthPrice != null ">
+		and t.min_bandwidth_price=#{minBandwidthPrice}
+	</if>
+	<if test="portBandwidth != null ">
+		and t.port_bandwidth=#{portBandwidth}
+	</if>
+	<if test="portBandwidthPrice != null ">
+		and t.port_bandwidth_price=#{portBandwidthPrice}
+	</if>
+	<if test="overflowBandwidth != null ">
+		and t.overflow_bandwidth=#{overflowBandwidth}
+	</if>
+	<if test="overflowBandwidthPrice != null ">
+		and t.overflow_bandwidth_price=#{overflowBandwidthPrice}
+	</if>
+	<if test="cabinetNum != null ">
+		and t.cabinet_num=#{cabinetNum}
+	</if>
+	<if test="cabinetPrice != null ">
+		and t.cabinet_price=#{cabinetPrice}
+	</if>
+	<if test="serviceNum != null ">
+		and t.service_num=#{serviceNum}
+	</if>
+	<if test="servicePrice != null ">
+		and t.service_price=#{servicePrice}
+	</if>
+	<if test="ipNum != null ">
+		and t.ip_num=#{ipNum}
+	</if>
+	<if test="ipPrice != null ">
+		and t.ip_price=#{ipPrice}
+	</if>
+	<if test="switchNum != null ">
+		and t.switch_num=#{switchNum}
+	</if>
+	<if test="switchPrice != null ">
+		and t.switch_price=#{switchPrice}
+	</if>
+	<if test="odfNum != null ">
+		and t.odf_num=#{odfNum}
+	</if>
+	<if test="odfPrice != null ">
+		and t.odf_price=#{odfPrice}
+	</if>
+	<if test="portNum != null ">
+		and t.port_num=#{portNum}
+	</if>
+	<if test="portPrice != null ">
+		and t.port_price=#{portPrice}
+	</if>
+	<if test="memoryNum != null ">
+		and t.memory_num=#{memoryNum}
+	</if>
+	<if test="memoryPrice != null ">
+		and t.memory_price=#{memoryPrice}
+	</if>
+	<if test="cpuNum != null ">
+		and t.cpu_num=#{cpuNum}
+	</if>
+	<if test="cpuPrice != null ">
+		and t.cpu_price=#{cpuPrice}
+	</if>
+	<if test="diskNum != null ">
+		and t.disk_num=#{diskNum}
+	</if>
+	<if test="diskPrice != null ">
+		and t.disk_price=#{diskPrice}
+	</if>
+	<if test="cycle != null ">
+		and t.cycle=#{cycle}
+	</if>
+	<if test="timingStatus != null ">
+		and t.timing_status=#{timingStatus}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+
+</select>
+
+<update id="deleteLogic"  parameterType="com.jc.oa.finance.domain.ToaFinanceIncome">
+	     UPDATE toa_finance_income t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+ 			where ID in
+ 			<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=","> 
+				 #{primaryKey}
+			</foreach>
+</update>
+  	
+</mapper>   

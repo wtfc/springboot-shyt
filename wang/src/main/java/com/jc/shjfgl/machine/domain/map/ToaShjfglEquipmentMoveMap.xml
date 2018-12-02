@@ -1,0 +1,864 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentMove" > 
+
+<insert id="insert" parameterType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentMove"
+		useGeneratedKeys="true" keyProperty="id">
+  		insert into toa_shjfgl_equipment_move(ID,EQUIPMENT_NUMBER,EQUIPMENT_ID,COMPANY_ID,COMPANY_NAME,CONTACT,CONTACT_WAY,CABINET,IP,SN,BRAND,MACHINA,CAOZGCS,CAOZGCS_NAME,STATUS,WARN_DATE,START_DATE,END_DATE,ARRIVAL_DATE,SHELF_DATE,ARRIVAL_NEW_DATE,BUILD_DATE,WORK_TIME,STORAGE_LOCATION,CONNECTION_REQUIREMENTS,CABLE_USAGE,INSTALL_SYSTEM,IP_CONFIGURATION,IP_EMLY,REMOTE_SHUTDOWN,SHELF_REQUIREMENTS,CABINET_SPACE,CABINET_POWER,CHECK_AGAINST,POWER_OFF,EQUIPMENT_CONSTRUCTION,MORMAL_EQUIPMENT,HAVE_AFTER_OPERATE,REGION_INFORMATION,OPERATION_TYPE,OPERATION_TYPE_IMG,REMARK,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3)
+ values(#{id},#{equipmentNumber},#{equipmentId},#{companyId},#{companyName},#{contact},#{contactWay},#{cabinet},#{ip},#{sn},#{brand},#{machina},#{caozgcs},#{caozgcsName},#{status},#{warnDate},#{startDate},#{endDate},#{arrivalDate},#{shelfDate},#{arrivalNewDate},#{buildDate},#{workTime},#{storageLocation},#{connectionRequirements},#{cableUsage},#{installSystem},#{ipConfiguration},#{ipEmly},#{remoteShutdown},#{shelfRequirements},#{cabinetSpace},#{cabinetPower},#{checkAgainst},#{powerOff},#{equipmentConstruction},#{mormalEquipment},#{haveAfterOperate},#{regionInformation},#{operationType},#{operationTypeImg},#{remark},#{deleteFlag},#{createUser},#{createUserDept},#{createDate},#{modifyUser},#{modifyDate},#{extStr1},#{extStr2},#{extStr3},#{extStr4},#{extStr5},#{extDate1},#{extDate2},#{extNum1},#{extNum2},#{extNum3})
+</insert>
+
+<update id="update" parameterType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentMove">
+		update toa_shjfgl_equipment_move set 
+	<if test="equipmentNumber != null ">
+		EQUIPMENT_NUMBER=#{equipmentNumber},
+	</if>
+	<if test="equipmentId != null ">
+		EQUIPMENT_ID=#{equipmentId},
+	</if>
+	<if test="companyId != null ">
+		COMPANY_ID=#{companyId},
+	</if>
+	<if test="companyName != null ">
+		COMPANY_NAME=#{companyName},
+	</if>
+	<if test="contact != null ">
+		CONTACT=#{contact},
+	</if>
+	<if test="contactWay != null ">
+		CONTACT_WAY=#{contactWay},
+	</if>
+	<if test="cabinet != null ">
+		CABINET=#{cabinet},
+	</if>
+	<if test="ip != null ">
+		IP=#{ip},
+	</if>
+	<if test="sn != null ">
+		SN=#{sn},
+	</if>
+	<if test="brand != null ">
+		BRAND=#{brand},
+	</if>
+	<if test="machina != null ">
+		MACHINA=#{machina},
+	</if>
+	<if test="caozgcs != null ">
+		CAOZGCS=#{caozgcs},
+	</if>
+	<if test="caozgcsName != null ">
+		CAOZGCS_NAME=#{caozgcsName},
+	</if>
+	<if test="status != null ">
+		STATUS=#{status},
+	</if>
+	<if test="warnDate != null ">
+		WARN_DATE=#{warnDate},
+	</if>
+	<if test="startDate != null ">
+		START_DATE=#{startDate},
+	</if>
+	<if test="endDate != null ">
+		END_DATE=#{endDate},
+	</if>
+	<if test="arrivalDate != null ">
+		ARRIVAL_DATE=#{arrivalDate},
+	</if>
+	<if test="shelfDate != null ">
+		SHELF_DATE=#{shelfDate},
+	</if>
+	<if test="arrivalNewDate != null ">
+		ARRIVAL_NEW_DATE=#{arrivalNewDate},
+	</if>
+	<if test="buildDate != null ">
+		BUILD_DATE=#{buildDate},
+	</if>
+	<if test="workTime != null ">
+		WORK_TIME=#{workTime},
+	</if>
+	<if test="storageLocation != null ">
+		STORAGE_LOCATION=#{storageLocation},
+	</if>
+	<if test="connectionRequirements != null ">
+		CONNECTION_REQUIREMENTS=#{connectionRequirements},
+	</if>
+	<if test="cableUsage != null ">
+		CABLE_USAGE=#{cableUsage},
+	</if>
+	<if test="installSystem != null ">
+		INSTALL_SYSTEM=#{installSystem},
+	</if>
+	<if test="ipConfiguration != null ">
+		IP_CONFIGURATION=#{ipConfiguration},
+	</if>
+	<if test="ipEmly != null ">
+		IP_EMLY=#{ipEmly},
+	</if>
+	<if test="remoteShutdown != null ">
+		REMOTE_SHUTDOWN=#{remoteShutdown},
+	</if>
+	<if test="shelfRequirements != null ">
+		SHELF_REQUIREMENTS=#{shelfRequirements},
+	</if>
+	<if test="cabinetSpace != null ">
+		CABINET_SPACE=#{cabinetSpace},
+	</if>
+	<if test="cabinetPower != null ">
+		CABINET_POWER=#{cabinetPower},
+	</if>
+	<if test="checkAgainst != null ">
+		CHECK_AGAINST=#{checkAgainst},
+	</if>
+	<if test="powerOff != null ">
+		POWER_OFF=#{powerOff},
+	</if>
+	<if test="equipmentConstruction != null ">
+		EQUIPMENT_CONSTRUCTION=#{equipmentConstruction},
+	</if>
+	<if test="mormalEquipment != null ">
+		MORMAL_EQUIPMENT=#{mormalEquipment},
+	</if>
+	<if test="haveAfterOperate != null ">
+		HAVE_AFTER_OPERATE=#{haveAfterOperate},
+	</if>
+	<if test="regionInformation != null ">
+		REGION_INFORMATION=#{regionInformation},
+	</if>
+	<if test="operationType != null ">
+		OPERATION_TYPE=#{operationType},
+	</if>
+	<if test="operationTypeImg != null ">
+		OPERATION_TYPE_IMG=#{operationTypeImg},
+	</if>
+	<if test="remark != null ">
+		REMARK=#{remark},
+	</if>
+	<if test="deleteFlag != null ">
+		DELETE_FLAG=#{deleteFlag},
+	</if>
+	<if test="createUser != null ">
+		CREATE_USER=#{createUser},
+	</if>
+	<if test="createUserDept != null ">
+		CREATE_USER_DEPT=#{createUserDept},
+	</if>
+	<if test="createDate != null ">
+		CREATE_DATE=#{createDate},
+	</if>
+	<if test="modifyUser != null ">
+		MODIFY_USER=#{modifyUser},
+	</if>
+	<if test="modifyDate != null ">
+		MODIFY_DATE=#{modifyDate},
+	</if>
+	<if test="extStr1 != null ">
+		EXT_STR1=#{extStr1},
+	</if>
+	<if test="extStr2 != null ">
+		EXT_STR2=#{extStr2},
+	</if>
+	<if test="extStr3 != null ">
+		EXT_STR3=#{extStr3},
+	</if>
+	<if test="extStr4 != null ">
+		EXT_STR4=#{extStr4},
+	</if>
+	<if test="extStr5 != null ">
+		EXT_STR5=#{extStr5},
+	</if>
+	<if test="extDate1 != null ">
+		EXT_DATE1=#{extDate1},
+	</if>
+	<if test="extDate2 != null ">
+		EXT_DATE2=#{extDate2},
+	</if>
+	<if test="extNum1 != null ">
+		EXT_NUM1=#{extNum1},
+	</if>
+	<if test="extNum2 != null ">
+		EXT_NUM2=#{extNum2},
+	</if>
+	<if test="extNum3 != null ">
+		EXT_NUM3=#{extNum3},
+	</if>
+
+	 MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+</update>
+
+<select id="query" parameterType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentMove" resultType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentMove">
+		SELECT 
+		 t.ID id
+		,t.EQUIPMENT_NUMBER equipmentNumber
+		,t.EQUIPMENT_ID equipmentId
+		,t.COMPANY_ID companyId
+		,t.COMPANY_NAME companyName
+		,t.CONTACT contact
+		,t.CONTACT_WAY contactWay
+		,t.CABINET cabinet
+		,t.IP ip
+		,t.SN sn
+		,t.BRAND brand
+		,t.MACHINA machina
+		,t.CAOZGCS caozgcs
+		,t.CAOZGCS_NAME caozgcsName
+		,t.STATUS status
+		,t.WARN_DATE warnDate
+		,t.START_DATE startDate
+		,t.END_DATE endDate
+		,t.ARRIVAL_DATE arrivalDate
+		,t.SHELF_DATE shelfDate
+		,t.ARRIVAL_NEW_DATE arrivalNewDate
+		,t.BUILD_DATE buildDate
+		,t.WORK_TIME workTime
+		,t.STORAGE_LOCATION storageLocation
+		,t.CONNECTION_REQUIREMENTS connectionRequirements
+		,t.CABLE_USAGE cableUsage
+		,t.INSTALL_SYSTEM installSystem
+		,t.IP_CONFIGURATION ipConfiguration
+		,t.IP_EMLY ipEmly
+		,t.REMOTE_SHUTDOWN remoteShutdown
+		,t.SHELF_REQUIREMENTS shelfRequirements
+		,t.CABINET_SPACE cabinetSpace
+		,t.CABINET_POWER cabinetPower
+		,t.CHECK_AGAINST checkAgainst
+		,t.POWER_OFF powerOff
+		,t.EQUIPMENT_CONSTRUCTION equipmentConstruction
+		,t.MORMAL_EQUIPMENT mormalEquipment
+		,t.HAVE_AFTER_OPERATE haveAfterOperate
+		,t.REGION_INFORMATION regionInformation
+		,t.OPERATION_TYPE operationType
+		,t.OPERATION_TYPE_IMG operationTypeImg
+		,t.REMARK remark
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.EXT_NUM1 extNum1
+		,t.EXT_NUM2 extNum2
+		,t.EXT_NUM3 extNum3
+ FROM toa_shjfgl_equipment_move t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="equipmentNumber != null ">
+		and t.EQUIPMENT_NUMBER=#{equipmentNumber}
+	</if>
+	<if test="equipmentId != null ">
+		and t.EQUIPMENT_ID=#{equipmentId}
+	</if>
+	<if test="companyId != null ">
+		and t.COMPANY_ID=#{companyId}
+	</if>
+	<if test="companyName != null ">
+		and t.COMPANY_NAME=#{companyName}
+	</if>
+	<if test="contact != null ">
+		and t.CONTACT=#{contact}
+	</if>
+	<if test="contactWay != null ">
+		and t.CONTACT_WAY=#{contactWay}
+	</if>
+	<if test="cabinet != null ">
+		and t.CABINET=#{cabinet}
+	</if>
+	<if test="ip != null ">
+		and t.IP=#{ip}
+	</if>
+	<if test="sn != null ">
+		and t.SN=#{sn}
+	</if>
+	<if test="brand != null ">
+		and t.BRAND=#{brand}
+	</if>
+	<if test="machina != null ">
+		and t.MACHINA=#{machina}
+	</if>
+	<if test="caozgcs != null ">
+		and t.CAOZGCS=#{caozgcs}
+	</if>
+	<if test="caozgcsName != null ">
+		and t.CAOZGCS_NAME=#{caozgcsName}
+	</if>
+	<if test="status != null ">
+		and t.STATUS=#{status}
+	</if>
+	<if test="warnDate != null ">
+		and t.WARN_DATE=#{warnDate}
+	</if>
+	<if test="startDate != null ">
+		and t.START_DATE=#{startDate}
+	</if>
+	<if test="endDate != null ">
+		and t.END_DATE=#{endDate}
+	</if>
+	<if test="arrivalDate != null ">
+		and t.ARRIVAL_DATE=#{arrivalDate}
+	</if>
+	<if test="shelfDate != null ">
+		and t.SHELF_DATE=#{shelfDate}
+	</if>
+	<if test="arrivalNewDate != null ">
+		and t.ARRIVAL_NEW_DATE=#{arrivalNewDate}
+	</if>
+	<if test="buildDate != null ">
+		and t.BUILD_DATE=#{buildDate}
+	</if>
+	<if test="workTime != null ">
+		and t.WORK_TIME=#{workTime}
+	</if>
+	<if test="storageLocation != null ">
+		and t.STORAGE_LOCATION=#{storageLocation}
+	</if>
+	<if test="connectionRequirements != null ">
+		and t.CONNECTION_REQUIREMENTS=#{connectionRequirements}
+	</if>
+	<if test="cableUsage != null ">
+		and t.CABLE_USAGE=#{cableUsage}
+	</if>
+	<if test="installSystem != null ">
+		and t.INSTALL_SYSTEM=#{installSystem}
+	</if>
+	<if test="ipConfiguration != null ">
+		and t.IP_CONFIGURATION=#{ipConfiguration}
+	</if>
+	<if test="ipEmly != null ">
+		and t.IP_EMLY=#{ipEmly}
+	</if>
+	<if test="remoteShutdown != null ">
+		and t.REMOTE_SHUTDOWN=#{remoteShutdown}
+	</if>
+	<if test="shelfRequirements != null ">
+		and t.SHELF_REQUIREMENTS=#{shelfRequirements}
+	</if>
+	<if test="cabinetSpace != null ">
+		and t.CABINET_SPACE=#{cabinetSpace}
+	</if>
+	<if test="cabinetPower != null ">
+		and t.CABINET_POWER=#{cabinetPower}
+	</if>
+	<if test="checkAgainst != null ">
+		and t.CHECK_AGAINST=#{checkAgainst}
+	</if>
+	<if test="powerOff != null ">
+		and t.POWER_OFF=#{powerOff}
+	</if>
+	<if test="equipmentConstruction != null ">
+		and t.EQUIPMENT_CONSTRUCTION=#{equipmentConstruction}
+	</if>
+	<if test="mormalEquipment != null ">
+		and t.MORMAL_EQUIPMENT=#{mormalEquipment}
+	</if>
+	<if test="haveAfterOperate != null ">
+		and t.HAVE_AFTER_OPERATE=#{haveAfterOperate}
+	</if>
+	<if test="regionInformation != null ">
+		and t.REGION_INFORMATION=#{regionInformation}
+	</if>
+	<if test="operationType != null ">
+		and t.OPERATION_TYPE=#{operationType}
+	</if>
+	<if test="operationTypeImg != null ">
+		and t.OPERATION_TYPE_IMG=#{operationTypeImg}
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+</select>
+	
+<select id="queryCount" parameterType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentMove" resultType="java.lang.Long">
+		SELECT COUNT(ID) 
+	 FROM toa_shjfgl_equipment_move t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="equipmentNumber != null ">
+		and t.EQUIPMENT_NUMBER=#{equipmentNumber}
+	</if>
+	<if test="equipmentId != null ">
+		and t.EQUIPMENT_ID=#{equipmentId}
+	</if>
+	<if test="companyId != null ">
+		and t.COMPANY_ID=#{companyId}
+	</if>
+	<if test="companyName != null ">
+		and t.COMPANY_NAME=#{companyName}
+	</if>
+	<if test="contact != null ">
+		and t.CONTACT=#{contact}
+	</if>
+	<if test="contactWay != null ">
+		and t.CONTACT_WAY=#{contactWay}
+	</if>
+	<if test="cabinet != null ">
+		and t.CABINET=#{cabinet}
+	</if>
+	<if test="ip != null ">
+		and t.IP=#{ip}
+	</if>
+	<if test="sn != null ">
+		and t.SN=#{sn}
+	</if>
+	<if test="brand != null ">
+		and t.BRAND=#{brand}
+	</if>
+	<if test="machina != null ">
+		and t.MACHINA=#{machina}
+	</if>
+	<if test="caozgcs != null ">
+		and t.CAOZGCS=#{caozgcs}
+	</if>
+	<if test="caozgcsName != null ">
+		and t.CAOZGCS_NAME=#{caozgcsName}
+	</if>
+	<if test="status != null ">
+		and t.STATUS=#{status}
+	</if>
+	<if test="warnDate != null ">
+		and t.WARN_DATE=#{warnDate}
+	</if>
+	<if test="startDate != null ">
+		and t.START_DATE=#{startDate}
+	</if>
+	<if test="endDate != null ">
+		and t.END_DATE=#{endDate}
+	</if>
+	<if test="arrivalDate != null ">
+		and t.ARRIVAL_DATE=#{arrivalDate}
+	</if>
+	<if test="shelfDate != null ">
+		and t.SHELF_DATE=#{shelfDate}
+	</if>
+	<if test="arrivalNewDate != null ">
+		and t.ARRIVAL_NEW_DATE=#{arrivalNewDate}
+	</if>
+	<if test="buildDate != null ">
+		and t.BUILD_DATE=#{buildDate}
+	</if>
+	<if test="workTime != null ">
+		and t.WORK_TIME=#{workTime}
+	</if>
+	<if test="storageLocation != null ">
+		and t.STORAGE_LOCATION=#{storageLocation}
+	</if>
+	<if test="connectionRequirements != null ">
+		and t.CONNECTION_REQUIREMENTS=#{connectionRequirements}
+	</if>
+	<if test="cableUsage != null ">
+		and t.CABLE_USAGE=#{cableUsage}
+	</if>
+	<if test="installSystem != null ">
+		and t.INSTALL_SYSTEM=#{installSystem}
+	</if>
+	<if test="ipConfiguration != null ">
+		and t.IP_CONFIGURATION=#{ipConfiguration}
+	</if>
+	<if test="ipEmly != null ">
+		and t.IP_EMLY=#{ipEmly}
+	</if>
+	<if test="remoteShutdown != null ">
+		and t.REMOTE_SHUTDOWN=#{remoteShutdown}
+	</if>
+	<if test="shelfRequirements != null ">
+		and t.SHELF_REQUIREMENTS=#{shelfRequirements}
+	</if>
+	<if test="cabinetSpace != null ">
+		and t.CABINET_SPACE=#{cabinetSpace}
+	</if>
+	<if test="cabinetPower != null ">
+		and t.CABINET_POWER=#{cabinetPower}
+	</if>
+	<if test="checkAgainst != null ">
+		and t.CHECK_AGAINST=#{checkAgainst}
+	</if>
+	<if test="powerOff != null ">
+		and t.POWER_OFF=#{powerOff}
+	</if>
+	<if test="equipmentConstruction != null ">
+		and t.EQUIPMENT_CONSTRUCTION=#{equipmentConstruction}
+	</if>
+	<if test="mormalEquipment != null ">
+		and t.MORMAL_EQUIPMENT=#{mormalEquipment}
+	</if>
+	<if test="haveAfterOperate != null ">
+		and t.HAVE_AFTER_OPERATE=#{haveAfterOperate}
+	</if>
+	<if test="regionInformation != null ">
+		and t.REGION_INFORMATION=#{regionInformation}
+	</if>
+	<if test="operationType != null ">
+		and t.OPERATION_TYPE=#{operationType}
+	</if>
+	<if test="operationTypeImg != null ">
+		and t.OPERATION_TYPE_IMG=#{operationTypeImg}
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+
+</select>
+
+<update id="deleteLogic"  parameterType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentMove">
+	     UPDATE toa_shjfgl_equipment_move t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+ 			where ID in
+ 			<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=","> 
+				 #{primaryKey}
+			</foreach>
+</update>
+<!--APP查询方法  -->
+<select id="queryMove" parameterType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentMove" resultType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentMove">
+		SELECT 
+		 t.ID id
+		,t.EQUIPMENT_NUMBER equipmentNumber
+		,t.EQUIPMENT_ID equipmentId
+		,t.COMPANY_ID companyId
+		,t.COMPANY_NAME companyName
+		,t.CONTACT contact
+		,t.CONTACT_WAY contactWay
+		,t.CABINET cabinet
+		,t.IP ip
+		,t.SN sn
+		,t.BRAND brand
+		,t.MACHINA machina
+		,t.CAOZGCS caozgcs
+		,t.CAOZGCS_NAME caozgcsName
+		,t.STATUS status
+		,t.WARN_DATE warnDate
+		,t.START_DATE startDate
+		,t.END_DATE endDate
+		,t.ARRIVAL_DATE arrivalDate
+		,t.SHELF_DATE shelfDate
+		,t.ARRIVAL_NEW_DATE arrivalNewDate
+		,t.BUILD_DATE buildDate
+		,t.WORK_TIME workTime
+		,t.STORAGE_LOCATION storageLocation
+		,t.CONNECTION_REQUIREMENTS connectionRequirements
+		,t.CABLE_USAGE cableUsage
+		,t.INSTALL_SYSTEM installSystem
+		,t.IP_CONFIGURATION ipConfiguration
+		,t.IP_EMLY ipEmly
+		,t.REMOTE_SHUTDOWN remoteShutdown
+		,t.SHELF_REQUIREMENTS shelfRequirements
+		,t.CABINET_SPACE cabinetSpace
+		,t.CABINET_POWER cabinetPower
+		,t.CHECK_AGAINST checkAgainst
+		,t.POWER_OFF powerOff
+		,t.EQUIPMENT_CONSTRUCTION equipmentConstruction
+		,t.MORMAL_EQUIPMENT mormalEquipment
+		,t.HAVE_AFTER_OPERATE haveAfterOperate
+		,t.REGION_INFORMATION regionInformation
+		,t.OPERATION_TYPE operationType
+		,t.OPERATION_TYPE_IMG operationTypeImg
+		,t.REMARK remark
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.EXT_NUM1 extNum1
+		,t.EXT_NUM2 extNum2
+		,t.EXT_NUM3 extNum3
+ FROM toa_shjfgl_equipment_move t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="equipmentNumber != null ">
+		and t.EQUIPMENT_NUMBER=#{equipmentNumber}
+	</if>
+	<if test="equipmentId != null ">
+		and t.EQUIPMENT_ID=#{equipmentId}
+	</if>
+	<if test="companyId != null ">
+		and t.COMPANY_ID=#{companyId}
+	</if>
+	<if test="companyName != null ">
+		and t.COMPANY_NAME=#{companyName}
+	</if>
+	<if test="contact != null ">
+		and t.CONTACT=#{contact}
+	</if>
+	<if test="contactWay != null ">
+		and t.CONTACT_WAY=#{contactWay}
+	</if>
+	<if test="cabinet != null ">
+		and t.CABINET=#{cabinet}
+	</if>
+	<if test="ip != null ">
+		and t.IP=#{ip}
+	</if>
+	<if test="sn != null ">
+		and t.SN=#{sn}
+	</if>
+	<if test="brand != null ">
+		and t.BRAND=#{brand}
+	</if>
+	<if test="machina != null ">
+		and t.MACHINA=#{machina}
+	</if>
+	<if test="caozgcs != null ">
+		and t.CAOZGCS=#{caozgcs} or t.STATUS=#{status}
+	</if>
+	<if test="caozgcsName != null ">
+		and t.CAOZGCS_NAME=#{caozgcsName}
+	</if>
+	<!-- <if test="status != null ">
+		and t.STATUS=#{status}
+	</if> -->
+	<if test="warnDate != null ">
+		and t.WARN_DATE=#{warnDate}
+	</if>
+	<if test="startDate != null ">
+		and t.START_DATE=#{startDate}
+	</if>
+	<if test="endDate != null ">
+		and t.END_DATE=#{endDate}
+	</if>
+	<if test="arrivalDate != null ">
+		and t.ARRIVAL_DATE=#{arrivalDate}
+	</if>
+	<if test="shelfDate != null ">
+		and t.SHELF_DATE=#{shelfDate}
+	</if>
+	<if test="arrivalNewDate != null ">
+		and t.ARRIVAL_NEW_DATE=#{arrivalNewDate}
+	</if>
+	<if test="buildDate != null ">
+		and t.BUILD_DATE=#{buildDate}
+	</if>
+	<if test="workTime != null ">
+		and t.WORK_TIME=#{workTime}
+	</if>
+	<if test="storageLocation != null ">
+		and t.STORAGE_LOCATION=#{storageLocation}
+	</if>
+	<if test="connectionRequirements != null ">
+		and t.CONNECTION_REQUIREMENTS=#{connectionRequirements}
+	</if>
+	<if test="cableUsage != null ">
+		and t.CABLE_USAGE=#{cableUsage}
+	</if>
+	<if test="installSystem != null ">
+		and t.INSTALL_SYSTEM=#{installSystem}
+	</if>
+	<if test="ipConfiguration != null ">
+		and t.IP_CONFIGURATION=#{ipConfiguration}
+	</if>
+	<if test="ipEmly != null ">
+		and t.IP_EMLY=#{ipEmly}
+	</if>
+	<if test="remoteShutdown != null ">
+		and t.REMOTE_SHUTDOWN=#{remoteShutdown}
+	</if>
+	<if test="shelfRequirements != null ">
+		and t.SHELF_REQUIREMENTS=#{shelfRequirements}
+	</if>
+	<if test="cabinetSpace != null ">
+		and t.CABINET_SPACE=#{cabinetSpace}
+	</if>
+	<if test="cabinetPower != null ">
+		and t.CABINET_POWER=#{cabinetPower}
+	</if>
+	<if test="checkAgainst != null ">
+		and t.CHECK_AGAINST=#{checkAgainst}
+	</if>
+	<if test="powerOff != null ">
+		and t.POWER_OFF=#{powerOff}
+	</if>
+	<if test="equipmentConstruction != null ">
+		and t.EQUIPMENT_CONSTRUCTION=#{equipmentConstruction}
+	</if>
+	<if test="mormalEquipment != null ">
+		and t.MORMAL_EQUIPMENT=#{mormalEquipment}
+	</if>
+	<if test="haveAfterOperate != null ">
+		and t.HAVE_AFTER_OPERATE=#{haveAfterOperate}
+	</if>
+	<if test="regionInformation != null ">
+		and t.REGION_INFORMATION=#{regionInformation}
+	</if>
+	<if test="operationType != null ">
+		and t.OPERATION_TYPE=#{operationType}
+	</if>
+	<if test="operationTypeImg != null ">
+		and t.OPERATION_TYPE_IMG=#{operationTypeImg}
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+</select>
+  	
+</mapper>   

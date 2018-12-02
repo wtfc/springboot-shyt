@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.machine.domain.ToaMachineAttach" > 
+
+<insert id="insert" parameterType="com.jc.oa.machine.domain.ToaMachineAttach"
+		useGeneratedKeys="true" keyProperty="id">
+  		insert into toa_machine_attach(ID,RESOURCES_NAME,FILE_NAME,FILE_SIZE,UPLOAD_TIME,BUSINESS_ID,BUSINESS_SOURCE,CONTENT_TYPE,EXT,CATEGORY,USER_ID,USER_NAME)
+ values(#{id},#{resourcesName},#{fileName},#{fileSize},#{uploadTime},#{businessId},#{businessSource},#{contentType},#{ext},#{category},#{userId},#{userName})
+</insert>
+
+<update id="update" parameterType="com.jc.oa.machine.domain.ToaMachineAttach">
+		update toa_machine_attach set 
+	<if test="resourcesName != null ">
+		RESOURCES_NAME=#{resourcesName},
+	</if>
+	<if test="fileName != null ">
+		FILE_NAME=#{fileName},
+	</if>
+	<if test="fileSize != null ">
+		FILE_SIZE=#{fileSize},
+	</if>
+	<if test="uploadTime != null ">
+		UPLOAD_TIME=#{uploadTime},
+	</if>
+	<if test="businessId != null ">
+		BUSINESS_ID=#{businessId},
+	</if>
+	<if test="businessSource != null ">
+		BUSINESS_SOURCE=#{businessSource},
+	</if>
+	<if test="contentType != null ">
+		CONTENT_TYPE=#{contentType},
+	</if>
+	<if test="ext != null ">
+		EXT=#{ext},
+	</if>
+	<if test="category != null ">
+		CATEGORY=#{category},
+	</if>
+	<if test="userId != null ">
+		USER_ID=#{userId},
+	</if>
+	<if test="userName != null ">
+		USER_NAME=#{userName},
+	</if>
+
+	 MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+</update>
+
+<select id="query" parameterType="com.jc.oa.machine.domain.ToaMachineAttach" resultType="com.jc.oa.machine.domain.ToaMachineAttach">
+		SELECT 
+		 t.ID id
+		,t.RESOURCES_NAME resourcesName
+		,t.FILE_NAME fileName
+		,t.FILE_SIZE fileSize
+		,t.UPLOAD_TIME uploadTime
+		,t.BUSINESS_ID businessId
+		,t.BUSINESS_SOURCE businessSource
+		,t.CONTENT_TYPE contentType
+		,t.EXT ext
+		,t.CATEGORY category
+		,t.USER_ID userId
+		,t.USER_NAME userName
+ FROM toa_machine_attach t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="resourcesName != null ">
+		and t.RESOURCES_NAME=#{resourcesName}
+	</if>
+	<if test="fileName != null ">
+		and t.FILE_NAME=#{fileName}
+	</if>
+	<if test="fileSize != null ">
+		and t.FILE_SIZE=#{fileSize}
+	</if>
+	<if test="uploadTime != null ">
+		and t.UPLOAD_TIME=#{uploadTime}
+	</if>
+	<if test="businessId != null ">
+		and t.BUSINESS_ID=#{businessId}
+	</if>
+	<if test="businessSource != null ">
+		and t.BUSINESS_SOURCE=#{businessSource}
+	</if>
+	<if test="contentType != null ">
+		and t.CONTENT_TYPE=#{contentType}
+	</if>
+	<if test="ext != null ">
+		and t.EXT=#{ext}
+	</if>
+	<if test="category != null ">
+		and t.CATEGORY=#{category}
+	</if>
+	<if test="userId != null ">
+		and t.USER_ID=#{userId}
+	</if>
+	<if test="userName != null ">
+		and t.USER_NAME=#{userName}
+	</if>
+</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+</select>
+	
+<select id="queryCount" parameterType="com.jc.oa.machine.domain.ToaMachineAttach" resultType="java.lang.Long">
+		SELECT COUNT(ID) 
+	 FROM toa_machine_attach t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="resourcesName != null ">
+		and t.RESOURCES_NAME=#{resourcesName}
+	</if>
+	<if test="fileName != null ">
+		and t.FILE_NAME=#{fileName}
+	</if>
+	<if test="fileSize != null ">
+		and t.FILE_SIZE=#{fileSize}
+	</if>
+	<if test="uploadTime != null ">
+		and t.UPLOAD_TIME=#{uploadTime}
+	</if>
+	<if test="businessId != null ">
+		and t.BUSINESS_ID=#{businessId}
+	</if>
+	<if test="businessSource != null ">
+		and t.BUSINESS_SOURCE=#{businessSource}
+	</if>
+	<if test="contentType != null ">
+		and t.CONTENT_TYPE=#{contentType}
+	</if>
+	<if test="ext != null ">
+		and t.EXT=#{ext}
+	</if>
+	<if test="category != null ">
+		and t.CATEGORY=#{category}
+	</if>
+	<if test="userId != null ">
+		and t.USER_ID=#{userId}
+	</if>
+	<if test="userName != null ">
+		and t.USER_NAME=#{userName}
+	</if>
+</where>
+
+</select>
+
+<update id="deleteLogic"  parameterType="com.jc.oa.machine.domain.ToaMachineAttach">
+	     UPDATE toa_machine_attach t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+ 			where ID in
+ 			<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=","> 
+				 #{primaryKey}
+			</foreach>
+</update>
+  	
+</mapper>   

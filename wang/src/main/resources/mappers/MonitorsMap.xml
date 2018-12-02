@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.project.domain.Monitors">
+
+	<insert id="insert" parameterType="com.jc.oa.project.domain.Monitors"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO toa_project_monitor(ID,NAME,START_DATE,END_DATE,LEARED,PEOPLE,OPERATE,STATUS,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3)
+		VALUES (#{id,jdbcType=NUMERIC},#{name,jdbcType=VARCHAR},#{startDate,jdbcType=TIMESTAMP},#{endDate,jdbcType=TIMESTAMP},#{leared,jdbcType=VARCHAR},#{people,jdbcType=VARCHAR},#{operate,jdbcType=VARCHAR},#{status,jdbcType=NUMERIC},#{deleteFlag,jdbcType=VARCHAR},#{createUser,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr5,jdbcType=VARCHAR},#{extDate1,jdbcType=TIMESTAMP},#{extDate2,jdbcType=TIMESTAMP},#{extNum1,jdbcType=NUMERIC},#{extNum2,jdbcType=NUMERIC},#{extNum3,jdbcType=NUMERIC})
+	</insert>
+
+	<insert id="insertList" parameterType="list">
+		INSERT INTO toa_project_monitor(ID,NAME,START_DATE,END_DATE,LEARED,PEOPLE,OPERATE,STATUS,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3)
+		VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(#{id,jdbcType=NUMERIC},#{name,jdbcType=VARCHAR},#{startDate,jdbcType=TIMESTAMP},#{endDate,jdbcType=TIMESTAMP},#{leared,jdbcType=VARCHAR},#{people,jdbcType=VARCHAR},#{operate,jdbcType=VARCHAR},#{status,jdbcType=NUMERIC},#{deleteFlag,jdbcType=VARCHAR},#{createUser,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr5,jdbcType=VARCHAR},#{extDate1,jdbcType=TIMESTAMP},#{extDate2,jdbcType=TIMESTAMP},#{extNum1,jdbcType=NUMERIC},#{extNum2,jdbcType=NUMERIC},#{extNum3,jdbcType=NUMERIC})
+			</foreach> 
+	</insert>
+	
+	<update id="update" parameterType="com.jc.oa.project.domain.Monitors">
+		UPDATE toa_project_monitor set
+			<!-- <if test="groupName != null">
+				group_name like <![CDATA['%${groupName}%']]>
+			</if> -->
+			<if test="name!= null">
+				 NAME = #{name},
+			</if>
+			<if test="endDate != null">
+				 END_DATE = #{endDate},
+			</if>
+			<if test="startDate != null">
+				 START_DATE = #{startDate},
+			</if>
+			<if test="leared != null">
+				 LEARED = #{leared},
+			</if>
+			<if test="people != null">
+				 PEOPLE = #{people},
+			</if>
+			<if test="operate != null">
+				 OPERATE = #{operate},
+			</if>
+			<if test="status != null">
+				 STATUS = #{status},
+			</if>
+			<if test="deleteFlag !=null">
+				 DELETE_FLAG = #{deleteFlag},
+			</if>
+			<if test="extStr1 != null">
+				 EXT_STR1 = #{extStr1},
+			</if>
+			<if test="extStr2 != null">
+				 EXT_STR2 = #{extStr2},
+			</if>
+			<if test="extStr3 != null">
+				 EXT_STR3 = #{extStr3},
+			</if>
+			<if test="extStr4 != null">
+				 EXT_STR4 = #{extStr4},
+			</if>
+			<if test="extStr5 != null">
+				 EXT_STR5 = #{extStr5},
+			</if>
+			<if test="createUser != null">
+				 CREATE_USER = #{createUser},
+			</if>
+			<if test="createUserDept != null">
+				 CREATE_USER_DEPT = #{createUserDept},
+			</if>
+			<if test="createDate != null">
+				 CREATE_DATE = #{createDate},
+			</if>
+			<if test="modifyUser != null">
+				 MODIFY_USER = #{modifyUser},
+			</if>
+		MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+	</update>
+	
+	
+	<select id="query" parameterType="com.jc.oa.project.domain.Monitors" resultType="com.jc.oa.project.domain.Monitors">
+		SELECT 
+			t.ID id,
+			t.NAME name,
+			t.END_DATE endDate,
+			t.START_DATE startDate,
+			t.LEARED leared,
+			t.PEOPLE people,
+			t.OPERATE operate,
+			t.STATUS status,
+		  	t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3
+		FROM toa_project_monitor t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<!-- <if test="groupName != null">
+				group_name like <![CDATA['%${groupName}%']]>
+			</if> -->
+			
+			<if test="name!= null">
+				 and t.NAME = #{name}
+			</if>
+			<if test="endDate != null">
+				 and t.END_DATE = #{endDate}
+			</if>
+			<if test="startDate != null">
+				 and t.START_DATE = #{startDate}
+			</if>
+			<if test="leared != null">
+				 and t.LEARED = #{leared}
+			</if>
+			<if test="people != null">
+				 and t.PEOPLE = #{people}
+			</if>
+			<if test="operate != null">
+				 and t.OPERATE = #{operate}
+			</if>
+			<if test="status != null">
+				 and t.STATUS = #{status}
+			</if>
+			<if test="deleteFlag !=null">
+				 and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="extStr1 != null">
+				 and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				 and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				 and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				 and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				 and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="createUser != null">
+				 and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				 and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				 and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				 and t.MODIFY_USER = #{modifyUser}
+			</if>
+		</where>
+	</select>
+	
+	<select id="queryCount" parameterType="com.jc.oa.project.domain.Monitors" resultType="java.lang.Long">
+		SELECT count(ID) 
+		FROM toa_project_monitor t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<!-- <if test="groupName != null">
+				group_name like <![CDATA['%${groupName}%']]>
+			</if> -->
+			
+			<if test="name!= null">
+				 and t.NAME = #{name}
+			</if>
+			<if test="endDate != null">
+				 and t.END_DATE = #{endDate}
+			</if>
+			<if test="startDate != null">
+				 and t.START_DATE = #{startDate}
+			</if>
+			<if test="leared != null">
+				 and t.LEARED = #{leared}
+			</if>
+			<if test="people != null">
+				 and t.PEOPLE = #{people}
+			</if>
+			<if test="operate != null">
+				 and t.OPERATE = #{operate}
+			</if>
+			<if test="status != null">
+				 and t.STATUS = #{status}
+			</if>
+			<if test="deleteFlag !=null">
+				 and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="extStr1 != null">
+				 and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				 and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				 and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				 and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				 and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="createUser != null">
+				 and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				 and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				 and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				 and t.MODIFY_USER = #{modifyUser}
+			</if>
+		</where>
+	</select>
+	<update id="deleteLogic"  parameterType="com.jc.oa.project.domain.Monitors">
+    	UPDATE toa_project_monitor t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+ 	
+ 	<update id="statusUpdate"  parameterType="com.jc.oa.project.domain.Monitors">
+    	UPDATE toa_project_monitor t set t.status = 2,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+</mapper>

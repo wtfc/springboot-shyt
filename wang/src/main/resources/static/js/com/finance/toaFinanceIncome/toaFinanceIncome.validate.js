@@ -1,0 +1,12 @@
+$("#toaFinanceIncome#orm").validate({
+    ignore:'ignore',
+    rules: {
+		orderNo:{ 			required: true,		},		resourceType:{ 			required: true,		},		companyId:{ 			required: true,		},		companyName:{ 			required: true,		},		companyType:{ 			required: true,		},		oldDepartment:{ 			required: true,		},		department:{ 			required: true,		},		sale:{ 			required: true,		},		maintenanSale:{ 			required: true,		},		cardNo:{ 			required: true,		},		cardAmount:{ 			required: true,		},		roomName:{ 			required: true,		},		payType:{ 			required: true,		},		cycleStart:{ 			required: true,		},		cycleEnd:{ 			required: true,		},		orderDate:{ 			required: true,		},		months:{ 			required: true,		},		startIntel:{ 			required: true,		},		lineCategory:{ 			required: true,		},		singleCharg:{ 			required: true,		},		overflowCategory:{ 			required: true,		},		performanceAmount:{ 			required: true,		},		cardStockAmount:{ 			required: true,		},		prestoreAmount:{ 			required: true,		},		discount:{ 			required: true,		},		orderRemark:{ 			required: true,		},		productResources:{ 			required: true,		},		minBandwidth:{ 			required: true,		},		minBandwidthPrice:{ 			required: true,		},		portBandwidth:{ 			required: true,		},		portBandwidthPrice:{ 			required: true,		},		overflowBandwidth:{ 			required: true,		},		overflowBandwidthPrice:{ 			required: true,		},		cabinetNum:{ 			required: true,		},		cabinetPrice:{ 			required: true,		},		serviceNum:{ 			required: true,		},		servicePrice:{ 			required: true,		},		ipNum:{ 			required: true,		},		ipPrice:{ 			required: true,		},		switchNum:{ 			required: true,		},		switchPrice:{ 			required: true,		},		odfNum:{ 			required: true,		},		odfPrice:{ 			required: true,		},		portNum:{ 			required: true,		},		portPrice:{ 			required: true,		},		memoryNum:{ 			required: true,		},		memoryPrice:{ 			required: true,		},		cpuNum:{ 			required: true,		},		cpuPrice:{ 			required: true,		},		diskNum:{ 			required: true,		},		diskPrice:{ 			required: true,		},		cycle:{ 			required: true,		},		timingStatus:{ 			required: true,		},
+    },
+	messages:{
+		
+	},
+	errorPlacement: function(error, element) {  
+		element.closest("td").append(error); 
+	}
+});

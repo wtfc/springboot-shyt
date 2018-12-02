@@ -1,0 +1,1296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"><mapper namespace="com.jc.oa.po.worklog.domain.Worklog"><select id="getShareWorklogList" parameterType="com.jc.oa.po.worklog.domain.Worklog" resultType="com.jc.oa.po.worklog.domain.Worklog">
+		SELECT 
+		  	t.ID id,
+			t.TITLE title,
+			t.WORKLOG_DATE worklogDate,
+			t.SENTIMENT_REMARK sentimentRemark,
+			t.IS_SHARE isShare,
+			t.STATUS status,
+			t.REMIND_TYPE remindType,
+			t.REMIND_MAN remindMan,
+			t.REMIND_CONTENT remindContent,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5,
+			a.CREATE_USER shareWorklogUserId
+		FROM
+		  (SELECT 
+		    cs.data_id ,
+		    cs.CREATE_USER
+		  FROM
+		    toa_sys_control_side cs 
+		  WHERE user_id = #{createUser} <!-- 当前登陆用户用createUser传值 -->
+		    AND cs.TABLE_NAME = #{tableName}
+		    <if test="shareWorklogUserId != null">
+				and cs.CREATE_USER in(${shareWorklogUserId}) 
+			</if>
+		    ) a 
+		  LEFT JOIN tty_po_worklog AS t 
+		    ON a.DATA_ID = t.id 
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+
+			<if test="title != null">
+				and t.TITLE = #{title}
+			</if>
+
+			<if test="worklogDate != null">
+				and t.WORKLOG_DATE = #{worklogDate}
+			</if>
+			<if test="worklogDateBegin != null">
+				and t.WORKLOG_DATE &gt;= #{worklogDateBegin}
+			</if>
+			<if test="worklogDateEnd != null">
+				and t.WORKLOG_DATE &lt;= #{worklogDateEnd}
+			</if>
+
+			<if test="sentimentRemark != null">
+				and t.SENTIMENT_REMARK = #{sentimentRemark}
+			</if>
+
+			<if test="isShare != null">
+				and t.IS_SHARE = #{isShare}
+			</if>
+			<if test="status != null">
+				and t.STATUS = #{status}
+			</if>
+
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="createDateBegin != null">
+				and t.CREATE_DATE &gt;= #{createDateBegin}
+			</if>
+			<if test="createDateEnd != null">
+				and t.CREATE_DATE &lt;= #{createDateEnd}
+			</if>
+
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="modifyDateBegin != null">
+				and t.MODIFY_DATE &gt;= #{modifyDateBegin}
+			</if>
+			<if test="modifyDateEnd != null">
+				and t.MODIFY_DATE &lt;= #{modifyDateEnd}
+			</if>
+
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate1Begin != null">
+				and t.EXT_DATE1 &gt;= #{extDate1Begin}
+			</if>
+			<if test="extDate1End != null">
+				and t.EXT_DATE1 &lt;= #{extDate1End}
+			</if>
+
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extDate2Begin != null">
+				and t.EXT_DATE2 &gt;= #{extDate2Begin}
+			</if>
+			<if test="extDate2End != null">
+				and t.EXT_DATE2 &lt;= #{extDate2End}
+			</if>
+
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>    
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+	</select><select id="getShareWorklogCount" parameterType="com.jc.oa.po.worklog.domain.Worklog" resultType="java.lang.Integer">
+		SELECT 
+		  	count(t.ID)
+		FROM
+		  (SELECT 
+		    cs.data_id ,
+		    cs.CREATE_USER
+		  FROM
+		    toa_sys_control_side cs 
+		  WHERE user_id = #{createUser} <!-- 当前登陆用户用createUser传值 -->
+		    AND cs.TABLE_NAME = #{tableName}
+		    <if test="shareWorklogUserId != null">
+				and cs.CREATE_USER in(${shareWorklogUserId}) 
+			</if>
+		    ) a 
+		  LEFT JOIN tty_po_worklog AS t 
+		    ON a.DATA_ID = t.id 
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+
+			<if test="title != null">
+				and t.TITLE = #{title}
+			</if>
+
+			<if test="worklogDate != null">
+				and t.WORKLOG_DATE = #{worklogDate}
+			</if>
+			<if test="worklogDateBegin != null">
+				and t.WORKLOG_DATE &gt;= #{worklogDateBegin}
+			</if>
+			<if test="worklogDateEnd != null">
+				and t.WORKLOG_DATE &lt;= #{worklogDateEnd}
+			</if>
+
+			<if test="sentimentRemark != null">
+				and t.SENTIMENT_REMARK = #{sentimentRemark}
+			</if>
+
+			<if test="isShare != null">
+				and t.IS_SHARE = #{isShare}
+			</if>
+			<if test="status != null">
+				and t.STATUS = #{status}
+			</if>
+
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="createDateBegin != null">
+				and t.CREATE_DATE &gt;= #{createDateBegin}
+			</if>
+			<if test="createDateEnd != null">
+				and t.CREATE_DATE &lt;= #{createDateEnd}
+			</if>
+
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="modifyDateBegin != null">
+				and t.MODIFY_DATE &gt;= #{modifyDateBegin}
+			</if>
+			<if test="modifyDateEnd != null">
+				and t.MODIFY_DATE &lt;= #{modifyDateEnd}
+			</if>
+
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate1Begin != null">
+				and t.EXT_DATE1 &gt;= #{extDate1Begin}
+			</if>
+			<if test="extDate1End != null">
+				and t.EXT_DATE1 &lt;= #{extDate1End}
+			</if>
+
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extDate2Begin != null">
+				and t.EXT_DATE2 &gt;= #{extDate2Begin}
+			</if>
+			<if test="extDate2End != null">
+				and t.EXT_DATE2 &lt;= #{extDate2End}
+			</if>
+
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>  
+	</select><select id="queryMyWorklogList" parameterType="com.jc.oa.po.worklog.domain.Worklog" resultType="com.jc.oa.po.worklog.domain.Worklog">
+		SELECT 
+			t.ID id,
+			t.TITLE title,
+			t.WORKLOG_DATE worklogDate,
+			t.SENTIMENT_REMARK sentimentRemark,
+			t.IS_SHARE isShare,
+			t.STATUS status,
+			t.REMIND_TYPE remindType,
+			t.REMIND_MAN remindMan,
+			t.REMIND_CONTENT remindContent,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5
+			
+		FROM tty_po_worklog t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+
+			<if test="title != null">
+				and t.TITLE = #{title}
+			</if>
+
+			<if test="worklogDate != null">
+				and t.WORKLOG_DATE = #{worklogDate}
+			</if>
+			<if test="worklogDateBegin != null">
+				and t.WORKLOG_DATE &gt;= #{worklogDateBegin}
+			</if>
+			<if test="worklogDateEnd != null">
+				and t.WORKLOG_DATE &lt;= #{worklogDateEnd}
+			</if>
+
+			<if test="sentimentRemark != null">
+				and t.SENTIMENT_REMARK = #{sentimentRemark}
+			</if>
+
+			<if test="isShare != null">
+				and t.IS_SHARE = #{isShare}
+			</if>
+
+			<if test="status != null">
+				and t.STATUS = #{status}
+			</if>
+				
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="createDateBegin != null">
+				and t.CREATE_DATE &gt;= #{createDateBegin}
+			</if>
+			<if test="createDateEnd != null">
+				and t.CREATE_DATE &lt;= #{createDateEnd}
+			</if>
+
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="modifyDateBegin != null">
+				and t.MODIFY_DATE &gt;= #{modifyDateBegin}
+			</if>
+			<if test="modifyDateEnd != null">
+				and t.MODIFY_DATE &lt;= #{modifyDateEnd}
+			</if>
+
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate1Begin != null">
+				and t.EXT_DATE1 &gt;= #{extDate1Begin}
+			</if>
+			<if test="extDate1End != null">
+				and t.EXT_DATE1 &lt;= #{extDate1End}
+			</if>
+
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extDate2Begin != null">
+				and t.EXT_DATE2 &gt;= #{extDate2Begin}
+			</if>
+			<if test="extDate2End != null">
+				and t.EXT_DATE2 &lt;= #{extDate2End}
+			</if>
+
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+	</select><select id="query" parameterType="com.jc.oa.po.worklog.domain.Worklog" resultType="com.jc.oa.po.worklog.domain.Worklog">
+		SELECT 
+			t.ID id,
+			t.TITLE title,
+			t.WORKLOG_DATE worklogDate,
+			t.SENTIMENT_REMARK sentimentRemark,
+			t.IS_SHARE isShare,
+			t.STATUS status,
+			t.REMIND_TYPE remindType,
+			t.REMIND_MAN remindMan,
+			t.REMIND_CONTENT remindContent,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5
+			
+		FROM tty_po_worklog t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+
+			<if test="title != null">
+				and t.TITLE = #{title}
+			</if>
+
+			<if test="worklogDate != null">
+				and t.WORKLOG_DATE = #{worklogDate}
+			</if>
+			<if test="worklogDateBegin != null">
+				and t.WORKLOG_DATE &gt;= #{worklogDateBegin}
+			</if>
+			<if test="worklogDateEnd != null">
+				and t.WORKLOG_DATE &lt;= #{worklogDateEnd}
+			</if>
+
+			<if test="sentimentRemark != null">
+				and t.SENTIMENT_REMARK = #{sentimentRemark}
+			</if>
+
+			<if test="isShare != null">
+				and t.IS_SHARE = #{isShare}
+			</if>
+
+			<if test="status != null">
+				and t.STATUS = #{status}
+			</if>
+
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="createDateBegin != null">
+				and t.CREATE_DATE &gt;= #{createDateBegin}
+			</if>
+			<if test="createDateEnd != null">
+				and t.CREATE_DATE &lt;= #{createDateEnd}
+			</if>
+
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="modifyDateBegin != null">
+				and t.MODIFY_DATE &gt;= #{modifyDateBegin}
+			</if>
+			<if test="modifyDateEnd != null">
+				and t.MODIFY_DATE &lt;= #{modifyDateEnd}
+			</if>
+
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate1Begin != null">
+				and t.EXT_DATE1 &gt;= #{extDate1Begin}
+			</if>
+			<if test="extDate1End != null">
+				and t.EXT_DATE1 &lt;= #{extDate1End}
+			</if>
+
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extDate2Begin != null">
+				and t.EXT_DATE2 &gt;= #{extDate2Begin}
+			</if>
+			<if test="extDate2End != null">
+				and t.EXT_DATE2 &lt;= #{extDate2End}
+			</if>
+
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+	</select><select id="queryCount" parameterType="com.jc.oa.po.worklog.domain.Worklog" resultType="java.lang.Long">
+		SELECT count(ID) 
+		FROM tty_po_worklog t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+
+			<if test="title != null">
+				and t.TITLE = #{title}
+			</if>
+
+			<if test="worklogDate != null">
+				and t.WORKLOG_DATE = #{worklogDate}
+			</if>
+			<if test="worklogDateBegin != null">
+				and t.WORKLOG_DATE &gt;= #{worklogDateBegin}
+			</if>
+			<if test="worklogDateEnd != null">
+				and t.WORKLOG_DATE &lt;= #{worklogDateEnd}
+			</if>
+
+			<if test="sentimentRemark != null">
+				and t.SENTIMENT_REMARK = #{sentimentRemark}
+			</if>
+
+			<if test="isShare != null">
+				and t.IS_SHARE = #{isShare}
+			</if>
+
+			<if test="status != null">
+				and t.STATUS = #{status}
+			</if>
+
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="createDateBegin != null">
+				and t.CREATE_DATE &gt;= #{createDateBegin}
+			</if>
+			<if test="createDateEnd != null">
+				and t.CREATE_DATE &lt;= #{createDateEnd}
+			</if>
+
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="modifyDateBegin != null">
+				and t.MODIFY_DATE &gt;= #{modifyDateBegin}
+			</if>
+			<if test="modifyDateEnd != null">
+				and t.MODIFY_DATE &lt;= #{modifyDateEnd}
+			</if>
+
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate1Begin != null">
+				and t.EXT_DATE1 &gt;= #{extDate1Begin}
+			</if>
+			<if test="extDate1End != null">
+				and t.EXT_DATE1 &lt;= #{extDate1End}
+			</if>
+
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extDate2Begin != null">
+				and t.EXT_DATE2 &gt;= #{extDate2Begin}
+			</if>
+			<if test="extDate2End != null">
+				and t.EXT_DATE2 &lt;= #{extDate2End}
+			</if>
+
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+	</select><select id="getYesterdayRamind" parameterType="com.jc.oa.po.worklog.domain.WorklogContent" resultType="com.jc.oa.po.worklog.domain.WorklogContent">
+		SELECT 
+			t.ID id,
+			t.WORKLOG_ID worklogId,
+			t.CONTENT_TYPE contentType,
+			t.SORT_NUM sortNum,
+			t.CONTENT content,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5
+			
+		FROM tty_po_worklog_content t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+
+			<if test="worklogId != null">
+				and t.WORKLOG_ID = #{worklogId}
+			</if>
+
+			<if test="contentType != null">
+				and t.CONTENT_TYPE = #{contentType}
+			</if>
+
+			<if test="sortNum != null">
+				and t.SORT_NUM = #{sortNum}
+			</if>
+
+			<if test="content != null">
+				and t.CONTENT = #{content}
+			</if>
+
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="createDateBegin != null">
+				and t.CREATE_DATE &gt;= #{createDateBegin}
+			</if>
+			<if test="createDateEnd != null">
+				and t.CREATE_DATE &lt;= #{createDateEnd}
+			</if>
+
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="modifyDateBegin != null">
+				and t.MODIFY_DATE &gt;= #{modifyDateBegin}
+			</if>
+			<if test="modifyDateEnd != null">
+				and t.MODIFY_DATE &lt;= #{modifyDateEnd}
+			</if>
+
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate1Begin != null">
+				and t.EXT_DATE1 &gt;= #{extDate1Begin}
+			</if>
+			<if test="extDate1End != null">
+				and t.EXT_DATE1 &lt;= #{extDate1End}
+			</if>
+
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extDate2Begin != null">
+				and t.EXT_DATE2 &gt;= #{extDate2Begin}
+			</if>
+			<if test="extDate2End != null">
+				and t.EXT_DATE2 &lt;= #{extDate2End}
+			</if>
+
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+	</select><delete id="deleteByIds" parameterType="com.jc.oa.po.worklog.domain.Worklog">
+    	delete from tty_po_worklog
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete><update id="deleteLogic" parameterType="com.jc.oa.po.worklog.domain.Worklog">
+		<![CDATA[
+    		UPDATE tty_po_worklog set DELETE_FLAG = 1, MODIFY_USER = #{modifyUser}, MODIFY_DATE = #{modifyDate}
+    	]]>
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update><update id="delete" parameterType="com.jc.oa.po.worklog.domain.Worklog">
+    	UPDATE tty_po_worklog t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update><insert id="insert" parameterType="com.jc.oa.po.worklog.domain.Worklog"><selectKey resultType="long" keyProperty="id" order="BEFORE">SELECT TTY_PO_WORKLOG_ID_SEQ.NEXTVAL FROM DUAL</selectKey>
+		INSERT INTO tty_po_worklog(ID,TITLE,WORKLOG_DATE,SENTIMENT_REMARK,IS_SHARE,STATUS,REMIND_TYPE,REMIND_MAN,REMIND_CONTENT,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES (#{id},#{title,jdbcType=VARCHAR},#{worklogDate,jdbcType=TIMESTAMP},#{sentimentRemark,jdbcType=VARCHAR},#{isShare,jdbcType=VARCHAR},#{status,jdbcType=VARCHAR},#{remindType,jdbcType=VARCHAR},#{remindMan,jdbcType=VARCHAR},#{remindContent,jdbcType=VARCHAR},#{deleteFlag,jdbcType=NUMERIC},#{createUser,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createUserOrg,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extDate1,jdbcType=TIMESTAMP},#{extDate2,jdbcType=TIMESTAMP},#{extNum1,jdbcType=NUMERIC},#{extNum2,jdbcType=NUMERIC},#{extNum3,jdbcType=NUMERIC},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr5,jdbcType=VARCHAR})
+	</insert><insert id="insertList" parameterType="list">
+		INSERT INTO tty_po_worklog(ID,TITLE,WORKLOG_DATE,SENTIMENT_REMARK,IS_SHARE,STATUS,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(TTY_PO_WORKLOG_ID_SEQ.nextval,#{item.title,jdbcType=VARCHAR},#{item.worklogDate,jdbcType=TIMESTAMP},#{item.sentimentRemark,jdbcType=VARCHAR},#{item.isShare,jdbcType=VARCHAR},#{item.status,jdbcType=VARCHAR},#{item.deleteFlag,jdbcType=NUMERIC},#{item.createUser,jdbcType=NUMERIC},#{item.createUserDept,jdbcType=NUMERIC},#{item.createUserOrg,jdbcType=NUMERIC},#{item.createDate,jdbcType=TIMESTAMP},#{item.modifyUser,jdbcType=NUMERIC},#{item.modifyDate,jdbcType=TIMESTAMP},#{item.extDate1,jdbcType=TIMESTAMP},#{item.extDate2,jdbcType=TIMESTAMP},#{item.extNum1,jdbcType=NUMERIC},#{item.extNum2,jdbcType=NUMERIC},#{item.extNum3,jdbcType=NUMERIC},#{item.extStr1,jdbcType=VARCHAR},#{item.extStr2,jdbcType=VARCHAR},#{item.extStr3,jdbcType=VARCHAR},#{item.extStr4,jdbcType=VARCHAR},#{item.extStr5,jdbcType=VARCHAR})
+			</foreach> 
+	</insert><update id="update" parameterType="com.jc.oa.po.worklog.domain.Worklog">
+	UPDATE tty_po_worklog
+	   <set>
+	   	<if test="title != null">
+	   		TITLE = #{title},
+	   	</if>
+	   	<if test="worklogDate != null">
+	   		WORKLOG_DATE = #{worklogDate},
+	   	</if>
+	   	<if test="sentimentRemark != null">
+	   		SENTIMENT_REMARK = #{sentimentRemark},
+	   	</if>
+	   	<if test="isShare != null">
+	   		IS_SHARE = #{isShare},
+	   	</if>
+	   	<if test="status != null">
+			STATUS = #{status},
+		</if>
+	   	<if test="remindType != null">
+			REMIND_TYPE = #{remindType},
+		</if>
+	   	<if test="remindMan != null">
+			REMIND_MAN = #{remindMan},
+		</if>
+	   	<if test="remindContent != null">
+			REMIND_CONTENT = #{remindContent},
+		</if>
+	   	<if test="deleteFlag != null">
+	   		DELETE_FLAG = #{deleteFlag},
+	   	</if>
+	   <!-- 	<if test="createUser != null">
+	   		CREATE_USER = #{createUser},
+	   	</if>
+	   	<if test="createUserDept != null">
+	   		CREATE_USER_DEPT = #{createUserDept},
+	   	</if>
+	   	<if test="createUserOrg != null">
+	   		CREATE_USER_ORG = #{createUserOrg},
+	   	</if>
+	   	<if test="createDate != null">
+	   		CREATE_DATE = #{createDate},
+	   	</if> -->
+	   	<if test="modifyUser != null">
+	   		MODIFY_USER = #{modifyUser},
+	   	</if>
+	   	<if test="modifyDate != null">
+	   		MODIFY_DATE = #{modifyDate},
+	   	</if>
+	   	<if test="extDate1 != null">
+	   		EXT_DATE1 = #{extDate1},
+	   	</if>
+	   	<if test="extDate2 != null">
+	   		EXT_DATE2 = #{extDate2},
+	   	</if>
+	   	<if test="extNum1 != null">
+	   		EXT_NUM1 = #{extNum1},
+	   	</if>
+	   	<if test="extNum2 != null">
+	   		EXT_NUM2 = #{extNum2},
+	   	</if>
+	   	<if test="extNum3 != null">
+	   		EXT_NUM3 = #{extNum3},
+	   	</if>
+	   	<if test="extStr1 != null">
+	   		EXT_STR1 = #{extStr1},
+	   	</if>
+	   	<if test="extStr2 != null">
+	   		EXT_STR2 = #{extStr2},
+	   	</if>
+	   	<if test="extStr3 != null">
+	   		EXT_STR3 = #{extStr3},
+	   	</if>
+	   	<if test="extStr4 != null">
+	   		EXT_STR4 = #{extStr4},
+	   	</if>
+	   	<if test="extStr5 != null">
+	   		EXT_STR5 = #{extStr5},
+	   	</if>
+	   </set>
+	    where ID = #{id}
+	</update><select id="queryMyWorklogPastFiveDays" parameterType="com.jc.oa.po.worklog.domain.Worklog" resultType="com.jc.oa.po.worklog.domain.Worklog">
+		SELECT DAY AS worklogDate,IFNULL(b.cn,0) counts  FROM (
+		SELECT DATE_ADD( DATE_FORMAT(#{worklogDate},'%Y-%m-%d'),INTERVAL -1 DAY) DAY
+		UNION ALL 
+		SELECT DATE_ADD( DATE_FORMAT(#{worklogDate},'%Y-%m-%d'),INTERVAL -2 DAY) DAY
+		UNION ALL 
+		SELECT DATE_ADD( DATE_FORMAT(#{worklogDate},'%Y-%m-%d'),INTERVAL -3 DAY) DAY
+		UNION ALL 
+		SELECT DATE_ADD( DATE_FORMAT(#{worklogDate},'%Y-%m-%d'),INTERVAL -4 DAY) DAY
+		UNION ALL 
+		SELECT DATE_ADD( DATE_FORMAT(#{worklogDate},'%Y-%m-%d'),INTERVAL -5 DAY) DAY
+		) a
+		LEFT JOIN 
+		(SELECT COUNT(w.id) cn,w.WORKLOG_DATE FROM tty_po_worklog w 
+		WHERE w.DELETE_FLAG = 0 
+		and CREATE_USER = #{createUser}
+		GROUP BY DATE_FORMAT(w.WORKLOG_DATE,'%Y-%m-%d') ) b 
+		ON a.day = DATE_FORMAT(b.WORKLOG_DATE,'%Y-%m-%d')  order by worklogDate asc
+		
+	</select><select id="queryWorklogAnnoCount" parameterType="com.jc.oa.po.worklog.domain.Worklog" resultType="java.lang.Integer">
+		SELECT count(t.id) FROM tty_po_worklog t,tty_po_anno a WHERE t.ID = a.BUSINESS_ID AND a.ANNO_TYPE = 2 AND a.READING_STATE = 0
+		<if test="deleteFlag != null">
+			and t.DELETE_FLAG = #{deleteFlag}
+		</if>
+	   		and t.CREATE_USER = #{createUser}
+	</select><select id="query4M" parameterType="com.jc.oa.po.worklog.domain.Worklog" resultType="com.jc.oa.po.worklog.domain.Worklog">
+		SELECT 
+			t.ID id,
+			t.TITLE title,
+			t.WORKLOG_DATE worklogDate,
+			t.SENTIMENT_REMARK sentimentRemark,
+			t.IS_SHARE isShare,
+			t.STATUS status,
+			t.REMIND_TYPE remindType,
+			t.REMIND_MAN remindMan,
+			t.REMIND_CONTENT remindContent,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5,
+			tt.CONTENT content
+			
+		FROM tty_po_worklog t,tty_po_worklog_content tt where t.ID=tt.WORKLOG_ID
+			
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+
+			<if test="title != null">
+				and t.TITLE = #{title}
+			</if>
+
+			<if test="worklogDate != null">
+				and t.WORKLOG_DATE = #{worklogDate}
+			</if>
+			<if test="worklogDateBegin != null">
+				and t.WORKLOG_DATE &gt;= #{worklogDateBegin}
+			</if>
+			<if test="worklogDateEnd != null">
+				and t.WORKLOG_DATE &lt;= #{worklogDateEnd}
+			</if>
+
+			<if test="sentimentRemark != null">
+				and t.SENTIMENT_REMARK = #{sentimentRemark}
+			</if>
+
+			<if test="isShare != null">
+				and t.IS_SHARE = #{isShare}
+			</if>
+
+			<if test="status != null">
+				and t.STATUS = #{status}
+			</if>
+
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="createDateBegin != null">
+				and t.CREATE_DATE &gt;= #{createDateBegin}
+			</if>
+			<if test="createDateEnd != null">
+				and t.CREATE_DATE &lt;= #{createDateEnd}
+			</if>
+
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="modifyDateBegin != null">
+				and t.MODIFY_DATE &gt;= #{modifyDateBegin}
+			</if>
+			<if test="modifyDateEnd != null">
+				and t.MODIFY_DATE &lt;= #{modifyDateEnd}
+			</if>
+
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate1Begin != null">
+				and t.EXT_DATE1 &gt;= #{extDate1Begin}
+			</if>
+			<if test="extDate1End != null">
+				and t.EXT_DATE1 &lt;= #{extDate1End}
+			</if>
+
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extDate2Begin != null">
+				and t.EXT_DATE2 &gt;= #{extDate2Begin}
+			</if>
+			<if test="extDate2End != null">
+				and t.EXT_DATE2 &lt;= #{extDate2End}
+			</if>
+
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="contentType != null">
+				and tt.CONTENT_TYPE = #{contentType}
+			</if>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+	</select><select id="queryCount4M" parameterType="com.jc.oa.po.worklog.domain.Worklog" resultType="java.lang.Long">
+		SELECT count(ID) 
+		FROM tty_po_worklog t,tty_po_worklog_content tt where t.ID=tt.WORKLOG_ID
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+
+			<if test="title != null">
+				and t.TITLE = #{title}
+			</if>
+
+			<if test="worklogDate != null">
+				and t.WORKLOG_DATE = #{worklogDate}
+			</if>
+			<if test="worklogDateBegin != null">
+				and t.WORKLOG_DATE &gt;= #{worklogDateBegin}
+			</if>
+			<if test="worklogDateEnd != null">
+				and t.WORKLOG_DATE &lt;= #{worklogDateEnd}
+			</if>
+
+			<if test="sentimentRemark != null">
+				and t.SENTIMENT_REMARK = #{sentimentRemark}
+			</if>
+
+			<if test="isShare != null">
+				and t.IS_SHARE = #{isShare}
+			</if>
+
+			<if test="status != null">
+				and t.STATUS = #{status}
+			</if>
+
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="createDateBegin != null">
+				and t.CREATE_DATE &gt;= #{createDateBegin}
+			</if>
+			<if test="createDateEnd != null">
+				and t.CREATE_DATE &lt;= #{createDateEnd}
+			</if>
+
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="modifyDateBegin != null">
+				and t.MODIFY_DATE &gt;= #{modifyDateBegin}
+			</if>
+			<if test="modifyDateEnd != null">
+				and t.MODIFY_DATE &lt;= #{modifyDateEnd}
+			</if>
+
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate1Begin != null">
+				and t.EXT_DATE1 &gt;= #{extDate1Begin}
+			</if>
+			<if test="extDate1End != null">
+				and t.EXT_DATE1 &lt;= #{extDate1End}
+			</if>
+
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extDate2Begin != null">
+				and t.EXT_DATE2 &gt;= #{extDate2Begin}
+			</if>
+			<if test="extDate2End != null">
+				and t.EXT_DATE2 &lt;= #{extDate2End}
+			</if>
+
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="contentType != null">
+				and tt.CONTENT_TYPE = #{contentType}
+			</if>
+	</select></mapper>

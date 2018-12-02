@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.network.domain.ToaNetworkIpaddress" > 
+
+<insert id="insert" parameterType="com.jc.oa.network.domain.ToaNetworkIpaddress"
+		useGeneratedKeys="true" keyProperty="id">
+  		insert into toa_network_ipaddress(id,company_name,company_id,address_type,machine,equipment,ip_one,ip_two,ip_number,bandwidth_number,bandwidth,operation_enginner,operation_date,divider_date,work_number,address_number,using_number,idleness_number,using_rate,idleness_rate,REMARK,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3)
+ values(#{id},#{companyName},#{companyId},#{addressType},#{machine},#{equipment},#{ipOne},#{ipTwo},#{ipNumber},#{bandwidthNumber},#{bandwidth},#{operationEnginner},#{operationDate},#{dividerDate},#{workNumber},#{addressNumber},#{usingNumber},#{idlenessNumber},#{usingRate},#{idlenessRate},#{remark},#{deleteFlag},#{createUser},#{createUserDept},#{createDate},#{modifyUser},#{modifyDate},#{extStr1},#{extStr2},#{extStr3},#{extStr4},#{extStr5},#{extDate1},#{extDate2},#{extNum1},#{extNum2},#{extNum3})
+</insert>
+
+<update id="update" parameterType="com.jc.oa.network.domain.ToaNetworkIpaddress">
+		update toa_network_ipaddress set 
+	<if test="companyName != null ">
+		company_name=#{companyName},
+	</if>
+	<if test="companyId != null ">
+		company_id=#{companyId},
+	</if>
+	<if test="addressType != null ">
+		address_type=#{addressType},
+	</if>
+	<if test="machine != null ">
+		machine=#{machine},
+	</if>
+	<if test="equipment != null ">
+		equipment=#{equipment},
+	</if>
+	<if test="ipOne != null ">
+		ip_one=#{ipOne},
+	</if>
+	<if test="ipTwo != null ">
+		ip_two=#{ipTwo},
+	</if>
+	<if test="ipNumber != null ">
+		ip_number=#{ipNumber},
+	</if>
+	<if test="bandwidthNumber != null ">
+		bandwidth_number=#{bandwidthNumber},
+	</if>
+	<if test="bandwidth != null ">
+		bandwidth=#{bandwidth},
+	</if>
+	<if test="operationEnginner != null ">
+		operation_enginner=#{operationEnginner},
+	</if>
+	<if test="operationDate != null ">
+		operation_date=#{operationDate},
+	</if>
+	<if test="dividerDate != null ">
+		divider_date=#{dividerDate},
+	</if>
+	<if test="workNumber != null ">
+		work_number=#{workNumber},
+	</if>
+	<if test="addressNumber != null ">
+		address_number=#{addressNumber},
+	</if>
+	<if test="usingNumber != null ">
+		using_number=#{usingNumber},
+	</if>
+	<if test="idlenessNumber != null ">
+		idleness_number=#{idlenessNumber},
+	</if>
+	<if test="usingRate != null ">
+		using_rate=#{usingRate},
+	</if>
+	<if test="idlenessRate != null ">
+		idleness_rate=#{idlenessRate},
+	</if>
+	<if test="remark != null ">
+		REMARK=#{remark},
+	</if>
+	<if test="deleteFlag != null ">
+		DELETE_FLAG=#{deleteFlag},
+	</if>
+	<if test="createUser != null ">
+		CREATE_USER=#{createUser},
+	</if>
+	<if test="createUserDept != null ">
+		CREATE_USER_DEPT=#{createUserDept},
+	</if>
+	<if test="createDate != null ">
+		CREATE_DATE=#{createDate},
+	</if>
+	<if test="modifyUser != null ">
+		MODIFY_USER=#{modifyUser},
+	</if>
+	<if test="modifyDate != null ">
+		MODIFY_DATE=#{modifyDate},
+	</if>
+	<if test="extStr1 != null ">
+		EXT_STR1=#{extStr1},
+	</if>
+	<if test="extStr2 != null ">
+		EXT_STR2=#{extStr2},
+	</if>
+	<if test="extStr3 != null ">
+		EXT_STR3=#{extStr3},
+	</if>
+	<if test="extStr4 != null ">
+		EXT_STR4=#{extStr4},
+	</if>
+	<if test="extStr5 != null ">
+		EXT_STR5=#{extStr5},
+	</if>
+	<if test="extDate1 != null ">
+		EXT_DATE1=#{extDate1},
+	</if>
+	<if test="extDate2 != null ">
+		EXT_DATE2=#{extDate2},
+	</if>
+	<if test="extNum1 != null ">
+		EXT_NUM1=#{extNum1},
+	</if>
+	<if test="extNum2 != null ">
+		EXT_NUM2=#{extNum2},
+	</if>
+	<if test="extNum3 != null ">
+		EXT_NUM3=#{extNum3},
+	</if>
+
+	 MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+</update>
+
+<select id="query" parameterType="com.jc.oa.network.domain.ToaNetworkIpaddress" resultType="com.jc.oa.network.domain.ToaNetworkIpaddress">
+		SELECT 
+		 t.ID id
+		,t.company_name companyName
+		,t.company_id companyId
+		,t.address_type addressType
+		,t.machine machine
+		,t.equipment equipment
+		,t.ip_one ipOne
+		,t.ip_two ipTwo
+		,t.ip_number ipNumber
+		,t.bandwidth_number bandwidthNumber
+		,t.bandwidth bandwidth
+		,t.operation_enginner operationEnginner
+		,t.operation_date operationDate
+		,t.divider_date dividerDate
+		,t.work_number workNumber
+		,t.address_number addressNumber
+		,t.using_number usingNumber
+		,t.idleness_number idlenessNumber
+		,t.using_rate usingRate
+		,t.idleness_rate idlenessRate
+		,t.REMARK remark
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.EXT_NUM1 extNum1
+		,t.EXT_NUM2 extNum2
+		,t.EXT_NUM3 extNum3
+ FROM toa_network_ipaddress t
+<where>
+	<if test="id != null ">
+		and t.id=#{id}
+	</if>
+	<if test="companyName != null ">
+		and t.company_name like <![CDATA['%${companyName}%']]>
+	</if>
+	<if test="companyId != null ">
+		and t.company_id=#{companyId}
+	</if>
+	<if test="addressType != null ">
+		and t.address_type=#{addressType}
+	</if>
+	<if test="machine != null ">
+		and t.machine=#{machine}
+	</if>
+	<if test="equipment != null ">
+		and t.equipment=#{equipment}
+	</if>
+	<if test="ipOne != null ">
+		and t.ip_one like <![CDATA['%${ipOne}%']]>
+	</if>
+	<if test="ipTwo != null ">
+		and t.ip_two like <![CDATA['%${ipTwo}%']]>
+	</if>
+	<if test="ipNumber != null ">
+		and t.ip_number=#{ipNumber}
+	</if>
+	<if test="bandwidthNumber != null ">
+		and t.bandwidth_number=#{bandwidthNumber}
+	</if>
+	<if test="bandwidth != null ">
+		and t.bandwidth=#{bandwidth}
+	</if>
+	<if test="operationEnginner != null ">
+		and t.operation_enginner=#{operationEnginner}
+	</if>
+	<if test="operationDate != null ">
+		and t.operation_date=#{operationDate}
+	</if>
+	<if test="dividerDate != null ">
+		and t.divider_date=#{dividerDate}
+	</if>
+	<if test="workNumber != null ">
+		and t.work_number=#{workNumber}
+	</if>
+	<if test="addressNumber != null ">
+		and t.address_number=#{addressNumber}
+	</if>
+	<if test="usingNumber != null ">
+		and t.using_number=#{usingNumber}
+	</if>
+	<if test="idlenessNumber != null ">
+		and t.idleness_number=#{idlenessNumber}
+	</if>
+	<if test="usingRate != null ">
+		and t.using_rate=#{usingRate}
+	</if>
+	<if test="idlenessRate != null ">
+		and t.idleness_rate=#{idlenessRate}
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+</select>
+	
+<select id="queryCount" parameterType="com.jc.oa.network.domain.ToaNetworkIpaddress" resultType="java.lang.Long">
+		SELECT COUNT(ID) 
+	 FROM toa_network_ipaddress t
+<where>
+	<if test="id != null ">
+		and t.id=#{id}
+	</if>
+	<if test="companyName != null ">
+		and t.company_name like <![CDATA['%${companyName}%']]>
+	</if>
+	<if test="companyId != null ">
+		and t.company_id=#{companyId}
+	</if>
+	<if test="addressType != null ">
+		and t.address_type=#{addressType}
+	</if>
+	<if test="machine != null ">
+		and t.machine=#{machine}
+	</if>
+	<if test="equipment != null ">
+		and t.equipment=#{equipment}
+	</if>
+	<if test="ipOne != null ">
+		and t.ip_one like <![CDATA['%${ipOne}%']]>
+	</if>
+	<if test="ipTwo != null ">
+		and t.ip_two like <![CDATA['%${ipTwo}%']]>
+	</if>
+	<if test="ipNumber != null ">
+		and t.ip_number=#{ipNumber}
+	</if>
+	<if test="bandwidthNumber != null ">
+		and t.bandwidth_number=#{bandwidthNumber}
+	</if>
+	<if test="bandwidth != null ">
+		and t.bandwidth=#{bandwidth}
+	</if>
+	<if test="operationEnginner != null ">
+		and t.operation_enginner=#{operationEnginner}
+	</if>
+	<if test="operationDate != null ">
+		and t.operation_date=#{operationDate}
+	</if>
+	<if test="dividerDate != null ">
+		and t.divider_date=#{dividerDate}
+	</if>
+	<if test="workNumber != null ">
+		and t.work_number=#{workNumber}
+	</if>
+	<if test="addressNumber != null ">
+		and t.address_number=#{addressNumber}
+	</if>
+	<if test="usingNumber != null ">
+		and t.using_number=#{usingNumber}
+	</if>
+	<if test="idlenessNumber != null ">
+		and t.idleness_number=#{idlenessNumber}
+	</if>
+	<if test="usingRate != null ">
+		and t.using_rate=#{usingRate}
+	</if>
+	<if test="idlenessRate != null ">
+		and t.idleness_rate=#{idlenessRate}
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+
+</select>
+
+<update id="deleteLogic"  parameterType="com.jc.oa.network.domain.ToaNetworkIpaddress">
+	     UPDATE toa_network_ipaddress t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+ 			where ID in
+ 			<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=","> 
+				 #{primaryKey}
+			</foreach>
+</update>
+  	
+</mapper>   

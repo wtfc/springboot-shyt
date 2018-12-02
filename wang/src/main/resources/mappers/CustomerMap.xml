@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.shyt.domain.Customer" > 
+
+<insert id="insert" parameterType="com.jc.oa.shyt.domain.Customer"
+		useGeneratedKeys="true" keyProperty="id">
+  	insert into toa_shyt_customer(id,company_name,company_id,machine,department,sale,trade_user,service_type,link_user,trade,member_type,address,new_address,company_old,taxid,bank_name,bank_no,ticket_flag,overflow_category,is_daili,daili_name,start_intel,end_intel,rating,room_price,machine_price,service_price,ip_price,port_price,port_bandwidth_price,min_bandwidth_price,overflow_bandwidth_price,switch_price,odf_price,memory_price,cpu_price,disk_price,router_price,otherss_price,remark,customer_access,company_placed,customer_website,common_number,company_purchasing,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,EXT_DATE1,CREATE_USER_ORG,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3)
+ values(#{id},#{companyName},#{companyId},#{machine},#{department},#{sale},#{tradeUser},#{serviceType},#{linkUser},#{trade},#{memberType},#{address},#{newAddress},#{companyOld},#{taxid},#{bankName},#{bankNo},#{ticketFlag},#{overflowCategory},#{isDaili},#{dailiName},#{startIntel},#{endIntel},#{rating},#{roomPrice},#{machinePrice},#{servicePrice},#{ipPrice},#{portPrice},#{portBandwidthPrice},#{minBandwidthPrice},#{overflowBandwidthPrice},#{switchPrice},#{odfPrice},#{memoryPrice},#{cpuPrice},#{diskPrice},#{routerPrice},#{otherssPrice},#{remark},#{customerAccess},#{companyPlaced},#{customerWebsite},#{commonNumber},#{companyPurchasing},#{deleteFlag},#{createUser},#{createUserDept},#{createDate},#{modifyUser},#{modifyDate},#{extStr1},#{extStr2},#{extStr3},#{extStr4},#{extStr5},#{extDate1},#{createUserOrg},#{extDate2},#{extNum1},#{extNum2},#{extNum3})
+</insert>
+
+<update id="update" parameterType="com.jc.oa.shyt.domain.Customer">
+	update toa_shyt_customer set 
+	<if test="companyName != null ">
+		company_name=#{companyName},
+	</if>
+	<if test="companyId != null ">
+		company_id=#{companyId},
+	</if>
+	<if test="machine != null ">
+		machine=#{machine},
+	</if>
+	<if test="department != null ">
+		department=#{department},
+	</if>
+	<if test="sale != null ">
+		sale=#{sale},
+	</if>
+	<if test="tradeUser != null ">
+		trade_user=#{tradeUser},
+	</if>
+	<if test="serviceType != null ">
+		service_type=#{serviceType},
+	</if>
+	<if test="linkUser != null ">
+		link_user=#{linkUser},
+	</if>
+	<if test="trade != null ">
+		trade=#{trade},
+	</if>
+	<if test="memberType != null ">
+		member_type=#{memberType},
+	</if>
+	<if test="address != null ">
+		address=#{address},
+	</if>
+	<if test="newAddress != null ">
+		new_address=#{newAddress},
+	</if>
+	<if test="companyOld != null ">
+		company_old=#{companyOld},
+	</if>
+	<if test="taxid != null ">
+		taxid=#{taxid},
+	</if>
+	<if test="bankName != null ">
+		bank_name=#{bankName},
+	</if>
+	<if test="bankNo != null ">
+		bank_no=#{bankNo},
+	</if>
+	<if test="ticketFlag != null ">
+		ticket_flag=#{ticketFlag},
+	</if>
+	<if test="overflowCategory != null ">
+		overflow_category=#{overflowCategory},
+	</if>
+	<if test="isDaili != null ">
+		is_daili=#{isDaili},
+	</if>
+	<if test="dailiName != null ">
+		daili_name=#{dailiName},
+	</if>
+	<if test="startIntel != null ">
+		start_intel=#{startIntel},
+	</if>
+	<if test="endIntel != null or endIntel != '' ">
+		end_intel=#{endIntel},
+	</if>
+	<if test="rating != null ">
+		rating=#{rating},
+	</if>
+	<if test="roomPrice != null ">
+		room_price=#{roomPrice},
+	</if>
+	<if test="machinePrice != null ">
+		machine_price=#{machinePrice},
+	</if>
+	<if test="servicePrice != null ">
+		service_price=#{servicePrice},
+	</if>
+	<if test="ipPrice != null ">
+		ip_price=#{ipPrice},
+	</if>
+	<if test="portPrice != null ">
+		port_price=#{portPrice},
+	</if>
+	<if test="portBandwidthPrice != null ">
+		port_bandwidth_price=#{portBandwidthPrice},
+	</if>
+	<if test="minBandwidthPrice != null ">
+		min_bandwidth_price=#{minBandwidthPrice},
+	</if>
+	<if test="overflowBandwidthPrice != null ">
+		overflow_bandwidth_price=#{overflowBandwidthPrice},
+	</if>
+	<if test="switchPrice != null ">
+		switch_price=#{switchPrice},
+	</if>
+	<if test="odfPrice != null ">
+		odf_price=#{odfPrice},
+	</if>
+	<if test="memoryPrice != null ">
+		memory_price=#{memoryPrice},
+	</if>
+	<if test="cpuPrice != null ">
+		cpu_price=#{cpuPrice},
+	</if>
+	<if test="diskPrice != null ">
+		disk_price=#{diskPrice},
+	</if>
+	<if test="routerPrice != null ">
+		router_price=#{routerPrice},
+	</if>
+	<if test="otherssPrice != null ">
+		otherss_price=#{otherssPrice},
+	</if>
+	<if test="remark != null ">
+		remark=#{remark},
+	</if>
+	<if test="customerAccess != null ">
+		customer_access=#{customerAccess},
+	</if>
+	<if test="companyPlaced != null ">
+		company_placed=#{companyPlaced},
+	</if>
+	<if test="customerWebsite != null ">
+		customer_website=#{customerWebsite},
+	</if>
+	<if test="commonNumber != null ">
+		common_number=#{commonNumber},
+	</if>
+	<if test="companyPurchasing != null ">
+		company_purchasing=#{companyPurchasing},
+	</if>
+	<if test="deleteFlag != null ">
+		DELETE_FLAG=#{deleteFlag},
+	</if>
+	<if test="createUser != null ">
+		CREATE_USER=#{createUser},
+	</if>
+	<if test="createUserDept != null ">
+		CREATE_USER_DEPT=#{createUserDept},
+	</if>
+	<if test="createDate != null ">
+		CREATE_DATE=#{createDate},
+	</if>
+	<if test="modifyUser != null ">
+		MODIFY_USER=#{modifyUser},
+	</if>
+	<if test="modifyDate != null ">
+		MODIFY_DATE=#{modifyDate},
+	</if>
+	<if test="extStr1 != null ">
+		EXT_STR1=#{extStr1},
+	</if>
+	<if test="extStr2 != null ">
+		EXT_STR2=#{extStr2},
+	</if>
+	<if test="extStr3 != null ">
+		EXT_STR3=#{extStr3},
+	</if>
+	<if test="extStr4 != null ">
+		EXT_STR4=#{extStr4},
+	</if>
+	<if test="extStr5 != null ">
+		EXT_STR5=#{extStr5},
+	</if>
+	<if test="extDate1 != null ">
+		EXT_DATE1=#{extDate1},
+	</if>
+	<if test="extDate2 != null ">
+		EXT_DATE2=#{extDate2},
+	</if>
+	<if test="extNum1 != null ">
+		EXT_NUM1=#{extNum1},
+	</if>
+	<if test="extNum2 != null ">
+		EXT_NUM2=#{extNum2},
+	</if>
+	<if test="extNum3 != null ">
+		EXT_NUM3=#{extNum3},
+	</if>
+
+	 MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+</update>
+
+<select id="query" parameterType="com.jc.oa.shyt.domain.Customer" resultType="com.jc.oa.shyt.domain.Customer">
+	SELECT 
+		 t.ID id
+		,t.company_name companyName
+		,t.company_id companyId
+		,t.machine machine
+		,t.department department
+		,t.sale sale
+		,t.trade_user tradeUser
+		,t.service_type serviceType
+		,t.link_user linkUser
+		,t.trade trade
+		,t.member_type memberType
+		,t.address address
+		,t.new_address newAddress
+		,t.company_old companyOld
+		,t.taxid taxid
+		,t.bank_name bankName
+		,t.bank_no bankNo
+		,t.ticket_flag ticketFlag
+		,t.overflow_category overflowCategory
+		,t.is_daili isDaili
+		,t.daili_name dailiName
+		,t.start_intel startIntel
+		,t.end_intel endIntel
+		,t.rating rating
+		,t.room_price roomPrice
+		,t.machine_price machinePrice
+		,t.service_price servicePrice
+		,t.ip_price ipPrice
+		,t.port_price portPrice
+		,t.port_bandwidth_price portBandwidthPrice
+		,t.min_bandwidth_price minBandwidthPrice
+		,t.overflow_bandwidth_price overflowBandwidthPrice
+		,t.switch_price switchPrice
+		,t.odf_price odfPrice
+		,t.memory_price memoryPrice
+		,t.cpu_price cpuPrice
+		,t.disk_price diskPrice
+		,t.router_price routerPrice
+		,t.otherss_price otherssPrice
+		,t.remark remark
+		,t.customer_access customerAccess
+		,t.company_placed companyPlaced
+		,t.customer_website customerWebsite
+		,t.common_number commonNumber
+		,t.company_purchasing companyPurchasing
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_USER_ORG createUserOrg
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.EXT_NUM1 extNum1
+		,t.EXT_NUM2 extNum2
+		,t.EXT_NUM3 extNum3
+ FROM toa_shyt_customer t
+<where>
+	<if test="id != null ">
+		and t.id=#{id}
+	</if>
+	<if test="companyName != null ">
+		and t.company_name like <![CDATA['%${companyName}%']]>
+	</if>
+	<if test="companyId != null ">
+		and t.company_id=#{companyId}
+	</if>
+	<if test="machine != null ">
+		and t.machine=#{machine}
+	</if>
+	<if test="department != null ">
+		and t.department=#{department}
+	</if>
+	<if test="sale != null ">
+		and t.sale like <![CDATA['%${sale}%']]>
+	</if>
+	<if test="tradeUser != null ">
+		and t.trade_user like <![CDATA['%${tradeUser}%']]>
+	</if>
+	<if test="serviceType != null ">
+		and t.service_type=#{serviceType}
+	</if>
+	<if test="linkUser != null ">
+		and t.link_user=#{linkUser}
+	</if>
+	<if test="trade != null ">
+		and t.trade=#{trade}
+	</if>
+	<if test="memberType != null ">
+		and t.member_type=#{memberType}
+	</if>
+	<if test="address != null ">
+		and t.address=#{address}
+	</if>
+	<if test="newAddress != null ">
+		and t.new_address=#{newAddress}
+	</if>
+	<if test="companyOld != null ">
+		and t.company_old=#{companyOld}
+	</if>
+	<if test="taxid != null ">
+		and t.taxid=#{taxid}
+	</if>
+	<if test="bankName != null ">
+		and t.bank_name=#{bankName}
+	</if>
+	<if test="bankNo != null ">
+		and t.bank_no=#{bankNo}
+	</if>
+	<if test="ticketFlag != null ">
+		and t.ticket_flag=#{ticketFlag}
+	</if>
+	<if test="overflowCategory != null ">
+		and t.overflow_category=#{overflowCategory}
+	</if>
+	<if test="isDaili != null ">
+		and t.is_daili=#{isDaili}
+	</if>
+	<if test="dailiName != null ">
+		and t.daili_name=#{dailiName}
+	</if>
+	<if test="startIntel != null ">
+		and t.start_intel=#{startIntel}
+	</if>
+	<if test="endIntel != null ">
+		and t.end_intel=#{endIntel}
+	</if>
+	<if test="rating != null ">
+		and t.rating=#{rating}
+	</if>
+	<if test="roomPrice != null ">
+		and t.room_price=#{roomPrice}
+	</if>
+	<if test="machinePrice != null ">
+		and t.machine_price=#{machinePrice}
+	</if>
+	<if test="servicePrice != null ">
+		and t.service_price=#{servicePrice}
+	</if>
+	<if test="ipPrice != null ">
+		and t.ip_price=#{ipPrice}
+	</if>
+	<if test="portPrice != null ">
+		and t.port_price=#{portPrice}
+	</if>
+	<if test="portBandwidthPrice != null ">
+		and t.port_bandwidth_price=#{portBandwidthPrice}
+	</if>
+	<if test="minBandwidthPrice != null ">
+		and t.min_bandwidth_price=#{minBandwidthPrice}
+	</if>
+	<if test="overflowBandwidthPrice != null ">
+		and t.overflow_bandwidth_price=#{overflowBandwidthPrice}
+	</if>
+	<if test="switchPrice != null ">
+		and t.switch_price=#{switchPrice}
+	</if>
+	<if test="odfPrice != null ">
+		and t.odf_price=#{odfPrice}
+	</if>
+	<if test="memoryPrice != null ">
+		and t.memory_price=#{memoryPrice}
+	</if>
+	<if test="cpuPrice != null ">
+		and t.cpu_price=#{cpuPrice}
+	</if>
+	<if test="diskPrice != null ">
+		and t.disk_price=#{diskPrice}
+	</if>
+	<if test="routerPrice != null ">
+		and t.router_price=#{routerPrice}
+	</if>
+	<if test="otherssPrice != null ">
+		and t.otherss_price=#{otherssPrice}
+	</if>
+	<if test="remark != null ">
+		and t.remark=#{remark}
+	</if>
+	<if test="customerAccess != null ">
+		and t.customer_access=#{customerAccess}
+	</if>
+	<if test="companyPlaced != null ">
+		and t.company_placed=#{companyPlaced}
+	</if>
+	<if test="customerWebsite != null ">
+		and t.customer_website=#{customerWebsite}
+	</if>
+	<if test="commonNumber != null ">
+		and t.common_number=#{commonNumber}
+	</if>
+	<if test="companyPurchasing != null ">
+		and t.company_purchasing=#{companyPurchasing}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createUserOrg != null">
+		 and t.CREATE_USER_ORG = #{createUserOrg}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+	<if test="clientName != null ">
+		and t.company_name=#{clientName}
+	</if>
+</where>
+	<if test="orderBy != null">
+		order by ${orderBy}
+	</if>
+</select>
+	
+<select id="queryCount" parameterType="com.jc.oa.shyt.domain.Customer" resultType="java.lang.Long">
+	SELECT COUNT(ID) 
+	 FROM toa_shyt_customer t
+<where>
+	<if test="id != null ">
+		and t.id=#{id}
+	</if>
+	<if test="companyName != null ">
+		and t.company_name like <![CDATA['%${companyName}%']]>
+	</if>
+	<if test="companyId != null ">
+		and t.company_id=#{companyId}
+	</if>
+	<if test="machine != null ">
+		and t.machine=#{machine}
+	</if>
+	<if test="department != null ">
+		and t.department=#{department}
+	</if>
+	<if test="sale != null ">
+		and t.sale like <![CDATA['%${sale}%']]>
+	</if>
+	<if test="tradeUser != null ">
+		and t.trade_user like <![CDATA['%${tradeUser}%']]>
+	</if>
+	<if test="serviceType != null ">
+		and t.service_type=#{serviceType}
+	</if>
+	<if test="linkUser != null ">
+		and t.link_user=#{linkUser}
+	</if>
+	<if test="trade != null ">
+		and t.trade=#{trade}
+	</if>
+	<if test="memberType != null ">
+		and t.member_type=#{memberType}
+	</if>
+	<if test="address != null ">
+		and t.address=#{address}
+	</if>
+	<if test="newAddress != null ">
+		and t.new_address=#{newAddress}
+	</if>
+	<if test="companyOld != null ">
+		and t.company_old=#{companyOld}
+	</if>
+	<if test="taxid != null ">
+		and t.taxid=#{taxid}
+	</if>
+	<if test="bankName != null ">
+		and t.bank_name=#{bankName}
+	</if>
+	<if test="bankNo != null ">
+		and t.bank_no=#{bankNo}
+	</if>
+	<if test="ticketFlag != null ">
+		and t.ticket_flag=#{ticketFlag}
+	</if>
+	<if test="overflowCategory != null ">
+		and t.overflow_category=#{overflowCategory}
+	</if>
+	<if test="isDaili != null ">
+		and t.is_daili=#{isDaili}
+	</if>
+	<if test="dailiName != null ">
+		and t.daili_name=#{dailiName}
+	</if>
+	<if test="startIntel != null ">
+		and t.start_intel=#{startIntel}
+	</if>
+	<if test="endIntel != null ">
+		and t.end_intel=#{endIntel}
+	</if>
+	<if test="rating != null ">
+		and t.rating=#{rating}
+	</if>
+	<if test="roomPrice != null ">
+		and t.room_price=#{roomPrice}
+	</if>
+	<if test="machinePrice != null ">
+		and t.machine_price=#{machinePrice}
+	</if>
+	<if test="servicePrice != null ">
+		and t.service_price=#{servicePrice}
+	</if>
+	<if test="ipPrice != null ">
+		and t.ip_price=#{ipPrice}
+	</if>
+	<if test="portPrice != null ">
+		and t.port_price=#{portPrice}
+	</if>
+	<if test="portBandwidthPrice != null ">
+		and t.port_bandwidth_price=#{portBandwidthPrice}
+	</if>
+	<if test="minBandwidthPrice != null ">
+		and t.min_bandwidth_price=#{minBandwidthPrice}
+	</if>
+	<if test="overflowBandwidthPrice != null ">
+		and t.overflow_bandwidth_price=#{overflowBandwidthPrice}
+	</if>
+	<if test="switchPrice != null ">
+		and t.switch_price=#{switchPrice}
+	</if>
+	<if test="odfPrice != null ">
+		and t.odf_price=#{odfPrice}
+	</if>
+	<if test="memoryPrice != null ">
+		and t.memory_price=#{memoryPrice}
+	</if>
+	<if test="cpuPrice != null ">
+		and t.cpu_price=#{cpuPrice}
+	</if>
+	<if test="diskPrice != null ">
+		and t.disk_price=#{diskPrice}
+	</if>
+	<if test="routerPrice != null ">
+		and t.router_price=#{routerPrice}
+	</if>
+	<if test="otherssPrice != null ">
+		and t.otherss_price=#{otherssPrice}
+	</if>
+	<if test="remark != null ">
+		and t.remark=#{remark}
+	</if>
+	<if test="customerAccess != null ">
+		and t.customer_access=#{customerAccess}
+	</if>
+	<if test="companyPlaced != null ">
+		and t.company_placed=#{companyPlaced}
+	</if>
+	<if test="customerWebsite != null ">
+		and t.customer_website=#{customerWebsite}
+	</if>
+	<if test="commonNumber != null ">
+		and t.common_number=#{commonNumber}
+	</if>
+	<if test="companyPurchasing != null ">
+		and t.company_purchasing=#{companyPurchasing}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createUserOrg != null">
+		 and t.CREATE_USER_ORG = #{createUserOrg}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+	<if test="clientName != null ">
+		and t.company_name=#{clientName}
+	</if>
+	<if test="dataAccessDynamicSQL != null">
+		${dataAccessDynamicSQL}
+	</if>
+</where>
+
+</select>
+
+<update id="deleteLogic"  parameterType="com.jc.oa.shyt.domain.Customer">
+	     UPDATE toa_shyt_customer t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+ 			where ID in
+ 			<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=","> 
+				 #{primaryKey}
+			</foreach>
+</update>
+  	
+</mapper>   

@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.shyt.domain.Complain">
+
+	<insert id="insert" parameterType="com.jc.oa.shyt.domain.Complain"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO toa_shyt_complain(
+								ID
+								,COMPANY_NAME
+								,CUSTOMER_ID
+								,COMPLAIN_NUMBER
+								,PARTMENT
+								,COMPLAIN_DATE
+								,COMPLAIN_STATUS
+								,STATUS
+								,PROGRAM
+								,REMARK
+								,DELETE_FLAG
+								,CREATE_USER
+								,CREATE_USER_DEPT
+								,CREATE_USER_ORG
+								,CREATE_DATE
+								,MODIFY_USER
+								,MODIFY_DATE
+								,EXT_STR1
+								,EXT_STR2
+								,EXT_STR3
+								,EXT_STR4
+								,EXT_STR5
+								,EXT_DATE1
+								,EXT_DATE2
+								,EXT_NUM1
+								,EXT_NUM2
+								,EXT_NUM3)
+		VALUES (#{id,jdbcType=NUMERIC}
+				,#{companyName,jdbcType=VARCHAR}
+				,#{customerId,jdbcType=NUMERIC}
+				,#{complainNumber,jdbcType=NUMERIC}
+				,#{partment,jdbcType=VARCHAR}
+				,#{complainDate,jdbcType=TIMESTAMP}
+				,#{complainStatus,jdbcType=VARCHAR}
+				,#{status,jdbcType=VARCHAR}
+				,#{program,jdbcType=VARCHAR}
+				,#{remark,jdbcType=VARCHAR}
+				,#{deleteFlag,jdbcType=VARCHAR}
+				,#{createUser,jdbcType=NUMERIC}
+				,#{createUserDept,jdbcType=NUMERIC}
+				,#{createUserOrg,jdbcType=NUMERIC}
+				,#{createDate,jdbcType=TIMESTAMP}
+				,#{modifyUser,jdbcType=NUMERIC}
+				,#{modifyDate,jdbcType=TIMESTAMP}
+				,#{extStr1,jdbcType=VARCHAR}
+				,#{extStr2,jdbcType=VARCHAR}
+				,#{extStr3,jdbcType=VARCHAR}
+				,#{extStr4,jdbcType=VARCHAR}
+				,#{extStr5,jdbcType=VARCHAR}
+				,#{extDate1,jdbcType=TIMESTAMP}
+				,#{extDate2,jdbcType=TIMESTAMP}
+				,#{extNum1,jdbcType=NUMERIC}
+				,#{extNum2,jdbcType=NUMERIC}
+				,#{extNum3,jdbcType=NUMERIC}
+				)
+	</insert>
+
+	<insert id="insertList" parameterType="list">
+		INSERT INTO toa_shyt_complain(ID
+								,COMPANY_NAME
+								,CUSTOMER_ID
+								,COMPLAIN_NUMBER
+								,PARTMENT
+								,COMPLAIN_DATE
+								,COMPLAIN_STATUS
+								,STATUS
+								,PROGRAM
+								,REMARK
+								,DELETE_FLAG
+								,CREATE_USER
+								,CREATE_USER_ORG
+								,CREATE_USER_DEPT
+								,CREATE_DATE
+								,MODIFY_USER
+								,MODIFY_DATE
+								,EXT_STR1
+								,EXT_STR2
+								,EXT_STR3
+								,EXT_STR4
+								,EXT_STR5
+								,EXT_DATE1
+								,EXT_DATE2
+								,EXT_NUM1
+								,EXT_NUM2
+								,EXT_NUM3
+								)
+		VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(#{item.id,jdbcType=NUMERIC}
+				,#{item.companyName,jdbcType=VARCHAR}
+				,#{item.customerId,jdbcType=NUMERIC}
+				,#{item.complainNumber,jdbcType=NUMERIC}
+				,#{item.partment,jdbcType=VARCHAR}
+				,#{item.complainDate,jdbcType=TIMESTAMP}
+				,#{item.complainStatus,jdbcType=VARCHAR}
+				,#{item.status,jdbcType=VARCHAR}
+				,#{item.program,jdbcType=VARCHAR}
+				,#{item.remark,jdbcType=VARCHAR}
+				,#{item.deleteFlag,jdbcType=VARCHAR}
+				,#{item.createUser,jdbcType=NUMERIC}
+				,#{item.createUserOrg,jdbcType=NUMERIC}
+				,#{item.createUserDept,jdbcType=NUMERIC}
+				,#{item.createDate,jdbcType=TIMESTAMP}
+				,#{item.modifyUser,jdbcType=NUMERIC}
+				,#{item.modifyDate,jdbcType=TIMESTAMP}
+				,#{item.extStr1,jdbcType=VARCHAR}
+				,#{item.extStr2,jdbcType=VARCHAR}
+				,#{item.extStr3,jdbcType=VARCHAR}
+				,#{item.extStr4,jdbcType=VARCHAR}
+				,#{item.extStr5,jdbcType=VARCHAR}
+				,#{item.extDate1,jdbcType=TIMESTAMP}
+				,#{item.extDate2,jdbcType=TIMESTAMP}
+				,#{item.extNum1,jdbcType=NUMERIC}
+				,#{item.extNum2,jdbcType=NUMERIC}
+				,#{item.extNum3,jdbcType=NUMERIC}
+				)
+			</foreach> 
+	</insert>
+	
+	<update id="update" parameterType="com.jc.oa.shyt.domain.Complain">
+		UPDATE toa_shyt_complain set
+			<!-- <if test="groupName != null">
+				group_name like <![CDATA['%${groupName}%']]>
+			</if> -->
+			
+			<if test="companyName != null">
+				 COMPANY_NAME = #{companyName},
+			</if>
+			<if test="customerId != null">
+				 CUSTOMER_ID = #{customerId},
+			</if>
+			<if test="complainNumber != null">
+				 COMPLAIN_NUMBER = #{complainNumber},
+			</if>
+			<if test="partment != null">
+				 PARTMENT = #{partment},
+			</if>
+			<if test="createUserOrg != null ">
+				CREATE_USER_ORG=#{createUserOrg},
+			</if>
+			<if test="complainDate != null">
+				 COMPLAIN_DATE = #{complainDate},
+			</if>
+			<if test="complainStatus != null">
+				 COMPLAIN_STATUS = #{complainStatus},
+			</if>
+			<if test="status != null">
+				 STATUS = #{status},
+			</if>
+			<if test="program != null">
+				 PROGRAM = #{program},
+			</if>
+			<if test="remark != null">
+				 REMARK = #{remark},
+			</if>
+			<if test="deleteFlag !=null">
+				DELETE_FLAG = #{deleteFlag},
+			</if>
+			<if test="extStr1 != null">
+				 EXT_STR1 = #{extStr1},
+			</if>
+			<if test="extStr2 != null">
+				 EXT_STR2 = #{extStr2},
+			</if>
+			<if test="extStr3 != null">
+				 EXT_STR3 = #{extStr3},
+			</if>
+			<if test="extStr4 != null">
+				 EXT_STR4 = #{extStr4},
+			</if>
+			<if test="extStr5 != null">
+				 EXT_STR5 = #{extStr5},
+			</if>
+			<if test="createUser != null">
+				 CREATE_USER = #{createUser},
+			</if>
+			<if test="createUserDept != null">
+				 CREATE_USER_DEPT = #{createUserDept},
+			</if>
+			<if test="createDate != null">
+				 CREATE_DATE = #{createDate},
+			</if>
+			<if test="modifyUser != null">
+				 MODIFY_USER = #{modifyUser},
+			</if>
+		MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+	</update>
+	
+	
+	<select id="query" parameterType="com.jc.oa.shyt.domain.Complain" resultType="com.jc.oa.shyt.domain.Complain">
+		SELECT 
+			t.ID 				id
+			,t.COMPANY_NAME 	companyName
+			,t.CUSTOMER_ID 		customerId
+			,t.COMPLAIN_NUMBER	complainNumber
+			,t.PARTMENT			partment
+			,t.COMPLAIN_DATE	complainDate
+			,t.COMPLAIN_STATUS	complainStatus
+			,t.STATUS			status
+			,t.PROGRAM			program
+			,t.REMARK 			remark
+			,t.DELETE_FLAG 		deleteFlag
+			,t.CREATE_USER 		createUser
+			,t.CREATE_USER_ORG  createUserOrg
+			,t.CREATE_USER_DEPT createUserDept
+			,t.CREATE_DATE		createDate
+			,t.MODIFY_USER      modifyUser
+			,t.MODIFY_DATE      modifyDate
+			,t.EXT_STR1			extStr1
+			,t.EXT_STR2			extStr2
+			,t.EXT_STR3			extStr3
+			,t.EXT_STR4			extStr4
+			,t.EXT_STR5			extStr5
+			,t.EXT_DATE1		extDate1
+			,t.EXT_DATE2		extDate2
+			,t.EXT_NUM1			extNum1
+			,t.EXT_NUM2			extNum2
+			,t.EXT_NUM3			extNum3
+		FROM toa_shyt_complain t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<!-- <if test="groupName != null">
+				group_name like <![CDATA['%${groupName}%']]>
+			</if> -->
+			
+			<if test="companyName != null">
+				 and t.COMPANY_NAME = #{companyName}
+			</if>
+			<if test="customerId != null">
+				 and t.CUSTOMER_ID = #{customerId}
+			</if>
+			<if test="complainNumber != null">
+				 and t.COMPLAIN_NUMBER = #{complainNumber}
+			</if>
+			<if test="partment != null">
+				 and t.PARTMENT = #{partment}
+			</if>
+			<if test="complainDate != null">
+				 and t.COMPLAIN_DATE = #{complainDate}
+			</if>
+			<if test="complainStatus != null">
+				 and t.COMPLAIN_STATUS = #{complainStatus}
+			</if>
+			<if test="status != null">
+				 and t.STATUS = #{status}
+			</if>
+			<if test="program != null">
+				 and t.PROGRAM = #{program}
+			</if>
+			<if test="remark != null">
+				 and t.REMARK = #{remark}
+			</if>
+			<if test="deleteFlag !=null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="extStr1 != null">
+				 and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				 and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				 and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				 and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				 and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="createUser != null">
+				 and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				 and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				 and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				 and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				 and t.MODIFY_USER = #{modifyUser}
+			</if>
+		</where>
+			<if test="orderBy != null">
+				order by ${orderBy}
+			</if>
+	</select>
+	
+	<select id="queryCount" parameterType="com.jc.oa.shyt.domain.Complain" resultType="java.lang.Long">
+		SELECT count(ID) 
+		FROM toa_shyt_complain t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<!-- <if test="groupName != null">
+				group_name like <![CDATA['%${groupName}%']]>
+			</if> -->
+			<if test="companyName != null">
+				 and t.COMPANY_NAME = #{companyName}
+			</if>
+			<if test="customerId != null">
+				 and t.CUSTOMER_ID = #{customerId}
+			</if>
+			<if test="complainNumber != null">
+				 and t.COMPLAIN_NUMBER = #{complainNumber}
+			</if>
+			<if test="partment != null">
+				 and t.PARTMENT = #{partment}
+			</if>
+			<if test="complainDate != null">
+				 and t.COMPLAIN_DATE = #{complainDate}
+			</if>
+			<if test="complainStatus != null">
+				 and t.COMPLAIN_STATUS = #{complainStatus}
+			</if>
+			<if test="status != null">
+				 and t.STATUS = #{status}
+			</if>
+			<if test="program != null">
+				 and t.PROGRAM = #{program}
+			</if>
+			<if test="remark != null">
+				 and t.REMARK = #{remark}
+			</if>
+			<if test="deleteFlag !=null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="extStr1 != null">
+				 and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				 and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				 and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				 and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				 and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="createUser != null">
+				 and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				 and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				 and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				 and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				 and t.MODIFY_USER = #{modifyUser}
+			</if>
+		</where>
+	</select>
+	<update id="deleteLogic"  parameterType="com.jc.oa.shyt.domain.Complain">
+    	UPDATE toa_shyt_complain t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+</mapper>

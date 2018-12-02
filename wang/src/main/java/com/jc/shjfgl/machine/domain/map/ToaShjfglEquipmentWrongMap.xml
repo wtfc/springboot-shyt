@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentWrong" > 
+
+<insert id="insert" parameterType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentWrong"
+		useGeneratedKeys="true" keyProperty="id">
+  		insert into toa_shjfgl_equipment_wrong(ID,EQUIPMENT_NUMBER,DIVICE_NUMBER,COMPANY_ID,COMPANY_NAME,CONTACT,TEL,BILL_DATE,WORK_TIME,START_DATE,END_DATE,EQUIPMENT_ID,CABINET,IP,SN,BRAND,EQUIPMENT_CHECK_RESULT,IS_REPORT,HAVE_AFTER_OPERATE,OPERATION_TYPE,OPERATION_TYPE_IMG,MACHINA,CAOZGCS,CAOZGCS_NAME,STATUS,ISAGREE,REMARK,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3)
+ values(#{id},#{equipmentNumber},#{diviceNumber},#{companyId},#{companyName},#{contact},#{tel},#{billDate},#{workTime},#{startDate},#{endDate},#{equipmentId},#{cabinet},#{ip},#{sn},#{brand},#{equipmentCheckResult},#{isReport},#{haveAfterOperate},#{operationType},#{operationTypeImg},#{machina},#{caozgcs},#{caozgcsName},#{status},#{isAgree},#{remark},#{deleteFlag},#{createUser},#{createUserDept},#{createDate},#{modifyUser},#{modifyDate},#{extStr1},#{extStr2},#{extStr3},#{extStr4},#{extStr5},#{extDate1},#{extDate2},#{extNum1},#{extNum2},#{extNum3})
+</insert>
+
+<update id="update" parameterType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentWrong">
+		update toa_shjfgl_equipment_wrong set 
+	<if test="equipmentNumber != null ">
+		EQUIPMENT_NUMBER=#{equipmentNumber},
+	</if>
+	<if test="diviceNumber != null ">
+		DIVICE_NUMBER=#{diviceNumber},
+	</if>
+	<if test="companyId != null ">
+		COMPANY_ID=#{companyId},
+	</if>
+	<if test="companyName != null ">
+		COMPANY_NAME=#{companyName},
+	</if>
+	<if test="contact != null ">
+		CONTACT=#{contact},
+	</if>
+	<if test="tel != null ">
+		TEL=#{tel},
+	</if>
+	<if test="billDate != null ">
+		BILL_DATE=#{billDate},
+	</if>
+	<if test="workTime != null ">
+		WORK_TIME=#{workTime},
+	</if>
+	<if test="startDate != null ">
+		START_DATE=#{startDate},
+	</if>
+	<if test="endDate != null ">
+		END_DATE=#{endDate},
+	</if>
+	<if test="equipmentId != null ">
+		EQUIPMENT_ID=#{equipmentId},
+	</if>
+	<if test="cabinet != null ">
+		CABINET=#{cabinet},
+	</if>
+	<if test="ip != null ">
+		IP=#{ip},
+	</if>
+	<if test="sn != null ">
+		SN=#{sn},
+	</if>
+	<if test="brand != null ">
+		BRAND=#{brand},
+	</if>
+	<if test="equipmentCheckResult != null ">
+		EQUIPMENT_CHECK_RESULT=#{equipmentCheckResult},
+	</if>
+	<if test="isReport != null ">
+		IS_REPORT=#{isReport},
+	</if>
+	<if test="haveAfterOperate != null ">
+		HAVE_AFTER_OPERATE=#{haveAfterOperate},
+	</if>
+	<if test="operationType != null ">
+		OPERATION_TYPE=#{operationType},
+	</if>
+	<if test="operationTypeImg != null ">
+		OPERATION_TYPE_IMG=#{operationTypeImg},
+	</if>
+	<if test="machina != null ">
+		MACHINA=#{machina},
+	</if>
+	<if test="caozgcs != null ">
+		CAOZGCS=#{caozgcs},
+	</if>
+	<if test="caozgcsName != null ">
+		CAOZGCS_NAME=#{caozgcsName},
+	</if>
+	<if test="status != null ">
+		STATUS=#{status},
+	</if>
+	<if test="isAgree != null ">
+		ISAGREE=#{isAgree},
+	</if>
+	<if test="remark != null ">
+		REMARK=#{remark},
+	</if>
+	<if test="deleteFlag != null ">
+		DELETE_FLAG=#{deleteFlag},
+	</if>
+	<if test="createUser != null ">
+		CREATE_USER=#{createUser},
+	</if>
+	<if test="createUserDept != null ">
+		CREATE_USER_DEPT=#{createUserDept},
+	</if>
+	<if test="createDate != null ">
+		CREATE_DATE=#{createDate},
+	</if>
+	<if test="modifyUser != null ">
+		MODIFY_USER=#{modifyUser},
+	</if>
+	<if test="modifyDate != null ">
+		MODIFY_DATE=#{modifyDate},
+	</if>
+	<if test="extStr1 != null ">
+		EXT_STR1=#{extStr1},
+	</if>
+	<if test="extStr2 != null ">
+		EXT_STR2=#{extStr2},
+	</if>
+	<if test="extStr3 != null ">
+		EXT_STR3=#{extStr3},
+	</if>
+	<if test="extStr4 != null ">
+		EXT_STR4=#{extStr4},
+	</if>
+	<if test="extStr5 != null ">
+		EXT_STR5=#{extStr5},
+	</if>
+	<if test="extDate1 != null ">
+		EXT_DATE1=#{extDate1},
+	</if>
+	<if test="extDate2 != null ">
+		EXT_DATE2=#{extDate2},
+	</if>
+	<if test="extNum1 != null ">
+		EXT_NUM1=#{extNum1},
+	</if>
+	<if test="extNum2 != null ">
+		EXT_NUM2=#{extNum2},
+	</if>
+	<if test="extNum3 != null ">
+		EXT_NUM3=#{extNum3},
+	</if>
+
+	 MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+</update>
+
+<select id="query" parameterType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentWrong" resultType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentWrong">
+		SELECT 
+		 t.ID id
+		,t.EQUIPMENT_NUMBER equipmentNumber
+		,t.DIVICE_NUMBER diviceNumber
+		,t.COMPANY_ID companyId
+		,t.COMPANY_NAME companyName
+		,t.CONTACT contact
+		,t.TEL tel
+		,t.BILL_DATE billDate
+		,t.WORK_TIME workTime
+		,t.START_DATE startDate
+		,t.END_DATE endDate
+		,t.EQUIPMENT_ID equipmentId
+		,t.CABINET cabinet
+		,t.IP ip
+		,t.SN sn
+		,t.BRAND brand
+		,t.EQUIPMENT_CHECK_RESULT equipmentCheckResult
+		,t.IS_REPORT isReport
+		,t.HAVE_AFTER_OPERATE haveAfterOperate
+		,t.OPERATION_TYPE operationType
+		,t.OPERATION_TYPE_IMG operationTypeImg
+		,t.MACHINA machina
+		,t.CAOZGCS caozgcs
+		,t.CAOZGCS_NAME caozgcsName
+		,t.STATUS status
+		,t.ISAGREE isAgree
+		,t.REMARK remark
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.EXT_NUM1 extNum1
+		,t.EXT_NUM2 extNum2
+		,t.EXT_NUM3 extNum3
+ FROM toa_shjfgl_equipment_wrong t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="equipmentNumber != null ">
+		and t.EQUIPMENT_NUMBER=#{equipmentNumber}
+	</if>
+	<if test="diviceNumber != null ">
+		and t.DIVICE_NUMBER=#{diviceNumber}
+	</if>
+	<if test="companyId != null ">
+		and t.COMPANY_ID=#{companyId}
+	</if>
+	<if test="companyName != null ">
+		and t.COMPANY_NAME=#{companyName}
+	</if>
+	<if test="contact != null ">
+		and t.CONTACT=#{contact}
+	</if>
+	<if test="tel != null ">
+		and t.TEL=#{tel}
+	</if>
+	<if test="billDate != null ">
+		and t.BILL_DATE=#{billDate}
+	</if>
+	<if test="workTime != null ">
+		and t.WORK_TIME=#{workTime}
+	</if>
+	<if test="startDate != null ">
+		and t.START_DATE=#{startDate}
+	</if>
+	<if test="endDate != null ">
+		and t.END_DATE=#{endDate}
+	</if>
+	<if test="equipmentId != null ">
+		and t.EQUIPMENT_ID=#{equipmentId}
+	</if>
+	<if test="cabinet != null ">
+		and t.CABINET=#{cabinet}
+	</if>
+	<if test="ip != null ">
+		and t.IP=#{ip}
+	</if>
+	<if test="sn != null ">
+		and t.SN=#{sn}
+	</if>
+	<if test="brand != null ">
+		and t.BRAND=#{brand}
+	</if>
+	<if test="equipmentCheckResult != null ">
+		and t.EQUIPMENT_CHECK_RESULT=#{equipmentCheckResult}
+	</if>
+	<if test="isReport != null ">
+		and t.IS_REPORT=#{isReport}
+	</if>
+	<if test="haveAfterOperate != null ">
+		and t.HAVE_AFTER_OPERATE=#{haveAfterOperate}
+	</if>
+	<if test="operationType != null ">
+		and t.OPERATION_TYPE=#{operationType}
+	</if>
+	<if test="operationTypeImg != null ">
+		and t.OPERATION_TYPE_IMG=#{operationTypeImg}
+	</if>
+	<if test="machina != null ">
+		and t.MACHINA=#{machina}
+	</if>
+	<if test="caozgcs != null ">
+		and t.CAOZGCS=#{caozgcs}
+	</if>
+	<if test="caozgcsName != null ">
+		and t.CAOZGCS_NAME=#{caozgcsName}
+	</if>
+	<if test="status != null ">
+		and t.STATUS=#{status}
+	</if>
+	<if test="isAgree != null ">
+		and t.ISAGREE=#{isAgree}
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+</select>
+
+<select id="queryApp" parameterType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentWrong" resultType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentWrong">
+		SELECT 
+		 t.ID id
+		,t.EQUIPMENT_NUMBER equipmentNumber
+		,t.DIVICE_NUMBER diviceNumber
+		,t.COMPANY_ID companyId
+		,t.COMPANY_NAME companyName
+		,t.CONTACT contact
+		,t.TEL tel
+		,t.BILL_DATE billDate
+		,t.WORK_TIME workTime
+		,t.START_DATE startDate
+		,t.END_DATE endDate
+		,t.EQUIPMENT_ID equipmentId
+		,t.CABINET cabinet
+		,t.IP ip
+		,t.SN sn
+		,t.BRAND brand
+		,t.EQUIPMENT_CHECK_RESULT equipmentCheckResult
+		,t.IS_REPORT isReport
+		,t.HAVE_AFTER_OPERATE haveAfterOperate
+		,t.OPERATION_TYPE operationType
+		,t.OPERATION_TYPE_IMG operationTypeImg
+		,t.MACHINA machina
+		,t.CAOZGCS caozgcs
+		,t.CAOZGCS_NAME caozgcsName
+		,t.STATUS status
+		,t.ISAGREE isAgree
+		,t.REMARK remark
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.EXT_NUM1 extNum1
+		,t.EXT_NUM2 extNum2
+		,t.EXT_NUM3 extNum3
+ FROM toa_shjfgl_equipment_wrong t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="equipmentNumber != null ">
+		and t.EQUIPMENT_NUMBER=#{equipmentNumber}
+	</if>
+	<if test="diviceNumber != null ">
+		and t.DIVICE_NUMBER=#{diviceNumber}
+	</if>
+	<if test="companyId != null ">
+		and t.COMPANY_ID=#{companyId}
+	</if>
+	<if test="companyName != null ">
+		and t.COMPANY_NAME=#{companyName}
+	</if>
+	<if test="contact != null ">
+		and t.CONTACT=#{contact}
+	</if>
+	<if test="tel != null ">
+		and t.TEL=#{tel}
+	</if>
+	<if test="billDate != null ">
+		and t.BILL_DATE=#{billDate}
+	</if>
+	<if test="workTime != null ">
+		and t.WORK_TIME=#{workTime}
+	</if>
+	<if test="startDate != null ">
+		and t.START_DATE=#{startDate}
+	</if>
+	<if test="endDate != null ">
+		and t.END_DATE=#{endDate}
+	</if>
+	<if test="equipmentId != null ">
+		and t.EQUIPMENT_ID=#{equipmentId}
+	</if>
+	<if test="cabinet != null ">
+		and t.CABINET=#{cabinet}
+	</if>
+	<if test="ip != null ">
+		and t.IP=#{ip}
+	</if>
+	<if test="sn != null ">
+		and t.SN=#{sn}
+	</if>
+	<if test="brand != null ">
+		and t.BRAND=#{brand}
+	</if>
+	<if test="equipmentCheckResult != null ">
+		and t.EQUIPMENT_CHECK_RESULT=#{equipmentCheckResult}
+	</if>
+	<if test="isReport != null ">
+		and t.IS_REPORT=#{isReport}
+	</if>
+	<if test="haveAfterOperate != null ">
+		and t.HAVE_AFTER_OPERATE=#{haveAfterOperate}
+	</if>
+	<if test="operationType != null ">
+		and t.OPERATION_TYPE=#{operationType}
+	</if>
+	<if test="operationTypeImg != null ">
+		and t.OPERATION_TYPE_IMG=#{operationTypeImg}
+	</if>
+	<if test="machina != null ">
+		and t.MACHINA=#{machina}
+	</if>
+	<if test="caozgcs != null ">
+		and t.CAOZGCS=#{caozgcs} or t.STATUS = #{status}
+	</if>
+	<if test="caozgcsName != null ">
+		and t.CAOZGCS_NAME=#{caozgcsName}
+	</if>
+	<if test="status != null ">
+		and t.STATUS=#{status}
+	</if>
+	<if test="isAgree != null ">
+		and t.ISAGREE=#{isAgree}
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+</select>
+	
+<select id="queryCount" parameterType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentWrong" resultType="java.lang.Long">
+		SELECT COUNT(ID) 
+	 FROM toa_shjfgl_equipment_wrong t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="equipmentNumber != null ">
+		and t.EQUIPMENT_NUMBER=#{equipmentNumber}
+	</if>
+	<if test="diviceNumber != null ">
+		and t.DIVICE_NUMBER=#{diviceNumber}
+	</if>
+	<if test="companyId != null ">
+		and t.COMPANY_ID=#{companyId}
+	</if>
+	<if test="companyName != null ">
+		and t.COMPANY_NAME=#{companyName}
+	</if>
+	<if test="contact != null ">
+		and t.CONTACT=#{contact}
+	</if>
+	<if test="tel != null ">
+		and t.TEL=#{tel}
+	</if>
+	<if test="billDate != null ">
+		and t.BILL_DATE=#{billDate}
+	</if>
+	<if test="workTime != null ">
+		and t.WORK_TIME=#{workTime}
+	</if>
+	<if test="startDate != null ">
+		and t.START_DATE=#{startDate}
+	</if>
+	<if test="endDate != null ">
+		and t.END_DATE=#{endDate}
+	</if>
+	<if test="equipmentId != null ">
+		and t.EQUIPMENT_ID=#{equipmentId}
+	</if>
+	<if test="cabinet != null ">
+		and t.CABINET=#{cabinet}
+	</if>
+	<if test="ip != null ">
+		and t.IP=#{ip}
+	</if>
+	<if test="sn != null ">
+		and t.SN=#{sn}
+	</if>
+	<if test="brand != null ">
+		and t.BRAND=#{brand}
+	</if>
+	<if test="equipmentCheckResult != null ">
+		and t.EQUIPMENT_CHECK_RESULT=#{equipmentCheckResult}
+	</if>
+	<if test="isReport != null ">
+		and t.IS_REPORT=#{isReport}
+	</if>
+	<if test="haveAfterOperate != null ">
+		and t.HAVE_AFTER_OPERATE=#{haveAfterOperate}
+	</if>
+	<if test="operationType != null ">
+		and t.OPERATION_TYPE=#{operationType}
+	</if>
+	<if test="operationTypeImg != null ">
+		and t.OPERATION_TYPE_IMG=#{operationTypeImg}
+	</if>
+	<if test="machina != null ">
+		and t.MACHINA=#{machina}
+	</if>
+	<if test="caozgcs != null ">
+		and t.CAOZGCS=#{caozgcs}
+	</if>
+	<if test="caozgcsName != null ">
+		and t.CAOZGCS_NAME=#{caozgcsName}
+	</if>
+	<if test="status != null ">
+		and t.STATUS=#{status}
+	</if>
+	<if test="isAgree != null ">
+		and t.ISAGREE=#{isAgree}
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+
+</select>
+
+<update id="deleteLogic"  parameterType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentWrong">
+	     UPDATE toa_shjfgl_equipment_wrong t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+ 			where ID in
+ 			<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=","> 
+				 #{primaryKey}
+			</foreach>
+</update>
+  	
+</mapper>   

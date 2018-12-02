@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.ic.domain.Contacts">
+	<resultMap type="com.jc.oa.ic.domain.Contacts" id="isEixstMobile">
+		<result column="phone" property="phone" />
+	</resultMap>
+	<insert id="insert" parameterType="com.jc.oa.ic.domain.Contacts" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tty_ic_contacts(ID,USER_NAME,MAIL,CONTACTS_TYPE,SIMPLE_NAME,PHONE,SEX,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES (#{id,jdbcType=NUMERIC},#{userName,jdbcType=VARCHAR},#{mail,jdbcType=VARCHAR},#{contactsType,jdbcType=VARCHAR},#{simpleName,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{sex,jdbcType=VARCHAR},#{deleteFlag,jdbcType=NUMERIC},#{createUser,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createUserOrg,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extDate1,jdbcType=TIMESTAMP},#{extDate2,jdbcType=TIMESTAMP},#{extNum1,jdbcType=NUMERIC},#{extNum2,jdbcType=NUMERIC},#{extNum3,jdbcType=NUMERIC},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr5,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertList" parameterType="list">
+		INSERT INTO tty_ic_contacts(ID,USER_NAME,MAIL,CONTACTS_TYPE,SIMPLE_NAME,PHONE,SEX,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(#{item.id,jdbcType=NUMERIC},#{item.userName,jdbcType=VARCHAR},#{item.mail,jdbcType=VARCHAR},#{item.contactsType,jdbcType=VARCHAR},#{item.simpleName,jdbcType=VARCHAR},#{item.phone,jdbcType=VARCHAR},#{item.sex,jdbcType=VARCHAR},#{item.deleteFlag,jdbcType=NUMERIC},#{item.createUser,jdbcType=NUMERIC},#{item.createUserDept,jdbcType=NUMERIC},#{item.createUserOrg,jdbcType=NUMERIC},#{item.createDate,jdbcType=TIMESTAMP},#{item.modifyUser,jdbcType=NUMERIC},#{item.modifyDate,jdbcType=TIMESTAMP},#{item.extDate1,jdbcType=TIMESTAMP},#{item.extDate2,jdbcType=TIMESTAMP},#{item.extNum1,jdbcType=NUMERIC},#{item.extNum2,jdbcType=NUMERIC},#{item.extNum3,jdbcType=NUMERIC},#{item.extStr1,jdbcType=VARCHAR},#{item.extStr2,jdbcType=VARCHAR},#{item.extStr3,jdbcType=VARCHAR},#{item.extStr4,jdbcType=VARCHAR},#{item.extStr5,jdbcType=VARCHAR})
+			</foreach> 
+	</insert>
+
+	<update id="update" parameterType="com.jc.oa.ic.domain.Contacts">
+	UPDATE tty_ic_contacts
+	   <set>
+	   	<if test="userName != null">
+	   		USER_NAME = #{userName},
+	   	</if>
+	   	<if test="mail != null">
+	   		MAIL = #{mail},
+	   	</if>
+	   	<if test="contactsType != null">
+	   		CONTACTS_TYPE = #{contactsType},
+	   	</if>
+	   	<if test="simpleName != null">
+	   		SIMPLE_NAME = #{simpleName},
+	   	</if>
+	   	<if test="phone != null">
+	   		PHONE = #{phone},
+	   	</if>
+	   	<if test="sex != null">
+	   		SEX = #{sex},
+	   	</if>
+	   	<if test="deleteFlag != null">
+	   		DELETE_FLAG = #{deleteFlag},
+	   	</if>
+	   	<if test="modifyUser != null">
+	   		MODIFY_USER = #{modifyUser},
+	   	</if>
+	   	<if test="extDate1 != null">
+	   		EXT_DATE1 = #{extDate1},
+	   	</if>
+	   	<if test="extDate2 != null">
+	   		EXT_DATE2 = #{extDate2},
+	   	</if>
+	   	<if test="extNum1 != null">
+	   		EXT_NUM1 = #{extNum1},
+	   	</if>
+	   	<if test="extNum2 != null">
+	   		EXT_NUM2 = #{extNum2},
+	   	</if>
+	   	<if test="extNum3 != null">
+	   		EXT_NUM3 = #{extNum3},
+	   	</if>
+	   	<if test="extStr1 != null">
+	   		EXT_STR1 = #{extStr1},
+	   	</if>
+	   	<if test="extStr2 != null">
+	   		EXT_STR2 = #{extStr2},
+	   	</if>
+	   	<if test="extStr3 != null">
+	   		EXT_STR3 = #{extStr3},
+	   	</if>
+	   	<if test="extStr4 != null">
+	   		EXT_STR4 = #{extStr4},
+	   	</if>
+	   	<if test="extStr5 != null">
+	   		EXT_STR5 = #{extStr5},
+	   	</if>
+	   </set>
+	   , MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+	</update>
+
+	<select id="query" parameterType="com.jc.oa.ic.domain.Contacts" resultType="com.jc.oa.ic.domain.Contacts">
+		SELECT 
+			t.ID id,
+			t.USER_NAME userName,
+			t.MAIL mail,
+			t.CONTACTS_TYPE contactsType,
+			t.SIMPLE_NAME simpleName,
+			t.PHONE phone,
+			t.SEX sex,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5
+			
+		FROM tty_ic_contacts t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="userName != null">
+				and t.USER_NAME = #{userName}
+			</if>
+			<if test="mail != null">
+				and t.MAIL = #{mail}
+			</if>
+			<if test="contactsType != null">
+				and t.CONTACTS_TYPE = #{contactsType}
+			</if>
+			<if test="simpleName != null">
+				and t.SIMPLE_NAME = #{simpleName}
+			</if>
+			<if test="phone != null">
+				and t.PHONE = #{phone}
+			</if>
+			<if test="sex != null">
+				and t.SEX = #{sex}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+	</select>
+	
+	
+	<select id="queryCount" parameterType="com.jc.oa.ic.domain.Contacts" resultType="java.lang.Integer">
+		SELECT count(ID) 
+		FROM tty_ic_contacts t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="userName != null">
+				and t.USER_NAME = #{userName}
+			</if>
+			<if test="mail != null">
+				and t.MAIL = #{mail}
+			</if>
+			<if test="contactsType != null">
+				and t.CONTACTS_TYPE = #{contactsType}
+			</if>
+			<if test="simpleName != null">
+				and t.SIMPLE_NAME = #{simpleName}
+			</if>
+			<if test="phone != null">
+				and t.PHONE = #{phone}
+			</if>
+			<if test="sex != null">
+				and t.SEX = #{sex}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+	</select>
+<!-- 关联联系人组查询 begin -->
+<select id="queryContacts" parameterType="com.jc.oa.ic.domain.Contacts" resultType="com.jc.oa.ic.domain.Contacts">
+		SELECT 
+			t.ID id,
+			t.USER_NAME userName,
+			t.MAIL mail,
+			t.CONTACTS_TYPE contactsType,
+			t.SIMPLE_NAME simpleName,
+			t.PHONE phone,
+			t.SEX sex,
+			d.GROUP_NAME groupName,
+			d.ID groupId,
+			d.DESCRIPTION description,
+		    r.ID groupRId,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5
+			FROM tty_ic_contacts t
+			 LEFT JOIN tty_ic_con_group_r r ON t.ID = r.CONTACTS_ID 
+			 LEFT JOIN tty_ic_contacts_group d ON d.ID = r.CONTACTS_GROUP_ID 
+		<where>
+		      t.DELETE_FLAG = 0
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="userName != null">
+				and t.USER_NAME like <![CDATA['%${userName}%']]>
+			</if>
+			<if test="mail != null">
+					and t.MAIL like <![CDATA['%${mail}%']]>
+			</if>
+			<if test="contactsType != null">
+				and t.CONTACTS_TYPE = #{contactsType}
+			</if>
+			<if test="simpleName != null">
+				and t.SIMPLE_NAME like <![CDATA['%${simpleName}%']]>
+			</if>
+			<if test="phone != null">
+				and t.PHONE like <![CDATA['%${phone}%']]>
+			</if>
+			<if test="groupId != null">
+				and d.ID = #{groupId}
+			</if>
+			<if test="sex != null">
+				and t.SEX = #{sex}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+			<if test="orderBy != null">
+				order by ${orderBy}
+			</if>
+	</select>
+	
+	
+	<select id="queryContactsCount" parameterType="com.jc.oa.ic.domain.Contacts" resultType="java.lang.Integer">
+		SELECT count(t.ID) 
+			FROM tty_ic_contacts t
+			 LEFT JOIN tty_ic_con_group_r r ON t.ID = r.CONTACTS_ID 
+			 LEFT JOIN tty_ic_contacts_group d ON d.ID = r.CONTACTS_GROUP_ID 
+		<where>
+		     t.DELETE_FLAG = 0
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="userName != null">
+				and t.USER_NAME like <![CDATA['%${userName}%']]>
+			</if>
+			<if test="mail != null">
+					and t.MAIL like <![CDATA['%${mail}%']]>
+			</if>
+			<if test="contactsType != null">
+				and t.CONTACTS_TYPE = #{contactsType}
+			</if>
+			<if test="simpleName != null">
+				and t.SIMPLE_NAME like <![CDATA['%${simpleName}%']]>
+			</if>
+			<if test="phone != null">
+				and t.PHONE like <![CDATA['%${phone}%']]>
+			</if>
+			<if test="groupId != null">
+				and d.ID = #{groupId}
+			</if>
+			<if test="sex != null">
+				and t.SEX = #{sex}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+	</select>
+<!-- end -->
+	<delete id="deleteByIds"  parameterType="com.jc.oa.ic.domain.Contacts">
+    	delete from tty_ic_contacts
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete>
+
+	<update id="deleteLogic"  parameterType="com.jc.oa.ic.domain.Contacts">
+    	UPDATE tty_ic_contacts t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+
+
+
+
+	
+	
+	<!-- 外部联系人组件查询 -->
+<select id="queryOutSideUser" parameterType="com.jc.oa.ic.domain.Contacts" resultType="com.jc.oa.ic.domain.Contacts">
+		SELECT 
+			t.ID id,
+			t.USER_NAME userName,
+			t.MAIL mail,
+			t.CONTACTS_TYPE contactsType,
+			t.SIMPLE_NAME simpleName,
+			t.PHONE phone,
+			t.SEX sex,
+			d.GROUP_NAME groupName,
+			d.ID groupId,
+			d.DESCRIPTION description,
+		    r.ID groupRId,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5
+			FROM tty_ic_contacts t
+			 LEFT JOIN tty_ic_con_group_r r ON t.ID = r.CONTACTS_ID 
+			 LEFT JOIN tty_ic_contacts_group d ON d.ID = r.CONTACTS_GROUP_ID 
+		<where>
+		      t.DELETE_FLAG = 0
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="userName != null">
+				and t.USER_NAME = #{userName}
+			</if>
+			<if test="mail != null">
+				and t.MAIL = #{mail}
+			</if>
+			<if test="contactsType != null">
+				and t.CONTACTS_TYPE = #{contactsType}
+			</if>
+			<if test="simpleName != null">
+				and t.SIMPLE_NAME = #{simpleName}
+			</if>
+			<if test="phone != null">
+				and t.PHONE = #{phone}
+			</if>
+			<if test="groupId != null">
+				and d.ID = #{groupId}
+			</if>
+			<if test="sex != null">
+				and t.SEX = #{sex}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+		limit 0,1
+	</select>
+<select id="getOutSideUserTree" parameterType="com.jc.oa.ic.domain.Contacts" resultType="com.jc.oa.ic.domain.Contacts">
+		SELECT CONCAT("-1",t1.id) id,0 groupId,group_name userName,'' mail,'' phone FROM tty_ic_contacts_group t1 WHERE t1.DELETE_FLAG = '0'
+		<if test="createUser != null">
+			and t1.CREATE_USER = #{createUser}
+		</if>
+		UNION ALL
+		SELECT -1 id,0 groupId,'未分组' userName,'' mail,'' phone
+		UNION ALL
+		SELECT t2.id,CASE WHEN CONCAT("-1",t3.contacts_group_id) IS NULL THEN -1 ELSE CONCAT("-1",t3.contacts_group_id) END groupId,user_name userName ,t2.mail mail,t2.phone phone
+		FROM tty_ic_contacts t2 LEFT JOIN tty_ic_con_group_r t3 ON t2.id = t3.contacts_id WHERE t2.DELETE_FLAG = '0'
+		<if test="createUser != null">
+			and t2.CREATE_USER = #{createUser}
+		</if>
+
+			
+	</select>
+	
+	<select id="selectMobile" parameterType="com.jc.oa.ic.domain.Contacts" resultMap="isEixstMobile">
+		SELECT s.mobile phone FROM (
+			SELECT m.mo mobile FROM (
+				(SELECT u.MOBILE mo FROM toa_sys_user u where u.DELETE_FLAG = 0) UNION (SELECT c.phone mo FROM tty_ic_contacts c where c.DELETE_FLAG = 0)) m)s
+					WHERE s.mobile = #{phone}
+	</select>
+</mapper>

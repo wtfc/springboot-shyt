@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configurations is-show-config-info="false">
+	<!--
+		product-name : 产品名称 product-version : 产品版本 company-name : 公司名称
+		web-site : 公司网站名称 address : 公司通讯地址 post-code : 公司通讯地址所在地的邮政编码
+		telephone : 公司电话 fax : 公司传真 email : 产品支持的E-mail地址
+	-->
+
+	<product-info>
+		<product-name>慧正工作流系统</product-name>
+		<product-version>V6.0</product-version>
+		<company-name>北京慧正通软科技有限公司</company-name>
+		<web-site>www.huizhengtech.com</web-site>
+		<address>北京市海淀区软件园南路八维研修学院内</address>
+		<post-code>100193</post-code>
+		<telephone>(86)010-62983388</telephone>
+		<fax>(86)010-62419980</fax>
+		<email>webmaster@huizhengtech.com</email>
+	</product-info>
+	<!--
+		语言环境设置 <languages>标签属性： is-fored-to-use-default-language :
+		是否强制使用默认语言（默认为false；当仅配置有一种语言时，系统会自动设置该值为true）；注意，当此值为true时，系统将不会根据客户端请求语言或者用户选定语言来决定使用语言，而是强制使用默认语言[见下面的is-default属性的配置说明]作为使用语言，因此也会忽略掉其他语言配置信息）。
+		<language>语言标签（可配置有多个，但只能有一个被配置为默认语言） identifier :
+		国家标识（可使用此值作为相应国家的国旗图片名称） is-default : 是否为默认语言（默认为false；只能有一个被配置为默认语言；）
+		(1) 未配置默认语言时，使用第一个语言配置项作为默认语言； (2)
+		配置有多个默认语言配置项时，则将除首个默认语言外的配置项恢复为不是默认语言。 name : 配置为语言名称（用于切换语言时显示此值）
+		type : 语言目录名称（目录名称必须符合RFC 2616规范，并且该目录与当前文件在相同的目录下） 当没有声明<languages>标签
+		或者在<languages>标签下未配置<language>语言标签时，系统加载时自动初始化针对中文的语言配置（identifier="china",
+		is-default="true", <name>标签值为"中文", <type>标签值为"zh-cn"）。
+	-->
+
+	<languages>
+		<language identifier="china" is-default="true">
+			<name>中文</name>
+			<type>zh-cn</type>
+		</language>
+	</languages>
+	<master-server-info>
+  		<identifier>system</identifier>
+  	</master-server-info>
+	<!--
+		product-directory-name : 产品目录名称；
+		该产品目录名称用于支持不同产品的图片、样式、默认页面等，以避免在“多个产品”或者“产品与项目”中这些文件互相冲突。 （以下是配置说明： 1.
+		该目录名称对应于WebRoot/resource/skins/default/css/<产品目录名称>/... <==CSS文件所在目录
+		2. 该目录名称对应于WebRoot/resource/skins/default/images/<产品目录名称>/...
+		<==图片文件所在目录 <<以上两项配置的使用：在JSP页面中使用 <path:css .../> 和 <path:img .../>
+		标签时自动处理产品目录名称>> <<< 注意，(当产品目录名称配置有值时)以上两项的目录必须为上述结构；>>> 以下各项为建议配置项： 3.
+		该目录名称对应于WebRoot/<产品目录名称>/... <==登录前、登录后的JSP文件所在目录 4.
+		该目录名称对应于WebRoot/WEB-INF/web.xml文件中的配置项： 4.1 登录配置： 在
+		LoginAuthenticationServlet 下的 Success_Page_Address 和
+		Failure_Page_Address 配置项；示例如下： <init-param>
+		<param-name>Success_Page_Address</param-name>
+		<param-value>/<产品目录名称>/sys/default.jsp</param-value> </init-param>
+		<init-param> <param-name>Failure_Page_Address</param-name>
+		<param-value>/<产品目录名称>/login.jsp</param-value> </init-param> 4.2
+		排除地址配置： 在 LoginUserSessionFilter 下的 Exceptive_URL 配置项中；示例如下：
+		<init-param> <param-name>Login_URL</param-name>
+		<param-value><产品目录名称>/login.jsp</param-value> </init-param>
+		<init-param> <param-name>Exceptive_URL</param-name> <param-value>
+		/<产品目录名称>/login.jsp;/<产品目录名称>/logout.jsp; ... </param-value>
+		</init-param> 4.3 欢迎页配置： <welcome-file-list>
+		<welcome-file>/<产品目录名称>/login.jsp</welcome-file> ...
+		</welcome-file-list> (提示，以上 4.1至4.3 可通过查找关键字来快速定位到相应的位置) ）
+		<product-directory-name>/hzoa</product-directory-name>
+	-->
+	<!--
+		run-mode : 运行模式（develop/product）;[默认为产品模式] develop :
+		开发模式;支持重新加载配置文件内容，不需要重新启动应用。 product :
+		产品模式;不支持重新加载配置文件内容，修改配置文件后需要重新启动应用才能使新配置生效。
+	-->
+
+	<run-mode>develop</run-mode>
+	
+	<!-- 
+  	multi：是否允许多租户空间
+  	independent：当允许多租户空间时，是否独立的数据源
+    -->
+	<tenant-mode>
+  	  <multi>false</multi>
+  	  <independent>false</independent>
+	</tenant-mode>
+  
+	<!--
+		identifier : 数据库连接配置的标识符（非默认数据库为必须配置项） database-type : 数据库类型，必须配置项
+		connection-type : 数据库连接类型（JDBC/JNDI），必须配置项 is-default :
+		是否为默认数据库配置（只能有一个默认数据库配置）;true false 非默认数据库时, 必须配置数据库标识符（即：identifier
+		属性）。 lob-processor-class : 数据库大字段处理类 Oracle :
+		com.horizon.db.xlob.XlobProcessorImpl4Oracle MySQL :
+		com.horizon.db.xlob.XlobProcessorImpl4MySql SQL Server :
+		com.horizon.db.xlob.XlobProcessorImpl4SqlServer DB2 :
+		com.horizon.db.xlob.XlobProcessorImpl4DB2 lob-buffer-size :
+		处理大字段时的缓存大小(默认为1MB) driver-class : 数据库驱动程序类 jndi-name :
+		（JNDI方式）用于获得数据库连接的JNDI名称 url : （JDBC方式）用于获得数据库连接的URL user-name :
+		（JDBC方式）用于获得数据库连接的用户名 user-password : （JDBC方式）用于获得数据库连接的用户密码
+	-->
+
+	<database-connections>
+    <database-connection identifier="system" database-type="MySQL" connection-type="jndi" is-default="true">
+      <lob-processor-class>com.horizon.db.xlob.XlobProcessorImpl4MySql</lob-processor-class>
+      <lob-buffer-size>1048576</lob-buffer-size>
+      <driver-class>com.mysql.jdbc.Driver</driver-class>  
+      <jndi-name>jndi/horizon</jndi-name>
+    </database-connection>
+	</database-connections>
+	<!--
+		save-type : 保存方式（0 文件; 1 数据库） buffer-size : 上传文件时的缓存大小(默认为1MB)
+		store-path : 文件存放绝对路径（如果‘保存方式’为文件的话，此项为必须项） cache-path :
+		文件上传时的缓存目录（必须配置此项） file-name-generator : 文件名生成器实现类 allowable-max-size
+		: 用于设置请求消息实体内容的最大允许大小，以防止客户端故意通过上传特大的文件来塞满服务器端的存储空间（默认10MB，单位为字节）。
+		allowable-extensions : 文件扩展名限制（只允许上传哪些文件），以逗号为分隔符，全部为小写扩展名（校验时忽略大小写）。
+	-->
+
+	<upload-file-info file-name="custom">
+		<save-type>0</save-type>
+		<buffer-size>1048576</buffer-size>
+		<store-path>/home/ethan/_tmp</store-path>
+		<cache-path>/home/ethan/_tmp/cache</cache-path>
+		<file-name-generator>com.horizon.file.FileNameGeneratorDrpImpl
+		</file-name-generator>
+		<allowable-max-size>10485760</allowable-max-size>
+		<allowable-extensions>doc,docx,xls,xlsx,ppt,pptx,txt,zip,rar,htm,html,jpg,sel,edi,gif,bmp,xml,seal,png
+		</allowable-extensions>
+	</upload-file-info>
+	<!--
+		log-level : 日志级别 save-type : 保存方式（0 文件; 1 数据库） time-format : 日志时间格式
+		store-path : 日志文件存放绝对路径（如果‘保存方式’为文件的话，此项为必须项）
+	-->
+
+	<log-info>
+		<log-level>debug</log-level>
+		<save-type>0</save-type>
+		<time-format>yyyy-MM-dd HH:mm:ss</time-format>
+		<store-path>/home/ethan/horizon/log</store-path>
+	</log-info>
+	<!-- 项目配置项：根据项目要求任意使用 -->
+	<!--
+		使用示例： import com.horizon.config.ConfigurationInfoFactory; //
+		项目配置项名称(可定义为符合实际意义的名称；必须与XML配置中的名称完全相同) String projectConfigItemsName
+		= "configItemName1"; // 使用[项目配置项名称]获得配置项集合 Map m =
+		ConfigurationInfoFactory.getConfigurationInfo().getProjectConfigItems(projectConfigItemsName);
+		if (m==null) { throw new CodrpException("No existed
+		project-config-item(name: " + projectConfigItemsName + ")."); } String
+		value1 = (String) m.get("key1"); // 使用[配置项名称]获得配置值 String value2 =
+		(String) m.get("key2"); // 同上
+	-->
+	<!--
+		<project-config-items> <project-config-item name="configItemName1">
+		<config-item name="key1">some value1</config-item> <config-item
+		name="key2">some value2</config-item> </project-config-item>
+		<project-config-item name="configItemName2"> <config-item
+		name="key1">some value1</config-item> <config-item name="key2">some
+		value2</config-item> </project-config-item> </project-config-items>
+	-->
+
+	<project-config-items>
+		
+		
+		<!-- 权限初始化 -->
+		<project-config-item name="authInit">
+			<!-- 固定初始化权限角色 -->
+			<config-item name="staticRole">SYSTEM_ADMINISTRATOR</config-item>
+			<!-- 非固定权限角色授权角色优先级（按角色分类(字典)，取第一个角色初始化权限） -->
+			<config-item name="rolePriority">public_user;system_manager;safe_administrator;check_administrator;business_administrator</config-item>
+			<!-- 是否开启角色审核功能   1：开启 0：关闭 -->
+			<config-item name="authCheck">0</config-item>
+		</project-config-item>
+		
+		
+		<!-- 数据访问密级安全校验开关 -->
+		<project-config-item name="secretlevelsafe">
+			<config-item name="secretlevelstart">off</config-item>
+			<!-- 是否启动数据访问密级安全校验开关参数  on=开,off=关 -->
+			<!-- 请更改horizon-config-sys-workflow.xml的class配置信息：com.horizon.example.XMLWorkFrameSecretLevel -->
+		</project-config-item>
+		
+		
+	</project-config-items>
+	<!-- 接口实现类配置：配置为某接口的实现类 -->
+	<!--
+		使用示例： import com.horizon.config.InterfaceImplFactory; // 接口实现配置项名称
+		String interfaceImplName = "Xxx"; //
+		使用[接口实现配置项名称]获得相应的对象实例(不能获得接口实现类的对象实例时产生异常) Object object =
+		InterfaceImplFactory.getInstance().getInterfaceImplObject(interfaceImplName);
+	-->
+	<!--
+		<interface-impls> <interface-impl name="Xxx" singleton="true">
+		<class>com.horizon.xx.XxxImpl</class> </interface-impl>
+		<interface-impl name="Yyy"> <class>com.horizon.yyy.YyyImpl</class>
+		</interface-impl> </interface-impls>
+	-->
+
+	<interface-impls>
+		<interface-impl name="FormFieldParser" singleton="true">
+			<class>com.horizon.workflow.form.ParseFieldHTML</class>
+		</interface-impl>
+		<interface-impl name="FormFieldStaticParser" singleton="true">
+			<class>com.horizon.form.formstatic.html.ParseFieldHTML</class>
+		</interface-impl>
+		<interface-impl name="CA_IMPL_CLASS" singleton="true">
+			<class>com.horizon.oa.adapter.ca.BjcaImpl</class>
+		</interface-impl>
+		<interface-impl name="ORG_SELECT_INTERFACE" singleton="true">
+			<class>com.jc.workflow.core.authority.OrgSelectImpl</class>
+		</interface-impl>
+		<interface-impl name="ORG_UPDATE_INTERFACE" singleton="true">
+			<class>com.horizon.organization.OrganizationCommonUpdateImpl</class>
+		</interface-impl>
+	</interface-impls>
+</configurations>

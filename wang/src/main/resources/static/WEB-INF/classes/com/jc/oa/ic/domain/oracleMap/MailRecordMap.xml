@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.ic.domain.MailRecord">
+	<select id="query" parameterType="com.jc.oa.ic.domain.MailRecord"
+		resultType="com.jc.oa.ic.domain.MailRecord">
+		SELECT
+		t.ID id,
+		t.MAIL_ID mailId,
+		t.RECEIVE_USER_ID receiveUserId,
+		t.RECEIVE_MAIL receiveMail,
+		t.RECEIVE_TYPE receiveType,
+		t.READ_FLAG readFlag,
+		t.REPLY_FLAG replyFlag,
+		t.READ_DATE readDate,
+		t.REMIND_FLAG remindFlag,
+		t.RECOVER_FLAG recoverFlag,
+		t.RECOVER_DATE recoverDate,
+		t.STAR_MAIL starMail,
+		t.FOLDER_ID folderId,
+		t.DELETE_FLAG deleteFlag,
+		t.CREATE_USER createUser,
+		t.CREATE_USER_DEPT createUserDept,
+		t.CREATE_USER_ORG createUserOrg,
+		t.CREATE_DATE createDate,
+		t.MODIFY_USER modifyUser,
+		t.MODIFY_DATE modifyDate,
+		t.EXT_DATE1 extDate1,
+		t.EXT_DATE2 extDate2,
+		t.EXT_NUM1 extNum1,
+		t.EXT_NUM2 extNum2,
+		t.EXT_NUM3 extNum3,
+		t.EXT_STR1 extStr1,
+		t.EXT_STR2 extStr2,
+		t.EXT_STR3 extStr3,
+		t.EXT_STR4 extStr4,
+		t.EXT_STR5 extStr5
+
+		FROM tty_ic_mail_record t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="mailId != null">
+				and t.MAIL_ID = #{mailId}
+			</if>
+			<if test="receiveUserId != null">
+				and t.RECEIVE_USER_ID = #{receiveUserId}
+			</if>
+			<if test="receiveMail != null">
+				and t.RECEIVE_MAIL = #{receiveMail}
+			</if>
+			<if test="receiveType != null">
+				and t.RECEIVE_TYPE = #{receiveType}
+			</if>
+			<if test="readFlag != null">
+				and t.READ_FLAG = #{readFlag}
+			</if>
+			<if test="replyFlag != null">
+				and t.REPLY_FLAG = #{replyFlag}
+			</if>
+			<if test="readDate != null">
+				and t.READ_DATE = #{readDate}
+			</if>
+			<if test="remindFlag != null">
+				and t.REMIND_FLAG = #{remindFlag}
+			</if>
+			<if test="recoverFlag != null">
+				and t.RECOVER_FLAG = #{recoverFlag}
+			</if>
+			<if test="recoverDate != null">
+				and t.RECOVER_DATE = #{recoverDate}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+
+			<if test="folderId != null">
+				and t.FOLDER_ID = #{folderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+	</select>
+	<select id="queryCount" parameterType="com.jc.oa.ic.domain.MailRecord"
+		resultType="java.lang.Integer">
+		SELECT count(ID)
+		FROM tty_ic_mail_record t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="mailId != null">
+				and t.MAIL_ID = #{mailId}
+			</if>
+			<if test="receiveUserId != null">
+				and t.RECEIVE_USER_ID = #{receiveUserId}
+			</if>
+			<if test="receiveMail != null">
+				and t.RECEIVE_MAIL = #{receiveMail}
+			</if>
+			<if test="receiveType != null">
+				and t.RECEIVE_TYPE = #{receiveType}
+			</if>
+			<if test="readFlag != null">
+				and t.READ_FLAG = #{readFlag}
+			</if>
+			<if test="replyFlag != null">
+				and t.REPLY_FLAG = #{replyFlag}
+			</if>
+			<if test="readDate != null">
+				and t.READ_DATE = #{readDate}
+			</if>
+			<if test="remindFlag != null">
+				and t.REMIND_FLAG = #{remindFlag}
+			</if>
+			<if test="recoverFlag != null">
+				and t.RECOVER_FLAG = #{recoverFlag}
+			</if>
+			<if test="recoverDate != null">
+				and t.RECOVER_DATE = #{recoverDate}
+			</if>
+			<if test="starMail != null">
+				and t.STAR_MAIL = #{starMail}
+			</if>
+
+			<if test="folderId != null">
+				and t.FOLDER_ID = #{folderId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+	</select>
+	<update id="deleteLogic" parameterType="com.jc.oa.ic.domain.MailRecord">
+		UPDATE tty_ic_mail_record set delete_flag='1',modify_user =
+		#{modifyUser,jdbcType=NUMERIC},modify_date = #{modifyDate,jdbcType=TIMESTAMP}
+		where ID in
+		<foreach collection="primaryKeys" item="primaryKey" index="index"
+			open="(" close=")" separator=",">
+			#{primaryKey}
+		</foreach>
+	</update>
+	<delete id="deleteByIds" parameterType="com.jc.oa.ic.domain.MailRecord">
+		delete from tty_ic_mail_record
+		where ID in
+		<foreach collection="primaryKeys" item="primaryKey" index="index"
+			open="(" close=")" separator=",">
+			#{primaryKey}
+		</foreach>
+	</delete>
+	<delete id="deletePhysical" parameterType="com.jc.oa.ic.domain.MailRecord">
+		delete from tty_ic_mail_record
+		where ID =#{id}
+	</delete>
+	<delete id="deleteByMailId" parameterType="com.jc.oa.ic.domain.MailRecord">
+		delete from tty_ic_mail_record
+		where MAIL_ID=#{mailId}
+	</delete>
+	<insert id="insert" parameterType="com.jc.oa.ic.domain.MailRecord">
+		<selectKey resultType="long" keyProperty="id" order="BEFORE">
+			SELECT TTY_IC_MAIL_RECORD_ID_SEQ.NEXTVAL id FROM DUAL
+		</selectKey>
+		INSERT INTO
+		tty_ic_mail_record(ID,MAIL_ID,RECEIVE_USER_ID,RECEIVE_MAIL,RECEIVE_TYPE,READ_FLAG,REPLY_FLAG,READ_DATE,REMIND_FLAG,RECOVER_DATE,STAR_MAIL,FOLDER_ID,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+		VALUES
+		(#{id,jdbcType=NUMERIC},#{mailId,jdbcType=NUMERIC},#{receiveUserId,jdbcType=NUMERIC},#{receiveMail,jdbcType=VARCHAR},#{receiveType,jdbcType=NUMERIC},#{readFlag,jdbcType=NUMERIC},#{replyFlag,jdbcType=NUMERIC},#{readDate,jdbcType=TIMESTAMP},#{remindFlag,jdbcType=NUMERIC},#{recoverDate,jdbcType=TIMESTAMP},#{starMail,jdbcType=NUMERIC},#{folderId,jdbcType=NUMERIC},#{deleteFlag,jdbcType=NUMERIC},#{createUser,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createUserOrg,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extDate1,jdbcType=TIMESTAMP},#{extDate2,jdbcType=TIMESTAMP},#{extNum1,jdbcType=NUMERIC},#{extNum2,jdbcType=NUMERIC},#{extNum3,jdbcType=NUMERIC},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr5,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertList" parameterType="list">
+		INSERT INTO
+		tty_ic_mail_record(ID,MAIL_ID,RECEIVE_USER_ID,RECEIVE_MAIL,RECEIVE_TYPE,READ_FLAG,REPLY_FLAG,READ_DATE,REMIND_FLAG,RECOVER_FLAG,RECOVER_DATE,STAR_MAIL,FOLDER_ID,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+		VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(TTY_IC_MAIL_RECORD_ID_SEQ.nextval,#{item.mailId,jdbcType=NUMERIC},#{item.receiveUserId,jdbcType=NUMERIC},#{item.receiveMail,jdbcType=VARCHAR},#{item.receiveType,jdbcType=NUMERIC},#{item.readFlag,jdbcType=NUMERIC},#{item.replyFlag,jdbcType=NUMERIC},#{item.readDate,jdbcType=TIMESTAMP},#{item.remindFlag,jdbcType=NUMERIC},#{item.recoverFlag,jdbcType=NUMERIC},#{item.recoverDate,jdbcType=TIMESTAMP},#{item.starMail,jdbcType=NUMERIC},#{item.folderId,jdbcType=NUMERIC},#{item.deleteFlag,jdbcType=NUMERIC},#{item.createUser,jdbcType=NUMERIC},#{item.createUserDept,jdbcType=NUMERIC},#{item.createUserOrg,jdbcType=NUMERIC},#{item.createDate,jdbcType=TIMESTAMP},#{item.modifyUser,jdbcType=NUMERIC},#{item.modifyDate,jdbcType=TIMESTAMP},#{item.extDate1,jdbcType=TIMESTAMP},#{item.extDate2,jdbcType=TIMESTAMP},#{item.extNum1,jdbcType=NUMERIC},#{item.extNum2,jdbcType=NUMERIC},#{item.extNum3,jdbcType=NUMERIC},#{item.extStr1,jdbcType=VARCHAR},#{item.extStr2,jdbcType=VARCHAR},#{item.extStr3,jdbcType=VARCHAR},#{item.extStr4,jdbcType=VARCHAR},#{item.extStr5,jdbcType=VARCHAR})
+		</foreach>
+	</insert>
+	<update id="update" parameterType="com.jc.oa.ic.domain.MailRecord">
+		UPDATE tty_ic_mail_record
+		<set>
+			<if test="mailId != null">
+				MAIL_ID = #{mailId},
+			</if>
+			<if test="receiveUserId != null">
+				RECEIVE_USER_ID = #{receiveUserId},
+			</if>
+			<if test="receiveMail != null">
+				RECEIVE_MAIL = #{receiveMail},
+			</if>
+			<if test="receiveType != null">
+				RECEIVE_TYPE = #{receiveType},
+			</if>
+			<if test="readFlag != null">
+				READ_FLAG = #{readFlag},
+			</if>
+			<if test="replyFlag != null">
+				REPLY_FLAG = #{replyFlag},
+			</if>
+			<if test="readDate != null">
+				READ_DATE = #{readDate},
+			</if>
+			<if test="remindFlag != null">
+				REMIND_FLAG = #{remindFlag},
+			</if>
+			<if test="recoverFlag != null">
+				RECOVER_FLAG = #{recoverFlag},
+			</if>
+			<if test="recoverDate != null">
+				RECOVER_DATE = #{recoverDate},
+			</if>
+			<if test="starMail != null">
+				STAR_MAIL = #{starMail},
+			</if>
+			<if test="folderId != null">
+				FOLDER_ID = #{folderId},
+			</if>
+			<if test="deleteFlag != null">
+				DELETE_FLAG = #{deleteFlag},
+			</if>
+			<if test="modifyUser != null">
+				MODIFY_USER = #{modifyUser},
+			</if>
+			<if test="modifyDate != null">
+				MODIFY_DATE = #{modifyDate},
+			</if>
+			<if test="extDate1 != null">
+				EXT_DATE1 = #{extDate1},
+			</if>
+			<if test="extDate2 != null">
+				EXT_DATE2 = #{extDate2},
+			</if>
+			<if test="extNum1 != null">
+				EXT_NUM1 = #{extNum1},
+			</if>
+			<if test="extNum2 != null">
+				EXT_NUM2 = #{extNum2},
+			</if>
+			<if test="extNum3 != null">
+				EXT_NUM3 = #{extNum3},
+			</if>
+			<if test="extStr1 != null">
+				EXT_STR1 = #{extStr1},
+			</if>
+			<if test="extStr2 != null">
+				EXT_STR2 = #{extStr2},
+			</if>
+			<if test="extStr3 != null">
+				EXT_STR3 = #{extStr3},
+			</if>
+			<if test="extStr4 != null">
+				EXT_STR4 = #{extStr4},
+			</if>
+			<if test="extStr5 != null">
+				EXT_STR5 = #{extStr5},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=NUMERIC}
+	</update>
+	<update id="updateByReply" parameterType="com.jc.oa.ic.domain.MailRecord">
+		UPDATE tty_ic_mail_record
+		<set>
+			<if test="replyFlag != null">
+				REPLY_FLAG = #{replyFlag},
+			</if>
+			<if test="modifyUser != null">
+				MODIFY_USER = #{modifyUser},
+			</if>
+			<if test="extDate1 != null">
+				EXT_DATE1 = #{extDate1},
+			</if>
+			<if test="extDate2 != null">
+				EXT_DATE2 = #{extDate2},
+			</if>
+			<if test="extNum1 != null">
+				EXT_NUM1 = #{extNum1},
+			</if>
+			<if test="extNum2 != null">
+				EXT_NUM2 = #{extNum2},
+			</if>
+			<if test="extNum3 != null">
+				EXT_NUM3 = #{extNum3},
+			</if>
+			<if test="extStr1 != null">
+				EXT_STR1 = #{extStr1},
+			</if>
+			<if test="extStr2 != null">
+				EXT_STR2 = #{extStr2},
+			</if>
+			<if test="extStr3 != null">
+				EXT_STR3 = #{extStr3},
+			</if>
+			<if test="extStr4 != null">
+				EXT_STR4 = #{extStr4},
+			</if>
+			<if test="extStr5 != null">
+				EXT_STR5 = #{extStr5},
+			</if>
+		</set>
+		<where>
+			ID = #{id,jdbcType=NUMERIC}
+			and DELETE_FLAG = 0
+			<if test="receiveUserId != null">
+				and RECEIVE_USER_ID = #{receiveUserId}
+			</if>
+		</where>
+	</update>
+	<update id="setRemindFlag" parameterType="java.util.List">
+		UPDATE tty_ic_mail_record t SET t.REMIND_FLAG=#{remindFlag} WHERE t.id
+		in
+		<foreach collection="primaryKeys" item="primaryKey" index="index"
+			open="(" close=")" separator=",">
+			#{primaryKey}
+		</foreach>
+	</update>
+</mapper>

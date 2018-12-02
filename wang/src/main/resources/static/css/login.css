@@ -1,0 +1,28 @@
+/*!
+ * jc goa v2.0 login - Version: 20140408_v1
+ * Author: xubingzi
+ */
+.loginBodyBg {background: #0063a6;}
+.loginBox {width: 900px; height: 410px; margin-left: -450px; margin-top: -205px; position: absolute; top: 45%; left: 50%; z-index: 1;}
+.loginBox h1 {height: 90px; line-height: 90px; color: #fff; font-size: 36px; font-family: Microsoft YaHei; margin: 0; padding: 0; font-weight: normal;}
+.loginImgBox {width: 500px; height: 320px; overflow: hidden; float: left;}
+.loginImgBox img {width: 240px; height: 155px; margin: 0 10px 10px 0; float: left;}
+.loginFormBox {width: 400px; height: 320px; background: #fff; float: left; position: relative;}
+.loginFormBox h2 {font-size: 36px; font-family: Utsaah; font-weight: normal; line-height: 75px; height: 75px; padding: 0 30px; margin: 0;}
+.loginFormBox p.inputText {height: 35px; padding: 0 30px; margin: 0; margin-bottom: 20px; font-size: 14px; font-family: Microsoft YaHei;}
+.loginFormBox p.inputText > input {height: 33px; line-height: 33px\9; width: 100%; text-indent: 1em; border: #ccc solid 1px; background: #f9f9f9; color: #666;}
+.loginFormBox p.inputText > input:hover {border: #408cec solid 1px;}
+.loginFormBox p.inputText > input:focus {border: #0063a6 solid 1px; background: #fff;}
+.loginFormBox p.inputPassword {height: 35px; padding: 0 30px; margin: 0; margin-bottom: 10px; font-size: 14px; font-family: Microsoft YaHei;}
+.loginFormBox p.inputPassword > input {height: 33px; line-height: 33px\9; width: 100%; text-indent: 1em; border: #ccc solid 1px; background: #f9f9f9; color: #666;}
+.loginFormBox p.inputPassword > input:hover {border: #408cec solid 1px;}
+.loginFormBox p.inputPassword > input:focus {border: #0063a6 solid 1px; background: #fff;}
+.loginFormBox p.Buttons {height: 30px; line-height: 30px; padding: 0 30px; vertical-align: middle; font-size: 14px; font-family: Microsoft YaHei; color: #666;}
+.loginFormBox p.Buttons input {vertical-align: middle; margin: 0; margin-right: .5em;}
+.loginFormBox p.Buttons input,.loginFormBox p.Buttons label {cursor: pointer;}
+.loginFormBox p.Buttons a {display: block; text-decoration: none; width: 84px; height: 30px; line-height: 30px; float: right; background: #0063a6; text-align: center; color: #fff; font-size: 14px; font-family: Microsoft YaHei;}
+.loginFormBox p.Buttons a:hover {background: #005995;}
+.loginFormBox .ForgotPassword {width: 100%; height: 50px; line-height: 50px; text-align: center; background: #eee; font-size: 14px; font-family: Microsoft YaHei; color: #666; position: absolute; left: 0; bottom: 0; z-index: 2;}
+.loginFormBox .ForgotPassword a {text-decoration: none; font-size: 14px; font-family: Microsoft YaHei; color: #666;}
+.loginFormBox .ForgotPassword a:hover {text-decoration: underline;}
+.login-error {color:#FB6B5B; font-size:14px; padding:0 30px; margin:0;}

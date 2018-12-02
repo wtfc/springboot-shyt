@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.network.domain.ToaNetworkWrong" > 
+
+<insert id="insert" parameterType="com.jc.oa.network.domain.ToaNetworkWrong"
+		useGeneratedKeys="true" keyProperty="id">
+  		insert into toa_network_wrong(ID,EQUIPMENT_NUMBER,COMPANY_ID,COMPANY_NAME,CONTACT,TEL,START_DATE,END_DATE,WRONG_TYPE,SRC_ADDRESS,IS_SRC_FORBID_PING,DEST_ADDRESS,IS_DEST_FORBID_PING,COMPARE_SRC_ADDRESS,COMPARE_DEST_ADDRESS,BELONG_COMPANY_NAME,LOST_PERCENT,LAST_JUMP_OUT,LAST_JUMP_IN,EXCEP_IP,EXCEP_DIRECTION,IS_RANK_ANALYSE,ANALYSE_START_DATE,ANALYSE_END_DATE,IP_RANGE,INTERFACE_PROBLEM,BAD_IP,IS_BACKUP,PROBLEM_START_TIME,REAL_EXCEP_TYPE,SOLVE_RESULT,OPERATION_TYPE,OPERATION_TYPE_IMG,MACHINA,CAOZGCS,CAOZGCS_NAME,STATUS,SCORE,REMARK,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3)
+ values(#{id},#{equipmentNumber},#{companyId},#{companyName},#{contact},#{tel},#{startDate},#{endDate},#{wrongType},#{srcAddress},#{isSrcForbidPing},#{destAddress},#{isDestForbidPing},#{compareSrcAddress},#{compareDestAddress},#{belongCompanyName},#{lostPercent},#{lastJumpOut},#{lastJumpIn},#{excepIp},#{excepDirection},#{isRankAnalyse},#{analyseStartDate},#{analyseEndDate},#{ipRange},#{interfaceProblem},#{badIp},#{isBackup},#{problemStartTime},#{realExcepType},#{solveResult},#{operationType},#{operationTypeImg},#{machina},#{caozgcs},#{caozgcsName},#{status},#{score},#{remark},#{deleteFlag},#{createUser},#{createUserDept},#{createDate},#{modifyUser},#{modifyDate},#{extStr1},#{extStr2},#{extStr3},#{extStr4},#{extStr5},#{extDate1},#{extDate2},#{extNum1},#{extNum2},#{extNum3})
+</insert>
+
+<update id="update" parameterType="com.jc.oa.network.domain.ToaNetworkWrong">
+		update toa_network_wrong set 
+	<if test="equipmentNumber != null ">
+		EQUIPMENT_NUMBER=#{equipmentNumber},
+	</if>
+	<if test="companyId != null ">
+		COMPANY_ID=#{companyId},
+	</if>
+	<if test="companyName != null ">
+		COMPANY_NAME=#{companyName},
+	</if>
+	<if test="contact != null ">
+		CONTACT=#{contact},
+	</if>
+	<if test="tel != null ">
+		TEL=#{tel},
+	</if>
+	<if test="startDate != null ">
+		START_DATE=#{startDate},
+	</if>
+	<if test="endDate != null ">
+		END_DATE=#{endDate},
+	</if>
+	<if test="wrongType != null ">
+		WRONG_TYPE=#{wrongType},
+	</if>
+	<if test="srcAddress != null ">
+		SRC_ADDRESS=#{srcAddress},
+	</if>
+	<if test="isSrcForbidPing != null ">
+		IS_SRC_FORBID_PING=#{isSrcForbidPing},
+	</if>
+	<if test="destAddress != null ">
+		DEST_ADDRESS=#{destAddress},
+	</if>
+	<if test="isDestForbidPing != null ">
+		IS_DEST_FORBID_PING=#{isDestForbidPing},
+	</if>
+	<if test="compareSrcAddress != null ">
+		COMPARE_SRC_ADDRESS=#{compareSrcAddress},
+	</if>
+	<if test="compareDestAddress != null ">
+		COMPARE_DEST_ADDRESS=#{compareDestAddress},
+	</if>
+	<if test="belongCompanyName != null ">
+		BELONG_COMPANY_NAME=#{belongCompanyName},
+	</if>
+	<if test="lostPercent != null ">
+		LOST_PERCENT=#{lostPercent},
+	</if>
+	<if test="lastJumpOut != null ">
+		LAST_JUMP_OUT=#{lastJumpOut},
+	</if>
+	<if test="lastJumpIn != null ">
+		LAST_JUMP_IN=#{lastJumpIn},
+	</if>
+	<if test="excepIp != null ">
+		EXCEP_IP=#{excepIp},
+	</if>
+	<if test="excepDirection != null ">
+		EXCEP_DIRECTION=#{excepDirection},
+	</if>
+	<if test="isRankAnalyse != null ">
+		IS_RANK_ANALYSE=#{isRankAnalyse},
+	</if>
+	<if test="analyseStartDate != null ">
+		ANALYSE_START_DATE=#{analyseStartDate},
+	</if>
+	<if test="analyseEndDate != null ">
+		ANALYSE_END_DATE=#{analyseEndDate},
+	</if>
+	<if test="ipRange != null ">
+		IP_RANGE=#{ipRange},
+	</if>
+	<if test="interfaceProblem != null ">
+		INTERFACE_PROBLEM=#{interfaceProblem},
+	</if>
+	<if test="badIp != null ">
+		BAD_IP=#{badIp},
+	</if>
+	<if test="isBackup != null ">
+		IS_BACKUP=#{isBackup},
+	</if>
+	<if test="problemStartTime != null ">
+		PROBLEM_START_TIME=#{problemStartTime},
+	</if>
+	<if test="realExcepType != null ">
+		REAL_EXCEP_TYPE=#{realExcepType},
+	</if>
+	<if test="solveResult != null ">
+		SOLVE_RESULT=#{solveResult},
+	</if>
+	<if test="operationType != null ">
+		OPERATION_TYPE=#{operationType},
+	</if>
+	<if test="operationTypeImg != null ">
+		OPERATION_TYPE_IMG=#{operationTypeImg},
+	</if>
+	<if test="machina != null ">
+		MACHINA=#{machina},
+	</if>
+	<if test="caozgcs != null ">
+		CAOZGCS=#{caozgcs},
+	</if>
+	<if test="caozgcsName != null ">
+		CAOZGCS_NAME=#{caozgcsName},
+	</if>
+	<if test="status != null ">
+		STATUS=#{status},
+	</if>
+	<if test="score != null ">
+		SCORE=#{score},
+	</if>
+	<if test="remark != null ">
+		REMARK=#{remark},
+	</if>
+	<if test="deleteFlag != null ">
+		DELETE_FLAG=#{deleteFlag},
+	</if>
+	<if test="createUser != null ">
+		CREATE_USER=#{createUser},
+	</if>
+	<if test="createUserDept != null ">
+		CREATE_USER_DEPT=#{createUserDept},
+	</if>
+	<if test="createDate != null ">
+		CREATE_DATE=#{createDate},
+	</if>
+	<if test="modifyUser != null ">
+		MODIFY_USER=#{modifyUser},
+	</if>
+	<if test="modifyDate != null ">
+		MODIFY_DATE=#{modifyDate},
+	</if>
+	<if test="extStr1 != null ">
+		EXT_STR1=#{extStr1},
+	</if>
+	<if test="extStr2 != null ">
+		EXT_STR2=#{extStr2},
+	</if>
+	<if test="extStr3 != null ">
+		EXT_STR3=#{extStr3},
+	</if>
+	<if test="extStr4 != null ">
+		EXT_STR4=#{extStr4},
+	</if>
+	<if test="extStr5 != null ">
+		EXT_STR5=#{extStr5},
+	</if>
+	<if test="extDate1 != null ">
+		EXT_DATE1=#{extDate1},
+	</if>
+	<if test="extDate2 != null ">
+		EXT_DATE2=#{extDate2},
+	</if>
+	<if test="extNum1 != null ">
+		EXT_NUM1=#{extNum1},
+	</if>
+	<if test="extNum2 != null ">
+		EXT_NUM2=#{extNum2},
+	</if>
+	<if test="extNum3 != null ">
+		EXT_NUM3=#{extNum3},
+	</if>
+
+	 MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+</update>
+
+<select id="query" parameterType="com.jc.oa.network.domain.ToaNetworkWrong" resultType="com.jc.oa.network.domain.ToaNetworkWrong">
+		SELECT 
+		 t.ID id
+		,t.EQUIPMENT_NUMBER equipmentNumber
+		,t.COMPANY_ID companyId
+		,t.COMPANY_NAME companyName
+		,t.CONTACT contact
+		,t.TEL tel
+		,t.START_DATE startDate
+		,t.END_DATE endDate
+		,t.WRONG_TYPE wrongType
+		,t.SRC_ADDRESS srcAddress
+		,t.IS_SRC_FORBID_PING isSrcForbidPing
+		,t.DEST_ADDRESS destAddress
+		,t.IS_DEST_FORBID_PING isDestForbidPing
+		,t.COMPARE_SRC_ADDRESS compareSrcAddress
+		,t.COMPARE_DEST_ADDRESS compareDestAddress
+		,t.BELONG_COMPANY_NAME belongCompanyName
+		,t.LOST_PERCENT lostPercent
+		,t.LAST_JUMP_OUT lastJumpOut
+		,t.LAST_JUMP_IN lastJumpIn
+		,t.EXCEP_IP excepIp
+		,t.EXCEP_DIRECTION excepDirection
+		,t.IS_RANK_ANALYSE isRankAnalyse
+		,t.ANALYSE_START_DATE analyseStartDate
+		,t.ANALYSE_END_DATE analyseEndDate
+		,t.IP_RANGE ipRange
+		,t.INTERFACE_PROBLEM interfaceProblem
+		,t.BAD_IP badIp
+		,t.IS_BACKUP isBackup
+		,t.PROBLEM_START_TIME problemStartTime
+		,t.REAL_EXCEP_TYPE realExcepType
+		,t.SOLVE_RESULT solveResult
+		,t.OPERATION_TYPE operationType
+		,t.OPERATION_TYPE_IMG operationTypeImg
+		,t.MACHINA machina
+		,t.CAOZGCS caozgcs
+		,t.CAOZGCS_NAME caozgcsName
+		,t.STATUS status
+		,t.SCORE score
+		,t.REMARK remark
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.EXT_NUM1 extNum1
+		,t.EXT_NUM2 extNum2
+		,t.EXT_NUM3 extNum3
+ FROM toa_network_wrong t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="equipmentNumber != null ">
+		and t.EQUIPMENT_NUMBER=#{equipmentNumber}
+	</if>
+	<if test="companyId != null ">
+		and t.COMPANY_ID=#{companyId}
+	</if>
+	<if test="companyName != null ">
+		and t.COMPANY_NAME=#{companyName}
+	</if>
+	<if test="contact != null ">
+		and t.CONTACT=#{contact}
+	</if>
+	<if test="tel != null ">
+		and t.TEL=#{tel}
+	</if>
+	<if test="startDate != null ">
+		and t.START_DATE=#{startDate}
+	</if>
+	<if test="endDate != null ">
+		and t.END_DATE=#{endDate}
+	</if>
+	<if test="wrongType != null ">
+		and t.WRONG_TYPE=#{wrongType}
+	</if>
+	<if test="srcAddress != null ">
+		and t.SRC_ADDRESS=#{srcAddress}
+	</if>
+	<if test="isSrcForbidPing != null ">
+		and t.IS_SRC_FORBID_PING=#{isSrcForbidPing}
+	</if>
+	<if test="destAddress != null ">
+		and t.DEST_ADDRESS=#{destAddress}
+	</if>
+	<if test="isDestForbidPing != null ">
+		and t.IS_DEST_FORBID_PING=#{isDestForbidPing}
+	</if>
+	<if test="compareSrcAddress != null ">
+		and t.COMPARE_SRC_ADDRESS=#{compareSrcAddress}
+	</if>
+	<if test="compareDestAddress != null ">
+		and t.COMPARE_DEST_ADDRESS=#{compareDestAddress}
+	</if>
+	<if test="belongCompanyName != null ">
+		and t.BELONG_COMPANY_NAME=#{belongCompanyName}
+	</if>
+	<if test="lostPercent != null ">
+		and t.LOST_PERCENT=#{lostPercent}
+	</if>
+	<if test="lastJumpOut != null ">
+		and t.LAST_JUMP_OUT=#{lastJumpOut}
+	</if>
+	<if test="lastJumpIn != null ">
+		and t.LAST_JUMP_IN=#{lastJumpIn}
+	</if>
+	<if test="excepIp != null ">
+		and t.EXCEP_IP=#{excepIp}
+	</if>
+	<if test="excepDirection != null ">
+		and t.EXCEP_DIRECTION=#{excepDirection}
+	</if>
+	<if test="isRankAnalyse != null ">
+		and t.IS_RANK_ANALYSE=#{isRankAnalyse}
+	</if>
+	<if test="analyseStartDate != null ">
+		and t.ANALYSE_START_DATE=#{analyseStartDate}
+	</if>
+	<if test="analyseEndDate != null ">
+		and t.ANALYSE_END_DATE=#{analyseEndDate}
+	</if>
+	<if test="ipRange != null ">
+		and t.IP_RANGE=#{ipRange}
+	</if>
+	<if test="interfaceProblem != null ">
+		and t.INTERFACE_PROBLEM=#{interfaceProblem}
+	</if>
+	<if test="badIp != null ">
+		and t.BAD_IP=#{badIp}
+	</if>
+	<if test="isBackup != null ">
+		and t.IS_BACKUP=#{isBackup}
+	</if>
+	<if test="problemStartTime != null ">
+		and t.PROBLEM_START_TIME=#{problemStartTime}
+	</if>
+	<if test="realExcepType != null ">
+		and t.REAL_EXCEP_TYPE=#{realExcepType}
+	</if>
+	<if test="solveResult != null ">
+		and t.SOLVE_RESULT=#{solveResult}
+	</if>
+	<if test="operationType != null ">
+		and t.OPERATION_TYPE=#{operationType}
+	</if>
+	<if test="operationTypeImg != null ">
+		and t.OPERATION_TYPE_IMG=#{operationTypeImg}
+	</if>
+	<if test="machina != null ">
+		and t.MACHINA=#{machina}
+	</if>
+	<if test="caozgcs != null ">
+		and t.CAOZGCS=#{caozgcs}
+	</if>
+	<if test="caozgcsName != null ">
+		and t.CAOZGCS_NAME=#{caozgcsName}
+	</if>
+	<if test="status != null ">
+		and t.STATUS=#{status}
+	</if>
+	<if test="score != null ">
+		and t.SCORE=#{score}
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+</select>
+
+<select id="queryApp" parameterType="com.jc.oa.network.domain.ToaNetworkWrong" resultType="com.jc.oa.network.domain.ToaNetworkWrong">
+		SELECT 
+		 t.ID id
+		,t.EQUIPMENT_NUMBER equipmentNumber
+		,t.COMPANY_ID companyId
+		,t.COMPANY_NAME companyName
+		,t.CONTACT contact
+		,t.TEL tel
+		,t.START_DATE startDate
+		,t.END_DATE endDate
+		,t.WRONG_TYPE wrongType
+		,t.SRC_ADDRESS srcAddress
+		,t.IS_SRC_FORBID_PING isSrcForbidPing
+		,t.DEST_ADDRESS destAddress
+		,t.IS_DEST_FORBID_PING isDestForbidPing
+		,t.COMPARE_SRC_ADDRESS compareSrcAddress
+		,t.COMPARE_DEST_ADDRESS compareDestAddress
+		,t.BELONG_COMPANY_NAME belongCompanyName
+		,t.LOST_PERCENT lostPercent
+		,t.LAST_JUMP_OUT lastJumpOut
+		,t.LAST_JUMP_IN lastJumpIn
+		,t.EXCEP_IP excepIp
+		,t.EXCEP_DIRECTION excepDirection
+		,t.IS_RANK_ANALYSE isRankAnalyse
+		,t.ANALYSE_START_DATE analyseStartDate
+		,t.ANALYSE_END_DATE analyseEndDate
+		,t.IP_RANGE ipRange
+		,t.INTERFACE_PROBLEM interfaceProblem
+		,t.BAD_IP badIp
+		,t.IS_BACKUP isBackup
+		,t.PROBLEM_START_TIME problemStartTime
+		,t.REAL_EXCEP_TYPE realExcepType
+		,t.SOLVE_RESULT solveResult
+		,t.OPERATION_TYPE operationType
+		,t.OPERATION_TYPE_IMG operationTypeImg
+		,t.MACHINA machina
+		,t.CAOZGCS caozgcs
+		,t.CAOZGCS_NAME caozgcsName
+		,t.STATUS status
+		,t.SCORE score
+		,t.REMARK remark
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.EXT_NUM1 extNum1
+		,t.EXT_NUM2 extNum2
+		,t.EXT_NUM3 extNum3
+ FROM toa_network_wrong t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="equipmentNumber != null ">
+		and t.EQUIPMENT_NUMBER=#{equipmentNumber}
+	</if>
+	<if test="companyId != null ">
+		and t.COMPANY_ID=#{companyId}
+	</if>
+	<if test="companyName != null ">
+		and t.COMPANY_NAME=#{companyName}
+	</if>
+	<if test="contact != null ">
+		and t.CONTACT=#{contact}
+	</if>
+	<if test="tel != null ">
+		and t.TEL=#{tel}
+	</if>
+	<if test="startDate != null ">
+		and t.START_DATE=#{startDate}
+	</if>
+	<if test="endDate != null ">
+		and t.END_DATE=#{endDate}
+	</if>
+	<if test="wrongType != null ">
+		and t.WRONG_TYPE=#{wrongType}
+	</if>
+	<if test="srcAddress != null ">
+		and t.SRC_ADDRESS=#{srcAddress}
+	</if>
+	<if test="isSrcForbidPing != null ">
+		and t.IS_SRC_FORBID_PING=#{isSrcForbidPing}
+	</if>
+	<if test="destAddress != null ">
+		and t.DEST_ADDRESS=#{destAddress}
+	</if>
+	<if test="isDestForbidPing != null ">
+		and t.IS_DEST_FORBID_PING=#{isDestForbidPing}
+	</if>
+	<if test="compareSrcAddress != null ">
+		and t.COMPARE_SRC_ADDRESS=#{compareSrcAddress}
+	</if>
+	<if test="compareDestAddress != null ">
+		and t.COMPARE_DEST_ADDRESS=#{compareDestAddress}
+	</if>
+	<if test="belongCompanyName != null ">
+		and t.BELONG_COMPANY_NAME=#{belongCompanyName}
+	</if>
+	<if test="lostPercent != null ">
+		and t.LOST_PERCENT=#{lostPercent}
+	</if>
+	<if test="lastJumpOut != null ">
+		and t.LAST_JUMP_OUT=#{lastJumpOut}
+	</if>
+	<if test="lastJumpIn != null ">
+		and t.LAST_JUMP_IN=#{lastJumpIn}
+	</if>
+	<if test="excepIp != null ">
+		and t.EXCEP_IP=#{excepIp}
+	</if>
+	<if test="excepDirection != null ">
+		and t.EXCEP_DIRECTION=#{excepDirection}
+	</if>
+	<if test="isRankAnalyse != null ">
+		and t.IS_RANK_ANALYSE=#{isRankAnalyse}
+	</if>
+	<if test="analyseStartDate != null ">
+		and t.ANALYSE_START_DATE=#{analyseStartDate}
+	</if>
+	<if test="analyseEndDate != null ">
+		and t.ANALYSE_END_DATE=#{analyseEndDate}
+	</if>
+	<if test="ipRange != null ">
+		and t.IP_RANGE=#{ipRange}
+	</if>
+	<if test="interfaceProblem != null ">
+		and t.INTERFACE_PROBLEM=#{interfaceProblem}
+	</if>
+	<if test="badIp != null ">
+		and t.BAD_IP=#{badIp}
+	</if>
+	<if test="isBackup != null ">
+		and t.IS_BACKUP=#{isBackup}
+	</if>
+	<if test="problemStartTime != null ">
+		and t.PROBLEM_START_TIME=#{problemStartTime}
+	</if>
+	<if test="realExcepType != null ">
+		and t.REAL_EXCEP_TYPE=#{realExcepType}
+	</if>
+	<if test="solveResult != null ">
+		and t.SOLVE_RESULT=#{solveResult}
+	</if>
+	<if test="operationType != null ">
+		and t.OPERATION_TYPE=#{operationType}
+	</if>
+	<if test="operationTypeImg != null ">
+		and t.OPERATION_TYPE_IMG=#{operationTypeImg}
+	</if>
+	<if test="machina != null ">
+		and t.MACHINA=#{machina}
+	</if>
+	<if test="caozgcs != null ">
+		and t.CAOZGCS=#{caozgcs} or t.STATUS=#{status}
+	</if>
+	<if test="caozgcsName != null ">
+		and t.CAOZGCS_NAME=#{caozgcsName}
+	</if>
+	<if test="status != null ">
+		and t.STATUS=#{status}
+	</if>
+	<if test="score != null ">
+		and t.SCORE=#{score}
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+</select>
+	
+<select id="queryCount" parameterType="com.jc.oa.network.domain.ToaNetworkWrong" resultType="java.lang.Long">
+		SELECT COUNT(ID) 
+	 FROM toa_network_wrong t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="equipmentNumber != null ">
+		and t.EQUIPMENT_NUMBER=#{equipmentNumber}
+	</if>
+	<if test="companyId != null ">
+		and t.COMPANY_ID=#{companyId}
+	</if>
+	<if test="companyName != null ">
+		and t.COMPANY_NAME=#{companyName}
+	</if>
+	<if test="contact != null ">
+		and t.CONTACT=#{contact}
+	</if>
+	<if test="tel != null ">
+		and t.TEL=#{tel}
+	</if>
+	<if test="startDate != null ">
+		and t.START_DATE=#{startDate}
+	</if>
+	<if test="endDate != null ">
+		and t.END_DATE=#{endDate}
+	</if>
+	<if test="wrongType != null ">
+		and t.WRONG_TYPE=#{wrongType}
+	</if>
+	<if test="srcAddress != null ">
+		and t.SRC_ADDRESS=#{srcAddress}
+	</if>
+	<if test="isSrcForbidPing != null ">
+		and t.IS_SRC_FORBID_PING=#{isSrcForbidPing}
+	</if>
+	<if test="destAddress != null ">
+		and t.DEST_ADDRESS=#{destAddress}
+	</if>
+	<if test="isDestForbidPing != null ">
+		and t.IS_DEST_FORBID_PING=#{isDestForbidPing}
+	</if>
+	<if test="compareSrcAddress != null ">
+		and t.COMPARE_SRC_ADDRESS=#{compareSrcAddress}
+	</if>
+	<if test="compareDestAddress != null ">
+		and t.COMPARE_DEST_ADDRESS=#{compareDestAddress}
+	</if>
+	<if test="belongCompanyName != null ">
+		and t.BELONG_COMPANY_NAME=#{belongCompanyName}
+	</if>
+	<if test="lostPercent != null ">
+		and t.LOST_PERCENT=#{lostPercent}
+	</if>
+	<if test="lastJumpOut != null ">
+		and t.LAST_JUMP_OUT=#{lastJumpOut}
+	</if>
+	<if test="lastJumpIn != null ">
+		and t.LAST_JUMP_IN=#{lastJumpIn}
+	</if>
+	<if test="excepIp != null ">
+		and t.EXCEP_IP=#{excepIp}
+	</if>
+	<if test="excepDirection != null ">
+		and t.EXCEP_DIRECTION=#{excepDirection}
+	</if>
+	<if test="isRankAnalyse != null ">
+		and t.IS_RANK_ANALYSE=#{isRankAnalyse}
+	</if>
+	<if test="analyseStartDate != null ">
+		and t.ANALYSE_START_DATE=#{analyseStartDate}
+	</if>
+	<if test="analyseEndDate != null ">
+		and t.ANALYSE_END_DATE=#{analyseEndDate}
+	</if>
+	<if test="ipRange != null ">
+		and t.IP_RANGE=#{ipRange}
+	</if>
+	<if test="interfaceProblem != null ">
+		and t.INTERFACE_PROBLEM=#{interfaceProblem}
+	</if>
+	<if test="badIp != null ">
+		and t.BAD_IP=#{badIp}
+	</if>
+	<if test="isBackup != null ">
+		and t.IS_BACKUP=#{isBackup}
+	</if>
+	<if test="problemStartTime != null ">
+		and t.PROBLEM_START_TIME=#{problemStartTime}
+	</if>
+	<if test="realExcepType != null ">
+		and t.REAL_EXCEP_TYPE=#{realExcepType}
+	</if>
+	<if test="solveResult != null ">
+		and t.SOLVE_RESULT=#{solveResult}
+	</if>
+	<if test="operationType != null ">
+		and t.OPERATION_TYPE=#{operationType}
+	</if>
+	<if test="operationTypeImg != null ">
+		and t.OPERATION_TYPE_IMG=#{operationTypeImg}
+	</if>
+	<if test="machina != null ">
+		and t.MACHINA=#{machina}
+	</if>
+	<if test="caozgcs != null ">
+		and t.CAOZGCS=#{caozgcs}
+	</if>
+	<if test="caozgcsName != null ">
+		and t.CAOZGCS_NAME=#{caozgcsName}
+	</if>
+	<if test="status != null ">
+		and t.STATUS=#{status}
+	</if>
+	<if test="score != null ">
+		and t.SCORE=#{score}
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+
+</select>
+
+<update id="deleteLogic"  parameterType="com.jc.oa.network.domain.ToaNetworkWrong">
+	     UPDATE toa_network_wrong t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+ 			where ID in
+ 			<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=","> 
+				 #{primaryKey}
+			</foreach>
+</update>
+  	
+</mapper>   

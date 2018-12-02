@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.system.portal.domain.Portlet">
+
+	<select id="query" parameterType="com.jc.system.portal.domain.Portlet" resultType="com.jc.system.portal.domain.Portlet">
+		SELECT 
+			t.ID id,
+			t.PORTAL_ID portalId,
+			p.PORTAL_NAME portalName,
+			t.LET_TITLE letTitle,
+			t.let_textarea letTextarea,
+			t.let_file letFile,
+			t.FUNCTION_ID functionId,
+			t.FUNCTION_NAME functionName,
+			t.VIEW_TYPE viewType,
+			t.LET_NUM letNum,
+			t.COLUMN_SHOW_NAME columnShowName,
+			t.COLUMN_NAME columnName,
+			t.LET_STYLE letStyle,
+			t.LET_ICON letIcon,
+			t.LET_HEIGHT letHeight,
+			t.TOP_MARGIN topMargin,
+			t.BOTTOM_MARGIN bottomMargin,
+			t.LETF_MARGIN letfMargin,
+			t.RIGHT_MARGIN rightMargin,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate
+			
+		FROM tty_sys_portlet t, tty_sys_portal p
+		<where>
+			t.PORTAL_ID = p.id
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+
+			<if test="portalId != null">
+				and t.PORTAL_ID = #{portalId}
+			</if>
+
+			<if test="letTitle != null">
+				and t.LET_TITLE = #{letTitle}
+			</if>
+
+			<if test="functionId != null">
+				and t.FUNCTION_ID = #{functionId}
+			</if>
+
+			<if test="functionName != null">
+				and t.FUNCTION_NAME like <![CDATA['%${functionName}%']]>
+			</if>
+
+			<if test="viewType != null">
+				and t.VIEW_TYPE = #{viewType}
+			</if>
+
+			<if test="letNum != null">
+				and t.LET_NUM = #{letNum}
+			</if>
+
+			<if test="columnShowName != null">
+				and t.COLUMN_SHOW_NAME = #{columnShowName}
+			</if>
+
+			<if test="columnName != null">
+				and t.COLUMN_NAME = #{columnName}
+			</if>
+
+			<if test="letStyle != null">
+				and t.LET_STYLE = #{letStyle}
+			</if>
+
+			<if test="letIcon != null">
+				and t.LET_ICON = #{letIcon}
+			</if>
+
+			<if test="letHeight != null">
+				and t.LET_HEIGHT = #{letHeight}
+			</if>
+
+			<if test="topMargin != null">
+				and t.TOP_MARGIN = #{topMargin}
+			</if>
+
+			<if test="bottomMargin != null">
+				and t.BOTTOM_MARGIN = #{bottomMargin}
+			</if>
+
+			<if test="letfMargin != null">
+				and t.LETF_MARGIN = #{letfMargin}
+			</if>
+
+			<if test="rightMargin != null">
+				and t.RIGHT_MARGIN = #{rightMargin}
+			</if>
+
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="createDateBegin != null">
+				and t.CREATE_DATE &gt;= #{createDateBegin}
+			</if>
+			<if test="createDateEnd != null">
+				and t.CREATE_DATE &lt;= #{createDateEnd}
+			</if>
+
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="modifyDateBegin != null">
+				and t.MODIFY_DATE &gt;= #{modifyDateBegin}
+			</if>
+			<if test="modifyDateEnd != null">
+				and t.MODIFY_DATE &lt;= #{modifyDateEnd}
+			</if>
+		</where>
+		order by t.ID desc
+	</select>
+	
+	
+	<select id="queryCount" parameterType="com.jc.system.portal.domain.Portlet" resultType="java.lang.Long">
+		SELECT count(t.ID) 
+		FROM tty_sys_portlet t, tty_sys_portal p
+		<where>
+			t.PORTAL_ID = p.id
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+
+			<if test="portalId != null">
+				and t.PORTAL_ID = #{portalId}
+			</if>
+
+			<if test="letTitle != null">
+				and t.LET_TITLE = #{letTitle}
+			</if>
+			
+			<if test="functionId != null">
+				and t.FUNCTION_ID = #{functionId}
+			</if>
+
+			<if test="functionName != null">
+				and t.FUNCTION_NAME like <![CDATA['%${functionName}%']]>
+			</if>
+
+			<if test="viewType != null">
+				and t.VIEW_TYPE = #{viewType}
+			</if>
+
+			<if test="letNum != null">
+				and t.LET_NUM = #{letNum}
+			</if>
+
+			<if test="columnShowName != null">
+				and t.COLUMN_SHOW_NAME = #{columnShowName}
+			</if>
+
+			<if test="columnName != null">
+				and t.COLUMN_NAME = #{columnName}
+			</if>
+
+			<if test="letStyle != null">
+				and t.LET_STYLE = #{letStyle}
+			</if>
+
+			<if test="letIcon != null">
+				and t.LET_ICON = #{letIcon}
+			</if>
+
+			<if test="letHeight != null">
+				and t.LET_HEIGHT = #{letHeight}
+			</if>
+
+			<if test="topMargin != null">
+				and t.TOP_MARGIN = #{topMargin}
+			</if>
+
+			<if test="bottomMargin != null">
+				and t.BOTTOM_MARGIN = #{bottomMargin}
+			</if>
+
+			<if test="letfMargin != null">
+				and t.LETF_MARGIN = #{letfMargin}
+			</if>
+
+			<if test="rightMargin != null">
+				and t.RIGHT_MARGIN = #{rightMargin}
+			</if>
+
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="createDateBegin != null">
+				and t.CREATE_DATE &gt;= #{createDateBegin}
+			</if>
+			<if test="createDateEnd != null">
+				and t.CREATE_DATE &lt;= #{createDateEnd}
+			</if>
+
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+
+		</where>
+	</select>
+
+	<select id="queryByuseFuncionids" resultType="String">
+		SELECT GROUP_CONCAT(FUNCTION_ID) FROM tty_sys_portlet where DELETE_FLAG = 0
+	</select>
+	
+	<delete id="deleteByPortalId"  parameterType="com.jc.system.portal.domain.Portlet">
+    	delete from tty_sys_portlet
+      		where PORTAL_ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete>
+
+	<delete id="deletePhysical"  parameterType="com.jc.system.portal.domain.Portlet">
+    	delete from tty_sys_portlet
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete>
+
+	<update id="deleteLogic"  parameterType="com.jc.system.portal.domain.Portlet">
+    	UPDATE tty_sys_portlet t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+
+	<insert id="insert" parameterType="com.jc.system.portal.domain.Portlet" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tty_sys_portlet(ID,PORTAL_ID,LET_TITLE,let_textarea,let_file,FUNCTION_NAME,FUNCTION_ID,VIEW_TYPE,LET_NUM,COLUMN_SHOW_NAME,COLUMN_NAME,LET_STYLE,LET_ICON,LET_HEIGHT,TOP_MARGIN,BOTTOM_MARGIN,LETF_MARGIN,RIGHT_MARGIN,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES (#{id,jdbcType=NUMERIC},#{portalId,jdbcType=NUMERIC},#{letTitle,jdbcType=VARCHAR},#{letTextarea,jdbcType=VARCHAR},#{letFile,jdbcType=VARCHAR},#{functionName,jdbcType=VARCHAR},#{functionId,jdbcType=VARCHAR},#{viewType,jdbcType=VARCHAR},#{letNum,jdbcType=NUMERIC},#{columnShowName,jdbcType=VARCHAR},#{columnName,jdbcType=VARCHAR},#{letStyle,jdbcType=VARCHAR},#{letIcon,jdbcType=VARCHAR},#{letHeight,jdbcType=NUMERIC},#{topMargin,jdbcType=NUMERIC},#{bottomMargin,jdbcType=NUMERIC},#{letfMargin,jdbcType=NUMERIC},#{rightMargin,jdbcType=NUMERIC},#{deleteFlag,jdbcType=NUMERIC},#{createUser,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createUserOrg,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extDate1,jdbcType=TIMESTAMP},#{extDate2,jdbcType=TIMESTAMP},#{extNum1,jdbcType=NUMERIC},#{extNum2,jdbcType=NUMERIC},#{extNum3,jdbcType=NUMERIC},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr5,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertList" parameterType="list">
+		INSERT INTO tty_sys_portlet(ID,PORTAL_ID,LET_TITLE,let_textarea,let_file,FUNCTION_NAME,FUNCTION_ID,VIEW_TYPE,LET_NUM,COLUMN_SHOW_NAME,COLUMN_NAME,LET_STYLE,LET_ICON,LET_HEIGHT,TOP_MARGIN,BOTTOM_MARGIN,LETF_MARGIN,RIGHT_MARGIN,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(#{item.id,jdbcType=NUMERIC},#{item.portalId,jdbcType=NUMERIC},#{item.letTitle,jdbcType=VARCHAR},#{item.letTextarea,jdbcType=VARCHAR},#{item.letFile,jdbcType=VARCHAR},#{item.functionName,jdbcType=VARCHAR},#{item.functionId,jdbcType=VARCHAR},#{item.viewType,jdbcType=VARCHAR},#{item.letNum,jdbcType=NUMERIC},#{item.columnShowName,jdbcType=VARCHAR},#{item.columnName,jdbcType=VARCHAR},#{item.letStyle,jdbcType=VARCHAR},#{item.letIcon,jdbcType=VARCHAR},#{item.letHeight,jdbcType=NUMERIC},#{item.topMargin,jdbcType=NUMERIC},#{item.bottomMargin,jdbcType=NUMERIC},#{item.letfMargin,jdbcType=NUMERIC},#{item.rightMargin,jdbcType=NUMERIC},#{item.deleteFlag,jdbcType=NUMERIC},#{item.createUser,jdbcType=NUMERIC},#{item.createUserDept,jdbcType=NUMERIC},#{item.createUserOrg,jdbcType=NUMERIC},#{item.createDate,jdbcType=TIMESTAMP},#{item.modifyUser,jdbcType=NUMERIC},#{item.modifyDate,jdbcType=TIMESTAMP},#{item.extDate1,jdbcType=TIMESTAMP},#{item.extDate2,jdbcType=TIMESTAMP},#{item.extNum1,jdbcType=NUMERIC},#{item.extNum2,jdbcType=NUMERIC},#{item.extNum3,jdbcType=NUMERIC},#{item.extStr1,jdbcType=VARCHAR},#{item.extStr2,jdbcType=VARCHAR},#{item.extStr3,jdbcType=VARCHAR},#{item.extStr4,jdbcType=VARCHAR},#{item.extStr5,jdbcType=VARCHAR})
+			</foreach> 
+	</insert>
+
+	<update id="update" parameterType="com.jc.system.portal.domain.Portlet">
+	UPDATE tty_sys_portlet set
+	   	<if test="portalId != null">
+	   		PORTAL_ID = #{portalId},
+	   	</if>
+	   	<if test="letTitle != null">
+	   		LET_TITLE = #{letTitle},
+	   	</if>
+	   	<if test="letTextarea != null">
+	   		let_textarea = #{letTextarea},
+	   	</if>
+	   	<if test="letFile != null">
+	   		let_file = #{letFile},
+	   	</if>
+	   	<if test="functionId != null">
+			FUNCTION_ID = #{functionId},
+		</if>
+	   	<if test="functionName != null">
+	   		FUNCTION_NAME = #{functionName},
+	   	</if>
+	   	<if test="viewType != null">
+	   		VIEW_TYPE = #{viewType},
+	   	</if>
+	   	<if test="letNum != null">
+	   		LET_NUM = #{letNum},
+	   	</if>
+	   	<if test="columnShowName != null">
+	   		COLUMN_SHOW_NAME = #{columnShowName},
+	   	</if>
+	   	<if test="columnName != null">
+	   		COLUMN_NAME = #{columnName},
+	   	</if>
+	   	<if test="letStyle != null">
+	   		LET_STYLE = #{letStyle},
+	   	</if>
+	   	<if test="letIcon != null">
+	   		LET_ICON = #{letIcon},
+	   	</if>
+	   	<if test="letHeight != null">
+	   		LET_HEIGHT = #{letHeight},
+	   	</if>
+	   	<if test="topMargin != null">
+	   		TOP_MARGIN = #{topMargin},
+	   	</if>
+	   	<if test="bottomMargin != null">
+	   		BOTTOM_MARGIN = #{bottomMargin},
+	   	</if>
+	   	<if test="letfMargin != null">
+	   		LETF_MARGIN = #{letfMargin},
+	   	</if>
+	   	<if test="rightMargin != null">
+	   		RIGHT_MARGIN = #{rightMargin},
+	   	</if>
+	   	<if test="deleteFlag != null">
+	   		DELETE_FLAG = #{deleteFlag},
+	   	</if>
+	   	<if test="createUser != null">
+	   		CREATE_USER = #{createUser},
+	   	</if>
+	   	<if test="createUserDept != null">
+	   		CREATE_USER_DEPT = #{createUserDept},
+	   	</if>
+	   	<if test="createUserOrg != null">
+	   		CREATE_USER_ORG = #{createUserOrg},
+	   	</if>
+	   	<if test="createDate != null">
+	   		CREATE_DATE = #{createDate},
+	   	</if>
+	   	<if test="modifyUser != null">
+	   		MODIFY_USER = #{modifyUser},
+	   	</if>
+	   	<if test="extDate1 != null">
+	   		EXT_DATE1 = #{extDate1},
+	   	</if>
+	   	<if test="extDate2 != null">
+	   		EXT_DATE2 = #{extDate2},
+	   	</if>
+	   	<if test="extNum1 != null">
+	   		EXT_NUM1 = #{extNum1},
+	   	</if>
+	   	<if test="extNum2 != null">
+	   		EXT_NUM2 = #{extNum2},
+	   	</if>
+	   	<if test="extNum3 != null">
+	   		EXT_NUM3 = #{extNum3},
+	   	</if>
+	   	<if test="extStr1 != null">
+	   		EXT_STR1 = #{extStr1},
+	   	</if>
+	   	<if test="extStr2 != null">
+	   		EXT_STR2 = #{extStr2},
+	   	</if>
+	   	<if test="extStr3 != null">
+	   		EXT_STR3 = #{extStr3},
+	   	</if>
+	   	<if test="extStr4 != null">
+	   		EXT_STR4 = #{extStr4},
+	   	</if>
+	   	<if test="extStr5 != null">
+	   		EXT_STR5 = #{extStr5},
+	   	</if>
+	   	MODIFY_DATE = #{modifyDateNew} where ID = #{id}
+	</update>
+
+	<select id="queryForPortalIds" parameterType="com.jc.system.portal.domain.Portlet" resultType="com.jc.system.portal.domain.Portlet">
+		SELECT 
+			t.ID id,
+			t.PORTAL_ID portalId,
+			p.PORTAL_NAME portalName,
+			t.LET_TITLE letTitle,
+			t.let_textarea letTextarea,
+			t.let_file letFile,
+			t.FUNCTION_ID functionId,
+			t.FUNCTION_NAME functionName,
+			t.VIEW_TYPE viewType,
+			t.LET_NUM letNum,
+			t.COLUMN_SHOW_NAME columnShowName,
+			t.COLUMN_NAME columnName,
+			t.LET_STYLE letStyle,
+			t.LET_ICON letIcon,
+			t.LET_HEIGHT letHeight,
+			t.TOP_MARGIN topMargin,
+			t.BOTTOM_MARGIN bottomMargin,
+			t.LETF_MARGIN letfMargin,
+			t.RIGHT_MARGIN rightMargin,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate
+			
+		FROM tty_sys_portlet t, tty_sys_portal p
+		<where>
+			t.PORTAL_ID = p.id
+			<if test="portalId != null">
+				and t.PORTAL_ID = #{portalId}
+			</if>
+			<if test="portalIds != null">
+				and t.PORTAL_ID IN (${portalIds})
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="viewType != null">
+	   			and t.VIEW_TYPE = #{viewType}
+	   		</if>
+		</where>
+		order by t.ID desc
+	</select>
+	
+	<select id="queryForFunName" parameterType="com.jc.system.portal.domain.Portlet" resultType="java.lang.Integer">
+		SELECT count(t.ID) 
+		FROM tty_sys_portlet t
+		<where>
+			<if test="letTitle != null">
+				and t.LET_TITLE = #{letTitle}
+			</if>
+			<if test="portalId != null">
+				and t.PORTAL_ID = #{portalId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+
+		</where>
+	</select>
+	
+</mapper>

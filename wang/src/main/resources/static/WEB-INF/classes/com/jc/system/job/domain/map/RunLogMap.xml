@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.system.job.domain.RunLog">
+
+	<insert id="insert" parameterType="com.jc.system.job.domain.RunLog">
+	INSERT INTO tty_sys_run_log(id,timer_task_id,group_name,start_at,end_at,job_data,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE)
+		VALUES (#{id,jdbcType=NUMERIC},#{timerTaskId,jdbcType=NUMERIC},#{groupName,jdbcType=VARCHAR},#{startAt,jdbcType=TIMESTAMP},#{endAt,jdbcType=TIMESTAMP},#{jobData,jdbcType=VARCHAR},#{createUser,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createUserOrg,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP})
+	</insert>
+
+	<update id="update" parameterType="com.jc.system.job.domain.RunLog">
+	UPDATE tty_sys_run_log
+	   <set>
+	   	<if test="timerTaskId != null">
+	   		timer_task_id = #{timerTaskId},
+	   	</if>
+	   	<if test="groupName != null">
+	   		group_name = #{groupName},
+	   	</if>
+	   	<if test="startAt != null">
+	   		start_at = #{startAt},
+	   	</if>
+	   	<if test="endAt != null">
+	   		end_at = #{endAt},
+	   	</if>
+	   	<if test="jobData != null">
+	   		job_data = #{jobData},
+	   	</if>
+	   	<if test="modifyUser != null">
+	   		MODIFY_USER = #{modifyUser},
+	   	</if>
+	   	<if test="modifyDate != null">
+	   		MODIFY_DATE = #{modifyDateNew},
+	   	</if>
+	   </set>
+	   where id = #{id}
+	</update>
+
+	<select id="query" parameterType="com.jc.system.job.domain.RunLog" resultType="com.jc.system.job.domain.RunLog">
+		SELECT 
+			t.id id,
+			t.timer_task_id timerTaskId,
+			t.group_name groupName,
+			t.start_at startAt,
+			t.end_at endAt,
+			t.job_data jobData,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate
+			
+		FROM tty_sys_run_log t
+		<where>
+			<!-- <if test="id != null">
+				and t.id = #{id}
+			</if>
+			<if test="timerTaskId != null">
+				and t.timer_task_id = #{timerTaskId}
+			</if>
+			<if test="groupName != null">
+				and t.group_name = #{groupName}
+			</if> -->
+			1 = 1
+			<if test="startAt != null">
+				and t.start_at &gt;= #{startAt}	
+			</if>
+			<if test="endAt != null">
+				and t.end_at &lt;= #{endAt}	
+			</if>
+	<!-- 		<if test="jobData != null">
+				and t.job_data = #{jobData}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if> -->
+		</where>
+		order by t.start_at desc
+	</select>
+	
+	
+	<select id="queryCount" parameterType="com.jc.system.job.domain.RunLog" resultType="java.lang.Integer">
+		SELECT count(id) 
+		FROM tty_sys_run_log t
+		<where>
+			<!-- <if test="id != null">
+				and t.id = #{id}
+			</if>
+			<if test="timerTaskId != null">
+				and t.timer_task_id = #{timerTaskId}
+			</if>
+			<if test="groupName != null">
+				and t.group_name like <![CDATA['%${groupName}%']]>  
+			</if> -->
+			<if test="startAt != null">
+				and t.start_at &gt;= #{startAt}	
+			</if>
+			<if test="endAt != null">
+				and t.end_at &lt;= #{endAt}	
+			</if>
+			<!-- <if test="jobData != null">
+				and t.job_data = #{jobData}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if> -->
+		</where>
+		
+	</select>
+
+	<delete id="deletePhysical"  parameterType="com.jc.system.job.domain.RunLog">
+    	delete from tty_sys_run_log
+      		where id in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete>
+
+</mapper>

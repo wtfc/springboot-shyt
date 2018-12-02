@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.system.number.domain.NumberRule">
+
+	<select id="query" parameterType="com.jc.system.number.domain.NumberRule" resultType="com.jc.system.number.domain.NumberRule">
+		SELECT 
+			t.id id,
+			t.rule_name ruleName,
+			t.date_format dateFormat,
+			t.date_type dateType,
+			t.date_split dateSplit,
+			t.number_start numberStart,
+			t.number_ceiling numberCeiling,
+			t.number_reset_rules numberResetRules,
+			t.number_reset_state numberResetState,
+			t.number_state numberState,
+			t.number_state_value numberStateValue,
+			t.parameter parameter,
+			t.number_module numberModule,
+			t.number_value numberValue,
+			t.date_split_state dateSplitState,
+			t.number_digit numberDigit,
+			t.number_placeholder numberPlaceholder,
+			t.number_type numberType,
+			t.number_step numberStep,
+			t.date_index dateIndex,
+			t.number_module numberModule,
+			t.rule_displayname ruleDisplayname
+			
+		FROM tty_sys_number_rule t
+		<where>
+			<if test="id != null">
+				and t.id = #{id}
+			</if>
+			<if test="ruleName != null">
+				and t.rule_name = #{ruleName}
+			</if>
+			<if test="dateFormat != null">
+				and t.date_format = #{dateFormat}
+			</if>
+			<if test="dateType != null">
+				and t.date_type = #{dateType}
+			</if>
+			<if test="dateSplit != null">
+				and t.date_split = #{dateSplit}
+			</if>
+			<if test="numberStart != null">
+				and t.number_start = #{numberStart}
+			</if>
+			<if test="numberCeiling != null">
+				and t.number_ceiling = #{numberCeiling}
+			</if>
+			<if test="numberResetRules != null">
+				and t.number_reset_rules = #{numberResetRules}
+			</if>
+			<if test="numberResetState != null">
+				and t.number_reset_state = #{numberResetState}
+			</if>
+			<if test="numberState != null">
+				and t.number_state = #{numberState}
+			</if>
+			<if test="numberStateValue != null">
+				and t.number_state_value = #{numberStateValue}
+			</if>
+			<if test="parameter != null">
+				and t.parameter = #{parameter}
+			</if>
+			<if test="numberValue != null">
+				and t.number_value = #{numberValue}
+			</if>
+			<if test="dateSplitState != null">
+				and t.date_split_state = #{dateSplitState}
+			</if>
+			<if test="numberModule != null">
+				and t.number_module = #{numberModule}
+			</if>
+			<if test="numberDigit != null">
+				and t.number_digit = #{numberDigit}
+			</if>
+			<if test="numberPlaceholder != null">
+				and t.number_placeholder = #{numberPlaceholder}
+			</if>
+			<if test="numberType != null">
+				and t.number_type = #{numberType}
+			</if>
+			<if test="numberStep != null">
+				and t.number_step = #{numberStep}
+			</if>
+			<if test="dateIndex != null">
+				and t.date_index = #{dateIndex}
+			</if>
+		</where>
+	</select>
+	
+	
+	<select id="queryCount" parameterType="com.jc.system.number.domain.NumberRule" resultType="java.lang.Integer">
+		SELECT count(id) 
+		FROM tty_sys_number_rule t
+		<where>
+			<if test="id != null">
+				and t.id = #{id}
+			</if>
+			<if test="ruleName != null">
+				and t.rule_name = #{ruleName}
+			</if>
+			<if test="dateFormat != null">
+				and t.date_format = #{dateFormat}
+			</if>
+			<if test="dateType != null">
+				and t.date_type = #{dateType}
+			</if>
+			<if test="dateSplit != null">
+				and t.date_split = #{dateSplit}
+			</if>
+			<if test="numberStart != null">
+				and t.number_start = #{numberStart}
+			</if>
+			<if test="numberCeiling != null">
+				and t.number_ceiling = #{numberCeiling}
+			</if>
+			<if test="numberResetRules != null">
+				and t.number_reset_rules = #{numberResetRules}
+			</if>
+			<if test="numberResetState != null">
+				and t.number_reset_state = #{numberResetState}
+			</if>
+			<if test="numberModule != null">
+				and t.number_module = #{numberModule}
+			</if>
+			<if test="numberState != null">
+				and t.number_state = #{numberState}
+			</if>
+			<if test="numberStateValue != null">
+				and t.number_state_value = #{numberStateValue}
+			</if>
+			<if test="parameter != null">
+				and t.parameter = #{parameter}
+			</if>
+			<if test="numberValue != null">
+				and t.number_value = #{numberValue}
+			</if>
+			<if test="dateSplitState != null">
+				and t.date_split_state = #{dateSplitState}
+			</if>
+			<if test="numberDigit != null">
+				and t.number_digit = #{numberDigit}
+			</if>
+			<if test="numberPlaceholder != null">
+				and t.number_placeholder = #{numberPlaceholder}
+			</if>
+			<if test="numberType != null">
+				and t.number_type = #{numberType}
+			</if>
+			<if test="numberStep != null">
+				and t.number_step = #{numberStep}
+			</if>
+			<if test="dateIndex != null">
+				and t.date_index = #{dateIndex}
+			</if>
+		</where>
+	</select>
+
+	<delete id="deletePhysical"  parameterType="com.jc.system.number.domain.NumberRule">
+    	delete from tty_sys_number_rule where rule_name = #{ruleName}
+ 	</delete>
+
+	<update id="delete"  parameterType="com.jc.system.number.domain.NumberRule">
+    	UPDATE tty_sys_number_rule t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+
+	<insert id="insert" parameterType="com.jc.system.number.domain.NumberRule" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tty_sys_number_rule(id,rule_name,date_format,date_type,date_split,number_start,number_ceiling,number_reset_rules,number_reset_state,number_state,number_state_value,parameter,number_value,date_split_state,number_digit,number_placeholder,number_type,number_step,date_index,number_module,rule_displayname)
+			VALUES (#{id,jdbcType=NUMERIC},#{ruleName,jdbcType=VARCHAR},#{dateFormat,jdbcType=VARCHAR},#{dateType,jdbcType=NUMERIC},#{dateSplit,jdbcType=VARCHAR},#{numberStart,jdbcType=VARCHAR},#{numberCeiling,jdbcType=VARCHAR},#{numberResetRules,jdbcType=NUMERIC},#{numberResetState,jdbcType=VARCHAR},#{numberState,jdbcType=NUMERIC},2,#{parameter,jdbcType=VARCHAR},#{numberValue,jdbcType=VARCHAR},#{dateSplitState,jdbcType=NUMERIC},#{numberDigit,jdbcType=NUMERIC},#{numberPlaceholder,jdbcType=VARCHAR},#{numberType,jdbcType=NUMERIC},#{numberStep,jdbcType=NUMERIC},#{dateIndex,jdbcType=NUMERIC},#{numberModule,jdbcType=VARCHAR},#{ruleDisplayname,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertList" parameterType="list">
+		INSERT INTO tty_sys_number_rule(id,rule_name,date_format,date_type,date_split,number_start,number_ceiling,number_reset_rules,number_reset_state,number_state,number_state_value,parameter,number_value,date_split_state,number_digit,number_placeholder,number_type,number_step,date_index)
+			VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(#{item.id,jdbcType=NUMERIC},#{item.ruleName,jdbcType=VARCHAR},#{item.dateFormat,jdbcType=VARCHAR},#{item.dateType,jdbcType=NUMERIC},#{item.dateSplit,jdbcType=VARCHAR},#{item.numberStart,jdbcType=VARCHAR},#{item.numberCeiling,jdbcType=VARCHAR},#{item.numberResetRules,jdbcType=NUMERIC},#{item.numberResetState,jdbcType=VARCHAR},#{item.numberState,jdbcType=NUMERIC},#{item.numberStateValue,jdbcType=NUMERIC},#{item.parameter,jdbcType=VARCHAR},#{item.numberValue,jdbcType=VARCHAR},#{item.dateSplitState,jdbcType=NUMERIC},#{item.numberDigit,jdbcType=NUMERIC},#{item.numberPlaceholder,jdbcType=VARCHAR},#{item.numberType,jdbcType=NUMERIC},#{item.numberStep,jdbcType=NUMERIC},#{item.dateIndex,jdbcType=NUMERIC})
+			</foreach> 
+	</insert>
+
+	<update id="update" parameterType="com.jc.system.number.domain.NumberRule">
+	UPDATE tty_sys_number_rule
+	   <set>
+	   
+	   	<if test="dateFormat != null">
+	   		date_format = #{dateFormat},
+	   	</if>
+	   	<if test="dateType != null">
+	   		date_type = #{dateType},
+	   	</if>
+	   	<if test="dateSplit != null">
+	   		date_split = #{dateSplit},
+	   	</if>
+	   	<if test="numberStart != null">
+	   		number_start = #{numberStart},
+	   	</if>
+	   	<if test="numberCeiling != null">
+	   		number_ceiling = #{numberCeiling},
+	   	</if>
+	   	<if test="numberResetRules != null">
+	   		number_reset_rules = #{numberResetRules},
+	   	</if>
+	   	<if test="numberResetState != null">
+	   		number_reset_state = #{numberResetState},
+	   	</if>
+	   	<if test="numberState != null">
+	   		number_state = #{numberState},
+	   	</if>
+	   	<if test="numberStateValue != null">
+	   		number_state_value = #{numberStateValue},
+	   	</if>
+	   	<if test="parameter != null">
+	   		parameter = #{parameter},
+	   	</if>
+	   	<if test="numberValue != null">
+	   		number_value = #{numberValue},
+	   	</if>
+	   	<if test="dateSplitState != null">
+	   		date_split_state = #{dateSplitState},
+	   	</if>
+	   	<if test="numberDigit != null">
+	   		number_digit = #{numberDigit},
+	   	</if>
+	   	<if test="numberPlaceholder != null">
+	   		number_placeholder = #{numberPlaceholder},
+	   	</if>
+	   	<if test="numberType != null">
+	   		number_type = #{numberType},
+	   	</if>
+	   	<if test="numberStep != null">
+	   		number_step = #{numberStep},
+	   	</if>
+	   	<if test="dateIndex != null">
+	   		date_index = #{dateIndex},
+	   	</if>
+	   	<if test="numberModule != null">
+	   		number_module = #{numberModule},
+	   	</if>
+	   	<if test="ruleDisplayname != null">
+	   		rule_displayname = #{ruleDisplayname},
+	   	</if>
+	   	
+	   </set>
+	   where rule_name = #{ruleName}
+	</update>
+
+</mapper>

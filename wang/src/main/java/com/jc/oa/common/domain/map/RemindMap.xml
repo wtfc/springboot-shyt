@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.common.domain.Remind">
+
+	<select id="query" parameterType="com.jc.oa.common.domain.Remind" resultType="com.jc.oa.common.domain.Remind">
+		SELECT 
+			t.ID id,
+			t.DATA_ID dataId,
+			t.TABLE_NAME tableName,
+			t.REMIND_TYPE remindType,
+			t.CYCLE cycle,
+			t.REQUIRE_REMIND requireRemind,
+			t.VIEW_START_TIME viewStartTime,
+			t.VIEW_END_TIME viewEndTime,
+			t.END_TIME endTime,
+			t.NEXT_TIME nextTime,
+			t.REMIND_MODE remindMode,
+			t.REMIND_NUM remindNum,
+			t.CRON_EXPRESSION cronExpression,
+			t.INTERVAL_HOUR intervalHour,
+			t.INTERVAL_MINUTE intervalMinute,
+			t.REMIND_INTERVAL remindInterval,
+			t.VIEW_CYCLE viewCycle,
+			t.TITLE title,
+			t.CONTENT content,
+			t.START_FORWARD_TIME startForwardTime,
+			t.END_FORWARD_TIME endForwardTime,
+			t.RECEIVE_ID receiveId,
+			t.CREATE_USER createUser,
+			t.CREATE_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.IS_ACTIVE isActive,
+			t.REMINDED_NUM remindedNum
+			
+		FROM toa_common_remind t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="dataId != null">
+				and t.DATA_ID = #{dataId}
+			</if>
+			<if test="tableName != null">
+				and t.TABLE_NAME = #{tableName}
+			</if>
+			<if test="remindType != null">
+				and t.REMIND_TYPE = #{remindType}
+			</if>
+			<if test="cycle != null">
+				and t.CYCLE = #{cycle}
+			</if>
+			<if test="requireRemind != null">
+				and t.REQUIRE_REMIND = #{requireRemind}
+			</if>
+			<if test="viewStartTime != null">
+				and t.VIEW_START_TIME = #{viewStartTime}
+			</if>
+			<if test="viewEndTime != null">
+				and t.VIEW_END_TIME = #{viewEndTime}
+			</if>
+			<if test="endTime != null">
+				and t.END_TIME = #{endTime}
+			</if>
+			<if test="nextTime != null">
+				and t.NEXT_TIME = #{nextTime}
+			</if>
+			<if test="remindMode != null">
+				and t.REMIND_MODE = #{remindMode}
+			</if>
+			<if test="remindNum != null">
+				and t.REMIND_NUM = #{remindNum}
+			</if>
+			<if test="cronExpression != null">
+				and t.CRON_EXPRESSION = #{cronExpression}
+			</if>
+			<if test="intervalHour != null">
+				and t.INTERVAL_HOUR = #{intervalHour}
+			</if>
+			<if test="intervalMinute != null">
+				and t.INTERVAL_MINUTE = #{intervalMinute}
+			</if>
+			<if test="remindInterval != null">
+				and t.REMIND_INTERVAL = #{remindInterval}
+			</if>
+			<if test="viewCycle != null">
+				and t.VIEW_CYCLE = #{viewCycle}
+			</if>
+			<if test="title != null">
+				and t.TITLE = #{title}
+			</if>
+			<if test="content != null">
+				and t.CONTENT = #{content}
+			</if>
+			<if test="startForwardTime != null">
+				and t.START_FORWARD_TIME = #{startForwardTime}
+			</if>
+			<if test="endForwardTime != null">
+				and t.END_FORWARD_TIME = #{endForwardTime}
+			</if>
+			<if test="receiveId != null">
+				and t.RECEIVE_ID = #{receiveId}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="isActive != null">
+				and t.IS_ACTIVE = #{isActive}
+			</if>
+			<if test="remindedNum != null">
+				and t.REMINDED_NUM = #{remindedNum}
+			</if>
+		</where>
+	</select>
+	
+	
+	<select id="queryCount" parameterType="com.jc.oa.common.domain.Remind" resultType="java.lang.Integer">
+		SELECT count(ID) 
+		FROM toa_common_remind t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="dataId != null">
+				and t.DATA_ID = #{dataId}
+			</if>
+			<if test="tableName != null">
+				and t.TABLE_NAME = #{tableName}
+			</if>
+			<if test="remindType != null">
+				and t.REMIND_TYPE = #{remindType}
+			</if>
+			<if test="cycle != null">
+				and t.CYCLE = #{cycle}
+			</if>
+			<if test="requireRemind != null">
+				and t.REQUIRE_REMIND = #{requireRemind}
+			</if>
+			<if test="viewStartTime != null">
+				and t.VIEW_START_TIME = #{viewStartTime}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_ORG = #{createUserOrg}
+			</if>
+			<if test="viewEndTime != null">
+				and t.VIEW_END_TIME = #{viewEndTime}
+			</if>
+			<if test="endTime != null">
+				and t.END_TIME = #{endTime}
+			</if>
+			<if test="nextTime != null">
+				and t.NEXT_TIME = #{nextTime}
+			</if>
+			<if test="remindMode != null">
+				and t.REMIND_MODE = #{remindMode}
+			</if>
+			<if test="remindNum != null">
+				and t.REMIND_NUM = #{remindNum}
+			</if>
+			<if test="cronExpression != null">
+				and t.CRON_EXPRESSION = #{cronExpression}
+			</if>
+			<if test="intervalHour != null">
+				and t.INTERVAL_HOUR = #{intervalHour}
+			</if>
+			<if test="intervalMinute != null">
+				and t.INTERVAL_MINUTE = #{intervalMinute}
+			</if>
+			<if test="remindInterval != null">
+				and t.REMIND_INTERVAL = #{remindInterval}
+			</if>
+			<if test="viewCycle != null">
+				and t.VIEW_CYCLE = #{viewCycle}
+			</if>
+			<if test="title != null">
+				and t.TITLE = #{title}
+			</if>
+			<if test="content != null">
+				and t.CONTENT = #{content}
+			</if>
+			<if test="startForwardTime != null">
+				and t.START_FORWARD_TIME = #{startForwardTime}
+			</if>
+			<if test="endForwardTime != null">
+				and t.END_FORWARD_TIME = #{endForwardTime}
+			</if>
+			<if test="receiveId != null">
+				and t.RECEIVE_ID = #{receiveId}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="isActive != null">
+				and t.IS_ACTIVE = #{isActive}
+			</if>
+			<if test="remindedNum != null">
+				and t.REMINDED_NUM = #{remindedNum}
+			</if>
+		</where>
+	</select>
+
+	<delete id="deleteByIds" parameterType="com.jc.oa.common.domain.Remind">
+	delete from toa_common_remind
+	where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete>
+	<delete id="deleteByTableAndIds" parameterType="com.jc.oa.common.domain.Remind">
+	delete from toa_common_remind 
+	where DATA_ID = #{dataId} and TABLE_NAME = #{tableName}
+ 	</delete>
+
+	<update id="delete"  parameterType="com.jc.oa.common.domain.Remind">
+    	UPDATE toa_common_remind t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+
+	<!-- <insert id="insert" parameterType="com.jc.oa.common.domain.Remind" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO toa_common_remind(DATA_ID,SUB_TYPE,MAIN_TYPE,REMIND_TYPE,CYCLE,REQUIRE_REMIND,VIEW_START_TIME,VIEW_END_TIME,END_TIME,NEXT_TIME,REMIND_MODE,REMIND_NUM,CRON_EXPRESSION,INTERVAL_HOUR,INTERVAL_MINUTE,REMIND_INTERVAL,VIEW_CYCLE,TITLE,CONTENT,START_FORWARD_TIME,END_FORWARD_TIME,RECEIVE_ID,CREATE_USER,CREATE_DATE,IS_ACTIVE,REMINDED_NUM)
+			VALUES (#{dataId,jdbcType=NUMERIC},#{subType,jdbcType=NUMERIC},#{mainType,jdbcType=NUMERIC},#{remindType,jdbcType=VARCHAR},#{cycle,jdbcType=VARCHAR},#{requireRemind,jdbcType=VARCHAR},#{viewStartTime,jdbcType=DATE},#{viewEndTime,jdbcType=DATE},#{endTime,jdbcType=NUMERIC},#{nextTime,jdbcType=NUMERIC},#{remindMode,jdbcType=VARCHAR},#{remindNum,jdbcType=NUMERIC},#{cronExpression,jdbcType=VARCHAR},#{intervalHour,jdbcType=NUMERIC},#{intervalMinute,jdbcType=NUMERIC},#{remindInterval,jdbcType=NUMERIC},#{viewCycle,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{startForwardTime,jdbcType=NUMERIC},#{endForwardTime,jdbcType=NUMERIC},#{receiveId,jdbcType=VARCHAR},#{createUser,jdbcType=NUMERIC},#{createDate,jdbcType=DATE},#{isActive,jdbcType=VARCHAR},#{remindedNum,jdbcType=NUMERIC})
+			<selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">  
+            	SELECT LAST_INSERT_ID() AS id  
+        	</selectKey>
+	</insert> -->
+	
+	<insert id="insert" parameterType="com.jc.oa.common.domain.Remind" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO toa_common_remind(DATA_ID,CREATE_ORG,TABLE_NAME,REMIND_TYPE,CYCLE,REQUIRE_REMIND,VIEW_START_TIME,VIEW_END_TIME,END_TIME,NEXT_TIME,REMIND_MODE,REMIND_NUM,CRON_EXPRESSION,INTERVAL_HOUR,INTERVAL_MINUTE,REMIND_INTERVAL,VIEW_CYCLE,TITLE,CONTENT,START_FORWARD_TIME,END_FORWARD_TIME,RECEIVE_ID,CREATE_USER,CREATE_DATE,IS_ACTIVE,REMINDED_NUM)
+			VALUES (#{dataId,jdbcType=NUMERIC},#{createUserOrg,jdbcType=NUMERIC},#{tableName,jdbcType=VARCHAR},#{remindType,jdbcType=VARCHAR},#{cycle,jdbcType=VARCHAR},#{requireRemind,jdbcType=VARCHAR},#{viewStartTime,jdbcType=VARCHAR},#{viewEndTime,jdbcType=VARCHAR},#{endTime,jdbcType=NUMERIC},#{nextTime,jdbcType=NUMERIC},#{remindMode,jdbcType=VARCHAR},#{remindNum,jdbcType=NUMERIC},#{cronExpression,jdbcType=VARCHAR},#{intervalHour,jdbcType=NUMERIC},#{intervalMinute,jdbcType=NUMERIC},#{remindInterval,jdbcType=NUMERIC},#{viewCycle,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{startForwardTime,jdbcType=NUMERIC},#{endForwardTime,jdbcType=NUMERIC},#{receiveId,jdbcType=VARCHAR},#{createUser,jdbcType=NUMERIC},#{createDate,jdbcType=DATE},#{isActive,jdbcType=VARCHAR},#{remindedNum,jdbcType=NUMERIC})
+			<!-- <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">  
+            	SELECT LAST_INSERT_ID() AS id  
+        	</selectKey>   -->
+	</insert>
+
+	<insert id="insertList" parameterType="list">
+		INSERT INTO toa_common_remind(DATA_ID,TABLE_NAME,REMIND_TYPE,CYCLE,REQUIRE_REMIND,VIEW_START_TIME,VIEW_END_TIME,END_TIME,NEXT_TIME,REMIND_MODE,REMIND_NUM,CRON_EXPRESSION,INTERVAL_HOUR,INTERVAL_MINUTE,REMIND_INTERVAL,VIEW_CYCLE,TITLE,CONTENT,START_FORWARD_TIME,END_FORWARD_TIME,RECEIVE_ID,CREATE_USER,CREATE_DATE,IS_ACTIVE,REMINDED_NUM)
+			VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(#{item.dataId,jdbcType=NUMERIC},#{tableName,jdbcType=VARCHAR},#{item.remindType,jdbcType=VARCHAR},#{item.cycle,jdbcType=VARCHAR},#{item.requireRemind,jdbcType=VARCHAR},#{item.viewStartTime,jdbcType=VARCHAR},#{item.viewEndTime,jdbcType=VARCHAR},#{item.endTime,jdbcType=NUMERIC},#{item.nextTime,jdbcType=NUMERIC},#{item.remindMode,jdbcType=VARCHAR},#{item.remindNum,jdbcType=NUMERIC},#{item.cronExpression,jdbcType=VARCHAR},#{item.intervalHour,jdbcType=NUMERIC},#{item.intervalMinute,jdbcType=NUMERIC},#{item.remindInterval,jdbcType=NUMERIC},#{item.viewCycle,jdbcType=VARCHAR},#{item.title,jdbcType=VARCHAR},#{item.content,jdbcType=VARCHAR},#{item.startForwardTime,jdbcType=NUMERIC},#{item.endForwardTime,jdbcType=NUMERIC},#{item.receiveId,jdbcType=VARCHAR},#{item.createUser,jdbcType=NUMERIC},#{item.createDate,jdbcType=DATE},#{item.isActive,jdbcType=VARCHAR},#{item.remindedNum,jdbcType=NUMERIC})
+			</foreach> 
+	</insert>
+
+	<update id="update" parameterType="com.jc.oa.common.domain.Remind">
+	UPDATE toa_common_remind DATA_ID = #{dataId} where ID = #{id}
+	   <!-- <set>
+	   	<if test="dataId != null">
+	   		DATA_ID = #{dataId},
+	   	</if>
+	   	 
+	   	<if test="remindType != null">
+	   		REMIND_TYPE = #{remindType},
+	   	</if>
+	   	<if test="cycle != null">
+	   		CYCLE = #{cycle},
+	   	</if>
+	   	<if test="requireRemind != null">
+	   		REQUIRE_REMIND = #{requireRemind},
+	   	</if>
+	   	<if test="viewStartTime != null">
+	   		VIEW_START_TIME = #{viewStartTime},
+	   	</if>
+	   	<if test="viewEndTime != null">
+	   		VIEW_END_TIME = #{viewEndTime},
+	   	</if>
+	   	<if test="endTime != null">
+	   		END_TIME = #{endTime},
+	   	</if>
+	   	<if test="nextTime != null">
+	   		NEXT_TIME = #{nextTime},
+	   	</if>
+	   	<if test="remindMode != null">
+	   		REMIND_MODE = #{remindMode},
+	   	</if>
+	   	<if test="remindNum != null">
+	   		REMIND_NUM = #{remindNum},
+	   	</if>
+	   	<if test="cronExpression != null">
+	   		CRON_EXPRESSION = #{cronExpression},
+	   	</if>
+	   	<if test="intervalHour != null">
+	   		INTERVAL_HOUR = #{intervalHour},
+	   	</if>
+	   	<if test="intervalMinute != null">
+	   		INTERVAL_MINUTE = #{intervalMinute},
+	   	</if>
+	   	<if test="remindInterval != null">
+	   		REMIND_INTERVAL = #{remindInterval},
+	   	</if>
+	   	<if test="viewCycle != null">
+	   		VIEW_CYCLE = #{viewCycle},
+	   	</if>
+	   	<if test="title != null">
+	   		TITLE = #{title},
+	   	</if>
+	   	<if test="content != null">
+	   		CONTENT = #{content},
+	   	</if>
+	   	<if test="startForwardTime != null">
+	   		START_FORWARD_TIME = #{startForwardTime},
+	   	</if>
+	   	<if test="endForwardTime != null">
+	   		END_FORWARD_TIME = #{endForwardTime},
+	   	</if>
+	   	<if test="receiveId != null">
+	   		RECEIVE_ID = #{receiveId},
+	   	</if>
+	   	<if test="createUser != null">
+	   		CREATE_USER = #{createUser},
+	   	</if>
+	   	<if test="createDate != null">
+	   		CREATE_DATE = #{createDate},
+	   	</if>
+	   	<if test="isActive != null">
+	   		IS_ACTIVE = #{isActive},
+	   	</if>
+	   	<if test="remindedNum != null">
+	   		REMINDED_NUM = #{remindedNum},
+	   	</if>
+	   </set>
+	   where ID = #{id} -->
+	</update>
+	<!-- <update id="updateRemindByDataIdAndType" parameterType="com.jc.oa.common.domain.Remind">
+	UPDATE toa_common_remind
+	   <set>
+	   	<if test="remindType != null">
+	   		REMIND_TYPE = #{remindType},
+	   	</if>
+	   	<if test="cycle != null">
+	   		CYCLE = #{cycle},
+	   	</if>
+	   	<if test="requireRemind != null">
+	   		REQUIRE_REMIND = #{requireRemind},
+	   	</if>
+	   	<if test="viewStartTime != null">
+	   		VIEW_START_TIME = #{viewStartTime},
+	   	</if>
+	   	<if test="viewEndTime != null">
+	   		VIEW_END_TIME = #{viewEndTime},
+	   	</if>
+	   	<if test="endTime != null">
+	   		END_TIME = #{endTime},
+	   	</if>
+	   	<if test="nextTime != null">
+	   		NEXT_TIME = #{nextTime},
+	   	</if>
+	   	<if test="remindMode != null">
+	   		REMIND_MODE = #{remindMode},
+	   	</if>
+	   	<if test="remindNum != null">
+	   		REMIND_NUM = #{remindNum},
+	   	</if>
+	   	<if test="cronExpression != null">
+	   		CRON_EXPRESSION = #{cronExpression},
+	   	</if>
+	   	<if test="intervalHour != null">
+	   		INTERVAL_HOUR = #{intervalHour},
+	   	</if>
+	   	<if test="intervalMinute != null">
+	   		INTERVAL_MINUTE = #{intervalMinute},
+	   	</if>
+	   	<if test="remindInterval != null">
+	   		REMIND_INTERVAL = #{remindInterval},
+	   	</if>
+	   	<if test="viewCycle != null">
+	   		VIEW_CYCLE = #{viewCycle},
+	   	</if>
+	   	<if test="title != null">
+	   		TITLE = #{title},
+	   	</if>
+	   	<if test="content != null">
+	   		CONTENT = #{content},
+	   	</if>
+	   	<if test="startForwardTime != null">
+	   		START_FORWARD_TIME = #{startForwardTime},
+	   	</if>
+	   	<if test="endForwardTime != null">
+	   		END_FORWARD_TIME = #{endForwardTime},
+	   	</if>
+	   	<if test="receiveId != null">
+	   		RECEIVE_ID = #{receiveId},
+	   	</if>
+	   	<if test="createUser != null">
+	   		CREATE_USER = #{createUser},
+	   	</if>
+	   	<if test="createDate != null">
+	   		CREATE_DATE = #{createDate},
+	   	</if>
+	   	<if test="isActive != null">
+	   		IS_ACTIVE = #{isActive},
+	   	</if>
+	   	<if test="remindedNum != null">
+	   		REMINDED_NUM = #{remindedNum},
+	   	</if>
+	   </set>
+	   where ID=#{id}
+	  <where>
+			<if test="dataId != null">
+				and t.DATA_ID = #{dataId}
+			</if>
+			<if test="tableName != null">
+				and t.TABLE_NAME = #{tableName}
+			</if>
+			<if test="isActive != null">
+				and t.IS_ACTIVE = #{isActive}
+			</if>
+		</where>
+	</update> -->
+	<update id="updateNextTimeToMax" parameterType="com.jc.oa.common.domain.Remind">
+		UPDATE toa_common_remind set NEXT_TIME = #{nextTime}
+		where DATA_ID = #{dataId} and TABLE_NAME=#{tableName}
+	</update>
+	<update id="updateRemindByDataIdAndType" parameterType="com.jc.oa.common.domain.Remind">
+		UPDATE toa_common_remind set NEXT_TIME = #{nextTime},END_TIME=#{endTime},REMINDED_NUM=#{remindedNum},REMIND_NUM=#{remindNum}
+		where DATA_ID = #{dataId} and TABLE_NAME = #{tableName}
+	</update>
+ 
+		
+	
+<!-- 	<update id="batchUpdateTest" parameterType="java.util.List">
+2
+    <foreach collection="list" item="lt" separator="" open="begin" close="end;">
+3
+                update Table1 set
+4
+                    f_col1=#{lt.col1}
+5
+                where F_ID = #{lt.id};
+6
+            </foreach>
+7
+-->
+ 	
+	<update id="batchUpdate" parameterType="java.util.List">
+	
+		UPDATE toa_common_remind
+				<trim prefix="set" suffixOverrides=","> 
+				    <trim prefix="END_TIME =case" suffix="end,"> 
+		                <foreach collection="list" item="i"  index="index"> 
+				              when (DATA_ID=#{i.dataId} and TABLE_NAME=#{i.tableName}) then #{i.endTime} 
+               			</foreach> 
+             		</trim> 
+		            <trim prefix="NEXT_TIME =case" suffix="end,"> 
+		                <foreach collection="list" item="i"  index="index"> 
+				                when (DATA_ID=#{i.dataId} and TABLE_NAME=#{i.tableName}) then #{i.nextTime} 
+               			</foreach> 
+		            </trim> 
+		           <!--  <trim prefix="IS_ACTIVE =case" suffix="end,"> 
+		                <foreach collection="list" item="i"  index="index"> 
+				                when (ID=#{i.id} and TABLE_NAME=#{i.tableName}) then #{i.isActive} 
+               			</foreach> 
+		            </trim>  -->
+		            <trim prefix="REMINDED_NUM =case" suffix="end,"> 
+		                <foreach collection="list" item="i"  index="index"> 
+				                when (DATA_ID=#{i.dataId} and TABLE_NAME=#{i.tableName}) then #{i.remindedNum} 
+               			</foreach> 
+		            </trim> 
+		            <trim prefix="REMIND_NUM =case" suffix="end,"> 
+		                <foreach collection="list" item="i"  index="index"> 
+				                when (DATA_ID=#{i.dataId} and TABLE_NAME=#{i.tableName}) then #{i.remindNum} 
+               			</foreach> 
+		            </trim> 
+             </trim> 
+		<!-- <foreach collection="list" item="item" index="index" >
+		UPDATE toa_common_remind set
+				END_TIME = #{item.endTime},
+				NEXT_TIME = #{item.nextTime},
+				IS_ACTIVE = #{item.isActive},
+				REMINDED_NUM = #{item.remindedNum}
+	  		where ID = #{item.id}
+		</foreach> -->
+	</update>
+<!--  
+ 
+
+-->
+
+
+<select id="getNextReminds" parameterType="com.jc.oa.common.domain.Remind" resultType="com.jc.oa.common.domain.Remind">
+		SELECT 
+			t.ID id,
+			t.DATA_ID dataId,
+			t.TABLE_NAME tableName,
+			t.REMIND_TYPE remindType,
+			t.CYCLE cycle,
+			t.REQUIRE_REMIND requireRemind,
+			t.VIEW_START_TIME viewStartTime,
+			t.VIEW_END_TIME viewEndTime,
+			t.END_TIME endTime,
+			t.NEXT_TIME nextTime,
+			t.REMIND_MODE remindMode,
+			t.REMIND_NUM remindNum,
+			t.CRON_EXPRESSION cronExpression,
+			t.INTERVAL_HOUR intervalHour,
+			t.INTERVAL_MINUTE intervalMinute,
+			t.REMIND_INTERVAL remindInterval,
+			t.VIEW_CYCLE viewCycle,
+			t.TITLE title,
+			t.CONTENT content,
+			t.START_FORWARD_TIME startForwardTime,
+			t.END_FORWARD_TIME endForwardTime,
+			t.RECEIVE_ID receiveId,
+			t.CREATE_USER createUser,
+			t.CREATE_DATE createDate,
+			t.IS_ACTIVE isActive,
+			t.REMINDED_NUM remindedNum
+			
+		FROM toa_common_remind t where 
+		<![CDATA[
+			t.NEXT_TIME <= #{currentTime}  and t.IS_ACTIVE = '1'
+		]]>
+		<!-- <where>
+			<if test="nextTime != null">
+				and t.NEXT_TIME <= #{currentTime}
+			</if>
+			<if test="END_TIME != null">
+				and t.END_TIME > #{currentTime}
+			</if>
+			<if test="isActive != null">
+				and t.IS_ACTIVE = 1
+			</if>
+		</where> -->
+	</select>
+	
+	
+	<select id="getRemindByDataIdAndType" parameterType="com.jc.oa.common.domain.Remind" resultType="com.jc.oa.common.domain.Remind">
+		SELECT 
+			t.ID id,
+			t.DATA_ID dataId,
+			t.TABLE_NAME tableName,
+			t.REMIND_TYPE remindType,
+			t.CYCLE cycle,
+			t.REQUIRE_REMIND requireRemind,
+			t.VIEW_START_TIME viewStartTime,
+			t.VIEW_END_TIME viewEndTime,
+			t.END_TIME endTime,
+			t.NEXT_TIME nextTime,
+			t.REMIND_MODE remindMode,
+			t.REMIND_NUM remindNum,
+			t.CRON_EXPRESSION cronExpression,
+			t.INTERVAL_HOUR intervalHour,
+			t.INTERVAL_MINUTE intervalMinute,
+			t.REMIND_INTERVAL remindInterval,
+			t.VIEW_CYCLE viewCycle,
+			t.TITLE title,
+			t.CONTENT content,
+			t.START_FORWARD_TIME startForwardTime,
+			t.END_FORWARD_TIME endForwardTime,
+			t.RECEIVE_ID receiveId,
+			t.CREATE_USER createUser,
+			t.CREATE_DATE createDate,
+			t.IS_ACTIVE isActive,
+			t.REMINDED_NUM remindedNum
+			
+		FROM toa_common_remind t
+		<where>
+			<if test="dataId != null">
+				and t.DATA_ID = #{dataId}
+			</if>
+			<if test="tableName != null">
+				and t.TABLE_NAME = #{tableName}
+			</if>
+			<if test="isActive != null">
+				and t.IS_ACTIVE = #{isActive}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_ORG = #{createUserOrg}
+			</if> 
+		</where>
+	</select>
+	<select id="getRemindCountByDataIdAndType" parameterType="com.jc.oa.common.domain.Remind" resultType="int">
+		SELECT 
+			count(ID)
+		FROM toa_common_remind t
+		<where>
+			<if test="dataId != null">
+				and t.DATA_ID = #{dataId}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_ORG = #{createUserOrg}
+			</if> 
+			<if test="tableName != null">
+				and t.TABLE_NAME = #{tableName}
+			</if>
+			<!-- <if test="isActive != null">
+				and t.IS_ACTIVE = #{isActive}
+			</if> -->
+		</where>
+	</select>
+</mapper>

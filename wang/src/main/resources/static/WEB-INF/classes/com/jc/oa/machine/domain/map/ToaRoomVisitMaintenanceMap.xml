@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.machine.domain.ToaRoomVisitMaintenance" > 
+
+<insert id="insert" parameterType="com.jc.oa.machine.domain.ToaRoomVisitMaintenance"
+		useGeneratedKeys="true" keyProperty="id">
+  		insert into toa_machine_visit_maintenance(ID,EQUIPMENT_NUMBER,COMPANY_ID,COMPANY_NAME,INDUSTRY_TYPE,CONTACT,TEL,INT_DATE,MACHINA,TYPE,REALITY_TYPE,PRE_OPERATE,INT_PEOPLE,INT_PEOPLE_CARD,VISIT_ZONE,IS_INPUT,CAOZGCS,CAOZGCS_NAME,JUDGE,START_DATE,END_DATE,OPERATE_TYPE,STATUS,REMARK,PRE_OPERATE_URL,FILE_URL,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3)
+ values(#{id},#{equipmentNumber},#{companyId},#{companyName},#{industryType},#{contact},#{tel},#{intDate},#{machina},#{type},#{realityType},#{preOperate},#{intPeople},#{intPeopleCard},#{visitZone},#{isInput},#{caozgcs},#{caozgcsName},#{judge},#{startDate},#{endDate},#{operateType},#{status},#{remark},#{preOperateUrl},#{fileUrl},#{deleteFlag},#{createUser},#{createUserDept},#{createDate},#{modifyUser},#{modifyDate},#{extStr1},#{extStr2},#{extStr3},#{extStr4},#{extStr5},#{extDate1},#{extDate2},#{extNum1},#{extNum2},#{extNum3})
+</insert>
+
+<update id="update" parameterType="com.jc.oa.machine.domain.ToaRoomVisitMaintenance">
+		update toa_machine_visit_maintenance set 
+	<if test="equipmentNumber != null ">
+		EQUIPMENT_NUMBER=#{equipmentNumber},
+	</if>
+	<if test="companyId != null ">
+		COMPANY_ID=#{companyId},
+	</if>
+	<if test="companyName != null ">
+		COMPANY_NAME=#{companyName},
+	</if>
+	<if test="industryType != null ">
+		INDUSTRY_TYPE=#{industryType},
+	</if>
+	<if test="contact != null ">
+		CONTACT=#{contact},
+	</if>
+	<if test="tel != null ">
+		TEL=#{tel},
+	</if>
+	<if test="intDate != null ">
+		INT_DATE=#{intDate},
+	</if>
+	<if test="machina != null ">
+		MACHINA=#{machina},
+	</if>
+	<if test="type != null ">
+		TYPE=#{type},
+	</if>
+	<if test="realityType != null ">
+		REALITY_TYPE=#{realityType},
+	</if>
+	<if test="preOperate != null ">
+		PRE_OPERATE=#{preOperate},
+	</if>
+	<if test="intPeople != null ">
+		INT_PEOPLE=#{intPeople},
+	</if>
+	<if test="intPeopleCard != null ">
+		INT_PEOPLE_CARD=#{intPeopleCard},
+	</if>
+	<if test="visitZone != null ">
+		VISIT_ZONE=#{visitZone},
+	</if>
+	<if test="isInput != null ">
+		IS_INPUT=#{isInput},
+	</if>
+	<if test="caozgcs != null ">
+		CAOZGCS=#{caozgcs},
+	</if>
+	<if test="caozgcsName != null ">
+		CAOZGCS_NAME=#{caozgcsName},
+	</if>
+	<if test="judge != null ">
+		JUDGE=#{judge},
+	</if>
+	<if test="startDate != null ">
+		START_DATE=#{startDate},
+	</if>
+	<if test="endDate != null ">
+		END_DATE=#{endDate},
+	</if>
+	<if test="operateType != null ">
+		OPERATE_TYPE=#{operateType},
+	</if>
+	<if test="status != null ">
+		STATUS=#{status},
+	</if>
+	<if test="remark != null ">
+		REMARK=#{remark},
+	</if>
+	<if test="preOperateUrl != null ">
+		PRE_OPERATE_URL=#{preOperateUrl},
+	</if>
+	<if test="fileUrl != null ">
+		FILE_URL=#{fileUrl},
+	</if>
+	<if test="deleteFlag != null ">
+		DELETE_FLAG=#{deleteFlag},
+	</if>
+	<if test="createUser != null ">
+		CREATE_USER=#{createUser},
+	</if>
+	<if test="createUserDept != null ">
+		CREATE_USER_DEPT=#{createUserDept},
+	</if>
+	<if test="createDate != null ">
+		CREATE_DATE=#{createDate},
+	</if>
+	<if test="modifyUser != null ">
+		MODIFY_USER=#{modifyUser},
+	</if>
+	<if test="modifyDate != null ">
+		MODIFY_DATE=#{modifyDate},
+	</if>
+	<if test="extStr1 != null ">
+		EXT_STR1=#{extStr1},
+	</if>
+	<if test="extStr2 != null ">
+		EXT_STR2=#{extStr2},
+	</if>
+	<if test="extStr3 != null ">
+		EXT_STR3=#{extStr3},
+	</if>
+	<if test="extStr4 != null ">
+		EXT_STR4=#{extStr4},
+	</if>
+	<if test="extStr5 != null ">
+		EXT_STR5=#{extStr5},
+	</if>
+	<if test="extDate1 != null ">
+		EXT_DATE1=#{extDate1},
+	</if>
+	<if test="extDate2 != null ">
+		EXT_DATE2=#{extDate2},
+	</if>
+	<if test="extNum1 != null ">
+		EXT_NUM1=#{extNum1},
+	</if>
+	<if test="extNum2 != null ">
+		EXT_NUM2=#{extNum2},
+	</if>
+	<if test="extNum3 != null ">
+		EXT_NUM3=#{extNum3},
+	</if>
+
+	 MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+</update>
+
+<select id="query" parameterType="com.jc.oa.machine.domain.ToaRoomVisitMaintenance" resultType="com.jc.oa.machine.domain.ToaRoomVisitMaintenance">
+		SELECT 
+		 t.ID id
+		,t.EQUIPMENT_NUMBER equipmentNumber
+		,t.COMPANY_ID companyId
+		,t.COMPANY_NAME companyName
+		,t.INDUSTRY_TYPE industryType
+		,t.CONTACT contact
+		,t.TEL tel
+		,t.INT_DATE intDate
+		,t.MACHINA machina
+		,t.TYPE type
+		,t.REALITY_TYPE realityType
+		,t.PRE_OPERATE preOperate
+		,t.INT_PEOPLE intPeople
+		,t.INT_PEOPLE_CARD intPeopleCard
+		,t.VISIT_ZONE visitZone
+		,t.IS_INPUT isInput
+		,t.CAOZGCS caozgcs
+		,t.CAOZGCS_NAME caozgcsName
+		,t.JUDGE judge
+		,t.START_DATE startDate
+		,t.END_DATE endDate
+		,t.OPERATE_TYPE operateType
+		,t.STATUS status
+		,t.REMARK remark
+		,t.PRE_OPERATE_URL preOperateUrl
+		,t.FILE_URL fileUrl
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.EXT_NUM1 extNum1
+		,t.EXT_NUM2 extNum2
+		,t.EXT_NUM3 extNum3
+ FROM toa_machine_visit_maintenance t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="equipmentNumber != null ">
+		and t.EQUIPMENT_NUMBER=#{equipmentNumber}
+	</if>
+	<if test="companyId != null ">
+		and t.COMPANY_ID=#{companyId}
+	</if>
+	<if test="companyName != null ">
+		and t.COMPANY_NAME=#{companyName}
+	</if>
+	<if test="industryType != null ">
+		and t.INDUSTRY_TYPE=#{industryType}
+	</if>
+	<if test="contact != null ">
+		and t.CONTACT=#{contact}
+	</if>
+	<if test="tel != null ">
+		and t.TEL=#{tel}
+	</if>
+	<if test="intDate != null ">
+		and t.INT_DATE=#{intDate}
+	</if>
+	<if test="machina != null ">
+		and t.MACHINA=#{machina}
+	</if>
+	<if test="type != null ">
+		and t.TYPE=#{type}
+	</if>
+	<if test="realityType != null ">
+		and t.REALITY_TYPE=#{realityType}
+	</if>
+	<if test="preOperate != null ">
+		and t.PRE_OPERATE=#{preOperate}
+	</if>
+	<if test="intPeople != null ">
+		and t.INT_PEOPLE=#{intPeople}
+	</if>
+	<if test="intPeopleCard != null ">
+		and t.INT_PEOPLE_CARD=#{intPeopleCard}
+	</if>
+	<if test="visitZone != null ">
+		and t.VISIT_ZONE=#{visitZone}
+	</if>
+	<if test="isInput != null ">
+		and t.IS_INPUT=#{isInput}
+	</if>
+	<if test="caozgcs != null ">
+		and t.CAOZGCS=#{caozgcs} or t.STATUS = #{status}
+	</if>
+	<if test="caozgcsName != null ">
+		and t.CAOZGCS_NAME=#{caozgcsName}
+	</if>
+	<if test="judge != null ">
+		and t.JUDGE=#{judge}
+	</if>
+	<if test="startDate != null ">
+		and t.START_DATE=#{startDate}
+	</if>
+	<if test="endDate != null ">
+		and t.END_DATE=#{endDate}
+	</if>
+	<if test="operateType != null ">
+		and t.OPERATE_TYPE=#{operateType},
+	</if>
+	<if test="status != null ">
+		and t.STATUS=#{status}
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<if test="preOperateUrl != null ">
+		and t.PRE_OPERATE_URL=#{preOperateUrl}
+	</if>
+	<if test="fileUrl != null ">
+		and t.FILE_URL=#{fileUrl}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+</select>
+	
+<select id="queryCount" parameterType="com.jc.oa.machine.domain.ToaRoomVisitMaintenance" resultType="java.lang.Long">
+		SELECT COUNT(ID) 
+	 FROM toa_machine_visit_maintenance t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="equipmentNumber != null ">
+		and t.EQUIPMENT_NUMBER=#{equipmentNumber}
+	</if>
+	<if test="companyId != null ">
+		and t.COMPANY_ID=#{companyId}
+	</if>
+	<if test="companyName != null ">
+		and t.COMPANY_NAME=#{companyName}
+	</if>
+	<if test="industryType != null ">
+		and t.INDUSTRY_TYPE=#{industryType}
+	</if>
+	<if test="contact != null ">
+		and t.CONTACT=#{contact}
+	</if>
+	<if test="tel != null ">
+		and t.TEL=#{tel}
+	</if>
+	<if test="intDate != null ">
+		and t.INT_DATE=#{intDate}
+	</if>
+	<if test="machina != null ">
+		and t.MACHINA=#{machina}
+	</if>
+	<if test="type != null ">
+		and t.TYPE=#{type}
+	</if>
+	<if test="realityType != null ">
+		and t.REALITY_TYPE=#{realityType}
+	</if>
+	<if test="preOperate != null ">
+		and t.PRE_OPERATE=#{preOperate}
+	</if>
+	<if test="intPeople != null ">
+		and t.INT_PEOPLE=#{intPeople}
+	</if>
+	<if test="intPeopleCard != null ">
+		and t.INT_PEOPLE_CARD=#{intPeopleCard}
+	</if>
+	<if test="visitZone != null ">
+		and t.VISIT_ZONE=#{visitZone}
+	</if>
+	<if test="isInput != null ">
+		and t.IS_INPUT=#{isInput}
+	</if>
+	<if test="caozgcs != null ">
+		and t.CAOZGCS=#{caozgcs}
+	</if>
+	<if test="caozgcsName != null ">
+		and t.CAOZGCS_NAME=#{caozgcsName}
+	</if>
+	<if test="judge != null ">
+		and t.JUDGE=#{judge}
+	</if>
+	<if test="startDate != null ">
+		and t.START_DATE=#{startDate}
+	</if>
+	<if test="endDate != null ">
+		and t.END_DATE=#{endDate}
+	</if>
+	<if test="operateType != null ">
+		and t.OPERATE_TYPE=#{operateType},
+	</if>
+	<if test="status != null ">
+		and t.STATUS=#{status}
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<if test="preOperateUrl != null ">
+		and t.PRE_OPERATE_URL=#{preOperateUrl}
+	</if>
+	<if test="fileUrl != null ">
+		and t.FILE_URL=#{fileUrl}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+
+</select>
+
+<update id="deleteLogic"  parameterType="com.jc.oa.machine.domain.ToaRoomVisitMaintenance">
+	     UPDATE toa_machine_visit_maintenance t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+ 			where ID in
+ 			<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=","> 
+				 #{primaryKey}
+			</foreach>
+</update>
+  	
+</mapper>   

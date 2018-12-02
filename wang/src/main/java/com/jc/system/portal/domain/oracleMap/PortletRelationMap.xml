@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"><mapper namespace="com.jc.system.portal.domain.PortletRelation"><select id="query" parameterType="com.jc.system.portal.domain.PortletRelation" resultType="com.jc.system.portal.domain.PortletRelation">
+		SELECT 
+			t.ID id,
+			t.funtion_ID funtionId,
+			t.portlet_ID portletId
+			
+		FROM tty_sys_portlet_relation t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+
+			<if test="funtionId != null">
+				and t.funtion_ID = #{funtionId}
+			</if>
+
+			<if test="portletId != null">
+				and t.portlet_ID = #{portletId}
+			</if>
+		</where>
+	</select><select id="queryCount" parameterType="com.jc.system.portal.domain.PortletRelation" resultType="java.lang.Long">
+		SELECT count(ID) 
+		FROM tty_sys_portlet_relation t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+
+			<if test="funtionId != null">
+				and t.funtion_ID = #{funtionId}
+			</if>
+
+			<if test="portletId != null">
+				and t.portlet_ID = #{portletId}
+			</if>
+		</where>
+	</select><delete id="deletePhysical" parameterType="com.jc.system.portal.domain.PortletRelation">
+    	delete from tty_sys_portlet_relation
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete><update id="deleteLogic" parameterType="com.jc.system.portal.domain.PortletRelation">
+    	UPDATE tty_sys_portlet_relation t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update><insert id="insert" parameterType="com.jc.system.portal.domain.PortletRelation"><selectKey resultType="long" keyProperty="id" order="BEFORE">SELECT tty_sys_portlet_relation_i_seq.NEXTVAL FROM DUAL</selectKey>
+		INSERT INTO tty_sys_portlet_relation(ID,funtion_ID,portlet_ID)
+			VALUES (#{id},#{funtionId,jdbcType=NUMERIC},#{portletId,jdbcType=NUMERIC})
+	</insert><insert id="insertList" parameterType="list">
+		INSERT INTO tty_sys_portlet_relation(ID,funtion_ID,portlet_ID)
+			VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(tty_sys_portlet_relation_i_seq.nextval,#{item.funtionId,jdbcType=NUMERIC},#{item.portletId,jdbcType=NUMERIC})
+			</foreach> 
+	</insert><update id="update" parameterType="com.jc.system.portal.domain.PortletRelation">
+	UPDATE tty_sys_portlet_relation set
+	   	<if test="funtionId != null">
+	   		funtion_ID = #{funtionId},
+	   	</if>
+	   	<if test="portletId != null">
+	   		portlet_ID = #{portletId},
+	   	</if>
+	   	MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+	</update></mapper>

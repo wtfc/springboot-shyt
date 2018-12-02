@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.system.log.domain.LogBean">
+
+	<insert id="insert" parameterType="com.jc.system.log.domain.LogBean">
+	INSERT INTO t_log(id,user_id,user_name,IP,menu_name,oper_type,dept,company,content,create_date)
+		VALUES (#{id,jdbcType=NUMERIC},#{userId,jdbcType=VARCHAR},#{userName,jdbcType=VARCHAR},#{ip,jdbcType=VARCHAR},#{menuName,jdbcType=VARCHAR},#{operType,jdbcType=VARCHAR},#{dept,jdbcType=VARCHAR},#{company,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{createDate,jdbcType=TIMESTAMP})
+	</insert>
+	
+	<insert id="insertManager" parameterType="com.jc.system.log.domain.LogBean">
+	INSERT INTO t_log_manager(id,user_id,user_name,IP,menu_name,oper_type,dept,company,content,create_date)
+		VALUES (#{id,jdbcType=NUMERIC},#{userId,jdbcType=VARCHAR},#{userName,jdbcType=VARCHAR},#{ip,jdbcType=VARCHAR},#{menuName,jdbcType=VARCHAR},#{operType,jdbcType=VARCHAR},#{dept,jdbcType=VARCHAR},#{company,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{createDate,jdbcType=TIMESTAMP})
+	</insert>
+	
+	<insert id="insertCommonBatch" parameterType="java.util.List">
+	INSERT INTO t_log(id,user_id,user_name,IP,menu_name,oper_type,dept,company,content,create_date)
+	VALUES
+	<foreach collection="list" item="item" index="index" separator=",">  
+        (#{item.id,jdbcType=NUMERIC},#{item.userId,jdbcType=VARCHAR},#{item.userName,jdbcType=VARCHAR},#{item.ip,jdbcType=VARCHAR},#{item.menuName,jdbcType=VARCHAR},#{item.operType,jdbcType=VARCHAR},#{item.dept,jdbcType=VARCHAR},#{item.company,jdbcType=VARCHAR},#{item.content,jdbcType=VARCHAR},#{item.createDate,jdbcType=TIMESTAMP})
+    </foreach>
+		
+	</insert>
+
+	<select id="query" parameterType="com.jc.system.log.domain.LogBean" resultType="com.jc.system.log.domain.LogBean">
+		SELECT 
+			t.id id,
+			t.user_id userId,
+			t.user_name userName,
+			t.IP ip,
+			t.menu_name menuName,
+			t.oper_type operType,
+			t.dept dept,
+			t.company company,
+			t.content content,
+			t.create_date createDate
+		FROM t_log t
+		<where>
+			<if test="id != null">
+				and t.id = #{id}
+			</if>
+			<if test="userId != null">
+				and t.user_id = #{userId}
+			</if>
+			<if test="userName != null">
+				and t.user_name = #{userName}
+			</if>
+			<if test="ip != null">
+				and t.IP = #{ip}
+			</if>
+			<if test="menuName != null">
+				and t.menu_name = #{menuName}
+			</if>
+			<if test="operType != null">
+				and t.oper_type = #{operType}
+			</if>
+			<if test="dept != null">
+				and t.dept = #{dept}
+			</if>
+			<if test="company != null">
+				and t.company = #{company}
+			</if>
+			<if test="content != null">
+				and t.content = #{content}
+			</if>
+			<if test="startDate != null">
+				and unix_timestamp(t.create_date) > unix_timestamp(#{startDate})
+			</if>
+			<if test="endDate != null">
+				<![CDATA[ 
+					and unix_timestamp(t.create_date) < unix_timestamp(#{endDate})
+				]]>
+			</if>
+		</where>
+	</select>
+	
+	
+	<select id="queryCount" parameterType="com.jc.system.log.domain.LogBean" resultType="java.lang.Integer">
+		SELECT count(id) 
+		FROM t_log t
+		<where>
+			<if test="id != null">
+				and t.id = #{id}
+			</if>
+			<if test="userId != null">
+				and t.user_id = #{userId}
+			</if>
+			<if test="userName != null">
+				and t.user_name = #{userName}
+			</if>
+			<if test="ip != null">
+				and t.IP = #{ip}
+			</if>
+			<if test="menuName != null">
+				and t.menu_name = #{menuName}
+			</if>
+			<if test="operType != null">
+				and t.oper_type = #{operType}
+			</if>
+			<if test="dept != null">
+				and t.dept = #{dept}
+			</if>
+			<if test="company != null">
+				and t.company = #{company}
+			</if>
+			<if test="content != null">
+				and t.content = #{content}
+			</if>
+			<if test="startDate != null">
+				and unix_timestamp(t.create_date) > unix_timestamp(#{startDate})
+			</if>
+			<if test="endDate != null">
+				<![CDATA[ 
+					and unix_timestamp(t.create_date) < unix_timestamp(#{endDate})
+				]]>
+			</if>
+		</where>
+	</select>
+	
+	<select id="queryManager" parameterType="com.jc.system.log.domain.LogBean" resultType="com.jc.system.log.domain.LogBean">
+		SELECT 
+			t.id id,
+			t.user_id userId,
+			t.user_name userName,
+			t.IP ip,
+			t.menu_name menuName,
+			t.oper_type operType,
+			t.dept dept,
+			t.company company,
+			t.content content,
+			t.create_date createDate
+		FROM t_log_manager t
+		<where>
+			<if test="id != null">
+				and t.id = #{id}
+			</if>
+			<if test="userId != null">
+				and t.user_id = #{userId}
+			</if>
+			<if test="userName != null">
+				and t.user_name = #{userName}
+			</if>
+			<if test="ip != null">
+				and t.IP = #{ip}
+			</if>
+			<if test="menuName != null">
+				and t.menu_name = #{menuName}
+			</if>
+			<if test="operType != null">
+				and t.oper_type = #{operType}
+			</if>
+			<if test="dept != null">
+				and t.dept = #{dept}
+			</if>
+			<if test="company != null">
+				and t.company = #{company}
+			</if>
+			<if test="content != null">
+				and t.content = #{content}
+			</if>
+			<if test="startDate != null">
+				and unix_timestamp(t.create_date) > unix_timestamp(#{startDate})
+			</if>
+			<if test="endDate != null">
+				<![CDATA[ 
+					and unix_timestamp(t.create_date) < unix_timestamp(#{endDate})
+				]]>
+			</if>
+		</where>
+	</select>
+	
+	
+	<select id="queryManagerCount" parameterType="com.jc.system.log.domain.LogBean" resultType="java.lang.Integer">
+		SELECT count(id) 
+		FROM t_log_manager t
+		<where>
+			<if test="id != null">
+				and t.id = #{id}
+			</if>
+			<if test="userId != null">
+				and t.user_id = #{userId}
+			</if>
+			<if test="userName != null">
+				and t.user_name = #{userName}
+			</if>
+			<if test="ip != null">
+				and t.IP = #{ip}
+			</if>
+			<if test="menuName != null">
+				and t.menu_name = #{menuName}
+			</if>
+			<if test="operType != null">
+				and t.oper_type = #{operType}
+			</if>
+			<if test="dept != null">
+				and t.dept = #{dept}
+			</if>
+			<if test="company != null">
+				and t.company = #{company}
+			</if>
+			<if test="content != null">
+				and t.content = #{content}
+			</if>
+			<if test="startDate != null">
+				and unix_timestamp(t.create_date) > unix_timestamp(#{startDate})
+			</if>
+			<if test="endDate != null">
+				<![CDATA[ 
+					and unix_timestamp(t.create_date) < unix_timestamp(#{endDate})
+				]]>
+			</if>
+		</where>
+	</select>
+</mapper>

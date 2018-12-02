@@ -1,0 +1,1837 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.machine.domain.ToaMachineRestart" > 
+
+<insert id="insert" parameterType="com.jc.oa.machine.domain.ToaMachineRestart"
+		useGeneratedKeys="true" keyProperty="id">
+  		insert into toa_machine_restart(ID,EQUIPMENT_NUMBER,DIVICE_NUMBER,EQUIPMENT_ID,COMPANY_ID,COMPANY_NAME,MACHINA,ENGINE_ROOM,CABINET_NUMBER,CONTACT,TEL,CONTACT_WAY,IP,CAOZGCS,OPERATE_DATE,END_DATE,BILL_DATE,WARN_DATE,REMARK,STATUS,IS_MONITOR,DEVICE_STATUS,IS_WRONG,ERROR_MESSAGE,DESCRIPTION,RECOED_PEOPLE,ERROR_REPAIR,IS_OVERTIME,CHARGE_EXAMINE,CHARGE_INFORMATION,REGION_EXAMINE,REGION_INFORMATION,SN,FIRST_RESTART,ASSIST,SCAN_CODE,APPLICANT,CABINET,BRAND,MODEL_NUMBER,OPERATION_TYPE,WORK_TIME,EXECUTIVE_OUTCOME,CONTENT_VIEWED,DIEWCT_OPERATION,OUTSIDE_INFORMATION,OUTSIDE_SPECIFICATION,CONNECTION_INFORMATION,EXTERNAL_EQUIPMENT,NETWORK_INFORMATION,PORT_RESULT,ESTIMATED_TIME,PLACE_STORAGE,CONNECT_WIRES,IP_CONFIGURATION,IP_EMLY,CONFIGURATION_TYPE,SYSTEM_TYPE,PARTITION_REQUIREMENTS,REMOTE_DESKTOP,LONG_DISTANCE,CURRENT_SITE,CURRENT_USER_NAME,CURRENT_PASSWORD,TEST_OUTCOME,STATISTICAL_LISTING,SALES_EXPERS,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3)
+ values(#{id},#{equipmentNumber},#{diviceNumber},#{equipmentId},#{companyId},#{companyName},#{machina},#{engineRoom},#{cabinetNumber},#{contact},#{tel},#{contactWay},#{ip},#{caozgcs},#{operateDate},#{endDate},#{billDate},#{warnDate},#{remark},#{status},#{isMonitor},#{deviceStatus},#{isWrong},#{errorMessage},#{description},#{recoedPeople},#{errorRepair},#{isOvertime},#{chargeExamine},#{chargeInformation},#{regionExamine},#{regionInformation},#{sn},#{firstRestart},#{assist},#{scanCode},#{applicant},#{cabinet},#{brand},#{modelNumber},#{operationType},#{workTime},#{executiveOutcome},#{contentViewed},#{diewctOperation},#{outsideInformation},#{outsideSpecification},#{connectionInformation},#{externalEquipment},#{networkInformation},#{portResult},#{estimatedTime},#{placeStorage},#{connectWires},#{ipConfiguration},#{ipEmly},#{configurationType},#{systemType},#{partitionRequirements},#{remoteDesktop},#{longDistance},#{currentSite},#{currentUserName},#{currentPassword},#{testOutcome},#{statisticalListing},#{salesExpers},#{deleteFlag},#{createUser},#{createUserDept},#{createUserOrg},#{createDate},#{modifyUser},#{modifyDate},#{extStr1},#{extStr2},#{extStr3},#{extStr4},#{extStr5},#{extDate1},#{extDate2},#{extNum1},#{extNum2},#{extNum3})
+</insert>
+
+<update id="update" parameterType="com.jc.oa.machine.domain.ToaMachineRestart">
+		update toa_machine_restart set 
+	<if test="equipmentNumber != null ">
+		EQUIPMENT_NUMBER=#{equipmentNumber},
+	</if>
+	<if test="diviceNumber != null">
+		DIVICE_NUMBER=#{diviceNumber},
+	</if>
+	<if test="equipmentId != null ">
+		EQUIPMENT_ID=#{equipmentId},
+	</if>
+	<if test="companyId != null ">
+		COMPANY_ID=#{companyId},
+	</if>
+	<if test="companyName != null ">
+		COMPANY_NAME=#{companyName},
+	</if>
+	<if test="machina != null ">
+		MACHINA=#{machina},
+	</if>	
+	<if test="engineRoom != null ">
+		ENGINE_ROOM=#{engineRoom},
+	</if>
+	<if test="cabinetNumber != null ">
+		CABINET_NUMBER=#{cabinetNumber},
+	</if>
+	<if test="contact != null ">
+		CONTACT=#{contact},
+	</if>
+	<if test="tel != null ">
+		TEL=#{tel},
+	</if>
+	<if test="contactWay != null ">
+		CONTACT_WAY=#{contactWay},
+	</if>
+	<if test="ip != null ">
+		IP=#{ip},
+	</if>
+	<if test="caozgcs != null ">
+		CAOZGCS=#{caozgcs},
+	</if>
+	<if test="operateDate != null ">
+		OPERATE_DATE=#{operateDate},
+	</if>
+	<if test="endDate != null ">
+		END_DATE=#{endDate},
+	</if>
+	<if test="billDate != null ">
+		BILL_DATE=#{billDate},
+	</if>
+	<if test="warnDate != null ">
+		WARN_DATE=#{warnDate},
+	</if>
+	<if test="remark != null ">
+		REMARK=#{remark},
+	</if>
+	<if test="status != null ">
+		STATUS=#{status},
+	</if>
+	<if test="isMonitor != null ">
+		IS_MONITOR=#{isMonitor},
+	</if>
+	<if test="deviceStatus != null ">
+		DEVICE_STATUS=#{deviceStatus},
+	</if>
+	<if test="isWrong != null ">
+		IS_WRONG=#{isWrong},
+	</if>
+	<if test="errorMessage != null ">
+		ERROR_MESSAGE=#{errorMessage},
+	</if>
+	<if test="description != null ">
+		DESCRIPTION=#{description},
+	</if>
+	<if test="recoedPeople != null ">
+		RECOED_PEOPLE=#{recoedPeople},
+	</if>
+	<if test="errorRepair != null ">
+		ERROR_REPAIR=#{errorRepair},
+	</if>
+	<if test="isOvertime != null ">
+		IS_OVERTIME=#{isOvertime},
+	</if>
+	<if test="chargeExamine != null ">
+		CHARGE_EXAMINE=#{chargeExamine},
+	</if>
+	<if test="chargeInformation != null ">
+		CHARGE_INFORMATION=#{chargeInformation},
+	</if>
+	<if test="regionExamine != null ">
+		REGION_EXAMINE=#{regionExamine},
+	</if>
+	<if test="regionInformation != null ">
+		REGION_INFORMATION=#{regionInformation},
+	</if>
+	<if test="sn != null ">
+		SN=#{sn},
+	</if>
+	<if test="firstRestart != null ">
+		FIRST_RESTART=#{firstRestart},
+	</if>
+	<if test="assist != null ">
+		ASSIST=#{assist},
+	</if>
+	<if test="scanCode != null ">
+		SCAN_CODE=#{scanCode},
+	</if>
+	<if test="applicant != null ">
+		APPLICANT=#{applicant},
+	</if>
+	<if test="cabinet != null ">
+		CABINET=#{cabinet},
+	</if>
+	<if test="brand != null ">
+		BRAND=#{brand},
+	</if>
+	<if test="modelNumber != null ">
+		MODEL_NUMBER=#{modelNumber},
+	</if>
+	<if test="operationType != null ">
+		OPERATION_TYPE=#{operationType},
+	</if>
+	<if test="workTime != null ">
+		WORK_TIME=#{workTime},
+	</if>
+	<if test="executiveOutcome != null ">
+		EXECUTIVE_OUTCOME=#{executiveOutcome},
+	</if>
+	<if test="contentViewed != null ">
+		CONTENT_VIEWED=#{contentViewed},
+	</if>
+	<if test="diewctOperation != null ">
+		DIEWCT_OPERATION=#{diewctOperation},
+	</if>
+	<if test="outsideInformation != null ">
+		OUTSIDE_INFORMATION=#{outsideInformation},
+	</if>
+	<if test="outsideSpecification != null ">
+		OUTSIDE_SPECIFICATION=#{outsideSpecification},
+	</if>
+	<if test="connectionInformation != null ">
+		CONNECTION_INFORMATION=#{connectionInformation},
+	</if>
+	<if test="externalEquipment != null ">
+		EXTERNAL_EQUIPMENT=#{externalEquipment},
+	</if>
+	<if test="networkInformation != null ">
+		NETWORK_INFORMATION=#{networkInformation},
+	</if>
+	<if test="portResult != null ">
+		PORT_RESULT=#{portResult},
+	</if>
+	<if test="estimatedTime != null ">
+		ESTIMATED_TIME=#{estimatedTime},
+	</if>
+	<if test="placeStorage != null ">
+		PLACE_STORAGE=#{placeStorage},
+	</if>
+	<if test="connectWires != null ">
+		CONNECT_WIRES=#{connectWires},
+	</if>
+	<if test="ipConfiguration != null ">
+		IP_CONFIGURATION=#{ipConfiguration},
+	</if>
+	<if test="ipEmly != null ">
+		IP_EMLY=#{ipEmly},
+	</if>
+	<if test="configurationType != null ">
+		CONFIGURATION_TYPE=#{configurationType},
+	</if>
+	<if test="systemType != null ">
+		SYSTEM_TYPE=#{systemType},
+	</if>
+	<if test="partitionRequirements != null ">
+		PARTITION_REQUIREMENTS=#{partitionRequirements},
+	</if>
+	<if test="remoteDesktop != null ">
+		REMOTE_DESKTOP=#{remoteDesktop},
+	</if>
+	<if test="longDistance != null ">
+		LONG_DISTANCE=#{longDistance},
+	</if>
+	<if test="currentSite != null ">
+		CURRENT_SITE=#{currentSite},
+	</if>
+	<if test="currentUserName != null ">
+		CURRENT_USER_NAME=#{currentUserName},
+	</if>
+	<if test="currentPassword != null ">
+		CURRENT_PASSWORD=#{currentPassword},
+	</if>
+	<if test="testOutcome != null ">
+		TEST_OUTCOME=#{testOutcome},
+	</if>
+	<if test="statisticalListing != null ">
+		STATISTICAL_LISTING=#{statisticalListing},
+	</if>
+	<if test="salesExpers != null ">
+		SALES_EXPERS=#{salesExpers},
+	</if>
+	<if test="deleteFlag != null ">
+		DELETE_FLAG=#{deleteFlag},
+	</if>
+	<if test="createUser != null ">
+		CREATE_USER=#{createUser},
+	</if>
+	<if test="createUserDept != null ">
+		CREATE_USER_DEPT=#{createUserDept},
+	</if>
+	<if test="createUserOrg != null ">
+		CREATE_USER_ORG=#{createUserOrg},
+	</if>
+	<if test="createDate != null ">
+		CREATE_DATE=#{createDate},
+	</if>
+	<if test="modifyUser != null ">
+		MODIFY_USER=#{modifyUser},
+	</if>
+	<if test="modifyDate != null ">
+		MODIFY_DATE=#{modifyDate},
+	</if>
+	<if test="extStr1 != null ">
+		EXT_STR1=#{extStr1},
+	</if>
+	<if test="extStr2 != null ">
+		EXT_STR2=#{extStr2},
+	</if>
+	<if test="extStr3 != null ">
+		EXT_STR3=#{extStr3},
+	</if>
+	<if test="extStr4 != null ">
+		EXT_STR4=#{extStr4},
+	</if>
+	<if test="extStr5 != null ">
+		EXT_STR5=#{extStr5},
+	</if>
+	<if test="extDate1 != null ">
+		EXT_DATE1=#{extDate1},
+	</if>
+	<if test="extDate2 != null ">
+		EXT_DATE2=#{extDate2},
+	</if>
+	<if test="extNum1 != null ">
+		EXT_NUM1=#{extNum1},
+	</if>
+	<if test="extNum2 != null ">
+		EXT_NUM2=#{extNum2},
+	</if>
+	<if test="extNum3 != null ">
+		EXT_NUM3=#{extNum3},
+	</if>
+
+	 MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+</update>
+
+<select id="query" parameterType="com.jc.oa.machine.domain.ToaMachineRestart" resultType="com.jc.oa.machine.domain.ToaMachineRestart">
+		SELECT 
+		 t.ID id
+		,t.EQUIPMENT_NUMBER equipmentNumber
+		,t.DIVICE_NUMBER diviceNumber
+		,t.EQUIPMENT_ID equipmentId
+		,t.COMPANY_ID companyId
+		,t.COMPANY_NAME companyName
+		,t.MACHINA machina
+		,t.ENGINE_ROOM engineRoom
+		,t.CABINET_NUMBER cabinetNumber
+		,t.CONTACT contact
+		,t.TEL tel
+		,t.CONTACT_WAY contactWay
+		,t.IP ip
+		,t.CAOZGCS caozgcs
+		,t.OPERATE_DATE operateDate
+		,t.END_DATE endDate
+		,t.BILL_DATE billDate
+		,t.WARN_DATE warnDate
+		,t.REMARK remark
+		,t.STATUS status
+		,t.IS_MONITOR isMonitor
+		,t.DEVICE_STATUS deviceStatus
+		,t.IS_WRONG isWrong
+		,t.ERROR_MESSAGE errorMessage
+		,t.DESCRIPTION description
+		,t.RECOED_PEOPLE recoedPeople
+		,t.ERROR_REPAIR errorRepair
+		,t.IS_OVERTIME isOvertime
+		,t.CHARGE_EXAMINE chargeExamine
+		,t.CHARGE_INFORMATION chargeInformation
+		,t.REGION_EXAMINE regionExamine
+		,t.REGION_INFORMATION regionInformation
+		,t.SN sn
+		,t.FIRST_RESTART firstRestart
+		,t.ASSIST assist
+		,t.SCAN_CODE scanCode
+		,t.APPLICANT applicant
+		,t.CABINET cabinet
+		,t.BRAND brand
+		,t.MODEL_NUMBER modelNumber
+		,t.OPERATION_TYPE operationType
+		,t.WORK_TIME workTime
+		,t.EXECUTIVE_OUTCOME executiveOutcome
+		,t.CONTENT_VIEWED contentViewed
+		,t.DIEWCT_OPERATION diewctOperation
+		,t.OUTSIDE_INFORMATION outsideInformation
+		,t.OUTSIDE_SPECIFICATION outsideSpecification
+		,t.CONNECTION_INFORMATION connectionInformation
+		,t.EXTERNAL_EQUIPMENT externalEquipment
+		,t.NETWORK_INFORMATION networkInformation
+		,t.PORT_RESULT portResult
+		,t.ESTIMATED_TIME estimatedTime
+		,t.PLACE_STORAGE placeStorage
+		,t.CONNECT_WIRES connectWires
+		,t.IP_CONFIGURATION ipConfiguration
+		,t.IP_EMLY ipEmly
+		,t.CONFIGURATION_TYPE configurationType
+		,t.SYSTEM_TYPE systemType
+		,t.PARTITION_REQUIREMENTS partitionRequirements
+		,t.REMOTE_DESKTOP remoteDesktop
+		,t.LONG_DISTANCE longDistance
+		,t.CURRENT_SITE currentSite
+		,t.CURRENT_USER_NAME currentUserName
+		,t.CURRENT_PASSWORD currentPassword
+		,t.TEST_OUTCOME testOutcome
+		,t.STATISTICAL_LISTING statisticalListing
+		,t.SALES_EXPERS salesExpers
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_USER_ORG createUserOrg
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.EXT_NUM1 extNum1
+		,t.EXT_NUM2 extNum2
+		,t.EXT_NUM3 extNum3
+ FROM toa_machine_restart t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="equipmentNumber != null ">
+		and t.EQUIPMENT_NUMBER=#{equipmentNumber}
+	</if>
+	<if test="diviceNumber != null">
+		and t.DIVICE_NUMBER=#{diviceNumber}
+	</if>
+	<if test="equipmentId != null ">
+		and t.EQUIPMENT_ID=#{equipmentId}
+	</if>
+	<if test="companyId != null ">
+		and t.COMPANY_ID=#{companyId}
+	</if>
+	<if test="companyName != null ">
+		and t.company_name like <![CDATA['%${companyName}%']]>
+	</if>
+	<if test="machina != null ">
+		and t.MACHINA=#{machina}
+	</if>
+	<if test="engineRoom != null ">
+		and t.ENGINE_ROOM=#{engineRoom}
+	</if>
+	<if test="cabinetNumber != null ">
+		and t.CABINET_NUMBER=#{cabinetNumber}
+	</if>
+	<if test="contact != null ">
+		and t.CONTACT=#{contact}
+	</if>
+	<if test="tel != null ">
+		and t.TEL=#{tel}
+	</if>
+	<if test="contactWay != null ">
+		and t.CONTACT_WAY=#{contactWay}
+	</if>
+	<if test="ip != null ">
+		and t.IP=#{ip}
+	</if>
+	<if test="caozgcs != null ">
+		and t.CAOZGCS=#{caozgcs} or t.STATUS=#{status}
+	</if>
+	<if test="operateDate != null ">
+		and t.OPERATE_DATE=#{operateDate}
+	</if>
+	<if test="endDate != null ">
+		and t.END_DATE=#{endDate}
+	</if>
+	<if test="billDate != null ">
+		and t.BILL_DATE=#{billDate}
+	</if>
+	<if test="warnDate != null ">
+		and t.WARN_DATE=#{warnDate}
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<if test="status != null ">
+		and t.STATUS=#{status}
+	</if>
+	<if test="isMonitor != null ">
+		and t.IS_MONITOR=#{isMonitor}
+	</if>
+	<if test="deviceStatus != null ">
+		and t.DEVICE_STATUS=#{deviceStatus}
+	</if>
+	<if test="isWrong != null ">
+		and t.IS_WRONG=#{isWrong}
+	</if>
+	<if test="errorMessage != null ">
+		and t.ERROR_MESSAGE=#{errorMessage}
+	</if>
+	<if test="description != null ">
+		and t.DESCRIPTION=#{description}
+	</if>
+	<if test="recoedPeople != null ">
+		and t.RECOED_PEOPLE=#{recoedPeople}
+	</if>
+	<if test="errorRepair != null ">
+		and t.ERROR_REPAIR=#{errorRepair}
+	</if>
+	<if test="isOvertime != null ">
+		and t.IS_OVERTIME=#{isOvertime}
+	</if>
+	<if test="chargeExamine != null ">
+		and t.CHARGE_EXAMINE=#{chargeExamine}
+	</if>
+	<if test="chargeInformation != null ">
+		and t.CHARGE_INFORMATION=#{chargeInformation}
+	</if>
+	<if test="regionExamine != null ">
+		and t.REGION_EXAMINE=#{regionExamine}
+	</if>
+	<if test="regionInformation != null ">
+		and t.REGION_INFORMATION=#{regionInformation}
+	</if>
+	<if test="sn != null ">
+		and t.SN=#{sn}
+	</if>
+	<if test="firstRestart != null ">
+		and t.FIRST_RESTART=#{firstRestart}
+	</if>
+	<if test="assist != null ">
+		and t.ASSIST=#{assist}
+	</if>
+	<if test="scanCode != null ">
+		and t.SCAN_CODE=#{scanCode}
+	</if>
+	<if test="applicant != null ">
+		and t.APPLICANT=#{applicant}
+	</if>
+	<if test="cabinet != null ">
+		and t.CABINET=#{cabinet}
+	</if>
+	<if test="brand != null ">
+		and t.BRAND=#{brand}
+	</if>
+	<if test="modelNumber != null ">
+		and t.MODEL_NUMBER=#{modelNumber}
+	</if>
+	<if test="operationType != null ">
+		and t.OPERATION_TYPE=#{operationType}
+	</if>
+	<if test="workTime != null ">
+		and t.WORK_TIME=#{workTime}
+	</if>
+	<if test="executiveOutcome != null ">
+		and t.EXECUTIVE_OUTCOME=#{executiveOutcome}
+	</if>
+	<if test="contentViewed != null ">
+		and t.CONTENT_VIEWED=#{contentViewed}
+	</if>
+	<if test="diewctOperation != null ">
+		and t.DIEWCT_OPERATION=#{diewctOperation}
+	</if>
+	<if test="outsideInformation != null ">
+		and t.OUTSIDE_INFORMATION=#{outsideInformation}
+	</if>
+	<if test="outsideSpecification != null ">
+		and t.OUTSIDE_SPECIFICATION=#{outsideSpecification}
+	</if>
+	<if test="connectionInformation != null ">
+		and t.CONNECTION_INFORMATION=#{connectionInformation}
+	</if>
+	<if test="externalEquipment != null ">
+		and t.EXTERNAL_EQUIPMENT=#{externalEquipment}
+	</if>
+	<if test="networkInformation != null ">
+		and t.NETWORK_INFORMATION=#{networkInformation}
+	</if>
+	<if test="portResult != null ">
+		and t.PORT_RESULT=#{portResult}
+	</if>
+	<if test="estimatedTime != null ">
+		and t.ESTIMATED_TIME=#{estimatedTime}
+	</if>
+	<if test="placeStorage != null ">
+		and t.PLACE_STORAGE=#{placeStorage}
+	</if>
+	<if test="connectWires != null ">
+		and t.CONNECT_WIRES=#{connectWires}
+	</if>
+	<if test="ipConfiguration != null ">
+		and t.IP_CONFIGURATION=#{ipConfiguration}
+	</if>
+	<if test="ipEmly != null ">
+		and t.IP_EMLY=#{ipEmly}
+	</if>
+	<if test="configurationType != null ">
+		and t.CONFIGURATION_TYPE=#{configurationType}
+	</if>
+	<if test="systemType != null ">
+		and t.SYSTEM_TYPE=#{systemType}
+	</if>
+	<if test="partitionRequirements != null ">
+		and t.PARTITION_REQUIREMENTS=#{partitionRequirements}
+	</if>
+	<if test="remoteDesktop != null ">
+		and t.REMOTE_DESKTOP=#{remoteDesktop}
+	</if>
+	<if test="longDistance != null ">
+		and t.LONG_DISTANCE=#{longDistance}
+	</if>
+	<if test="currentSite != null ">
+		and t.CURRENT_SITE=#{currentSite}
+	</if>
+	<if test="currentUserName != null ">
+		and t.CURRENT_USER_NAME=#{currentUserName}
+	</if>
+	<if test="currentPassword != null ">
+		and t.CURRENT_PASSWORD=#{currentPassword}
+	</if>
+	<if test="testOutcome != null ">
+		and t.TEST_OUTCOME=#{testOutcome}
+	</if>
+	<if test="statisticalListing != null ">
+		and t.STATISTICAL_LISTING=#{statisticalListing}
+	</if>
+	<if test="salesExpers != null ">
+		and t.SALES_EXPERS=#{salesExpers}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createUserOrg != null ">
+		and t.CREATE_USER_ORG=#{createUserOrg}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+</select>
+	
+<select id="queryCount" parameterType="com.jc.oa.machine.domain.ToaMachineRestart" resultType="java.lang.Long">
+		SELECT COUNT(ID) 
+	 FROM toa_machine_restart t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="equipmentNumber != null ">
+		and t.EQUIPMENT_NUMBER=#{equipmentNumber}
+	</if>
+	<if test="diviceNumber != null">
+		and t.DIVICE_NUMBER=#{diviceNumber}
+	</if>
+	<if test="equipmentId != null ">
+		and t.EQUIPMENT_ID=#{equipmentId}
+	</if>
+	<if test="companyId != null ">
+		and t.COMPANY_ID=#{companyId}
+	</if>
+	<if test="companyName != null ">
+		and t.company_name like <![CDATA['%${companyName}%']]>
+	</if>
+	<if test="machina != null ">
+		and t.MACHINA=#{machina}
+	</if>
+	<if test="engineRoom != null ">
+		and t.ENGINE_ROOM=#{engineRoom}
+	</if>
+	<if test="cabinetNumber != null ">
+		and t.CABINET_NUMBER=#{cabinetNumber}
+	</if>
+	<if test="contact != null ">
+		and t.CONTACT=#{contact}
+	</if>
+	<if test="tel != null ">
+		and t.TEL=#{tel}
+	</if>
+	<if test="contactWay != null ">
+		and t.CONTACT_WAY=#{contactWay}
+	</if>
+	<if test="ip != null ">
+		and t.IP=#{ip}
+	</if>
+	<if test="caozgcs != null ">
+		and t.CAOZGCS=#{caozgcs}
+	</if>
+	<if test="operateDate != null ">
+		and t.OPERATE_DATE=#{operateDate}
+	</if>
+	<if test="endDate != null ">
+		and t.END_DATE=#{endDate}
+	</if>
+	<if test="billDate != null ">
+		and t.BILL_DATE=#{billDate}
+	</if>
+	<if test="warnDate != null ">
+		and t.WARN_DATE=#{warnDate}
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<if test="status != null ">
+		and t.STATUS=#{status}
+	</if>
+	<if test="isMonitor != null ">
+		and t.IS_MONITOR=#{isMonitor}
+	</if>
+	<if test="deviceStatus != null ">
+		and t.DEVICE_STATUS=#{deviceStatus}
+	</if>
+	<if test="isWrong != null ">
+		and t.IS_WRONG=#{isWrong}
+	</if>
+	<if test="errorMessage != null ">
+		and t.ERROR_MESSAGE=#{errorMessage}
+	</if>
+	<if test="description != null ">
+		and t.DESCRIPTION=#{description}
+	</if>
+	<if test="recoedPeople != null ">
+		and t.RECOED_PEOPLE=#{recoedPeople}
+	</if>
+	<if test="errorRepair != null ">
+		and t.ERROR_REPAIR=#{errorRepair}
+	</if>
+	<if test="isOvertime != null ">
+		and t.IS_OVERTIME=#{isOvertime}
+	</if>
+	<if test="chargeExamine != null ">
+		and t.CHARGE_EXAMINE=#{chargeExamine}
+	</if>
+	<if test="chargeInformation != null ">
+		and t.CHARGE_INFORMATION=#{chargeInformation}
+	</if>
+	<if test="regionExamine != null ">
+		and t.REGION_EXAMINE=#{regionExamine}
+	</if>
+	<if test="regionInformation != null ">
+		and t.REGION_INFORMATION=#{regionInformation}
+	</if>
+	<if test="sn != null ">
+		and t.SN=#{sn}
+	</if>
+	<if test="firstRestart != null ">
+		and t.FIRST_RESTART=#{firstRestart}
+	</if>
+	<if test="assist != null ">
+		and t.ASSIST=#{assist}
+	</if>
+	<if test="scanCode != null ">
+		and t.SCAN_CODE=#{scanCode}
+	</if>
+	<if test="applicant != null ">
+		and t.APPLICANT=#{applicant}
+	</if>
+	<if test="cabinet != null ">
+		and t.CABINET=#{cabinet}
+	</if>
+	<if test="brand != null ">
+		and t.BRAND=#{brand}
+	</if>
+	<if test="modelNumber != null ">
+		and t.MODEL_NUMBER=#{modelNumber}
+	</if>
+	<if test="operationType != null ">
+		and t.OPERATION_TYPE=#{operationType}
+	</if>
+	<if test="workTime != null ">
+		and t.WORK_TIME=#{workTime}
+	</if>
+	<if test="executiveOutcome != null ">
+		and t.EXECUTIVE_OUTCOME=#{executiveOutcome}
+	</if>
+	<if test="contentViewed != null ">
+		and t.CONTENT_VIEWED=#{contentViewed}
+	</if>
+	<if test="diewctOperation != null ">
+		and t.DIEWCT_OPERATION=#{diewctOperation}
+	</if>
+	<if test="outsideInformation != null ">
+		and t.OUTSIDE_INFORMATION=#{outsideInformation}
+	</if>
+	<if test="outsideSpecification != null ">
+		and t.OUTSIDE_SPECIFICATION=#{outsideSpecification}
+	</if>
+	<if test="connectionInformation != null ">
+		and t.CONNECTION_INFORMATION=#{connectionInformation}
+	</if>
+	<if test="externalEquipment != null ">
+		and t.EXTERNAL_EQUIPMENT=#{externalEquipment}
+	</if>
+	<if test="networkInformation != null ">
+		and t.NETWORK_INFORMATION=#{networkInformation}
+	</if>
+	<if test="portResult != null ">
+		and t.PORT_RESULT=#{portResult}
+	</if>
+	<if test="estimatedTime != null ">
+		and t.ESTIMATED_TIME=#{estimatedTime}
+	</if>
+	<if test="placeStorage != null ">
+		and t.PLACE_STORAGE=#{placeStorage}
+	</if>
+	<if test="connectWires != null ">
+		and t.CONNECT_WIRES=#{connectWires}
+	</if>
+	<if test="ipConfiguration != null ">
+		and t.IP_CONFIGURATION=#{ipConfiguration}
+	</if>
+	<if test="ipEmly != null ">
+		and t.IP_EMLY=#{ipEmly}
+	</if>
+	<if test="configurationType != null ">
+		and t.CONFIGURATION_TYPE=#{configurationType}
+	</if>
+	<if test="systemType != null ">
+		and t.SYSTEM_TYPE=#{systemType}
+	</if>
+	<if test="partitionRequirements != null ">
+		and t.PARTITION_REQUIREMENTS=#{partitionRequirements}
+	</if>
+	<if test="remoteDesktop != null ">
+		and t.REMOTE_DESKTOP=#{remoteDesktop}
+	</if>
+	<if test="longDistance != null ">
+		and t.LONG_DISTANCE=#{longDistance}
+	</if>
+	<if test="currentSite != null ">
+		and t.CURRENT_SITE=#{currentSite}
+	</if>
+	<if test="currentUserName != null ">
+		and t.CURRENT_USER_NAME=#{currentUserName}
+	</if>
+	<if test="currentPassword != null ">
+		and t.CURRENT_PASSWORD=#{currentPassword}
+	</if>
+	<if test="testOutcome != null ">
+		and t.TEST_OUTCOME=#{testOutcome}
+	</if>
+	<if test="statisticalListing != null ">
+		and t.STATISTICAL_LISTING=#{statisticalListing}
+	</if>
+	<if test="salesExpers != null ">
+		and t.SALES_EXPERS=#{salesExpers}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createUserOrg != null ">
+		and t.CREATE_USER_ORG=#{createUserOrg}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+
+</select>
+
+<!-- App重启接口 -->
+<select id="queryApp" parameterType="com.jc.oa.machine.domain.ToaMachineRestart" resultType="com.jc.oa.machine.domain.ToaMachineRestart">
+		SELECT 
+		 t.ID id
+		,t.EQUIPMENT_NUMBER equipmentNumber
+		,t.DIVICE_NUMBER diviceNumber
+		,t.EQUIPMENT_ID equipmentId
+		,t.COMPANY_ID companyId
+		,t.COMPANY_NAME companyName
+		,t.MACHINA machina
+		,t.ENGINE_ROOM engineRoom
+		,t.CABINET_NUMBER cabinetNumber
+		,t.CONTACT contact
+		,t.TEL tel
+		,t.CONTACT_WAY contactWay
+		,t.IP ip
+		,t.CAOZGCS caozgcs
+		,t.OPERATE_DATE operateDate
+		,t.END_DATE endDate
+		,t.BILL_DATE billDate
+		,t.WARN_DATE warnDate
+		,t.REMARK remark
+		,t.STATUS status
+		,t.IS_MONITOR isMonitor
+		,t.DEVICE_STATUS deviceStatus
+		,t.IS_WRONG isWrong
+		,t.ERROR_MESSAGE errorMessage
+		,t.DESCRIPTION description
+		,t.RECOED_PEOPLE recoedPeople
+		,t.ERROR_REPAIR errorRepair
+		,t.IS_OVERTIME isOvertime
+		,t.CHARGE_EXAMINE chargeExamine
+		,t.CHARGE_INFORMATION chargeInformation
+		,t.REGION_EXAMINE regionExamine
+		,t.REGION_INFORMATION regionInformation
+		,t.SN sn
+		,t.FIRST_RESTART firstRestart
+		,t.ASSIST assist
+		,t.SCAN_CODE scanCode
+		,t.APPLICANT applicant
+		,t.CABINET cabinet
+		,t.BRAND brand
+		,t.MODEL_NUMBER modelNumber
+		,t.OPERATION_TYPE operationType
+		,t.WORK_TIME workTime
+		,t.EXECUTIVE_OUTCOME executiveOutcome
+		,t.CONTENT_VIEWED contentViewed
+		,t.DIEWCT_OPERATION diewctOperation
+		,t.OUTSIDE_INFORMATION outsideInformation
+		,t.OUTSIDE_SPECIFICATION outsideSpecification
+		,t.CONNECTION_INFORMATION connectionInformation
+		,t.EXTERNAL_EQUIPMENT externalEquipment
+		,t.NETWORK_INFORMATION networkInformation
+		,t.PORT_RESULT portResult
+		,t.ESTIMATED_TIME estimatedTime
+		,t.PLACE_STORAGE placeStorage
+		,t.CONNECT_WIRES connectWires
+		,t.IP_CONFIGURATION ipConfiguration
+		,t.IP_EMLY ipEmly
+		,t.CONFIGURATION_TYPE configurationType
+		,t.SYSTEM_TYPE systemType
+		,t.PARTITION_REQUIREMENTS partitionRequirements
+		,t.REMOTE_DESKTOP remoteDesktop
+		,t.LONG_DISTANCE longDistance
+		,t.CURRENT_SITE currentSite
+		,t.CURRENT_USER_NAME currentUserName
+		,t.CURRENT_PASSWORD currentPassword
+		,t.TEST_OUTCOME testOutcome
+		,t.STATISTICAL_LISTING statisticalListing
+		,t.SALES_EXPERS salesExpers
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_USER_ORG createUserOrg
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.EXT_NUM1 extNum1
+		,t.EXT_NUM2 extNum2
+		,t.EXT_NUM3 extNum3
+ FROM toa_machine_restart t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="equipmentNumber != null ">
+		and t.EQUIPMENT_NUMBER=#{equipmentNumber}
+	</if>
+	<if test="diviceNumber != null">
+		and t.DIVICE_NUMBER=#{diviceNumber}
+	</if>
+	<if test="equipmentId != null ">
+		and t.EQUIPMENT_ID=#{equipmentId}
+	</if>
+	<if test="companyId != null ">
+		and t.COMPANY_ID=#{companyId}
+	</if>
+	<if test="companyName != null ">
+		and t.company_name like <![CDATA['%${companyName}%']]>
+	</if>
+	<if test="machina != null ">
+		and t.MACHINA=#{machina}
+	</if>
+	<if test="engineRoom != null ">
+		and t.ENGINE_ROOM=#{engineRoom}
+	</if>
+	<if test="cabinetNumber != null ">
+		and t.CABINET_NUMBER=#{cabinetNumber}
+	</if>
+	<if test="contact != null ">
+		and t.CONTACT=#{contact}
+	</if>
+	<if test="tel != null ">
+		and t.TEL=#{tel}
+	</if>
+	<if test="contactWay != null ">
+		and t.CONTACT_WAY=#{contactWay}
+	</if>
+	<if test="ip != null ">
+		and t.IP=#{ip}
+	</if>
+	<if test="caozgcs != null ">
+		and t.CAOZGCS=#{caozgcs} or t.STATUS = #{status}
+	</if>
+	<if test="operateDate != null ">
+		and t.OPERATE_DATE=#{operateDate}
+	</if>
+	<if test="endDate != null ">
+		and t.END_DATE=#{endDate}
+	</if>
+	<if test="billDate != null ">
+		and t.BILL_DATE=#{billDate}
+	</if>
+	<if test="warnDate != null ">
+		and t.WARN_DATE=#{warnDate}
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<!-- <if test="status != null ">
+		and t.STATUS=#{status}
+	</if> -->
+	<if test="isMonitor != null ">
+		and t.IS_MONITOR=#{isMonitor}
+	</if>
+	<if test="deviceStatus != null ">
+		and t.DEVICE_STATUS=#{deviceStatus}
+	</if>
+	<if test="isWrong != null ">
+		and t.IS_WRONG=#{isWrong}
+	</if>
+	<if test="errorMessage != null ">
+		and t.ERROR_MESSAGE=#{errorMessage}
+	</if>
+	<if test="description != null ">
+		and t.DESCRIPTION=#{description}
+	</if>
+	<if test="recoedPeople != null ">
+		and t.RECOED_PEOPLE=#{recoedPeople}
+	</if>
+	<if test="errorRepair != null ">
+		and t.ERROR_REPAIR=#{errorRepair}
+	</if>
+	<if test="isOvertime != null ">
+		and t.IS_OVERTIME=#{isOvertime}
+	</if>
+	<if test="chargeExamine != null ">
+		and t.CHARGE_EXAMINE=#{chargeExamine}
+	</if>
+	<if test="chargeInformation != null ">
+		and t.CHARGE_INFORMATION=#{chargeInformation}
+	</if>
+	<if test="regionExamine != null ">
+		and t.REGION_EXAMINE=#{regionExamine}
+	</if>
+	<if test="regionInformation != null ">
+		and t.REGION_INFORMATION=#{regionInformation}
+	</if>
+	<if test="sn != null ">
+		and t.SN=#{sn}
+	</if>
+	<if test="firstRestart != null ">
+		and t.FIRST_RESTART=#{firstRestart}
+	</if>
+	<if test="assist != null ">
+		and t.ASSIST=#{assist}
+	</if>
+	<if test="scanCode != null ">
+		and t.SCAN_CODE=#{scanCode}
+	</if>
+	<if test="applicant != null ">
+		and t.APPLICANT=#{applicant}
+	</if>
+	<if test="cabinet != null ">
+		and t.CABINET=#{cabinet}
+	</if>
+	<if test="brand != null ">
+		and t.BRAND=#{brand}
+	</if>
+	<if test="modelNumber != null ">
+		and t.MODEL_NUMBER=#{modelNumber}
+	</if>
+	<if test="operationType != null ">
+		and t.OPERATION_TYPE=#{operationType}
+	</if>
+	<if test="workTime != null ">
+		and t.WORK_TIME=#{workTime}
+	</if>
+	<if test="executiveOutcome != null ">
+		and t.EXECUTIVE_OUTCOME=#{executiveOutcome}
+	</if>
+	<if test="contentViewed != null ">
+		and t.CONTENT_VIEWED=#{contentViewed}
+	</if>
+	<if test="diewctOperation != null ">
+		and t.DIEWCT_OPERATION=#{diewctOperation}
+	</if>
+	<if test="outsideInformation != null ">
+		and t.OUTSIDE_INFORMATION=#{outsideInformation}
+	</if>
+	<if test="outsideSpecification != null ">
+		and t.OUTSIDE_SPECIFICATION=#{outsideSpecification}
+	</if>
+	<if test="connectionInformation != null ">
+		and t.CONNECTION_INFORMATION=#{connectionInformation}
+	</if>
+	<if test="externalEquipment != null ">
+		and t.EXTERNAL_EQUIPMENT=#{externalEquipment}
+	</if>
+	<if test="networkInformation != null ">
+		and t.NETWORK_INFORMATION=#{networkInformation}
+	</if>
+	<if test="portResult != null ">
+		and t.PORT_RESULT=#{portResult}
+	</if>
+	<if test="estimatedTime != null ">
+		and t.ESTIMATED_TIME=#{estimatedTime}
+	</if>
+	<if test="placeStorage != null ">
+		and t.PLACE_STORAGE=#{placeStorage}
+	</if>
+	<if test="connectWires != null ">
+		and t.CONNECT_WIRES=#{connectWires}
+	</if>
+	<if test="ipConfiguration != null ">
+		and t.IP_CONFIGURATION=#{ipConfiguration}
+	</if>
+	<if test="ipEmly != null ">
+		and t.IP_EMLY=#{ipEmly}
+	</if>
+	<if test="configurationType != null ">
+		and t.CONFIGURATION_TYPE=#{configurationType}
+	</if>
+	<if test="systemType != null ">
+		and t.SYSTEM_TYPE=#{systemType}
+	</if>
+	<if test="partitionRequirements != null ">
+		and t.PARTITION_REQUIREMENTS=#{partitionRequirements}
+	</if>
+	<if test="remoteDesktop != null ">
+		and t.REMOTE_DESKTOP=#{remoteDesktop}
+	</if>
+	<if test="longDistance != null ">
+		and t.LONG_DISTANCE=#{longDistance}
+	</if>
+	<if test="currentSite != null ">
+		and t.CURRENT_SITE=#{currentSite}
+	</if>
+	<if test="currentUserName != null ">
+		and t.CURRENT_USER_NAME=#{currentUserName}
+	</if>
+	<if test="currentPassword != null ">
+		and t.CURRENT_PASSWORD=#{currentPassword}
+	</if>
+	<if test="testOutcome != null ">
+		and t.TEST_OUTCOME=#{testOutcome}
+	</if>
+	<if test="statisticalListing != null ">
+		and t.STATISTICAL_LISTING=#{statisticalListing}
+	</if>
+	<if test="salesExpers != null ">
+		and t.SALES_EXPERS=#{salesExpers}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createUserOrg != null ">
+		and t.CREATE_USER_ORG=#{createUserOrg}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+</select>
+
+<!-- 得到某一状态的工单 使用-->
+<select id="queryAll" parameterType="com.jc.oa.machine.domain.ToaMachineRestart" resultType="com.jc.oa.machine.domain.ToaMachineRestart">
+		SELECT 
+		 t.ID id
+		,t.EQUIPMENT_NUMBER equipmentNumber
+		,t.DIVICE_NUMBER diviceNumber
+		,t.EQUIPMENT_ID equipmentId
+		,t.COMPANY_ID companyId
+		,t.COMPANY_NAME companyName
+		,t.MACHINA machina
+		,t.ENGINE_ROOM engineRoom
+		,t.CABINET_NUMBER cabinetNumber
+		,t.CONTACT contact
+		,t.TEL tel
+		,t.CONTACT_WAY contactWay
+		,t.IP ip
+		,t.CAOZGCS caozgcs
+		,t.OPERATE_DATE operateDate
+		,t.END_DATE endDate
+		,t.BILL_DATE billDate
+		,t.WARN_DATE warnDate
+		,t.REMARK remark
+		,t.STATUS status
+		,t.IS_MONITOR isMonitor
+		,t.DEVICE_STATUS deviceStatus
+		,t.IS_WRONG isWrong
+		,t.ERROR_MESSAGE errorMessage
+		,t.DESCRIPTION description
+		,t.RECOED_PEOPLE recoedPeople
+		,t.ERROR_REPAIR errorRepair
+		,t.IS_OVERTIME isOvertime
+		,t.CHARGE_EXAMINE chargeExamine
+		,t.CHARGE_INFORMATION chargeInformation
+		,t.REGION_EXAMINE regionExamine
+		,t.REGION_INFORMATION regionInformation
+		,t.SN sn
+		,t.FIRST_RESTART firstRestart
+		,t.ASSIST assist
+		,t.SCAN_CODE scanCode
+		,t.APPLICANT applicant
+		,t.CABINET cabinet
+		,t.BRAND brand
+		,t.MODEL_NUMBER modelNumber
+		,t.OPERATION_TYPE operationType
+		,t.WORK_TIME workTime
+		,t.EXECUTIVE_OUTCOME executiveOutcome
+		,t.CONTENT_VIEWED contentViewed
+		,t.DIEWCT_OPERATION diewctOperation
+		,t.OUTSIDE_INFORMATION outsideInformation
+		,t.OUTSIDE_SPECIFICATION outsideSpecification
+		,t.CONNECTION_INFORMATION connectionInformation
+		,t.EXTERNAL_EQUIPMENT externalEquipment
+		,t.NETWORK_INFORMATION networkInformation
+		,t.PORT_RESULT portResult
+		,t.ESTIMATED_TIME estimatedTime
+		,t.PLACE_STORAGE placeStorage
+		,t.CONNECT_WIRES connectWires
+		,t.IP_CONFIGURATION ipConfiguration
+		,t.IP_EMLY ipEmly
+		,t.CONFIGURATION_TYPE configurationType
+		,t.SYSTEM_TYPE systemType
+		,t.PARTITION_REQUIREMENTS partitionRequirements
+		,t.REMOTE_DESKTOP remoteDesktop
+		,t.LONG_DISTANCE longDistance
+		,t.CURRENT_SITE currentSite
+		,t.CURRENT_USER_NAME currentUserName
+		,t.CURRENT_PASSWORD currentPassword
+		,t.TEST_OUTCOME testOutcome
+		,t.STATISTICAL_LISTING statisticalListing
+		,t.SALES_EXPERS salesExpers
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_USER_ORG createUserOrg
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.EXT_NUM1 extNum1
+		,t.EXT_NUM2 extNum2
+		,t.EXT_NUM3 extNum3
+ FROM toa_machine_restart t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="equipmentNumber != null ">
+		and t.EQUIPMENT_NUMBER=#{equipmentNumber}
+	</if>
+	<if test="diviceNumber != null">
+		and t.DIVICE_NUMBER=#{diviceNumber}
+	</if>
+	<if test="equipmentId != null ">
+		and t.EQUIPMENT_ID=#{equipmentId}
+	</if>
+	<if test="companyId != null ">
+		and t.COMPANY_ID=#{companyId}
+	</if>
+	<if test="companyName != null ">
+		and t.company_name like <![CDATA['%${companyName}%']]>
+	</if>
+	<if test="machina != null ">
+		and t.MACHINA=#{machina}
+	</if>
+	<if test="engineRoom != null ">
+		and t.ENGINE_ROOM=#{engineRoom}
+	</if>
+	<if test="cabinetNumber != null ">
+		and t.CABINET_NUMBER=#{cabinetNumber}
+	</if>
+	<if test="contact != null ">
+		and t.CONTACT=#{contact}
+	</if>
+	<if test="tel != null ">
+		and t.TEL=#{tel}
+	</if>
+	<if test="contactWay != null ">
+		and t.CONTACT_WAY=#{contactWay}
+	</if>
+	<if test="ip != null ">
+		and t.IP=#{ip}
+	</if>
+	<if test="caozgcs != null ">
+		and t.CAOZGCS=#{caozgcs} 
+	</if>
+	<if test="operateDate != null ">
+		and t.OPERATE_DATE=#{operateDate}
+	</if>
+	<if test="endDate != null ">
+		and t.END_DATE=#{endDate}
+	</if>
+	<if test="billDate != null ">
+		and t.BILL_DATE=#{billDate}
+	</if>
+	<if test="warnDate != null ">
+		and t.WARN_DATE=#{warnDate}
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<if test="status != null ">
+		and t.STATUS=#{status}
+	</if>
+	<if test="isMonitor != null ">
+		and t.IS_MONITOR=#{isMonitor}
+	</if>
+	<if test="deviceStatus != null ">
+		and t.DEVICE_STATUS=#{deviceStatus}
+	</if>
+	<if test="isWrong != null ">
+		and t.IS_WRONG=#{isWrong}
+	</if>
+	<if test="errorMessage != null ">
+		and t.ERROR_MESSAGE=#{errorMessage}
+	</if>
+	<if test="description != null ">
+		and t.DESCRIPTION=#{description}
+	</if>
+	<if test="recoedPeople != null ">
+		and t.RECOED_PEOPLE=#{recoedPeople}
+	</if>
+	<if test="errorRepair != null ">
+		and t.ERROR_REPAIR=#{errorRepair}
+	</if>
+	<if test="isOvertime != null ">
+		and t.IS_OVERTIME=#{isOvertime}
+	</if>
+	<if test="chargeExamine != null ">
+		and t.CHARGE_EXAMINE=#{chargeExamine}
+	</if>
+	<if test="chargeInformation != null ">
+		and t.CHARGE_INFORMATION=#{chargeInformation}
+	</if>
+	<if test="regionExamine != null ">
+		and t.REGION_EXAMINE=#{regionExamine}
+	</if>
+	<if test="regionInformation != null ">
+		and t.REGION_INFORMATION=#{regionInformation}
+	</if>
+	<if test="sn != null ">
+		and t.SN=#{sn}
+	</if>
+	<if test="firstRestart != null ">
+		and t.FIRST_RESTART=#{firstRestart}
+	</if>
+	<if test="assist != null ">
+		and t.ASSIST=#{assist}
+	</if>
+	<if test="scanCode != null ">
+		and t.SCAN_CODE=#{scanCode}
+	</if>
+	<if test="applicant != null ">
+		and t.APPLICANT=#{applicant}
+	</if>
+	<if test="cabinet != null ">
+		and t.CABINET=#{cabinet}
+	</if>
+	<if test="brand != null ">
+		and t.BRAND=#{brand}
+	</if>
+	<if test="modelNumber != null ">
+		and t.MODEL_NUMBER=#{modelNumber}
+	</if>
+	<if test="operationType != null ">
+		and t.OPERATION_TYPE=#{operationType}
+	</if>
+	<if test="workTime != null ">
+		and t.WORK_TIME=#{workTime}
+	</if>
+	<if test="executiveOutcome != null ">
+		and t.EXECUTIVE_OUTCOME=#{executiveOutcome}
+	</if>
+	<if test="contentViewed != null ">
+		and t.CONTENT_VIEWED=#{contentViewed}
+	</if>
+	<if test="diewctOperation != null ">
+		and t.DIEWCT_OPERATION=#{diewctOperation}
+	</if>
+	<if test="outsideInformation != null ">
+		and t.OUTSIDE_INFORMATION=#{outsideInformation}
+	</if>
+	<if test="outsideSpecification != null ">
+		and t.OUTSIDE_SPECIFICATION=#{outsideSpecification}
+	</if>
+	<if test="connectionInformation != null ">
+		and t.CONNECTION_INFORMATION=#{connectionInformation}
+	</if>
+	<if test="externalEquipment != null ">
+		and t.EXTERNAL_EQUIPMENT=#{externalEquipment}
+	</if>
+	<if test="networkInformation != null ">
+		and t.NETWORK_INFORMATION=#{networkInformation}
+	</if>
+	<if test="portResult != null ">
+		and t.PORT_RESULT=#{portResult}
+	</if>
+	<if test="estimatedTime != null ">
+		and t.ESTIMATED_TIME=#{estimatedTime}
+	</if>
+	<if test="placeStorage != null ">
+		and t.PLACE_STORAGE=#{placeStorage}
+	</if>
+	<if test="connectWires != null ">
+		and t.CONNECT_WIRES=#{connectWires}
+	</if>
+	<if test="ipConfiguration != null ">
+		and t.IP_CONFIGURATION=#{ipConfiguration}
+	</if>
+	<if test="ipEmly != null ">
+		and t.IP_EMLY=#{ipEmly}
+	</if>
+	<if test="configurationType != null ">
+		and t.CONFIGURATION_TYPE=#{configurationType}
+	</if>
+	<if test="systemType != null ">
+		and t.SYSTEM_TYPE=#{systemType}
+	</if>
+	<if test="partitionRequirements != null ">
+		and t.PARTITION_REQUIREMENTS=#{partitionRequirements}
+	</if>
+	<if test="remoteDesktop != null ">
+		and t.REMOTE_DESKTOP=#{remoteDesktop}
+	</if>
+	<if test="longDistance != null ">
+		and t.LONG_DISTANCE=#{longDistance}
+	</if>
+	<if test="currentSite != null ">
+		and t.CURRENT_SITE=#{currentSite}
+	</if>
+	<if test="currentUserName != null ">
+		and t.CURRENT_USER_NAME=#{currentUserName}
+	</if>
+	<if test="currentPassword != null ">
+		and t.CURRENT_PASSWORD=#{currentPassword}
+	</if>
+	<if test="testOutcome != null ">
+		and t.TEST_OUTCOME=#{testOutcome}
+	</if>
+	<if test="statisticalListing != null ">
+		and t.STATISTICAL_LISTING=#{statisticalListing}
+	</if>
+	<if test="salesExpers != null ">
+		and t.SALES_EXPERS=#{salesExpers}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createUserOrg != null ">
+		and t.CREATE_USER_ORG=#{createUserOrg}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+</select>
+<!-- 得到某一状态的工单 使用-->	
+<select id="queryCountAll" parameterType="com.jc.oa.machine.domain.ToaMachineRestart" resultType="java.lang.Long">
+		SELECT COUNT(ID) 
+	 FROM toa_machine_restart t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="equipmentNumber != null ">
+		and t.EQUIPMENT_NUMBER=#{equipmentNumber}
+	</if>
+	<if test="diviceNumber != null">
+		and t.DIVICE_NUMBER=#{diviceNumber}
+	</if>
+	<if test="equipmentId != null ">
+		and t.EQUIPMENT_ID=#{equipmentId}
+	</if>
+	<if test="companyId != null ">
+		and t.COMPANY_ID=#{companyId}
+	</if>
+	<if test="companyName != null ">
+		and t.company_name like <![CDATA['%${companyName}%']]>
+	</if>
+	<if test="machina != null ">
+		and t.MACHINA=#{machina}
+	</if>
+	<if test="engineRoom != null ">
+		and t.ENGINE_ROOM=#{engineRoom}
+	</if>
+	<if test="cabinetNumber != null ">
+		and t.CABINET_NUMBER=#{cabinetNumber}
+	</if>
+	<if test="contact != null ">
+		and t.CONTACT=#{contact}
+	</if>
+	<if test="tel != null ">
+		and t.TEL=#{tel}
+	</if>
+	<if test="contactWay != null ">
+		and t.CONTACT_WAY=#{contactWay}
+	</if>
+	<if test="ip != null ">
+		and t.IP=#{ip}
+	</if>
+	<if test="caozgcs != null ">
+		and t.CAOZGCS=#{caozgcs} 
+	</if>
+	<if test="operateDate != null ">
+		and t.OPERATE_DATE=#{operateDate}
+	</if>
+	<if test="endDate != null ">
+		and t.END_DATE=#{endDate}
+	</if>
+	<if test="billDate != null ">
+		and t.BILL_DATE=#{billDate}
+	</if>
+	<if test="warnDate != null ">
+		and t.WARN_DATE=#{warnDate}
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<if test="status != null ">
+		and t.STATUS=#{status}
+	</if>
+	<if test="isMonitor != null ">
+		and t.IS_MONITOR=#{isMonitor}
+	</if>
+	<if test="deviceStatus != null ">
+		and t.DEVICE_STATUS=#{deviceStatus}
+	</if>
+	<if test="isWrong != null ">
+		and t.IS_WRONG=#{isWrong}
+	</if>
+	<if test="errorMessage != null ">
+		and t.ERROR_MESSAGE=#{errorMessage}
+	</if>
+	<if test="description != null ">
+		and t.DESCRIPTION=#{description}
+	</if>
+	<if test="recoedPeople != null ">
+		and t.RECOED_PEOPLE=#{recoedPeople}
+	</if>
+	<if test="errorRepair != null ">
+		and t.ERROR_REPAIR=#{errorRepair}
+	</if>
+	<if test="isOvertime != null ">
+		and t.IS_OVERTIME=#{isOvertime}
+	</if>
+	<if test="chargeExamine != null ">
+		and t.CHARGE_EXAMINE=#{chargeExamine}
+	</if>
+	<if test="chargeInformation != null ">
+		and t.CHARGE_INFORMATION=#{chargeInformation}
+	</if>
+	<if test="regionExamine != null ">
+		and t.REGION_EXAMINE=#{regionExamine}
+	</if>
+	<if test="regionInformation != null ">
+		and t.REGION_INFORMATION=#{regionInformation}
+	</if>
+	<if test="sn != null ">
+		and t.SN=#{sn}
+	</if>
+	<if test="firstRestart != null ">
+		and t.FIRST_RESTART=#{firstRestart}
+	</if>
+	<if test="assist != null ">
+		and t.ASSIST=#{assist}
+	</if>
+	<if test="scanCode != null ">
+		and t.SCAN_CODE=#{scanCode}
+	</if>
+	<if test="applicant != null ">
+		and t.APPLICANT=#{applicant}
+	</if>
+	<if test="cabinet != null ">
+		and t.CABINET=#{cabinet}
+	</if>
+	<if test="brand != null ">
+		and t.BRAND=#{brand}
+	</if>
+	<if test="modelNumber != null ">
+		and t.MODEL_NUMBER=#{modelNumber}
+	</if>
+	<if test="operationType != null ">
+		and t.OPERATION_TYPE=#{operationType}
+	</if>
+	<if test="workTime != null ">
+		and t.WORK_TIME=#{workTime}
+	</if>
+	<if test="executiveOutcome != null ">
+		and t.EXECUTIVE_OUTCOME=#{executiveOutcome}
+	</if>
+	<if test="contentViewed != null ">
+		and t.CONTENT_VIEWED=#{contentViewed}
+	</if>
+	<if test="diewctOperation != null ">
+		and t.DIEWCT_OPERATION=#{diewctOperation}
+	</if>
+	<if test="outsideInformation != null ">
+		and t.OUTSIDE_INFORMATION=#{outsideInformation}
+	</if>
+	<if test="outsideSpecification != null ">
+		and t.OUTSIDE_SPECIFICATION=#{outsideSpecification}
+	</if>
+	<if test="connectionInformation != null ">
+		and t.CONNECTION_INFORMATION=#{connectionInformation}
+	</if>
+	<if test="externalEquipment != null ">
+		and t.EXTERNAL_EQUIPMENT=#{externalEquipment}
+	</if>
+	<if test="networkInformation != null ">
+		and t.NETWORK_INFORMATION=#{networkInformation}
+	</if>
+	<if test="portResult != null ">
+		and t.PORT_RESULT=#{portResult}
+	</if>
+	<if test="estimatedTime != null ">
+		and t.ESTIMATED_TIME=#{estimatedTime}
+	</if>
+	<if test="placeStorage != null ">
+		and t.PLACE_STORAGE=#{placeStorage}
+	</if>
+	<if test="connectWires != null ">
+		and t.CONNECT_WIRES=#{connectWires}
+	</if>
+	<if test="ipConfiguration != null ">
+		and t.IP_CONFIGURATION=#{ipConfiguration}
+	</if>
+	<if test="ipEmly != null ">
+		and t.IP_EMLY=#{ipEmly}
+	</if>
+	<if test="configurationType != null ">
+		and t.CONFIGURATION_TYPE=#{configurationType}
+	</if>
+	<if test="systemType != null ">
+		and t.SYSTEM_TYPE=#{systemType}
+	</if>
+	<if test="partitionRequirements != null ">
+		and t.PARTITION_REQUIREMENTS=#{partitionRequirements}
+	</if>
+	<if test="remoteDesktop != null ">
+		and t.REMOTE_DESKTOP=#{remoteDesktop}
+	</if>
+	<if test="longDistance != null ">
+		and t.LONG_DISTANCE=#{longDistance}
+	</if>
+	<if test="currentSite != null ">
+		and t.CURRENT_SITE=#{currentSite}
+	</if>
+	<if test="currentUserName != null ">
+		and t.CURRENT_USER_NAME=#{currentUserName}
+	</if>
+	<if test="currentPassword != null ">
+		and t.CURRENT_PASSWORD=#{currentPassword}
+	</if>
+	<if test="testOutcome != null ">
+		and t.TEST_OUTCOME=#{testOutcome}
+	</if>
+	<if test="statisticalListing != null ">
+		and t.STATISTICAL_LISTING=#{statisticalListing}
+	</if>
+	<if test="salesExpers != null ">
+		and t.SALES_EXPERS=#{salesExpers}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createUserOrg != null ">
+		and t.CREATE_USER_ORG=#{createUserOrg}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+
+</select>
+
+
+<update id="deleteLogic"  parameterType="com.jc.oa.machine.domain.ToaMachineRestart">
+	     UPDATE toa_machine_restart t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+ 			where ID in
+ 			<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=","> 
+				 #{primaryKey}
+			</foreach>
+</update>
+  	
+</mapper>   

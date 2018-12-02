@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.finance.domain.ToaFinanceInvoices" > 
+
+<insert id="insert" parameterType="com.jc.oa.finance.domain.ToaFinanceInvoices"
+		useGeneratedKeys="true" keyProperty="id">
+  	insert into toa_finance_invoices(id,main_id,company_id,maintenan_sale,sale,company_name,department,resource_type,company_type,invoices_month,month_amount,invoices_startdate,invoices_enddate,invoices_state,vdate_date,invoices_no,invoices_account,noinvoices_account,received_state,received_date,received_account,arrearage,commision,other_deductions,min_bandwidth,min_bandwidth_price,port_bandwidth,port_bandwidth_price,overflow_bandwidth,overflow_bandwidth_price,cabinet_num,cabinet_price,service_num,service_price,ip_num,ip_price,switch_num,switch_price,odf_num,odf_price,port_num,port_price,memory_num,memory_price,cpu_num,cpu_price,disk_num,disk_price,room_name,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3)
+ values(#{id},#{mainId},#{companyId},#{maintenanSale},#{sale},#{companyName},#{department},#{resourceType},#{companyType},#{invoicesMonth},#{monthAmount},#{invoicesStartdate},#{invoicesEnddate},#{invoicesState},#{vdateDate},#{invoicesNo},#{invoicesAccount},#{noinvoicesAccount},#{receivedState},#{receivedDate},#{receivedAccount},#{arrearage},#{commision},#{otherDeductions},#{minBandwidth},#{minBandwidthPrice},#{portBandwidth},#{portBandwidthPrice},#{overflowBandwidth},#{overflowBandwidthPrice},#{cabinetNum},#{cabinetPrice},#{serviceNum},#{servicePrice},#{ipNum},#{ipPrice},#{switchNum},#{switchPrice},#{odfNum},#{odfPrice},#{portNum},#{portPrice},#{memoryNum},#{memoryPrice},#{cpuNum},#{cpuPrice},#{diskNum},#{diskPrice},#{roomName},#{deleteFlag},#{createUser},#{createUserDept},#{createDate},#{modifyUser},#{modifyDate},#{extStr1},#{extStr2},#{extStr3},#{extStr4},#{extStr5},#{extDate1},#{extDate2},#{extNum1},#{extNum2},#{extNum3})
+</insert>
+
+<update id="update" parameterType="com.jc.oa.finance.domain.ToaFinanceInvoices">
+	update toa_finance_invoices set 
+	<if test="mainId != null ">
+		main_id=#{mainId},
+	</if>
+	<if test="companyId != null ">
+		company_id=#{companyId},
+	</if>
+	<if test="companyName != null ">
+		company_name=#{companyName},
+	</if>
+	<if test="companyType != null ">
+		company_type=#{companyType},
+	</if>
+	<if test="invoicesMonth != null ">
+		invoices_month=#{invoicesMonth},
+	</if>
+	<if test="monthAmount != null ">
+		month_amount=#{monthAmount},
+	</if>
+	<if test="invoicesStartdate != null ">
+		invoices_startdate=#{invoicesStartdate},
+	</if>
+	<if test="invoicesEnddate != null ">
+		invoices_enddate=#{invoicesEnddate},
+	</if>
+	<if test="invoicesState != null ">
+		invoices_state=#{invoicesState},
+	</if>
+	<if test="vdateDate != null ">
+		vdate_date=#{vdateDate},
+	</if>
+	<if test="invoicesNo != null ">
+		invoices_no=#{invoicesNo},
+	</if>
+	<if test="invoicesAccount != null ">
+		invoices_account=#{invoicesAccount},
+	</if>
+	<if test="noinvoicesAccount != null ">
+		noinvoices_account=#{noinvoicesAccount},
+	</if>
+	<if test="receivedState != null ">
+		received_state=#{receivedState},
+	</if>
+	<if test="receivedDate != null ">
+		received_date=#{receivedDate},
+	</if>
+	<if test="receivedAccount != null ">
+		received_account=#{receivedAccount},
+	</if>
+	<if test="arrearage != null ">
+		arrearage=#{arrearage},
+	</if>
+	<if test="commision != null ">
+		commision=#{commision},
+	</if>
+	<if test="otherDeductions != null ">
+		other_deductions=#{otherDeductions},
+	</if>
+	<if test="minBandwidth != null ">
+		min_bandwidth=#{minBandwidth},
+	</if>
+	<if test="minBandwidthPrice != null ">
+		min_bandwidth_price=#{minBandwidthPrice},
+	</if>
+	<if test="portBandwidth != null ">
+		port_bandwidth=#{portBandwidth},
+	</if>
+	<if test="portBandwidthPrice != null ">
+		port_bandwidth_price=#{portBandwidthPrice},
+	</if>
+	<if test="overflowBandwidth != null ">
+		overflow_bandwidth=#{overflowBandwidth},
+	</if>
+	<if test="overflowBandwidthPrice != null ">
+		overflow_bandwidth_price=#{overflowBandwidthPrice},
+	</if>
+	<if test="cabinetNum != null ">
+		cabinet_num=#{cabinetNum},
+	</if>
+	<if test="cabinetPrice != null ">
+		cabinet_price=#{cabinetPrice},
+	</if>
+	<if test="serviceNum != null ">
+		service_num=#{serviceNum},
+	</if>
+	<if test="servicePrice != null ">
+		service_price=#{servicePrice},
+	</if>
+	<if test="ipNum != null ">
+		ip_num=#{ipNum},
+	</if>
+	<if test="ipPrice != null ">
+		ip_price=#{ipPrice},
+	</if>
+	<if test="switchNum != null ">
+		switch_num=#{switchNum},
+	</if>
+	<if test="switchPrice != null ">
+		switch_price=#{switchPrice},
+	</if>
+	<if test="odfNum != null ">
+		odf_num=#{odfNum},
+	</if>
+	<if test="odfPrice != null ">
+		odf_price=#{odfPrice},
+	</if>
+	<if test="portNum != null ">
+		port_num=#{portNum},
+	</if>
+	<if test="portPrice != null ">
+		port_price=#{portPrice},
+	</if>
+	<if test="memoryNum != null ">
+		memory_num=#{memoryNum},
+	</if>
+	<if test="memoryPrice != null ">
+		memory_price=#{memoryPrice},
+	</if>
+	<if test="cpuNum != null ">
+		cpu_num=#{cpuNum},
+	</if>
+	<if test="cpuPrice != null ">
+		cpu_price=#{cpuPrice},
+	</if>
+	<if test="diskNum != null ">
+		disk_num=#{diskNum},
+	</if>
+	<if test="diskPrice != null ">
+		disk_price=#{diskPrice},
+	</if>
+	<if test="roomName != null ">
+		room_name=#{roomName},
+	</if>
+	<if test="deleteFlag != null ">
+		DELETE_FLAG=#{deleteFlag},
+	</if>
+	<if test="createUser != null ">
+		CREATE_USER=#{createUser},
+	</if>
+	<if test="createUserDept != null ">
+		CREATE_USER_DEPT=#{createUserDept},
+	</if>
+	<if test="createDate != null ">
+		CREATE_DATE=#{createDate},
+	</if>
+	<if test="modifyUser != null ">
+		MODIFY_USER=#{modifyUser},
+	</if>
+	<if test="modifyDate != null ">
+		MODIFY_DATE=#{modifyDate},
+	</if>
+	<if test="extStr1 != null ">
+		EXT_STR1=#{extStr1},
+	</if>
+	<if test="extStr2 != null ">
+		EXT_STR2=#{extStr2},
+	</if>
+	<if test="extStr3 != null ">
+		EXT_STR3=#{extStr3},
+	</if>
+	<if test="extStr4 != null ">
+		EXT_STR4=#{extStr4},
+	</if>
+	<if test="extStr5 != null ">
+		EXT_STR5=#{extStr5},
+	</if>
+	<if test="extDate1 != null ">
+		EXT_DATE1=#{extDate1},
+	</if>
+	<if test="extDate2 != null ">
+		EXT_DATE2=#{extDate2},
+	</if>
+	<if test="extNum1 != null ">
+		EXT_NUM1=#{extNum1},
+	</if>
+	<if test="extNum2 != null ">
+		EXT_NUM2=#{extNum2},
+	</if>
+	<if test="extNum3 != null ">
+		EXT_NUM3=#{extNum3},
+	</if>
+
+	 MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+</update>
+
+<select id="query" parameterType="com.jc.oa.finance.domain.ToaFinanceInvoices" resultType="com.jc.oa.finance.domain.ToaFinanceInvoices">
+	SELECT 
+		 t.ID id
+		,t.main_id mainId
+		,t.company_id companyId
+		,t.company_name companyName
+		,t.department department
+		,t.resource_type resourceType
+		,t.company_type companyType
+		,t.invoices_month invoicesMonth
+		,t.month_amount monthAmount
+		,t.invoices_startdate invoicesStartdate
+		,t.invoices_enddate invoicesEnddate
+		,t.invoices_state invoicesState
+		,t.vdate_date vdateDate
+		,t.invoices_no invoicesNo
+		,t.invoices_account invoicesAccount
+		,t.noinvoices_account noinvoicesAccount
+		,t.received_state receivedState
+		,t.received_date receivedDate
+		,t.received_account receivedAccount
+		,t.arrearage arrearage
+		,t.commision commision
+		,t.other_deductions otherDeductions
+		,t.min_bandwidth minBandwidth
+		,t.min_bandwidth_price minBandwidthPrice
+		,t.port_bandwidth portBandwidth
+		,t.port_bandwidth_price portBandwidthPrice
+		,t.overflow_bandwidth overflowBandwidth
+		,t.overflow_bandwidth_price overflowBandwidthPrice
+		,t.cabinet_num cabinetNum
+		,t.cabinet_price cabinetPrice
+		,t.service_num serviceNum
+		,t.service_price servicePrice
+		,t.ip_num ipNum
+		,t.ip_price ipPrice
+		,t.switch_num switchNum
+		,t.switch_price switchPrice
+		,t.odf_num odfNum
+		,t.odf_price odfPrice
+		,t.port_num portNum
+		,t.port_price portPrice
+		,t.memory_num memoryNum
+		,t.memory_price memoryPrice
+		,t.cpu_num cpuNum
+		,t.cpu_price cpuPrice
+		,t.disk_num diskNum
+		,t.disk_price diskPrice
+		,t.room_name roomName
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.EXT_NUM1 extNum1
+		,t.EXT_NUM2 extNum2
+		,t.EXT_NUM3 extNum3
+ FROM toa_finance_invoices t
+<where>
+	<if test="id != null ">
+		and t.id=#{id}
+	</if>
+	<if test="mainId != null ">
+		and t.main_id=#{mainId}
+	</if>
+	<if test="companyId != null ">
+		and t.company_id=#{companyId}
+	</if>
+	<if test="sale != null ">
+		and t.sale=#{sale}
+	</if>
+	<if test="maintenanSale != null ">
+		and t.maintenan_sale=#{maintenanSale}
+	</if>
+	<if test="companyName != null ">
+		and t.company_name like <![CDATA['%${companyName}%']]>
+	</if>
+	<if test="companyType != null ">
+		and t.company_type=#{companyType}
+	</if>
+	<if test="invoicesMonth != null ">
+		and t.invoices_month=#{invoicesMonth}
+	</if>
+	<if test="monthAmount != null ">
+		and t.month_amount=#{monthAmount}
+	</if>
+	<if test="invoicesStartdate != null ">
+		and t.invoices_startdate=#{invoicesStartdate}
+	</if>
+	<if test="invoicesEnddate != null ">
+		and t.invoices_enddate=#{invoicesEnddate}
+	</if>
+	<if test="invoicesState != null ">
+		and t.invoices_state=#{invoicesState}
+	</if>
+	<if test="vdateDate != null ">
+		and t.vdate_date=#{vdateDate}
+	</if>
+	<if test="invoicesNo != null ">
+		and t.invoices_no=#{invoicesNo}
+	</if>
+	<if test="invoicesAccount != null ">
+		and t.invoices_account=#{invoicesAccount}
+	</if>
+	<if test="noinvoicesAccount != null ">
+		and t.noinvoices_account=#{noinvoicesAccount}
+	</if>
+	<if test="receivedState != null ">
+		and t.received_state=#{receivedState}
+	</if>
+	<if test="receivedDate != null ">
+		and t.received_date=#{receivedDate}
+	</if>
+	<if test="receivedAccount != null ">
+		and t.received_account=#{receivedAccount}
+	</if>
+	<if test="arrearage != null ">
+		and t.arrearage=#{arrearage}
+	</if>
+	<if test="commision != null ">
+		and t.commision=#{commision}
+	</if>
+	<if test="otherDeductions != null ">
+		and t.other_deductions=#{otherDeductions}
+	</if>
+	<if test="minBandwidth != null ">
+		and t.min_bandwidth=#{minBandwidth}
+	</if>
+	<if test="minBandwidthPrice != null ">
+		and t.min_bandwidth_price=#{minBandwidthPrice}
+	</if>
+	<if test="portBandwidth != null ">
+		and t.port_bandwidth=#{portBandwidth}
+	</if>
+	<if test="portBandwidthPrice != null ">
+		and t.port_bandwidth_price=#{portBandwidthPrice}
+	</if>
+	<if test="overflowBandwidth != null ">
+		and t.overflow_bandwidth=#{overflowBandwidth}
+	</if>
+	<if test="overflowBandwidthPrice != null ">
+		and t.overflow_bandwidth_price=#{overflowBandwidthPrice}
+	</if>
+	<if test="cabinetNum != null ">
+		and t.cabinet_num=#{cabinetNum}
+	</if>
+	<if test="cabinetPrice != null ">
+		and t.cabinet_price=#{cabinetPrice}
+	</if>
+	<if test="serviceNum != null ">
+		and t.service_num=#{serviceNum}
+	</if>
+	<if test="servicePrice != null ">
+		and t.service_price=#{servicePrice}
+	</if>
+	<if test="ipNum != null ">
+		and t.ip_num=#{ipNum}
+	</if>
+	<if test="ipPrice != null ">
+		and t.ip_price=#{ipPrice}
+	</if>
+	<if test="switchNum != null ">
+		and t.switch_num=#{switchNum}
+	</if>
+	<if test="switchPrice != null ">
+		and t.switch_price=#{switchPrice}
+	</if>
+	<if test="odfNum != null ">
+		and t.odf_num=#{odfNum}
+	</if>
+	<if test="odfPrice != null ">
+		and t.odf_price=#{odfPrice}
+	</if>
+	<if test="portNum != null ">
+		and t.port_num=#{portNum}
+	</if>
+	<if test="portPrice != null ">
+		and t.port_price=#{portPrice}
+	</if>
+	<if test="memoryNum != null ">
+		and t.memory_num=#{memoryNum}
+	</if>
+	<if test="memoryPrice != null ">
+		and t.memory_price=#{memoryPrice}
+	</if>
+	<if test="cpuNum != null ">
+		and t.cpu_num=#{cpuNum}
+	</if>
+	<if test="cpuPrice != null ">
+		and t.cpu_price=#{cpuPrice}
+	</if>
+	<if test="diskNum != null ">
+		and t.disk_num=#{diskNum}
+	</if>
+	<if test="diskPrice != null ">
+		and t.disk_price=#{diskPrice}
+	</if>
+	<if test="roomName != null ">
+		and t.room_name=#{roomName}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+</select>
+	
+<select id="queryCount" parameterType="com.jc.oa.finance.domain.ToaFinanceInvoices" resultType="java.lang.Long">
+	SELECT COUNT(ID) 
+	 FROM toa_finance_invoices t
+<where>
+	<if test="id != null ">
+		and t.id=#{id}
+	</if>
+	<if test="mainId != null ">
+		and t.main_id=#{mainId}
+	</if>
+	<if test="companyId != null ">
+		and t.company_id=#{companyId}
+	</if>
+	<if test="sale != null ">
+		and t.sale=#{sale}
+	</if>
+	<if test="maintenanSale != null ">
+		and t.maintenan_sale=#{maintenanSale}
+	</if>
+	<if test="companyName != null ">
+		and t.company_name like <![CDATA['%${companyName}%']]>
+	</if>
+	<if test="companyType != null ">
+		and t.company_type=#{companyType}
+	</if>
+	<if test="invoicesMonth != null ">
+		and t.invoices_month=#{invoicesMonth}
+	</if>
+	<if test="monthAmount != null ">
+		and t.month_amount=#{monthAmount}
+	</if>
+	<if test="invoicesStartdate != null ">
+		and t.invoices_startdate=#{invoicesStartdate}
+	</if>
+	<if test="invoicesEnddate != null ">
+		and t.invoices_enddate=#{invoicesEnddate}
+	</if>
+	<if test="invoicesState != null ">
+		and t.invoices_state=#{invoicesState}
+	</if>
+	<if test="vdateDate != null ">
+		and t.vdate_date=#{vdateDate}
+	</if>
+	<if test="invoicesNo != null ">
+		and t.invoices_no=#{invoicesNo}
+	</if>
+	<if test="invoicesAccount != null ">
+		and t.invoices_account=#{invoicesAccount}
+	</if>
+	<if test="noinvoicesAccount != null ">
+		and t.noinvoices_account=#{noinvoicesAccount}
+	</if>
+	<if test="receivedState != null ">
+		and t.received_state=#{receivedState}
+	</if>
+	<if test="receivedDate != null ">
+		and t.received_date=#{receivedDate}
+	</if>
+	<if test="receivedAccount != null ">
+		and t.received_account=#{receivedAccount}
+	</if>
+	<if test="arrearage != null ">
+		and t.arrearage=#{arrearage}
+	</if>
+	<if test="commision != null ">
+		and t.commision=#{commision}
+	</if>
+	<if test="otherDeductions != null ">
+		and t.other_deductions=#{otherDeductions}
+	</if>
+	<if test="minBandwidth != null ">
+		and t.min_bandwidth=#{minBandwidth}
+	</if>
+	<if test="minBandwidthPrice != null ">
+		and t.min_bandwidth_price=#{minBandwidthPrice}
+	</if>
+	<if test="portBandwidth != null ">
+		and t.port_bandwidth=#{portBandwidth}
+	</if>
+	<if test="portBandwidthPrice != null ">
+		and t.port_bandwidth_price=#{portBandwidthPrice}
+	</if>
+	<if test="overflowBandwidth != null ">
+		and t.overflow_bandwidth=#{overflowBandwidth}
+	</if>
+	<if test="overflowBandwidthPrice != null ">
+		and t.overflow_bandwidth_price=#{overflowBandwidthPrice}
+	</if>
+	<if test="cabinetNum != null ">
+		and t.cabinet_num=#{cabinetNum}
+	</if>
+	<if test="cabinetPrice != null ">
+		and t.cabinet_price=#{cabinetPrice}
+	</if>
+	<if test="serviceNum != null ">
+		and t.service_num=#{serviceNum}
+	</if>
+	<if test="servicePrice != null ">
+		and t.service_price=#{servicePrice}
+	</if>
+	<if test="ipNum != null ">
+		and t.ip_num=#{ipNum}
+	</if>
+	<if test="ipPrice != null ">
+		and t.ip_price=#{ipPrice}
+	</if>
+	<if test="switchNum != null ">
+		and t.switch_num=#{switchNum}
+	</if>
+	<if test="switchPrice != null ">
+		and t.switch_price=#{switchPrice}
+	</if>
+	<if test="odfNum != null ">
+		and t.odf_num=#{odfNum}
+	</if>
+	<if test="odfPrice != null ">
+		and t.odf_price=#{odfPrice}
+	</if>
+	<if test="portNum != null ">
+		and t.port_num=#{portNum}
+	</if>
+	<if test="portPrice != null ">
+		and t.port_price=#{portPrice}
+	</if>
+	<if test="memoryNum != null ">
+		and t.memory_num=#{memoryNum}
+	</if>
+	<if test="memoryPrice != null ">
+		and t.memory_price=#{memoryPrice}
+	</if>
+	<if test="cpuNum != null ">
+		and t.cpu_num=#{cpuNum}
+	</if>
+	<if test="cpuPrice != null ">
+		and t.cpu_price=#{cpuPrice}
+	</if>
+	<if test="diskNum != null ">
+		and t.disk_num=#{diskNum}
+	</if>
+	<if test="diskPrice != null ">
+		and t.disk_price=#{diskPrice}
+	</if>
+	<if test="roomName != null ">
+		and t.room_name=#{roomName}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+
+</select>
+
+<update id="deleteLogic"  parameterType="com.jc.oa.finance.domain.ToaFinanceInvoices">
+	     UPDATE toa_finance_invoices t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+ 			where ID in
+ 			<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=","> 
+				 #{primaryKey}
+			</foreach>
+</update>
+<!--月收入信息与主体表关联查询  -->
+<select id="queryBill" parameterType="com.jc.oa.finance.domain.ToaFinanceInvoices" resultType="com.jc.oa.finance.domain.ToaFinanceInvoices">
+	SELECT 
+		 t.ID id
+		,t.main_id mainId
+		,t.company_id companyId
+		,t.company_name companyName
+		,t.invoices_month invoicesMonth
+		,t.month_amount monthAmount
+		,t.invoices_startdate invoicesStartdate
+		,t.invoices_enddate invoicesEnddate
+		,t.invoices_state invoicesState
+		,t.vdate_date vdateDate
+		,t.invoices_no invoicesNo
+		,t.invoices_account invoicesAccount
+		,t.noinvoices_account noinvoicesAccount
+		,t.received_state receivedState
+		,t.received_date receivedDate
+		,t.received_account receivedAccount
+		,t.arrearage arrearage
+		,t.commision commision
+		,t.other_deductions otherDeductions
+		,t2.order_no orderNo
+		,t2.order_date orderDate
+		,t2.company_type companyType
+		,t2.resource_type resourceType
+		,t2.department department
+		,t2.sale sale
+		,t2.maintenan_sale maintenanSale
+		,t2.room_name roomName
+		,t2.pay_type payType
+		,t2.cycle_start cycleStart
+		,t2.cycle_end cycleEnd
+		,t2.line_category lineCategory
+		,t2.single_charg singleCharg
+		,t2.overflow_category overflowCategory
+		,t2.card_no cardNo
+		,t2.card_amount cardAmount
+		,t2.performance_amount performanceAmount
+		,t2.card_stock_amount cardStockAmount
+		,t2.prestore_amount prestoreAmount
+		,t2.discount discount
+		,t2.order_remark orderRemark
+		,t2.min_bandwidth minBandwidth
+		,t2.min_bandwidth_price minBandwidthPrice
+		,t2.port_bandwidth portBandwidth
+		,t2.port_bandwidth_price portBandwidthPrice
+		,t2.overflow_bandwidth overflowBandwidth
+		,t2.overflow_bandwidth_price overflowBandwidthPrice
+		,t2.cabinet_num cabinetNum
+		,t2.cabinet_price cabinetPrice
+		,t2.service_num serviceNum
+		,t2.service_price servicePrice
+		,t2.ip_num ipNum
+		,t2.ip_price ipPrice
+		,t2.switch_num switchNum
+		,t2.switch_price switchPrice
+		,t2.odf_num odfNum
+		,t2.odf_price odfPrice
+		,t2.port_num portNum
+		,t2.port_price portPrice
+		,t2.memory_num memoryNum
+		,t2.memory_price memoryPrice
+		,t2.cpu_num cpuNum
+		,t2.cpu_price cpuPrice
+		,t2.disk_num diskNum
+		,t2.disk_price diskPrice	
+ FROM toa_finance_invoices t LEFT JOIN toa_finance_main t2 ON t.main_id=t2.id
+<where>
+	<if test="id != null ">
+		and t.id=#{id}
+	</if>
+	<if test="mainId != null ">
+		and t.main_id=#{mainId}
+	</if>
+	<if test="companyId != null ">
+		and t.company_id=#{companyId}
+	</if>
+	<if test="companyName != null ">
+		and t.company_name=#{companyName}
+	</if>
+	<if test="invoicesMonth != null ">
+		and t.invoices_month=#{invoicesMonth}
+	</if>
+	<if test="monthAmount != null ">
+		and t.month_amount=#{monthAmount}
+	</if>
+	<if test="invoicesStartdate != null ">
+		and t.invoices_startdate=#{invoicesStartdate}
+	</if>
+	<if test="invoicesEnddate != null ">
+		and t.invoices_enddate=#{invoicesEnddate}
+	</if>
+	<if test="invoicesState != null ">
+		and t.invoices_state=#{invoicesState}
+	</if>
+	<if test="vdateDate != null ">
+		and t.vdate_date=#{vdateDate}
+	</if>
+	<if test="invoicesNo != null ">
+		and t.invoices_no=#{invoicesNo}
+	</if>
+	<if test="invoicesAccount != null ">
+		and t.invoices_account=#{invoicesAccount}
+	</if>
+	<if test="noinvoicesAccount != null ">
+		and t.noinvoices_account=#{noinvoicesAccount}
+	</if>
+	<if test="receivedState != null ">
+		and t.received_state=#{receivedState}
+	</if>
+	<if test="receivedDate != null ">
+		and t.received_date=#{receivedDate}
+	</if>
+	<if test="receivedAccount != null ">
+		and t.received_account=#{receivedAccount}
+	</if>
+	<if test="arrearage != null ">
+		and t.arrearage=#{arrearage}
+	</if>
+	<if test="commision != null ">
+		and t.commision=#{commision}
+	</if>
+	<if test="otherDeductions != null ">
+		and t.other_deductions=#{otherDeductions}
+	</if>
+</where>
+</select>
+
+<!--月收入信息与主体表关联查询  -->
+<select id="queryBillCount" parameterType="com.jc.oa.finance.domain.ToaFinanceInvoices" resultType="java.lang.Long">
+	SELECT  COUNT(t.ID)
+ FROM toa_finance_invoices t LEFT JOIN toa_finance_main t2 ON t.main_id=t2.id
+<where>
+	<if test="id != null ">
+		and t.id=#{id}
+	</if>
+	<if test="mainId != null ">
+		and t.main_id=#{mainId}
+	</if>
+	<if test="companyId != null ">
+		and t.company_id=#{companyId}
+	</if>
+	<if test="companyName != null ">
+		and t.company_name=#{companyName}
+	</if>
+	<if test="invoicesMonth != null ">
+		and t.invoices_month=#{invoicesMonth}
+	</if>
+	<if test="monthAmount != null ">
+		and t.month_amount=#{monthAmount}
+	</if>
+	<if test="invoicesStartdate != null ">
+		and t.invoices_startdate=#{invoicesStartdate}
+	</if>
+	<if test="invoicesEnddate != null ">
+		and t.invoices_enddate=#{invoicesEnddate}
+	</if>
+	<if test="invoicesState != null ">
+		and t.invoices_state=#{invoicesState}
+	</if>
+	<if test="vdateDate != null ">
+		and t.vdate_date=#{vdateDate}
+	</if>
+	<if test="invoicesNo != null ">
+		and t.invoices_no=#{invoicesNo}
+	</if>
+	<if test="invoicesAccount != null ">
+		and t.invoices_account=#{invoicesAccount}
+	</if>
+	<if test="noinvoicesAccount != null ">
+		and t.noinvoices_account=#{noinvoicesAccount}
+	</if>
+	<if test="receivedState != null ">
+		and t.received_state=#{receivedState}
+	</if>
+	<if test="receivedDate != null ">
+		and t.received_date=#{receivedDate}
+	</if>
+	<if test="receivedAccount != null ">
+		and t.received_account=#{receivedAccount}
+	</if>
+	<if test="arrearage != null ">
+		and t.arrearage=#{arrearage}
+	</if>
+	<if test="commision != null ">
+		and t.commision=#{commision}
+	</if>
+	<if test="otherDeductions != null ">
+		and t.other_deductions=#{otherDeductions}
+	</if>
+</where>
+</select>
+<!-- 出账单状态 -->
+
+<update id="billState"  parameterType="com.jc.oa.finance.domain.ToaFinanceInvoices">
+	     UPDATE toa_finance_invoices t set t.other_deductions=1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+ 			where ID in
+ 			<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=","> 
+				 #{primaryKey}
+			</foreach>
+</update>
+<!-- 通过应收月份查询 -->
+<select id="queryInvoices" parameterType="com.jc.oa.finance.domain.ToaFinanceInvoices" resultType="com.jc.oa.finance.domain.ToaFinanceInvoices">
+	SELECT 
+		company_name companyName,
+		SUM(month_amount) monthAmount,
+		company_id companyId,
+		company_type companyType 
+	 FROM toa_finance_invoices
+	<where>
+		<if test="otherDeductions != null">
+			and other_deductions=#{otherDeductions}
+		</if>
+		<if test="invoicesMonth != null ">
+			and invoices_month=#{invoicesMonth}
+		</if>
+		<if test="deleteFlag != null ">
+			and DELETE_FLAG=#{deleteFlag}
+		</if>
+	</where>
+	GROUP BY company_name
+</select>
+<!--通过应收月份和客户名称查询  -->
+<select id="queryInvoicesName" parameterType="com.jc.oa.finance.domain.ToaFinanceInvoices" resultType="com.jc.oa.finance.domain.ToaFinanceInvoices">
+	SELECT id FROM toa_finance_invoices 
+	<where>
+		<if test="otherDeductions != null">
+			and other_deductions=#{otherDeductions}
+		</if>
+		<if test="companyName != null ">
+			and company_name=#{companyName}
+		</if>
+		<if test="invoicesMonth != null ">
+			and invoices_month=#{invoicesMonth}
+		</if>
+		<if test="deleteFlag != null ">
+			and DELETE_FLAG=#{deleteFlag}
+		</if>
+	</where>
+</select>
+<!-- 修改状态 -->
+<update id="billNewState"  parameterType="com.jc.oa.finance.domain.ToaFinanceInvoices">
+	     UPDATE toa_finance_invoices t set t.other_deductions=1
+ 			where ID in
+ 			<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=","> 
+				 #{primaryKey}
+			</foreach>
+</update>
+</mapper>   

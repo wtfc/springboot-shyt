@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<system-config>
+
+    <action-processor default="true">
+        <class>com.horizon.core.actionprocessor.ActionProcessorImpl</class>
+        <description>Action处理类：用于处理请求过程的调用过程</description>
+    </action-processor>
+
+    <context default="true">
+        <class>com.horizon.context.DefaultContext</class>
+        <description>上下文接口实现类：用于代理request,response,session三个对象和提供其他方便使用的方法</description>
+    </context>
+
+    <database-processors>
+        <database-processor type="query">
+            <class>com.horizon.db.ExeQuery</class>
+            <description>数据库查询执行类</description>
+        </database-processor>
+        <database-processor type="update">
+            <class>com.horizon.db.ExeUpdate</class>
+            <description>数据库更新执行类</description>
+        </database-processor>
+        <database-processor type="saveobject">
+            <class>com.horizon.db.Object2Database</class>
+            <description>以对象形式进行数据保存执行类</description>
+        </database-processor>
+    </database-processors>
+
+    <validation-processor>
+        <validation type="string">
+            <class>com.horizon.validity.Validation4String</class>
+            <description>字符合法性验证类</description>
+        </validation>
+        <validation type="email">
+            <class>com.horizon.validity.Validation4Email</class>
+            <description>电子邮件地址合法性验证类</description>
+        </validation>
+        <validation type="date">
+            <class>com.horizon.validity.Validation4Date</class>
+            <description>日期合法性验证类</description>
+        </validation>
+        <validation type="integer">
+            <class>com.horizon.validity.Validation4Integer</class>
+            <description>整数合法性验证类</description>
+        </validation>
+        <validation type="float">
+            <class>com.horizon.validity.Validation4Float</class>
+            <description>小数合法性验证类</description>
+        </validation>
+        <validation type="idcard">
+            <class>com.horizon.validity.Validation4Idcard</class>
+            <description>身份证合法性验证类</description>
+        </validation>
+        <validation type="zipcode">
+            <class>com.horizon.validity.Validation4ZipCode</class>
+            <description>邮政编码合法性验证类</description>
+        </validation>
+        <validation type="telephone">
+            <class>com.horizon.validity.Validation4Telephone</class>
+            <description>电话号码合法性验证类</description>
+        </validation>
+    </validation-processor>
+
+    <result-types>
+        <result-type name="dispatcher" class="com.horizon.core.resultprocessor.ResultProcessorImpl4Dispatcher"/>
+        <result-type name="dispatcherAction" class="com.horizon.core.resultprocessor.ResultProcessorImpl4DispatcherAction"/>
+        <result-type name="redirect" class="com.horizon.core.resultprocessor.ResultProcessorImpl4Redirect"/>
+        <result-type name="redirectAction" class="com.horizon.core.resultprocessor.ResultProcessorImpl4RedirectAction"/>
+        <result-type name="stream" class="com.horizon.core.resultprocessor.ResultProcessorImpl4Stream"/>
+    </result-types>
+
+</system-config>

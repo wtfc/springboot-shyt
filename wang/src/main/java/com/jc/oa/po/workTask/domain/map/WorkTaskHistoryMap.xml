@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.po.workTask.domain.WorkTaskHistory">
+
+	<select id="query" parameterType="com.jc.oa.po.workTask.domain.WorkTaskHistory" resultType="com.jc.oa.po.workTask.domain.WorkTaskHistory">
+		SELECT 
+			t.ID id,
+			t.TASK_ID taskId,
+			t.TASK_EVENT_TYPE taskEventType,
+			t.TASK_EVENT_TITLE taskEventTitle,
+			t.CONTENT content,
+			t.REPORT_CONTENT reportContent,
+			t.REPORT_PROC reportProc,
+			t.DELAY_REASON delayReason,
+			t.DELAY_ENDDATE delayEnddate,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5
+			
+		FROM tty_po_task_history t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="taskId != null">
+				and t.TASK_ID = #{taskId}
+			</if>
+			<if test="taskEventType != null">
+				and t.TASK_EVENT_TYPE = #{taskEventType}
+			</if>
+			<if test="taskEventTitle != null">
+				and t.TASK_EVENT_TITLE = #{taskEventTitle}
+			</if>
+			<if test="content != null">
+				and t.CONTENT = #{content}
+			</if>
+			<if test="reportContent != null">
+				and t.REPORT_CONTENT = #{reportContent}
+			</if>
+			<if test="reportProc != null">
+				and t.REPORT_PROC = #{reportProc}
+			</if>
+			<if test="delayReason != null">
+				and t.DELAY_REASON = #{delayReason}
+			</if>
+			<if test="delayEnddate != null">
+				and t.DELAY_ENDDATE = #{delayEnddate}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+		ORDER BY t.CREATE_DATE DESC
+	</select>
+	
+	
+	<select id="queryCount" parameterType="com.jc.oa.po.workTask.domain.WorkTaskHistory" resultType="java.lang.Integer">
+		SELECT count(ID) 
+		FROM tty_po_task_history t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="taskId != null">
+				and t.TASK_ID = #{taskId}
+			</if>
+			<if test="taskEventType != null">
+				and t.TASK_EVENT_TYPE = #{taskEventType}
+			</if>
+			<if test="taskEventTitle != null">
+				and t.TASK_EVENT_TITLE = #{taskEventTitle}
+			</if>
+			<if test="content != null">
+				and t.CONTENT = #{content}
+			</if>
+			<if test="reportContent != null">
+				and t.REPORT_CONTENT = #{reportContent}
+			</if>
+			<if test="reportProc != null">
+				and t.REPORT_PROC = #{reportProc}
+			</if>
+			<if test="delayReason != null">
+				and t.DELAY_REASON = #{delayReason}
+			</if>
+			<if test="delayEnddate != null">
+				and t.DELAY_ENDDATE = #{delayEnddate}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+	</select>
+
+	<delete id="deletePhysical"  parameterType="com.jc.oa.po.workTask.domain.WorkTaskHistory">
+    	delete from tty_po_task_history
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete>
+
+	<update id="deleteLogic"  parameterType="com.jc.oa.po.workTask.domain.WorkTaskHistory">
+    	UPDATE tty_po_task_history t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+
+	<insert id="insert" parameterType="com.jc.oa.po.workTask.domain.WorkTaskHistory" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tty_po_task_history(ID,TASK_ID,TASK_EVENT_TYPE,TASK_EVENT_TITLE,CONTENT,REPORT_CONTENT,REPORT_PROC,DELAY_REASON,DELAY_ENDDATE,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES (#{id,jdbcType=NUMERIC},#{taskId,jdbcType=NUMERIC},#{taskEventType,jdbcType=VARCHAR},#{taskEventTitle,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{reportContent,jdbcType=VARCHAR},#{reportProc,jdbcType=NUMERIC},#{delayReason,jdbcType=VARCHAR},#{delayEnddate,jdbcType=TIMESTAMP},#{deleteFlag,jdbcType=NUMERIC},#{createUser,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createUserOrg,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extDate1,jdbcType=TIMESTAMP},#{extDate2,jdbcType=TIMESTAMP},#{extNum1,jdbcType=NUMERIC},#{extNum2,jdbcType=NUMERIC},#{extNum3,jdbcType=NUMERIC},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr5,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertList" parameterType="list">
+		INSERT INTO tty_po_task_history(ID,TASK_ID,TASK_EVENT_TYPE,TASK_EVENT_TITLE,CONTENT,REPORT_CONTENT,REPORT_PROC,DELAY_REASON,DELAY_ENDDATE,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(#{item.id,jdbcType=NUMERIC},#{item.taskId,jdbcType=NUMERIC},#{item.taskEventType,jdbcType=VARCHAR},#{item.taskEventTitle,jdbcType=VARCHAR},#{item.content,jdbcType=VARCHAR},#{item.reportContent,jdbcType=VARCHAR},#{item.reportProc,jdbcType=NUMERIC},#{item.delayReason,jdbcType=VARCHAR},#{item.delayEnddate,jdbcType=TIMESTAMP},#{item.deleteFlag,jdbcType=NUMERIC},#{item.createUser,jdbcType=NUMERIC},#{item.createUserDept,jdbcType=NUMERIC},#{item.createUserOrg,jdbcType=NUMERIC},#{item.createDate,jdbcType=TIMESTAMP},#{item.modifyUser,jdbcType=NUMERIC},#{item.modifyDate,jdbcType=TIMESTAMP},#{item.extDate1,jdbcType=TIMESTAMP},#{item.extDate2,jdbcType=TIMESTAMP},#{item.extNum1,jdbcType=NUMERIC},#{item.extNum2,jdbcType=NUMERIC},#{item.extNum3,jdbcType=NUMERIC},#{item.extStr1,jdbcType=VARCHAR},#{item.extStr2,jdbcType=VARCHAR},#{item.extStr3,jdbcType=VARCHAR},#{item.extStr4,jdbcType=VARCHAR},#{item.extStr5,jdbcType=VARCHAR})
+			</foreach> 
+	</insert>
+
+	<update id="update" parameterType="com.jc.oa.po.workTask.domain.WorkTaskHistory">
+	UPDATE tty_po_task_history
+	   <set>
+	   	<if test="taskId != null">
+	   		TASK_ID = #{taskId},
+	   	</if>
+	   	<if test="taskEventType != null">
+	   		TASK_EVENT_TYPE = #{taskEventType},
+	   	</if>
+	   	<if test="taskEventTitle != null">
+	   		TASK_EVENT_TITLE = #{taskEventTitle},
+	   	</if>
+	   	<if test="content != null">
+	   		CONTENT = #{content},
+	   	</if>
+	   	<if test="reportContent != null">
+	   		REPORT_CONTENT = #{reportContent},
+	   	</if>
+	   	<if test="reportProc != null">
+	   		REPORT_PROC = #{reportProc},
+	   	</if>
+	   	<if test="delayReason != null">
+	   		DELAY_REASON = #{delayReason},
+	   	</if>
+	   	<if test="delayEnddate != null">
+	   		DELAY_ENDDATE = #{delayEnddate},
+	   	</if>
+	   	<if test="deleteFlag != null">
+	   		DELETE_FLAG = #{deleteFlag},
+	   	</if>
+	   	<if test="createUser != null">
+	   		CREATE_USER = #{createUser},
+	   	</if>
+	   	<if test="createUserDept != null">
+	   		CREATE_USER_DEPT = #{createUserDept},
+	   	</if>
+	   	<if test="createUserOrg != null">
+	   		CREATE_USER_ORG = #{createUserOrg},
+	   	</if>
+	   	<if test="createDate != null">
+	   		CREATE_DATE = #{createDate},
+	   	</if>
+	   	<if test="modifyUser != null">
+	   		MODIFY_USER = #{modifyUser},
+	   	</if>
+	   	<if test="modifyDate != null">
+	   		MODIFY_DATE = #{modifyDate},
+	   	</if>
+	   	<if test="extDate1 != null">
+	   		EXT_DATE1 = #{extDate1},
+	   	</if>
+	   	<if test="extDate2 != null">
+	   		EXT_DATE2 = #{extDate2},
+	   	</if>
+	   	<if test="extNum1 != null">
+	   		EXT_NUM1 = #{extNum1},
+	   	</if>
+	   	<if test="extNum2 != null">
+	   		EXT_NUM2 = #{extNum2},
+	   	</if>
+	   	<if test="extNum3 != null">
+	   		EXT_NUM3 = #{extNum3},
+	   	</if>
+	   	<if test="extStr1 != null">
+	   		EXT_STR1 = #{extStr1},
+	   	</if>
+	   	<if test="extStr2 != null">
+	   		EXT_STR2 = #{extStr2},
+	   	</if>
+	   	<if test="extStr3 != null">
+	   		EXT_STR3 = #{extStr3},
+	   	</if>
+	   	<if test="extStr4 != null">
+	   		EXT_STR4 = #{extStr4},
+	   	</if>
+	   	<if test="extStr5 != null">
+	   		EXT_STR5 = #{extStr5},
+	   	</if>
+	   </set>
+	   where ID = #{id} and MODIFY_DATE = #{modifyDate}
+	</update>
+	<select id="queryWorkTaskHis" parameterType="com.jc.oa.po.workTask.domain.WorkTaskHistory" resultType="com.jc.oa.po.workTask.domain.WorkTaskHistory">
+		SELECT  DISTINCT th.TASK_ID taskId
+		 FROM tty_po_task_history th 
+		WHERE  th.task_id IN (
+		SELECT id FROM tty_po_task tp
+		<where>
+			tp.DELETE_FLAG=0 and tp.STATUS NOT IN (3,4)
+			<if test="directorId != null">
+				and tp.DIRECTOR_ID = #{directorId}
+			</if>
+			<if test="startTime != null and endTime != null">
+				and tp.START_TIME between  #{startTime} and #{endTime}
+			</if>
+			<if test="startTime != null and endTime == null">
+				<![CDATA[and tp.START_TIME >=  #{startTime}]]>
+			</if>
+			<if test="startTime == null and endTime != null">
+				<![CDATA[and tp.START_TIME <=  #{endTime}]]>
+			</if>
+		</where>
+		) AND  th.DELETE_FLAG=0 AND th.TASK_EVENT_TYPE=6
+	</select>
+	<select id="queryWorkTaskHisCount" parameterType="com.jc.oa.po.workTask.domain.WorkTaskHistory" resultType="java.lang.Integer">
+		SELECT COUNT(DISTINCT th.task_id) FROM tty_po_task_history th 
+		WHERE  th.task_id IN (
+		SELECT id FROM tty_po_task tp
+		<where>
+			tp.DELETE_FLAG=0 and tp.STATUS NOT IN (3,4)
+			<if test="directorId != null">
+				and tp.DIRECTOR_ID = #{directorId}
+			</if>
+			<if test="startTime != null and endTime != null">
+				and tp.START_TIME between  #{startTime} and #{endTime}
+			</if>
+			<if test="startTime != null and endTime == null">
+				<![CDATA[and tp.START_TIME >=  #{startTime}]]>
+			</if>
+			<if test="startTime == null and endTime != null">
+				<![CDATA[and tp.START_TIME <=  #{endTime}]]>
+			</if>
+		</where>
+		) AND  th.DELETE_FLAG=0 AND th.TASK_EVENT_TYPE=6
+	</select>
+	<select id="getTaskHistListByTaskId" parameterType="com.jc.oa.po.workTask.domain.WorkTaskHistory" resultType="com.jc.oa.po.workTask.domain.WorkTaskHistory">
+		SELECT 
+			@rownum:=@rownum+1 rowNum,
+			t.ID id,
+			t.TASK_ID taskId,
+			t.TASK_EVENT_TYPE taskEventType,
+			t.TASK_EVENT_TITLE taskEventTitle,
+			t.CONTENT content,
+			t.REPORT_CONTENT reportContent,
+			t.REPORT_PROC reportProc,
+			t.DELAY_REASON delayReason,
+			t.DELAY_ENDDATE delayEnddate,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5,
+			(SELECT ts.display_name FROM toa_sys_user ts WHERE ts.ID=t.CREATE_USER) userName
+				
+		FROM (SELECT @rownum:=0) r,tty_po_task_history t
+		<where>
+			<if test="taskId != null">
+				and t.TASK_ID = #{taskId}
+			</if>
+			<if test="taskEventType != null">
+				and t.TASK_EVENT_TYPE = #{taskEventType}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+		</where>
+	</select>
+	<select id="getTaskHistByTaskIdCount" parameterType="com.jc.oa.po.workTask.domain.WorkTaskHistory" resultType="java.lang.Integer">
+		SELECT count(ID) 
+		FROM tty_po_task_history t
+		<where>
+			<if test="taskId != null">
+				and t.TASK_ID = #{taskId}
+			</if>
+			<if test="taskEventType != null">
+				and t.TASK_EVENT_TYPE = #{taskEventType}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+		</where>
+	</select>
+	
+</mapper>

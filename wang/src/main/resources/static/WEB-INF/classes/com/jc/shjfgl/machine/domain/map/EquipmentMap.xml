@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.shjfgl.machine.domain.Equipment">
+
+	<insert id="insert" parameterType="com.jc.shjfgl.machine.domain.Equipment"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO toa_shjfgl_equipment(ID,COMPANY_ID,EQUIPMENT_NUMBER,CLIENT_NAME,MACHINA,MACHINA_ID,MACHINA_NUMBER,CONTACT,ADDRESS,TYPE,NETMASK_ONE,ONLINE_DATE,INTERCHANGER_TWO,NETMASK_TWO,INTERCHANGER_ONE,IP,INTERCHANGER_THREE,POWER,PLANT_POWER,U_COUNT,FUNCTIONN,PORT,A_CURRENT,B_CURRENT,SYSTEM,DEVICE,SERIAL_NUMBER,SN,REMARK,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3)
+		VALUES (#{id,jdbcType=NUMERIC},#{companyId,jdbcType=NUMERIC},#{equipmentNumber,jdbcType=VARCHAR},#{clientName,jdbcType=VARCHAR},#{machina,jdbcType=VARCHAR},#{machinaId,jdbcType=VARCHAR},#{machinaNumber,jdbcType=TIMESTAMP},#{contact,jdbcType=TIMESTAMP},#{address,jdbcType=VARCHAR},#{type,jdbcType=VARCHAR},#{netmaskOne,jdbcType=VARCHAR},#{onlineDate,jdbcType=VARCHAR},#{interchangerTwo,jdbcType=VARCHAR},#{netmaskTwo,jdbcType=VARCHAR},#{interchangerOne,jdbcType=VARCHAR},#{ip,jdbcType=VARCHAR},#{interchangerThree,jdbcType=VARCHAR},#{power,jdbcType=VARCHAR},#{plantPower,jdbcType=VARCHAR},#{uCount,jdbcType=VARCHAR},#{functionn,jdbcType=VARCHAR},#{port,jdbcType=VARCHAR},#{aCurrent,jdbcType=VARCHAR},#{bCurrent,jdbcType=VARCHAR},#{system,jdbcType=VARCHAR},#{device,jdbcType=VARCHAR},#{serialNumber,jdbcType=VARCHAR},#{sn,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},#{deleteFlag,jdbcType=VARCHAR},#{createUser,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr5,jdbcType=VARCHAR},#{extDate1,jdbcType=TIMESTAMP},#{extDate2,jdbcType=TIMESTAMP},#{extNum1,jdbcType=NUMERIC},#{extNum2,jdbcType=NUMERIC},#{extNum3,jdbcType=NUMERIC})
+	</insert>
+
+	<insert id="insertList" parameterType="list">
+		INSERT INTO toa_shjfgl_equipment(ID,EQUIPMENT_NUMBER,CLIENT_NAME,MACHINA,MACHINA_ID,MACHINA_NUMBER,CONTACT,ADDRESS,TYPE,NETMASK_ONE,ONLINE_DATE,INTERCHANGER_TWO,NETMASK_TWO,INTERCHANGER_ONE,IP,INTERCHANGER_THREE,POWER,PLANT_POWER,U_COUNT,FUNCTIONN,PORT,A_CURRENT,B_CURRENT,SYSTEM,DEVICE,SERIAL_NUMBER,SN,REMARK,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3)
+		VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(#{id,jdbcType=NUMERIC},#{equipmentNumber,jdbcType=VARCHAR},#{clientName,jdbcType=VARCHAR},#{machina,jdbcType=VARCHAR},#{machinaId,jdbcType=VARCHAR},#{machinaNumber,jdbcType=TIMESTAMP},#{contact,jdbcType=TIMESTAMP},#{address,jdbcType=VARCHAR},#{type,jdbcType=VARCHAR},#{netmaskOne,jdbcType=VARCHAR},#{onlineDate,jdbcType=VARCHAR},#{interchangerTwo,jdbcType=VARCHAR},#{netmaskTwo,jdbcType=VARCHAR},#{interchangerOne,jdbcType=VARCHAR},#{ip,jdbcType=VARCHAR},#{interchangerThree,jdbcType=VARCHAR},#{power,jdbcType=VARCHAR},#{plantPower,jdbcType=VARCHAR},#{uCount,jdbcType=VARCHAR},#{functionn,jdbcType=VARCHAR},#{port,jdbcType=VARCHAR},#{aCurrent,jdbcType=VARCHAR},#{bCurrent,jdbcType=VARCHAR},#{system,jdbcType=VARCHAR},#{device,jdbcType=VARCHAR},#{serialNumber,jdbcType=VARCHAR},#{sn,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},#{deleteFlag,jdbcType=VARCHAR},#{createUser,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr5,jdbcType=VARCHAR},#{extDate1,jdbcType=TIMESTAMP},#{extDate2,jdbcType=TIMESTAMP},#{extNum1,jdbcType=NUMERIC},#{extNum2,jdbcType=NUMERIC},#{extNum3,jdbcType=NUMERIC})
+			</foreach> 
+	</insert>
+	
+	<update id="update" parameterType="com.jc.shjfgl.machine.domain.Equipment">
+		UPDATE toa_shjfgl_equipment set
+			<!-- <if test="groupName != null">
+				group_name like <![CDATA['%${groupName}%']]>
+			</if> -->
+			
+			<if test="clientName != null">
+				 CLIENT_NAME = #{clientName},
+			</if>
+			<if test="equipmentNumber != null">
+				 EQUIPMENT_NUMBER = #{equipmentNumber},
+			</if>
+			<if test="machina != null">
+				 MACHINA = #{machina},
+			</if>
+			<if test="machinaId != null">
+				 MACHINA_ID = #{machinaId},
+			</if>
+			<if test="machinaNumber != null">
+				 MACHINA_NUMBER = #{machinaNumber},
+			</if>
+			<if test="contact != null">
+				 CONTACT = #{contact},
+			</if>
+			<if test="address != null">
+				 ADDRESS = #{address},
+			</if>
+			<if test="type != null">
+				 TYPE = #{type},
+			</if>
+			<if test="netmaskOne != null">
+				 NETMASK_ONE = #{netmaskOne},
+			</if>
+			<if test="onlineDate != null">
+				 ONLINE_DATE = #{onlineDate},
+			</if>
+			<if test="interchangerTwo != null">
+				 INTERCHANGER_TWO = #{interchangerTwo},
+			</if>
+			<if test="netmaskTwo != null">
+				 NETMASK_TWO = #{netmaskTwo},
+			</if>
+			<if test="interchangerOne != null">
+				 INTERCHANGER_ONE = #{interchangerOne},
+			</if>
+			<if test="ip != null">
+				 IP = #{ip},
+			</if>
+			<if test="interchangerThree != null">
+				 INTERCHANGER_THREE = #{interchangerThree},
+			</if>
+			<if test="power != null">
+				 POWER = #{power},
+			</if>
+			<if test="plantPower != null">
+				 PLANT_POWER = #{plantPower},
+			</if>
+			<if test="uCount != null">
+				 U_COUNT = #{uCount},
+			</if>
+			<if test="functionn != null">
+				 FUNCTIONN = #{functionn},
+			</if>
+			<if test="port != null">
+				 PORT = #{port},
+			</if>
+			<if test="aCurrent != null">
+				A_CURRENT = #{aCurrent},
+			</if>
+			<if test="bCurrent != null">
+				 B_CURRENT = #{bCurrent},
+			</if>
+			<if test="system != null">
+				 SYSTEM  = #{system},
+			</if>
+			<if test="device != null">
+				 DEVICE = #{device},
+			</if>
+			<if test="serialNumber != null">
+				 SERIAL_NUMBER = #{serialNumber},
+			</if>
+			<if test="sn != null">
+				 SN = #{sn},
+			</if>
+			<if test="remark != null">
+				 REMARK = #{remark},
+			</if>
+			<if test="deleteFlag !=null">
+				DELETE_FLAG = #{deleteFlag},
+			</if>
+			<if test="extStr1 != null">
+				 EXT_STR1 = #{extStr1},
+			</if>
+			<if test="extStr2 != null">
+				 EXT_STR2 = #{extStr2},
+			</if>
+			<if test="extStr3 != null">
+				 EXT_STR3 = #{extStr3},
+			</if>
+			<if test="extStr4 != null">
+				 EXT_STR4 = #{extStr4},
+			</if>
+			<if test="extStr5 != null">
+				 EXT_STR5 = #{extStr5},
+			</if>
+			<if test="createUser != null">
+				 CREATE_USER = #{createUser},
+			</if>
+			<if test="createUserDept != null">
+				 CREATE_USER_DEPT = #{createUserDept},
+			</if>
+			<if test="createDate != null">
+				 CREATE_DATE = #{createDate},
+			</if>
+			<if test="modifyUser != null">
+				 MODIFY_USER = #{modifyUser},
+			</if>
+		MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+	</update>
+	
+	
+	<select id="query" parameterType="com.jc.shjfgl.machine.domain.Equipment" resultType="com.jc.shjfgl.machine.domain.Equipment">
+		SELECT 
+			t.ID id,
+			t.CLIENT_NAME clientName,
+			t.COMPANY_ID companyId,
+			t.EQUIPMENT_NUMBER equipmentNumber,
+			t.MACHINA machina,
+			t.MACHINA_ID machinaId,
+			t.MACHINA_NUMBER machinaNumber,
+			t.CONTACT contact,
+			t.ADDRESS address,
+			t.TYPE type,
+			t.NETMASK_ONE netmaskOne,
+			t.ONLINE_DATE onlineDate,
+			t.INTERCHANGER_TWO interchangerTwo,
+			t.NETMASK_TWO netmaskTwo,
+			t.INTERCHANGER_ONE interchangerOne,
+			t.IP ip,
+			t.INTERCHANGER_THREE interchangerThree,
+			t.POWER power,
+			t.PLANT_POWER plantPower,
+			t.U_COUNT uCount,
+			t.FUNCTIONN functionn,
+			t.PORT port,
+			t.A_CURRENT aCurrent,
+			t.B_CURRENT bCurrent,
+			t.SYSTEM system,
+			t.DEVICE device,
+			t.SERIAL_NUMBER serialNumber,
+			t.SN sn,
+			t.REMARK remark,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3
+		FROM toa_shjfgl_equipment t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<!-- <if test="groupName != null">
+				group_name like <![CDATA['%${groupName}%']]>
+			</if> -->
+			
+			<if test="clientName != null">
+				 and t.CLIENT_NAME  like <![CDATA['%${clientName}%']]>  
+			</if>
+			<if test="companyId != null">
+				 and t.COMPANY_ID = #{companyId}
+			</if>
+			<if test="equipmentNumber != null">
+				 and t.EQUIPMENT_NUMBER = #{equipmentNumber}
+			</if>
+			<if test="machina != null">
+				 and t.MACHINA = #{machina}
+			</if>
+			<if test="machinaId != null">
+				 and t.MACHINA_ID = #{machinaId}
+			</if>
+			<if test="machinaNumber != null">
+				 and t.MACHINA_NUMBER = #{machinaNumber}
+			</if>
+			<if test="contact != null">
+				 and t.CONTACT = #{contact}
+			</if>
+			<if test="address != null">
+				 and t.ADDRESS  like <![CDATA['%${address}%']]>  
+			</if>
+			<if test="type != null">
+				 and t.TYPE = #{type}
+			</if>
+			<if test="netmaskOne != null">
+				 and t.NETMASK_ONE like <![CDATA['%${netmaskOne}%']]>  
+			</if>
+			<if test="onlineDate != null">
+				 and t.ONLINE_DATE = #{onlineDate}
+			</if>
+			<if test="interchangerTwo != null">
+				 and t.INTERCHANGER_TWO = #{interchangerTwo}
+			</if>
+			<if test="netmaskTwo != null">
+				 and t.NETMASK_TWO = #{netmaskTwo}
+			</if>
+			<if test="interchangerOne != null">
+				 and t.INTERCHANGER_ONE = #{interchangerOne}
+			</if>
+			<if test="ip != null">
+				 and t.IP like <![CDATA['%${ip}%']]>  
+			</if>
+			<if test="interchangerThree != null">
+				 and t.INTERCHANGER_THREE = #{interchangerThree}
+			</if>
+			<if test="power != null">
+				 and t.POWER = #{power}
+			</if>
+			<if test="plantPower != null">
+				 and t.PLANT_POWER = #{plantPower}
+			</if>
+			<if test="uCount != null">
+				 and t.U_COUNT = #{uCount}
+			</if>
+			<if test="functionn != null">
+				 and t.FUNCTIONN = #{functionn}
+			</if>
+			<if test="port != null">
+				 and t.PORT = #{port}
+			</if>
+			<if test="aCurrent != null">
+				and t.A_CURRENT = #{aCurrent}
+			</if>
+			<if test="bCurrent != null">
+				 and t.B_CURRENT = #{bCurrent}
+			</if>
+			<if test="system != null">
+				 and t.SYSTEM  = #{system}
+			</if>
+			<if test="device != null">
+				 and t.DEVICE = #{device}
+			</if>
+			<if test="serialNumber != null">
+				 and t.SERIAL_NUMBER = #{serialNumber}
+			</if>
+			<if test="sn != null">
+				 and t.SN like <![CDATA['%${sn}%']]>  
+			</if>
+			<if test="remark != null">
+				 and t.REMARK = #{remark}
+			</if>
+			<if test="deleteFlag !=null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="extStr1 != null">
+				 and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				 and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				 and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				 and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				 and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="createUser != null">
+				 and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				 and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				 and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				 and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				 and t.MODIFY_DATE = #{modifyDate}
+			</if>
+		</where>
+		order by CREATE_DATE DESC
+	</select>
+	
+	<select id="queryCount" parameterType="com.jc.shjfgl.machine.domain.Equipment" resultType="java.lang.Long">
+		SELECT count(ID) 
+		FROM toa_shjfgl_equipment t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<!-- <if test="groupName != null">
+				group_name like <![CDATA['%${groupName}%']]>
+			</if> -->
+			
+			<if test="clientName != null">
+				 and t.CLIENT_NAME  like <![CDATA['%${clientName}%']]>
+			</if>
+			<if test="companyId != null">
+				 and t.COMPANY_ID = #{companyId}
+			</if>
+			<if test="equipmentNumber != null">
+				 and t.EQUIPMENT_NUMBER = #{equipmentNumber}
+			</if>
+			<if test="machina != null">
+				 and t.MACHINA = #{machina}
+			</if>
+			<if test="machinaId != null">
+				 and t.MACHINA_ID = #{machinaId}
+			</if>
+			<if test="machinaNumber != null">
+				 and t.MACHINA_NUMBER = #{machinaNumber}
+			</if>
+			<if test="contact != null">
+				 and t.CONTACT = #{contact}
+			</if>
+			<if test="address != null">
+				 and t.ADDRESS like <![CDATA['%${address}%']]>  
+			</if>
+			<if test="type != null">
+				 and t.TYPE = #{type}
+			</if>
+			<if test="netmaskOne != null">
+				 and t.NETMASK_ONE like <![CDATA['%${netmaskOne}%']]> 
+			</if>
+			<if test="onlineDate != null">
+				 and t.ONLINE_DATE = #{onlineDate}
+			</if>
+			<if test="interchangerTwo != null">
+				 and t.INTERCHANGER_TWO = #{interchangerTwo}
+			</if>
+			<if test="netmaskTwo != null">
+				 and t.NETMASK_TWO = #{netmaskTwo}
+			</if>
+			<if test="interchangerOne != null">
+				 and t.INTERCHANGER_ONE = #{interchangerOne}
+			</if>
+			<if test="ip != null">
+				 and t.IP like <![CDATA['%${ip}%']]>  
+			</if>
+			<if test="interchangerThree != null">
+				 and t.INTERCHANGER_THREE = #{interchangerThree}
+			</if>
+			<if test="power != null">
+				 and t.POWER = #{power}
+			</if>
+			<if test="plantPower != null">
+				 and t.PLANT_POWER = #{plantPower}
+			</if>
+			<if test="uCount != null">
+				 and t.U_COUNT = #{uCount}
+			</if>
+			<if test="functionn != null">
+				 and t.FUNCTIONN = #{functionn}
+			</if>
+			<if test="port != null">
+				 and t.PORT = #{port}
+			</if>
+			<if test="aCurrent != null">
+				and t.A_CURRENT = #{aCurrent}
+			</if>
+			<if test="bCurrent != null">
+				 and t.B_CURRENT = #{bCurrent}
+			</if>
+			<if test="system != null">
+				 and t.SYSTEM  = #{system}
+			</if>
+			<if test="device != null">
+				 and t.DEVICE = #{device}
+			</if>
+			<if test="serialNumber != null">
+				 and t.SERIAL_NUMBER = #{serialNumber}
+			</if>
+			<if test="sn != null">
+				 and t.SN like <![CDATA['%${sn}%']]>  
+			</if>
+			<if test="remark != null">
+				 and t.REMARK = #{remark}
+			</if>
+			<if test="deleteFlag !=null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="extStr1 != null">
+				 and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				 and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				 and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				 and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				 and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="createUser != null">
+				 and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				 and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				 and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				 and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				 and t.MODIFY_DATE = #{modifyDate}
+			</if>
+		</where>
+		order by CREATE_DATE DESC
+	</select>
+	<update id="deleteLogic"  parameterType="com.jc.shjfgl.machine.domain.Equipment">
+    	UPDATE toa_shjfgl_equipment t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+</mapper>

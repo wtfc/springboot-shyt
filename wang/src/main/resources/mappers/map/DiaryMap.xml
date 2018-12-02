@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.po.diary.domain.Diary">
+
+<select id="query" parameterType="com.jc.oa.po.diary.domain.Diary" resultType="com.jc.oa.po.diary.domain.Diary">
+  SELECT t.ID id, t.POSSESSOR_ID possessorId, t.TITLE title, t.CONTENT content, t.STARTTIME starttime, t.ENDTIME endtime, t.PERIOD_TYPE periodType, t.PERIOD_WAY periodWay, t.PERIOD_STARTDATE periodStartdate, t.PERIOD_ENDDATE periodEnddate, t.MODULE_FLAG moduleFlag, t.BUSINESS_ID businessId,t.DIARY_TYPE diaryType, t.IS_SHARE isShare,t.MASTER master,t.MILLISECOND millisecond,t.DELETE_FLAG deleteFlag, t.CREATE_USER createUser, t.CREATE_USER_DEPT createUserDept, t.CREATE_USER_ORG createUserOrg, t.CREATE_DATE createDate, t.MODIFY_USER modifyUser, t.MODIFY_DATE modifyDate, t.EXT_DATE1 extDate1, t.EXT_DATE2 extDate2, t.EXT_NUM1 extNum1, t.EXT_NUM2 extNum2, t.EXT_NUM3 extNum3, t.EXT_STR1 extStr1, t.EXT_STR2 extStr2, t.EXT_STR3 extStr3, t.EXT_STR4 extStr4, t.EXT_STR5 extStr5 FROM tty_po_diary t 
+	<where>
+		<if test="id != null">and t.ID = #{id}</if> 
+		<if test="possessorId != null">and t.POSSESSOR_ID = #{possessorId}</if> 
+		<if test="title != null">and t.TITLE = #{title}</if> 
+		<if test="content != null">and t.CONTENT = #{content}</if> 
+		<if test="starttime != null">and t.STARTTIME = #{starttime}</if> 
+		<if test="starttimeBegin != null">and t.STARTTIME &gt;= #{starttimeBegin}</if> 
+		<if test="starttimeEnd != null">and t.STARTTIME &lt;= #{starttimeEnd}</if> 
+		<if test="endtime != null">and t.ENDTIME = #{endtime}</if> 
+		<if test="endtimeBegin != null">and t.ENDTIME &gt;= #{endtimeBegin}</if> 
+		<if test="endtimeEnd != null">and t.ENDTIME &lt;= #{endtimeEnd}</if> 
+		<if test="periodType != null">and t.PERIOD_TYPE = #{periodType}</if> 
+		<if test="periodWay != null">and t.PERIOD_WAY = #{periodWay}</if> 
+		<if test="periodStartdate != null">and t.PERIOD_STARTDATE = #{periodStartdate}</if> 
+		<if test="periodStartdateBegin != null">and t.PERIOD_STARTDATE &gt;= #{periodStartdateBegin}</if> 
+		<if test="periodStartdateEnd != null">and t.PERIOD_STARTDATE &lt;= #{periodStartdateEnd}</if> 
+		<if test="periodEnddate != null">and t.PERIOD_ENDDATE = #{periodEnddate}</if> 
+		<if test="periodEnddateBegin != null">and t.PERIOD_ENDDATE &gt;= #{periodEnddateBegin}</if> 
+		<if test="periodEnddateEnd != null">and t.PERIOD_ENDDATE &lt;= #{periodEnddateEnd}</if> 
+		<if test="moduleFlag != null">and t.MODULE_FLAG = #{moduleFlag}</if> 
+		<if test="businessId != null">and t.BUSINESS_ID = #{businessId}</if> 
+		<if test="diaryType != null">and t.DIARY_TYPE = #{diaryType}</if> 
+		<if test="isShare != null">and t.IS_SHARE = #{isShare}</if> 
+		<if test="master != null">and t.MASTER = #{master}</if> 
+		<if test="millisecond != null">and t.MILLISECOND = #{millisecond}</if> 
+		<if test="deleteFlag != null">and t.DELETE_FLAG = #{deleteFlag}</if> 
+		<if test="createUser != null">and t.CREATE_USER = #{createUser}</if> 
+		<if test="createUserDept != null">and t.CREATE_USER_DEPT = #{createUserDept}</if> 
+		<if test="createUserOrg != null">and t.CREATE_USER_ORG = #{createUserOrg}</if> 
+		<if test="createDate != null">and t.CREATE_DATE = #{createDate}</if> 
+		<if test="createDateBegin != null">and t.CREATE_DATE &gt;= #{createDateBegin}</if> 
+		<if test="createDateEnd != null">and t.CREATE_DATE &lt;= #{createDateEnd}</if> 
+		<if test="modifyUser != null">and t.MODIFY_USER = #{modifyUser}</if> 
+		<if test="modifyDate != null">and t.MODIFY_DATE = #{modifyDate}</if> 
+		<if test="modifyDateBegin != null">and t.MODIFY_DATE &gt;= #{modifyDateBegin}</if> 
+		<if test="modifyDateEnd != null">and t.MODIFY_DATE &lt;= #{modifyDateEnd}</if> 
+		<if test="extDate1 != null">and t.EXT_DATE1 = #{extDate1}</if> 
+		<if test="extDate1Begin != null">and t.EXT_DATE1 &gt;= #{extDate1Begin}</if> 
+		<if test="extDate1End != null">and t.EXT_DATE1 &lt;= #{extDate1End}</if> 
+		<if test="extDate2 != null">and t.EXT_DATE2 = #{extDate2}</if> 
+		<if test="extDate2Begin != null">and t.EXT_DATE2 &gt;= #{extDate2Begin}</if> 
+		<if test="extDate2End != null">and t.EXT_DATE2 &lt;= #{extDate2End}</if> 
+		<if test="extNum1 != null">and t.EXT_NUM1 = #{extNum1}</if> 
+		<if test="extNum2 != null">and t.EXT_NUM2 = #{extNum2}</if> 
+		<if test="extNum3 != null">and t.EXT_NUM3 = #{extNum3}</if> 
+		<if test="extStr1 != null">and t.EXT_STR1 = #{extStr1}</if> 
+		<if test="extStr2 != null">and t.EXT_STR2 = #{extStr2}</if> 
+		<if test="extStr3 != null">and t.EXT_STR3 = #{extStr3}</if> 
+		<if test="extStr4 != null">and t.EXT_STR4 = #{extStr4}</if> 
+		<if test="extStr5 != null">and t.EXT_STR5 = #{extStr5}</if> 
+	</where>
+</select>
+<select id="queryCount" parameterType="com.jc.oa.po.diary.domain.Diary" resultType="java.lang.Integer">
+  SELECT count(ID) FROM tty_po_diary t 
+	<where>
+		<if test="id != null">and t.ID = #{id}</if> 
+		<if test="possessorId != null">and t.POSSESSOR_ID = #{possessorId}</if> 
+		<if test="title != null">and t.TITLE = #{title}</if> 
+		<if test="content != null">and t.CONTENT = #{content}</if> 
+		<if test="starttime != null">and t.STARTTIME = #{starttime}</if> 
+		<if test="starttimeBegin != null">and t.STARTTIME &gt;= #{starttimeBegin}</if> 
+		<if test="starttimeEnd != null">and t.STARTTIME &lt;= #{starttimeEnd}</if> 
+		<if test="endtime != null">and t.ENDTIME = #{endtime}</if> 
+		<if test="endtimeBegin != null">and t.ENDTIME &gt;= #{endtimeBegin}</if> 
+		<if test="endtimeEnd != null">and t.ENDTIME &lt;= #{endtimeEnd}</if> 
+		<if test="periodType != null">and t.PERIOD_TYPE = #{periodType}</if> 
+		<if test="periodWay != null">and t.PERIOD_WAY = #{periodWay}</if> 
+		<if test="periodStartdate != null">and t.PERIOD_STARTDATE = #{periodStartdate}</if> 
+		<if test="periodStartdateBegin != null">and t.PERIOD_STARTDATE &gt;= #{periodStartdateBegin}</if> 
+		<if test="periodStartdateEnd != null">and t.PERIOD_STARTDATE &lt;= #{periodStartdateEnd}</if> 
+		<if test="periodEnddate != null">and t.PERIOD_ENDDATE = #{periodEnddate}</if> 
+		<if test="periodEnddateBegin != null">and t.PERIOD_ENDDATE &gt;= #{periodEnddateBegin}</if> 
+		<if test="periodEnddateEnd != null">and t.PERIOD_ENDDATE &lt;= #{periodEnddateEnd}</if> 
+		<if test="moduleFlag != null">and t.MODULE_FLAG = #{moduleFlag}</if> 
+		<if test="businessId != null">and t.BUSINESS_ID = #{businessId}</if> 
+		<if test="diaryType != null">and t.DIARY_TYPE = #{diaryType}</if> 
+		<if test="isShare != null">and t.IS_SHARE = #{isShare}</if> 
+		<if test="master != null">and t.MASTER = #{master}</if> 
+		<if test="millisecond != null">and t.MILLISECOND = #{millisecond}</if> 
+		<if test="deleteFlag != null">and t.DELETE_FLAG = #{deleteFlag}</if> 
+		<if test="createUser != null">and t.CREATE_USER = #{createUser}</if> 
+		<if test="createUserDept != null">and t.CREATE_USER_DEPT = #{createUserDept}</if> 
+		<if test="createUserOrg != null">and t.CREATE_USER_ORG = #{createUserOrg}</if> 
+		<if test="createDate != null">and t.CREATE_DATE = #{createDate}</if> 
+		<if test="createDateBegin != null">and t.CREATE_DATE &gt;= #{createDateBegin}</if> 
+		<if test="createDateEnd != null">and t.CREATE_DATE &lt;= #{createDateEnd}</if> 
+		<if test="modifyUser != null">and t.MODIFY_USER = #{modifyUser}</if> 
+		<if test="modifyDate != null">and t.MODIFY_DATE = #{modifyDate}</if> 
+		<if test="modifyDateBegin != null">and t.MODIFY_DATE &gt;= #{modifyDateBegin}</if> 
+		<if test="modifyDateEnd != null">and t.MODIFY_DATE &lt;= #{modifyDateEnd}</if> 
+		<if test="extDate1 != null">and t.EXT_DATE1 = #{extDate1}</if> 
+		<if test="extDate1Begin != null">and t.EXT_DATE1 &gt;= #{extDate1Begin}</if> 
+		<if test="extDate1End != null">and t.EXT_DATE1 &lt;= #{extDate1End}</if> 
+		<if test="extDate2 != null">and t.EXT_DATE2 = #{extDate2}</if> 
+		<if test="extDate2Begin != null">and t.EXT_DATE2 &gt;= #{extDate2Begin}</if> 
+		<if test="extDate2End != null">and t.EXT_DATE2 &lt;= #{extDate2End}</if> 
+		<if test="extNum1 != null">and t.EXT_NUM1 = #{extNum1}</if> 
+		<if test="extNum2 != null">and t.EXT_NUM2 = #{extNum2}</if> 
+		<if test="extNum3 != null">and t.EXT_NUM3 = #{extNum3}</if> 
+		<if test="extStr1 != null">and t.EXT_STR1 = #{extStr1}</if> 
+		<if test="extStr2 != null">and t.EXT_STR2 = #{extStr2}</if> 
+		<if test="extStr3 != null">and t.EXT_STR3 = #{extStr3}</if> 
+		<if test="extStr4 != null">and t.EXT_STR4 = #{extStr4}</if> 
+		<if test="extStr5 != null">and t.EXT_STR5 = #{extStr5}</if> 
+	</where>
+</select>
+
+<delete id="deletePhysical"  parameterType="com.jc.oa.po.diary.domain.Diary">
+    delete from tty_po_diary
+      where ID in
+      <foreach collection="primaryKeys" item="primaryKey" index="index"
+            open="(" close=")" separator=",">
+            #{primaryKey}
+        </foreach>
+ </delete>
+
+<update id="delete"  parameterType="com.jc.oa.po.diary.domain.Diary">
+    UPDATE tty_po_diary t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      where ID in
+      <foreach collection="primaryKeys" item="primaryKey" index="index"
+            open="(" close=")" separator=",">
+            #{primaryKey}
+        </foreach>
+ </update>
+ 
+ <update id="deleteLogic"  parameterType="com.jc.oa.po.diary.domain.Diary">
+<![CDATA[
+    UPDATE tty_po_diary t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+    ]]>
+      where ID in
+      <foreach collection="primaryKeys" item="primaryKey" index="index"
+            open="(" close=")" separator=",">
+            #{primaryKey}
+        </foreach>
+ </update>
+
+<insert id="insert" parameterType="com.jc.oa.po.diary.domain.Diary" useGeneratedKeys="true" keyProperty="id">
+INSERT INTO tty_po_diary(ID,POSSESSOR_ID,TITLE,CONTENT,STARTTIME,ENDTIME,PERIOD_TYPE,PERIOD_WAY,PERIOD_STARTDATE,PERIOD_ENDDATE,MODULE_FLAG,BUSINESS_ID,DIARY_TYPE,IS_SHARE,MASTER,MILLISECOND,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+VALUES (#{id,jdbcType=NUMERIC},#{possessorId,jdbcType=NUMERIC},#{title,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{starttime,jdbcType=TIMESTAMP},#{endtime,jdbcType=TIMESTAMP},#{periodType,jdbcType=VARCHAR},#{periodWay,jdbcType=VARCHAR},#{periodStartdate,jdbcType=TIMESTAMP},#{periodEnddate,jdbcType=TIMESTAMP},#{moduleFlag,jdbcType=VARCHAR},#{businessId,jdbcType=NUMERIC},#{diaryType,jdbcType=VARCHAR},#{isShare,jdbcType=VARCHAR},#{master,jdbcType=VARCHAR},#{millisecond,jdbcType=NUMERIC},#{deleteFlag,jdbcType=NUMERIC},#{createUser,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createUserOrg,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extDate1,jdbcType=TIMESTAMP},#{extDate2,jdbcType=TIMESTAMP},#{extNum1,jdbcType=NUMERIC},#{extNum2,jdbcType=NUMERIC},#{extNum3,jdbcType=NUMERIC},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr5,jdbcType=VARCHAR})
+</insert>
+
+<insert id="insertList" parameterType="list">
+INSERT INTO tty_po_diary(ID,POSSESSOR_ID,TITLE,CONTENT,STARTTIME,ENDTIME,PERIOD_TYPE,PERIOD_WAY,PERIOD_STARTDATE,PERIOD_ENDDATE,MODULE_FLAG,BUSINESS_ID,DIARY_TYPE,IS_SHARE,MASTER,MILLISECOND,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+VALUES
+<foreach collection="list" item="item" index="index" separator=","> 
+(#{item.id,jdbcType=NUMERIC},#{item.possessorId,jdbcType=NUMERIC},#{item.title,jdbcType=VARCHAR},#{item.content,jdbcType=VARCHAR},#{item.starttime,jdbcType=TIMESTAMP},#{item.endtime,jdbcType=TIMESTAMP},#{item.periodType,jdbcType=VARCHAR},#{item.periodWay,jdbcType=VARCHAR},#{item.periodStartdate,jdbcType=TIMESTAMP},#{item.periodEnddate,jdbcType=TIMESTAMP},#{item.moduleFlag,jdbcType=VARCHAR},#{item.businessId,jdbcType=NUMERIC},#{item.diaryType,jdbcType=VARCHAR},#{item.isShare,jdbcType=VARCHAR},#{item.master,jdbcType=VARCHAR},#{item.millisecond,jdbcType=NUMERIC},#{item.deleteFlag,jdbcType=NUMERIC},#{item.createUser,jdbcType=NUMERIC},#{item.createUserDept,jdbcType=NUMERIC},#{item.createUserOrg,jdbcType=NUMERIC},#{item.createDate,jdbcType=TIMESTAMP},#{item.modifyUser,jdbcType=NUMERIC},#{item.modifyDate,jdbcType=TIMESTAMP},#{item.extDate1,jdbcType=TIMESTAMP},#{item.extDate2,jdbcType=TIMESTAMP},#{item.extNum1,jdbcType=NUMERIC},#{item.extNum2,jdbcType=NUMERIC},#{item.extNum3,jdbcType=NUMERIC},#{item.extStr1,jdbcType=VARCHAR},#{item.extStr2,jdbcType=VARCHAR},#{item.extStr3,jdbcType=VARCHAR},#{item.extStr4,jdbcType=VARCHAR},#{item.extStr5,jdbcType=VARCHAR})
+</foreach> 
+</insert>
+
+<update id="update" parameterType="com.jc.oa.po.diary.domain.Diary">
+UPDATE tty_po_diary
+   <set>
+   <if test="possessorId != null">
+   POSSESSOR_ID = #{possessorId},
+   </if>
+   <if test="title != null">
+   TITLE = #{title},
+   </if>
+   <if test="content != null">
+   CONTENT = #{content},
+   </if>
+   <if test="starttime != null">
+   STARTTIME = #{starttime},
+   </if>
+   <if test="endtime != null">
+   ENDTIME = #{endtime},
+   </if>
+   <if test="periodType != null">
+   PERIOD_TYPE = #{periodType},
+   </if>
+   <if test="periodWay != null">
+   PERIOD_WAY = #{periodWay},
+   </if>
+   <if test="periodStartdate != null">
+   PERIOD_STARTDATE = #{periodStartdate},
+   </if>
+   <if test="periodEnddate != null">
+   PERIOD_ENDDATE = #{periodEnddate},
+   </if>
+   <!-- <if test="moduleFlag != null">
+   MODULE_FLAG = #{moduleFlag},
+   </if> -->
+   <if test="diaryType != null">
+   DIARY_TYPE = #{diaryType},
+   </if>
+   <if test="isShare != null">
+   IS_SHARE = #{isShare},
+   </if>
+   <if test="master != null">
+	MASTER = #{master},
+   </if> 
+   <if test="businessId != null">
+   	BUSINESS_ID = #{businessId},
+   </if>
+   <if test="deleteFlag != null">
+   DELETE_FLAG = #{deleteFlag},
+   </if>
+   <!-- <if test="createUser != null">
+   CREATE_USER = #{createUser},
+   </if>
+   <if test="createUserDept != null">
+   CREATE_USER_DEPT = #{createUserDept},
+   </if>
+   <if test="createUserOrg != null">
+   CREATE_USER_ORG = #{createUserOrg},
+   </if>
+   <if test="createDate != null">
+   CREATE_DATE = #{createDate},
+   </if> -->
+   <if test="modifyUser != null">
+   MODIFY_USER = #{modifyUser},
+   </if>
+   <if test="modifyDateNew != null">
+   MODIFY_DATE = #{modifyDateNew},
+   </if>
+   <if test="extDate1 != null">
+   EXT_DATE1 = #{extDate1},
+   </if>
+   <if test="extDate2 != null">
+   EXT_DATE2 = #{extDate2},
+   </if>
+   <if test="extNum1 != null">
+   EXT_NUM1 = #{extNum1},
+   </if>
+   <if test="extNum2 != null">
+   EXT_NUM2 = #{extNum2},
+   </if>
+   <if test="extNum3 != null">
+   EXT_NUM3 = #{extNum3},
+   </if>
+   <if test="extStr1 != null">
+   EXT_STR1 = #{extStr1},
+   </if>
+   <if test="extStr2 != null">
+   EXT_STR2 = #{extStr2},
+   </if>
+   <if test="extStr3 != null">
+   EXT_STR3 = #{extStr3},
+   </if>
+   <if test="extStr4 != null">
+   EXT_STR4 = #{extStr4},
+   </if>
+   <if test="extStr5 != null">
+   EXT_STR5 = #{extStr5},
+   </if>
+   </set>
+   where ID = #{id}   and MODIFY_DATE = #{modifyDate} <!-- -->
+</update>
+<select id="queryDiaryAndAnno" parameterType="com.jc.oa.po.diary.domain.Diary" resultType="com.jc.oa.po.diary.domain.Diary">
+  SELECT t.ID id, 
+  t.POSSESSOR_ID possessorId, 
+  t.TITLE title, 
+  t.CONTENT content, 
+  t.STARTTIME starttime, 
+  t.ENDTIME endtime, 
+  t.PERIOD_TYPE periodType, 
+  t.PERIOD_WAY periodWay, 
+  t.PERIOD_STARTDATE periodStartdate, 
+  t.PERIOD_ENDDATE periodEnddate, 
+  t.MODULE_FLAG moduleFlag, 
+  t.BUSINESS_ID businessId,
+  t.DIARY_TYPE diaryType, 
+  t.IS_SHARE isShare, 
+  t.CREATE_DATE createDate,
+  tt.CONTENT annoContent,
+  tt.ANNO_USER_ID annoUserId
+  FROM tty_po_diary t LEFT JOIN tty_po_anno tt ON t.id=tt.BUSINESS_ID
+  where  (tt.ANNO_TYPE='1' OR (tt.ANNO_TYPE IS NULL OR tt.ANNO_TYPE=''))
+		<if test="possessorId != null">and t.POSSESSOR_ID = #{possessorId}</if> 
+		<if test="starttime != null and endtime != null">and ((t.STARTTIME &gt;= #{starttime} and t.STARTTIME &lt;= #{endtime}) or (t.ENDTIME &gt;= #{starttime} and t.ENDTIME &lt;= #{endtime}) or (t.STARTTIME &lt;= #{starttime} and t.ENDTIME &gt;= #{endtime}))</if> 
+		<if test="diaryType != null">and t.DIARY_TYPE = #{diaryType}</if> 
+		<if test="deleteFlag != null">and t.DELETE_FLAG = #{deleteFlag}</if> 
+  order by t.STARTTIME asc
+</select>
+
+<select id="queryDiaryAndAnnoCount" parameterType="com.jc.oa.po.diary.domain.Diary" resultType="java.lang.Integer">
+  SELECT count(t.id)
+  FROM tty_po_diary t LEFT JOIN tty_po_anno tt ON t.id=tt.BUSINESS_ID
+  where  (tt.ANNO_TYPE='1' OR (tt.ANNO_TYPE IS NULL OR tt.ANNO_TYPE=''))
+		<if test="possessorId != null">and t.POSSESSOR_ID = #{possessorId}</if> 
+		<if test="starttime != null and endtime != null">and ((t.STARTTIME &gt;= #{starttime} and t.STARTTIME &lt;= #{endtime}) or (t.ENDTIME &gt;= #{starttime} and t.ENDTIME &lt;= #{endtime}) or (t.STARTTIME &lt;= #{starttime} and t.ENDTIME &gt;= #{endtime}))</if> 
+		<if test="diaryType != null">and t.DIARY_TYPE = #{diaryType}</if> 
+		<if test="deleteFlag != null">and t.DELETE_FLAG = #{deleteFlag}</if> 
+  order by t.STARTTIME asc
+</select>
+
+<select id="queryInterface" parameterType="com.jc.oa.po.diary.domain.Diary" resultType="com.jc.oa.po.diary.domain.Diary">
+  SELECT t.ID id, t.POSSESSOR_ID possessorId, t.TITLE title, t.CONTENT content, t.STARTTIME starttime, t.ENDTIME endtime, t.PERIOD_TYPE periodType, t.PERIOD_WAY periodWay, t.PERIOD_STARTDATE periodStartdate, t.PERIOD_ENDDATE periodEnddate, t.MODULE_FLAG moduleFlag,t.BUSINESS_ID businessId, t.DIARY_TYPE diaryType, t.IS_SHARE isShare,t.MASTER master,t.MILLISECOND millisecond, t.DELETE_FLAG deleteFlag, t.CREATE_USER createUser, t.CREATE_USER_DEPT createUserDept, t.CREATE_USER_ORG createUserOrg, t.CREATE_DATE createDate, t.MODIFY_USER modifyUser, t.MODIFY_DATE modifyDate, t.EXT_DATE1 extDate1, t.EXT_DATE2 extDate2, t.EXT_NUM1 extNum1, t.EXT_NUM2 extNum2, t.EXT_NUM3 extNum3, t.EXT_STR1 extStr1, t.EXT_STR2 extStr2, t.EXT_STR3 extStr3, t.EXT_STR4 extStr4, t.EXT_STR5 extStr5 FROM tty_po_diary t 
+	<where>
+		<if test="id != null">and t.ID = #{id}</if> 
+		<if test="possessorId != null">and t.POSSESSOR_ID = #{possessorId}</if> 
+		<if test="title != null">and t.TITLE = #{title}</if> 
+		<if test="content != null">and t.CONTENT = #{content}</if> 
+		<!-- <if test="starttime != null">and DATE_FORMAT(t.STARTTIME,'%Y-%m-%d') &lt;= #{starttime}</if> 
+		<if test="endtime != null">and DATE_FORMAT(t.ENDTIME,'%Y-%m-%d') &gt;= #{endtime}</if>  -->
+		
+		<if test="starttime != null and endtime != null">and ((t.STARTTIME &gt;= #{starttime} and t.STARTTIME &lt;= #{endtime}) or (t.ENDTIME &gt;= #{starttime} and t.ENDTIME &lt;= #{endtime}) or (t.STARTTIME &lt;= #{starttime} and t.ENDTIME &gt;= #{endtime}))</if> 
+		
+		<if test="periodType != null">and t.PERIOD_TYPE = #{periodType}</if> 
+		<if test="periodWay != null">and t.PERIOD_WAY = #{periodWay}</if> 
+		<if test="periodStartdate != null">and t.PERIOD_STARTDATE = #{periodStartdate}</if> 
+		<if test="periodStartdateBegin != null">and t.PERIOD_STARTDATE &gt;= #{periodStartdateBegin}</if> 
+		<if test="periodStartdateEnd != null">and t.PERIOD_STARTDATE &lt;= #{periodStartdateEnd}</if> 
+		<if test="periodEnddate != null">and t.PERIOD_ENDDATE = #{periodEnddate}</if> 
+		<if test="periodEnddateBegin != null">and t.PERIOD_ENDDATE &gt;= #{periodEnddateBegin}</if> 
+		<if test="periodEnddateEnd != null">and t.PERIOD_ENDDATE &lt;= #{periodEnddateEnd}</if> 
+		<if test="moduleFlag != null">and t.MODULE_FLAG = #{moduleFlag}</if> 
+		<if test="businessId != null">and t.BUSINESS_ID = #{businessId}</if> 
+		<if test="diaryType != null">and t.DIARY_TYPE = '0'</if> 
+		<if test="isShare != null">and t.IS_SHARE = #{isShare}</if> 
+		<if test="master != null">and t.MASTER = #{master}</if> 
+		<if test="millisecond != null">and t.MILLISECOND = #{millisecond}</if> 
+		<if test="deleteFlag != null">and t.DELETE_FLAG = '0'</if> 
+		<if test="createUser != null">and t.CREATE_USER = #{createUser}</if> 
+		<if test="createUserDept != null">and t.CREATE_USER_DEPT = #{createUserDept}</if> 
+		<if test="createUserOrg != null">and t.CREATE_USER_ORG = #{createUserOrg}</if> 
+		<if test="createDate != null">and t.CREATE_DATE = #{createDate}</if> 
+		<if test="createDateBegin != null">and t.CREATE_DATE &gt;= #{createDateBegin}</if> 
+		<if test="createDateEnd != null">and t.CREATE_DATE &lt;= #{createDateEnd}</if> 
+		<if test="modifyUser != null">and t.MODIFY_USER = #{modifyUser}</if> 
+		<if test="modifyDate != null">and t.MODIFY_DATE = #{modifyDate}</if> 
+		<if test="modifyDateBegin != null">and t.MODIFY_DATE &gt;= #{modifyDateBegin}</if> 
+		<if test="modifyDateEnd != null">and t.MODIFY_DATE &lt;= #{modifyDateEnd}</if> 
+		<if test="extDate1 != null">and t.EXT_DATE1 = #{extDate1}</if> 
+		<if test="extDate1Begin != null">and t.EXT_DATE1 &gt;= #{extDate1Begin}</if> 
+		<if test="extDate1End != null">and t.EXT_DATE1 &lt;= #{extDate1End}</if> 
+		<if test="extDate2 != null">and t.EXT_DATE2 = #{extDate2}</if> 
+		<if test="extDate2Begin != null">and t.EXT_DATE2 &gt;= #{extDate2Begin}</if> 
+		<if test="extDate2End != null">and t.EXT_DATE2 &lt;= #{extDate2End}</if> 
+		<if test="extNum1 != null">and t.EXT_NUM1 = #{extNum1}</if> 
+		<if test="extNum2 != null">and t.EXT_NUM2 = #{extNum2}</if> 
+		<if test="extNum3 != null">and t.EXT_NUM3 = #{extNum3}</if> 
+		<if test="extStr1 != null">and t.EXT_STR1 = #{extStr1}</if> 
+		<if test="extStr2 != null">and t.EXT_STR2 = #{extStr2}</if> 
+		<if test="extStr3 != null">and t.EXT_STR3 = #{extStr3}</if> 
+		<if test="extStr4 != null">and t.EXT_STR4 = #{extStr4}</if> 
+		<if test="extStr5 != null">and t.EXT_STR5 = #{extStr5}</if> 
+	</where>
+</select>
+<select id="queryForListView" parameterType="com.jc.oa.po.diary.domain.Diary" resultType="com.jc.oa.po.diary.domain.Diary">
+  SELECT t.ID id, t.POSSESSOR_ID possessorId, t.TITLE title, t.CONTENT content, t.STARTTIME starttime, t.ENDTIME endtime, t.PERIOD_TYPE periodType, t.PERIOD_WAY periodWay, t.PERIOD_STARTDATE periodStartdate, t.PERIOD_ENDDATE periodEnddate, t.MODULE_FLAG moduleFlag,t.BUSINESS_ID businessId, t.DIARY_TYPE diaryType, t.IS_SHARE isShare,t.MASTER master,t.MILLISECOND millisecond, t.DELETE_FLAG deleteFlag, t.CREATE_USER createUser, t.CREATE_USER_DEPT createUserDept, t.CREATE_USER_ORG createUserOrg, t.CREATE_DATE createDate, t.MODIFY_USER modifyUser, t.MODIFY_DATE modifyDate, t.EXT_DATE1 extDate1, t.EXT_DATE2 extDate2, t.EXT_NUM1 extNum1, t.EXT_NUM2 extNum2, t.EXT_NUM3 extNum3, t.EXT_STR1 extStr1, t.EXT_STR2 extStr2, t.EXT_STR3 extStr3, t.EXT_STR4 extStr4, t.EXT_STR5 extStr5 FROM tty_po_diary t 
+	<where>
+		<if test="id != null">and t.ID = #{id}</if> 
+		<if test="possessorId != null">and t.POSSESSOR_ID = #{possessorId}</if> 
+		<if test="title != null">and t.TITLE = #{title}</if> 
+		<if test="content != null">and t.CONTENT = #{content}</if> 
+		
+		<if test="starttime != null and endtime != null">and ((t.STARTTIME &gt;= #{starttime} and t.STARTTIME &lt;= #{endtime}) or (t.ENDTIME &gt;= #{starttime} and t.ENDTIME &lt;= #{endtime}) or (t.STARTTIME &lt;= #{starttime} and t.ENDTIME &gt;= #{endtime}))</if> 
+		
+		<if test="periodType != null">and t.PERIOD_TYPE = #{periodType}</if> 
+		<if test="periodWay != null">and t.PERIOD_WAY = #{periodWay}</if> 
+		<if test="periodStartdate != null">and t.PERIOD_STARTDATE = #{periodStartdate}</if> 
+		<if test="periodStartdateBegin != null">and t.PERIOD_STARTDATE &gt;= #{periodStartdateBegin}</if> 
+		<if test="periodStartdateEnd != null">and t.PERIOD_STARTDATE &lt;= #{periodStartdateEnd}</if> 
+		<if test="periodEnddate != null">and t.PERIOD_ENDDATE = #{periodEnddate}</if> 
+		<if test="periodEnddateBegin != null">and t.PERIOD_ENDDATE &gt;= #{periodEnddateBegin}</if> 
+		<if test="periodEnddateEnd != null">and t.PERIOD_ENDDATE &lt;= #{periodEnddateEnd}</if> 
+		<if test="moduleFlag != null">and t.MODULE_FLAG = #{moduleFlag}</if> 
+		<if test="businessId != null">and t.BUSINESS_ID = #{businessId}</if> 
+		<if test="diaryType != null">and t.DIARY_TYPE = #{diaryType}</if> 
+		<if test="isShare != null">and t.IS_SHARE = #{isShare}</if> 
+		<if test="master != null">and t.MASTER = #{master}</if> 
+		<if test="millisecond != null">and t.MILLISECOND = #{millisecond}</if> 
+		<if test="deleteFlag != null">and t.DELETE_FLAG = #{deleteFlag}</if> 
+		<if test="createUser != null">and t.CREATE_USER = #{createUser}</if> 
+		<if test="createUserDept != null">and t.CREATE_USER_DEPT = #{createUserDept}</if> 
+		<if test="createUserOrg != null">and t.CREATE_USER_ORG = #{createUserOrg}</if> 
+		<if test="createDate != null">and t.CREATE_DATE = #{createDate}</if> 
+		<if test="createDateBegin != null">and t.CREATE_DATE &gt;= #{createDateBegin}</if> 
+		<if test="createDateEnd != null">and t.CREATE_DATE &lt;= #{createDateEnd}</if> 
+		<if test="modifyUser != null">and t.MODIFY_USER = #{modifyUser}</if> 
+		<if test="modifyDate != null">and t.MODIFY_DATE = #{modifyDate}</if> 
+		<if test="modifyDateBegin != null">and t.MODIFY_DATE &gt;= #{modifyDateBegin}</if> 
+		<if test="modifyDateEnd != null">and t.MODIFY_DATE &lt;= #{modifyDateEnd}</if> 
+		<if test="extDate1 != null">and t.EXT_DATE1 = #{extDate1}</if> 
+		<if test="extDate1Begin != null">and t.EXT_DATE1 &gt;= #{extDate1Begin}</if> 
+		<if test="extDate1End != null">and t.EXT_DATE1 &lt;= #{extDate1End}</if> 
+		<if test="extDate2 != null">and t.EXT_DATE2 = #{extDate2}</if> 
+		<if test="extDate2Begin != null">and t.EXT_DATE2 &gt;= #{extDate2Begin}</if> 
+		<if test="extDate2End != null">and t.EXT_DATE2 &lt;= #{extDate2End}</if> 
+		<if test="extNum1 != null">and t.EXT_NUM1 = #{extNum1}</if> 
+		<if test="extNum2 != null">and t.EXT_NUM2 = #{extNum2}</if> 
+		<if test="extNum3 != null">and t.EXT_NUM3 = #{extNum3}</if> 
+		<if test="extStr1 != null">and t.EXT_STR1 = #{extStr1}</if> 
+		<if test="extStr2 != null">and t.EXT_STR2 = #{extStr2}</if> 
+		<if test="extStr3 != null">and t.EXT_STR3 = #{extStr3}</if> 
+		<if test="extStr4 != null">and t.EXT_STR4 = #{extStr4}</if> 
+		<if test="extStr5 != null">and t.EXT_STR5 = #{extStr5}</if> 
+	</where>
+	order by t.STARTTIME asc
+</select>
+<select id="queryForListView4m" parameterType="com.jc.oa.po.diary.domain.Diary" resultType="com.jc.oa.po.diary.domain.Diary">
+  SELECT t.ID id, t.POSSESSOR_ID possessorId, t.TITLE title, t.CONTENT content, t.STARTTIME starttime, t.ENDTIME endtime, t.PERIOD_TYPE periodType, t.PERIOD_WAY periodWay, t.PERIOD_STARTDATE periodStartdate, t.PERIOD_ENDDATE periodEnddate, t.MODULE_FLAG moduleFlag,t.BUSINESS_ID businessId, t.DIARY_TYPE diaryType, t.IS_SHARE isShare,t.MASTER master,t.MILLISECOND millisecond, t.DELETE_FLAG deleteFlag, t.CREATE_USER createUser, t.CREATE_USER_DEPT createUserDept, t.CREATE_USER_ORG createUserOrg, t.CREATE_DATE createDate, t.MODIFY_USER modifyUser, t.MODIFY_DATE modifyDate, t.EXT_DATE1 extDate1, t.EXT_DATE2 extDate2, t.EXT_NUM1 extNum1, t.EXT_NUM2 extNum2, t.EXT_NUM3 extNum3, t.EXT_STR1 extStr1, t.EXT_STR2 extStr2, t.EXT_STR3 extStr3, t.EXT_STR4 extStr4, t.EXT_STR5 extStr5 FROM tty_po_diary t 
+	<where>
+		<if test="id != null">and t.ID = #{id}</if> 
+		<if test="possessorId != null">and t.POSSESSOR_ID = #{possessorId}</if> 
+		<if test="title != null">and t.TITLE = #{title}</if> 
+		<if test="content != null">and t.CONTENT = #{content}</if> 
+		
+		<if test="starttime != null and endtime != null">and ((t.STARTTIME &gt;= #{starttime} and t.STARTTIME &lt;= #{endtime}) or (t.ENDTIME &gt;= #{starttime} and t.ENDTIME &lt;= #{endtime}) or (t.STARTTIME &lt;= #{starttime} and t.ENDTIME &gt;= #{endtime}))</if> 
+		
+		<if test="periodType != null">and t.PERIOD_TYPE = #{periodType}</if> 
+		<if test="periodWay != null">and t.PERIOD_WAY = #{periodWay}</if> 
+		<if test="periodStartdate != null">and t.PERIOD_STARTDATE = #{periodStartdate}</if> 
+		<if test="periodStartdateBegin != null">and t.PERIOD_STARTDATE &gt;= #{periodStartdateBegin}</if> 
+		<if test="periodStartdateEnd != null">and t.PERIOD_STARTDATE &lt;= #{periodStartdateEnd}</if> 
+		<if test="periodEnddate != null">and t.PERIOD_ENDDATE = #{periodEnddate}</if> 
+		<if test="periodEnddateBegin != null">and t.PERIOD_ENDDATE &gt;= #{periodEnddateBegin}</if> 
+		<if test="periodEnddateEnd != null">and t.PERIOD_ENDDATE &lt;= #{periodEnddateEnd}</if> 
+		<if test="moduleFlag != null">and t.MODULE_FLAG = #{moduleFlag}</if> 
+		<if test="businessId != null">and t.BUSINESS_ID = #{businessId}</if> 
+		<if test="diaryType != null">and t.DIARY_TYPE = #{diaryType}</if> 
+		<if test="isShare != null">and t.IS_SHARE = #{isShare}</if> 
+		<if test="master != null">and t.MASTER = #{master}</if> 
+		<if test="millisecond != null">and t.MILLISECOND = #{millisecond}</if> 
+		<if test="deleteFlag != null">and t.DELETE_FLAG = #{deleteFlag}</if> 
+		<if test="createUser != null">and t.CREATE_USER = #{createUser}</if> 
+		<if test="createUserDept != null">and t.CREATE_USER_DEPT = #{createUserDept}</if> 
+		<if test="createUserOrg != null">and t.CREATE_USER_ORG = #{createUserOrg}</if> 
+		<if test="createDate != null">and t.CREATE_DATE = #{createDate}</if> 
+		<if test="createDateBegin != null">and t.CREATE_DATE &gt;= #{createDateBegin}</if> 
+		<if test="createDateEnd != null">and t.CREATE_DATE &lt;= #{createDateEnd}</if> 
+		<if test="modifyUser != null">and t.MODIFY_USER = #{modifyUser}</if> 
+		<if test="modifyDate != null">and t.MODIFY_DATE = #{modifyDate}</if> 
+		<if test="modifyDateBegin != null">and t.MODIFY_DATE &gt;= #{modifyDateBegin}</if> 
+		<if test="modifyDateEnd != null">and t.MODIFY_DATE &lt;= #{modifyDateEnd}</if> 
+		<if test="extDate1 != null">and t.EXT_DATE1 = #{extDate1}</if> 
+		<if test="extDate1Begin != null">and t.EXT_DATE1 &gt;= #{extDate1Begin}</if> 
+		<if test="extDate1End != null">and t.EXT_DATE1 &lt;= #{extDate1End}</if> 
+		<if test="extDate2 != null">and t.EXT_DATE2 = #{extDate2}</if> 
+		<if test="extDate2Begin != null">and t.EXT_DATE2 &gt;= #{extDate2Begin}</if> 
+		<if test="extDate2End != null">and t.EXT_DATE2 &lt;= #{extDate2End}</if> 
+		<if test="extNum1 != null">and t.EXT_NUM1 = #{extNum1}</if> 
+		<if test="extNum2 != null">and t.EXT_NUM2 = #{extNum2}</if> 
+		<if test="extNum3 != null">and t.EXT_NUM3 = #{extNum3}</if> 
+		<if test="extStr1 != null">and t.EXT_STR1 = #{extStr1}</if> 
+		<if test="extStr2 != null">and t.EXT_STR2 = #{extStr2}</if> 
+		<if test="extStr3 != null">and t.EXT_STR3 = #{extStr3}</if> 
+		<if test="extStr4 != null">and t.EXT_STR4 = #{extStr4}</if> 
+		<if test="extStr5 != null">and t.EXT_STR5 = #{extStr5}</if> 
+		<if test="primaryKeys != null">
+			and t.ID in 
+			<foreach collection="primaryKeys" item="primaryKey" index="index"
+            	open="(" close=")" separator=",">
+           	 	#{primaryKey}
+        	</foreach>
+		</if> 
+	</where>
+	order by t.CREATE_DATE desc
+</select>
+<select id="queryForListView4mCount" parameterType="com.jc.oa.po.diary.domain.Diary" resultType="java.lang.Integer">
+  SELECT count(t.ID) FROM tty_po_diary t 
+	<where>
+		<if test="id != null">and t.ID = #{id}</if> 
+		<if test="possessorId != null">and t.POSSESSOR_ID = #{possessorId}</if> 
+		<if test="title != null">and t.TITLE = #{title}</if> 
+		<if test="content != null">and t.CONTENT = #{content}</if> 
+		
+		<if test="starttime != null and endtime != null">and ((t.STARTTIME &gt;= #{starttime} and t.STARTTIME &lt;= #{endtime}) or (t.ENDTIME &gt;= #{starttime} and t.ENDTIME &lt;= #{endtime}) or (t.STARTTIME &lt;= #{starttime} and t.ENDTIME &gt;= #{endtime}))</if> 
+		
+		<if test="periodType != null">and t.PERIOD_TYPE = #{periodType}</if> 
+		<if test="periodWay != null">and t.PERIOD_WAY = #{periodWay}</if> 
+		<if test="periodStartdate != null">and t.PERIOD_STARTDATE = #{periodStartdate}</if> 
+		<if test="periodStartdateBegin != null">and t.PERIOD_STARTDATE &gt;= #{periodStartdateBegin}</if> 
+		<if test="periodStartdateEnd != null">and t.PERIOD_STARTDATE &lt;= #{periodStartdateEnd}</if> 
+		<if test="periodEnddate != null">and t.PERIOD_ENDDATE = #{periodEnddate}</if> 
+		<if test="periodEnddateBegin != null">and t.PERIOD_ENDDATE &gt;= #{periodEnddateBegin}</if> 
+		<if test="periodEnddateEnd != null">and t.PERIOD_ENDDATE &lt;= #{periodEnddateEnd}</if> 
+		<if test="moduleFlag != null">and t.MODULE_FLAG = #{moduleFlag}</if> 
+		<if test="businessId != null">and t.BUSINESS_ID = #{businessId}</if> 
+		<if test="diaryType != null">and t.DIARY_TYPE = #{diaryType}</if> 
+		<if test="isShare != null">and t.IS_SHARE = #{isShare}</if> 
+		<if test="master != null">and t.MASTER = #{master}</if> 
+		<if test="millisecond != null">and t.MILLISECOND = #{millisecond}</if> 
+		<if test="deleteFlag != null">and t.DELETE_FLAG = #{deleteFlag}</if> 
+		<if test="createUser != null">and t.CREATE_USER = #{createUser}</if> 
+		<if test="createUserDept != null">and t.CREATE_USER_DEPT = #{createUserDept}</if> 
+		<if test="createUserOrg != null">and t.CREATE_USER_ORG = #{createUserOrg}</if> 
+		<if test="createDate != null">and t.CREATE_DATE = #{createDate}</if> 
+		<if test="createDateBegin != null">and t.CREATE_DATE &gt;= #{createDateBegin}</if> 
+		<if test="createDateEnd != null">and t.CREATE_DATE &lt;= #{createDateEnd}</if> 
+		<if test="modifyUser != null">and t.MODIFY_USER = #{modifyUser}</if> 
+		<if test="modifyDate != null">and t.MODIFY_DATE = #{modifyDate}</if> 
+		<if test="modifyDateBegin != null">and t.MODIFY_DATE &gt;= #{modifyDateBegin}</if> 
+		<if test="modifyDateEnd != null">and t.MODIFY_DATE &lt;= #{modifyDateEnd}</if> 
+		<if test="extDate1 != null">and t.EXT_DATE1 = #{extDate1}</if> 
+		<if test="extDate1Begin != null">and t.EXT_DATE1 &gt;= #{extDate1Begin}</if> 
+		<if test="extDate1End != null">and t.EXT_DATE1 &lt;= #{extDate1End}</if> 
+		<if test="extDate2 != null">and t.EXT_DATE2 = #{extDate2}</if> 
+		<if test="extDate2Begin != null">and t.EXT_DATE2 &gt;= #{extDate2Begin}</if> 
+		<if test="extDate2End != null">and t.EXT_DATE2 &lt;= #{extDate2End}</if> 
+		<if test="extNum1 != null">and t.EXT_NUM1 = #{extNum1}</if> 
+		<if test="extNum2 != null">and t.EXT_NUM2 = #{extNum2}</if> 
+		<if test="extNum3 != null">and t.EXT_NUM3 = #{extNum3}</if> 
+		<if test="extStr1 != null">and t.EXT_STR1 = #{extStr1}</if> 
+		<if test="extStr2 != null">and t.EXT_STR2 = #{extStr2}</if> 
+		<if test="extStr3 != null">and t.EXT_STR3 = #{extStr3}</if> 
+		<if test="extStr4 != null">and t.EXT_STR4 = #{extStr4}</if> 
+		<if test="extStr5 != null">and t.EXT_STR5 = #{extStr5}</if> 
+		<if test="primaryKeys != null">
+			and t.ID in 
+			<foreach collection="primaryKeys" item="primaryKey" index="index"
+            	open="(" close=")" separator=",">
+           	 	#{primaryKey}
+        	</foreach>
+		</if> 
+	</where>
+</select>
+<select id="queryDiaryShare" parameterType="com.jc.oa.po.diary.domain.Diary" resultType="com.jc.oa.po.diary.domain.Diary">
+  SELECT t.ID id, 
+  t.POSSESSOR_ID possessorId, 
+  t.TITLE title, 
+  t.CONTENT content, 
+  t.STARTTIME starttime, 
+  t.ENDTIME endtime, 
+  t.PERIOD_TYPE periodType, 
+  t.PERIOD_WAY periodWay, 
+  t.PERIOD_STARTDATE periodStartdate, 
+  t.PERIOD_ENDDATE periodEnddate, 
+  t.MODULE_FLAG moduleFlag, 
+  t.BUSINESS_ID businessId,
+  t.DIARY_TYPE diaryType, 
+  t.IS_SHARE isShare, 
+  t.CREATE_DATE createDate
+  FROM tty_po_diary t ,toa_sys_control_side tt 
+  where  tt.DATA_ID=t.ID and tt.TABLE_NAME='TTY_PO_DIARY' and t.IS_SHARE = '1' and t.DELETE_FLAG='0' and t.DIARY_TYPE='0'
+		<if test="possessorId != null">and tt.USER_ID = #{possessorId}</if> 
+		<if test="createUser != null">and tt.CREATE_USER = #{createUser}</if>
+		<if test="starttime != null and endtime != null">and ((t.STARTTIME &gt;= #{starttime} and t.STARTTIME &lt;= #{endtime}) or (t.ENDTIME &gt;= #{starttime} and t.ENDTIME &lt;= #{endtime}) or (t.STARTTIME &lt;= #{starttime} and t.ENDTIME &gt;= #{endtime}))</if>
+</select>
+</mapper>

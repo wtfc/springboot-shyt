@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.system.notice.domain.NoticeMsg">
+
+	<select id="query" parameterType="com.jc.system.notice.domain.NoticeMsg" resultType="com.jc.system.notice.domain.NoticeMsg">
+		SELECT 
+			t.ID id,
+			t.NOTICE_TYPE noticeType,
+			t.SEND_USER sendUser,
+			t.RECEIVE_USER receiveUser,
+			t.TITLE title,
+			t.CONTENT content,
+			t.URL url,
+			t.SHOW_FLAG showFlag,
+			t.READ_FLAG readFlag,
+			t.BUSINESS_ID businessId,
+			t.BUSINESS_FLAG businessFlag,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5
+			
+		FROM tty_sys_notice t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="noticeType != null">
+				and t.NOTICE_TYPE = #{noticeType}
+			</if>
+			<if test="sendUser != null">
+				and t.SEND_USER = #{sendUser}
+			</if>
+			<if test="receiveUser != null">
+				and t.RECEIVE_USER = #{receiveUser}
+			</if>
+			<if test="title != null">
+				and t.TITLE like '%${title}%'
+			</if>
+
+			<if test="content != null">
+				and t.CONTENT like '%${content}%'
+			</if>
+
+			<if test="url != null">
+				and t.URL = #{url}
+			</if>
+			<if test="showFlag != null">
+				and t.SHOW_FLAG = #{showFlag}
+			</if>
+			<if test="readFlag != null">
+				and t.READ_FLAG = #{readFlag}
+			</if>
+
+			<if test="businessId != null">
+				and t.BUSINESS_ID = #{businessId}
+			</if>
+
+			<if test="businessFlag != null">
+				and t.BUSINESS_FLAG = #{businessFlag}
+			</if>
+
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="createDateBegin != null">
+				and t.CREATE_DATE &gt;= #{createDateBegin}
+			</if>
+			<if test="createDateEnd != null">
+				and t.CREATE_DATE &lt;= #{createDateEnd}
+			</if>
+
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="modifyDateBegin != null">
+				and t.MODIFY_DATE &gt;= #{modifyDateBegin}
+			</if>
+			<if test="modifyDateEnd != null">
+				and t.MODIFY_DATE &lt;= #{modifyDateEnd}
+			</if>
+
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate1Begin != null">
+				and t.EXT_DATE1 &gt;= #{extDate1Begin}
+			</if>
+			<if test="extDate1End != null">
+				and t.EXT_DATE1 &lt;= #{extDate1End}
+			</if>
+
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extDate2Begin != null">
+				and t.EXT_DATE2 &gt;= #{extDate2Begin}
+			</if>
+			<if test="extDate2End != null">
+				and t.EXT_DATE2 &lt;= #{extDate2End}
+			</if>
+
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+	</select>
+	
+	
+	<select id="queryCount" parameterType="com.jc.system.notice.domain.NoticeMsg" resultType="java.lang.Long">
+		SELECT count(ID) 
+		FROM tty_sys_notice t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+
+			<if test="noticeType != null">
+				and t.NOTICE_TYPE = #{noticeType}
+			</if>
+			<if test="sendUser != null">
+				and t.SEND_USER = #{sendUser}
+			</if>
+			<if test="receiveUser != null">
+				and t.RECEIVE_USER = #{receiveUser}
+			</if>
+
+			<if test="title != null">
+				and t.TITLE like '%${title}%'
+			</if>
+
+			<if test="content != null">
+				and t.CONTENT like '%${content}%'
+			</if>
+
+			<if test="url != null">
+				and t.URL = #{url}
+			</if>
+			<if test="showFlag != null">
+				and t.SHOW_FLAG = #{showFlag}
+			</if>
+			<if test="readFlag != null">
+				and t.READ_FLAG = #{readFlag}
+			</if>
+			<if test="businessId != null">
+				and t.BUSINESS_ID = #{businessId}
+			</if>
+
+			<if test="businessFlag != null">
+				and t.BUSINESS_FLAG = #{businessFlag}
+			</if>
+
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="createDateBegin != null">
+				and t.CREATE_DATE &gt;= #{createDateBegin}
+			</if>
+			<if test="createDateEnd != null">
+				and t.CREATE_DATE &lt;= #{createDateEnd}
+			</if>
+
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="modifyDateBegin != null">
+				and t.MODIFY_DATE &gt;= #{modifyDateBegin}
+			</if>
+			<if test="modifyDateEnd != null">
+				and t.MODIFY_DATE &lt;= #{modifyDateEnd}
+			</if>
+
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate1Begin != null">
+				and t.EXT_DATE1 &gt;= #{extDate1Begin}
+			</if>
+			<if test="extDate1End != null">
+				and t.EXT_DATE1 &lt;= #{extDate1End}
+			</if>
+
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extDate2Begin != null">
+				and t.EXT_DATE2 &gt;= #{extDate2Begin}
+			</if>
+			<if test="extDate2End != null">
+				and t.EXT_DATE2 &lt;= #{extDate2End}
+			</if>
+
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+	</select>
+
+	<delete id="deletePhysical"  parameterType="com.jc.system.notice.domain.NoticeMsg">
+    	delete from tty_sys_notice
+      		where 1=1 
+      		<if test="primaryKeys != null">
+      			and ID in
+	      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+		            open="(" close=")" separator=",">
+		            #{primaryKey}
+		        </foreach>
+		     </if>
+		     <if test="businessId != null">
+		     	and BUSINESS_ID = #{businessId}
+		     </if>
+		     <if test="businessFlag != null">
+		     	and BUSINESS_FLAG = #{businessFlag}
+		     </if>
+		     <if test="receiveUser != null">
+		     	and RECEIVE_USER = #{receiveUser}
+		     </if>
+ 	</delete>
+
+	<update id="deleteLogic"  parameterType="com.jc.system.notice.domain.NoticeMsg">
+    	UPDATE tty_sys_notice t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+
+	<insert id="insert" parameterType="com.jc.system.notice.domain.NoticeMsg" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tty_sys_notice(ID,NOTICE_TYPE,SEND_USER,RECEIVE_USER,TITLE,CONTENT,URL,SHOW_FLAG,READ_FLAG,BUSINESS_ID,BUSINESS_FLAG,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES (#{id,jdbcType=NUMERIC},#{noticeType,jdbcType=VARCHAR},#{sendUser,jdbcType=NUMERIC},#{receiveUser,jdbcType=NUMERIC},#{title,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{url,jdbcType=VARCHAR},#{showFlag,jdbcType=NUMERIC},#{readFlag,jdbcType=NUMERIC},#{businessId,jdbcType=NUMERIC},#{businessFlag,jdbcType=VARCHAR},#{deleteFlag,jdbcType=NUMERIC},#{createUser,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createUserOrg,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extDate1,jdbcType=TIMESTAMP},#{extDate2,jdbcType=TIMESTAMP},#{extNum1,jdbcType=NUMERIC},#{extNum2,jdbcType=NUMERIC},#{extNum3,jdbcType=NUMERIC},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr5,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertList" parameterType="list">
+		INSERT INTO tty_sys_notice(ID,NOTICE_TYPE,SEND_USER,RECEIVE_USER,TITLE,CONTENT,URL,SHOW_FLAG,READ_FLAG,BUSINESS_ID,BUSINESS_FLAG,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(#{item.id,jdbcType=NUMERIC},#{item.noticeType,jdbcType=VARCHAR},#{item.sendUser,jdbcType=NUMERIC},#{item.receiveUser,jdbcType=NUMERIC},#{item.title,jdbcType=VARCHAR},#{item.content,jdbcType=VARCHAR},#{item.url,jdbcType=VARCHAR},#{item.showFlag,jdbcType=NUMERIC},#{item.readFlag,jdbcType=NUMERIC},#{item.businessId,jdbcType=NUMERIC},#{item.businessFlag,jdbcType=VARCHAR},#{item.deleteFlag,jdbcType=NUMERIC},#{item.createUser,jdbcType=NUMERIC},#{item.createUserDept,jdbcType=NUMERIC},#{item.createUserOrg,jdbcType=NUMERIC},#{item.createDate,jdbcType=TIMESTAMP},#{item.modifyUser,jdbcType=NUMERIC},#{item.modifyDate,jdbcType=TIMESTAMP},#{item.extDate1,jdbcType=TIMESTAMP},#{item.extDate2,jdbcType=TIMESTAMP},#{item.extNum1,jdbcType=NUMERIC},#{item.extNum2,jdbcType=NUMERIC},#{item.extNum3,jdbcType=NUMERIC},#{item.extStr1,jdbcType=VARCHAR},#{item.extStr2,jdbcType=VARCHAR},#{item.extStr3,jdbcType=VARCHAR},#{item.extStr4,jdbcType=VARCHAR},#{item.extStr5,jdbcType=VARCHAR})
+			</foreach> 
+	</insert>
+
+	<update id="update" parameterType="com.jc.system.notice.domain.NoticeMsg">
+	UPDATE tty_sys_notice t set
+	   	<if test="noticeType != null">
+			t.NOTICE_TYPE = #{noticeType},
+		</if>
+		<if test="sendUser != null">
+			t.SEND_USER = #{sendUser},
+		</if>
+		<if test="receiveUser != null">
+			t.RECEIVE_USER = #{receiveUser},
+		</if>
+	   	<if test="title != null">
+	   		TITLE = #{title},
+	   	</if>
+	   	<if test="content != null">
+	   		CONTENT = #{content},
+	   	</if>
+	   	<if test="url != null">
+	   		URL = #{url},
+	   	</if>
+   		<if test="showFlag != null">
+	   		SHOW_FLAG = #{showFlag},
+	   	</if>
+   		<if test="readFlag != null">
+	   		READ_FLAG = #{readFlag},
+	   	</if>
+	   	<if test="businessId != null">
+	   		BUSINESS_ID = #{businessId},
+	   	</if>
+	   	<if test="businessFlag != null">
+	   		BUSINESS_FLAG = #{businessFlag},
+	   	</if>
+	   	<if test="deleteFlag != null">
+	   		DELETE_FLAG = #{deleteFlag},
+	   	</if>
+	   	<if test="createUser != null">
+	   		CREATE_USER = #{createUser},
+	   	</if>
+	   	<if test="createUserDept != null">
+	   		CREATE_USER_DEPT = #{createUserDept},
+	   	</if>
+	   	<if test="createUserOrg != null">
+	   		CREATE_USER_ORG = #{createUserOrg},
+	   	</if>
+	   	<if test="createDate != null">
+	   		CREATE_DATE = #{createDate},
+	   	</if>
+	   	<if test="modifyUser != null">
+	   		MODIFY_USER = #{modifyUser},
+	   	</if>
+	   	<if test="extDate1 != null">
+	   		EXT_DATE1 = #{extDate1},
+	   	</if>
+	   	<if test="extDate2 != null">
+	   		EXT_DATE2 = #{extDate2},
+	   	</if>
+	   	<if test="extNum1 != null">
+	   		EXT_NUM1 = #{extNum1},
+	   	</if>
+	   	<if test="extNum2 != null">
+	   		EXT_NUM2 = #{extNum2},
+	   	</if>
+	   	<if test="extNum3 != null">
+	   		EXT_NUM3 = #{extNum3},
+	   	</if>
+	   	<if test="extStr1 != null">
+	   		EXT_STR1 = #{extStr1},
+	   	</if>
+	   	<if test="extStr2 != null">
+	   		EXT_STR2 = #{extStr2},
+	   	</if>
+	   	<if test="extStr3 != null">
+	   		EXT_STR3 = #{extStr3},
+	   	</if>
+	   	<if test="extStr4 != null">
+	   		EXT_STR4 = #{extStr4},
+	   	</if>
+	   	<if test="extStr5 != null">
+	   		EXT_STR5 = #{extStr5},
+	   	</if>
+	   	MODIFY_DATE = #{modifyDateNew} where 1 = 1
+	   	<if test="id != null">
+	   		and ID = #{id}
+	   	</if>
+	   	<if test="receiveUser != null">
+			and t.RECEIVE_USER = #{receiveUser}
+		</if>
+	   	<if test="showFlagForUpdate != null">
+	   		and SHOW_FLAG = #{showFlagForUpdate}
+	   	</if>
+	</update>
+
+</mapper>

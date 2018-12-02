@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.system.security.domain.SysUserRole">
+
+	<select id="query" parameterType="com.jc.system.security.domain.SysUserRole" resultType="com.jc.system.security.domain.SysUserRole">
+		SELECT 
+			t.USER_ID userId,
+			t.ROLE_ID roleId,
+			t.DEPT_ID deptId,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5
+			
+		FROM toa_sys_user_role t
+		<where>
+			<if test="userId != null">
+				and t.USER_ID = #{userId}
+			</if>
+			<if test="roleId != null">
+				and t.ROLE_ID = #{roleId}
+			</if>
+			<if test="deptId != null">
+				and t.DEPT_ID = #{deptId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+	</select>
+	
+	
+	<select id="queryCount" parameterType="com.jc.system.security.domain.SysUserRole" resultType="java.lang.Integer">
+		SELECT count(USER_ID) 
+		FROM toa_sys_user_role t
+		<where>
+			<if test="userId != null">
+				and t.USER_ID = #{userId}
+			</if>
+			<if test="roleId != null">
+				and t.ROLE_ID = #{roleId}
+			</if>
+			<if test="deptId != null">
+				and t.DEPT_ID = #{deptId}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+	</select>
+
+	<delete id="deleteByIds"  parameterType="com.jc.system.security.domain.SysUserRole">
+    	delete from toa_sys_user_role
+      		where USER_ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete>
+ 	
+ 	<delete id="deleteSysUserRole"  parameterType="com.jc.system.security.domain.SysUserRole">
+    	delete from toa_sys_user_role where user_id = #{userId}
+ 	</delete>
+ 	
+ 	<delete id="deletePhysical"  parameterType="com.jc.system.security.domain.RoleBlocks">
+    	delete from toa_sys_user_role
+      	where 
+ 
+				ROLE_ID in
+				<foreach collection="roleIds" item="roleId" index="index"
+		            open="(" close=")" separator=",">
+		            #{roleId}
+		        </foreach>
+
+ 	</delete>
+ 	
+ 	<update id="deleteLogic"  parameterType="com.jc.system.security.domain.SysUserRole">
+    	UPDATE toa_sys_user_role t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where USER_ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+
+	<insert id="insert" parameterType="com.jc.system.security.domain.SysUserRole">
+	INSERT INTO toa_sys_user_role(USER_ID,ROLE_ID,DEPT_ID,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,CREATE_USER_ORG)
+		VALUES (#{userId,jdbcType=NUMERIC},#{roleId,jdbcType=NUMERIC},#{deptId,jdbcType=NUMERIC},#{deleteFlag,jdbcType=NUMERIC},#{createUser,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr5,jdbcType=VARCHAR},#{createUserOrg,jdbcType=NUMERIC})
+	</insert>
+	
+	<insert id="insertList" parameterType="com.jc.system.security.domain.SysUserRole">
+		INSERT INTO toa_sys_user_role(USER_ID,ROLE_ID,DEPT_ID,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,CREATE_USER_ORG)
+		VALUES 
+		<foreach collection="list" item="item" index="index" separator="," >
+			(#{item.userId,jdbcType=NUMERIC},#{item.roleId,jdbcType=NUMERIC},#{item.deptId,jdbcType=NUMERIC},0,#{item.createUser,jdbcType=NUMERIC},#{item.createUserDept,jdbcType=NUMERIC},#{item.createDate,jdbcType=TIMESTAMP},#{item.modifyUser,jdbcType=NUMERIC},#{item.modifyDate,jdbcType=TIMESTAMP},#{item.extStr1,jdbcType=VARCHAR},#{item.extStr2,jdbcType=VARCHAR},#{item.extStr3,jdbcType=VARCHAR},#{item.extStr4,jdbcType=VARCHAR},#{item.extStr5,jdbcType=VARCHAR},#{item.createUserOrg,jdbcType=NUMERIC})
+		</foreach>
+	</insert>
+
+	<update id="update" parameterType="com.jc.system.security.domain.SysUserRole">
+	UPDATE toa_sys_user_role
+	   <set>
+	   	<if test="roleId != null">
+	   		ROLE_ID = #{roleId},
+	   	</if>
+	   	<if test="deptId != null">
+	   		DEPT_ID = #{deptId},
+	   	</if>
+	   	<if test="deleteFlag != null">
+	   		DELETE_FLAG = #{deleteFlag},
+	   	</if>
+	   	<if test="createUser != null">
+	   		CREATE_USER = #{createUser},
+	   	</if>
+	   	<if test="createUserDept != null">
+	   		CREATE_USER_DEPT = #{createUserDept},
+	   	</if>
+	   	
+	   	<if test="modifyUser != null">
+	   		MODIFY_USER = #{modifyUser},
+	   	</if>
+	   	<if test="modifyDate != null">
+	   		MODIFY_DATE = #{modifyDate},
+	   	</if>
+	   	<if test="extStr1 != null">
+	   		EXT_STR1 = #{extStr1},
+	   	</if>
+	   	<if test="extStr2 != null">
+	   		EXT_STR2 = #{extStr2},
+	   	</if>
+	   	<if test="extStr3 != null">
+	   		EXT_STR3 = #{extStr3},
+	   	</if>
+	   	<if test="extStr4 != null">
+	   		EXT_STR4 = #{extStr4},
+	   	</if>
+	   	<if test="extStr5 != null">
+	   		EXT_STR5 = #{extStr5},
+	   	</if>
+	   </set>
+	   where USER_ID = #{userId}
+	</update>
+
+</mapper>

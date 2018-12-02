@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.system.portal.domain.PortletRelation">
+
+	<insert id="insert" parameterType="com.jc.system.portal.domain.PortletRelation" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tty_sys_portlet_relation(ID,funtion_ID,portlet_ID,PORTAL_ID,LET_TEXTAREA,LET_FILE,USER_ID)
+			VALUES (#{id,jdbcType=NUMERIC},#{funtionId,jdbcType=NUMERIC},#{portletId,jdbcType=NUMERIC},#{portalId,jdbcType=NUMERIC},#{letTextarea,jdbcType=VARCHAR},#{letFile,jdbcType=VARCHAR},#{userId,jdbcType=NUMERIC})
+	</insert>
+
+	<insert id="insertList" parameterType="list">
+		INSERT INTO tty_sys_portlet_relation(ID,funtion_ID,portlet_ID,PORTAL_ID,LET_TEXTAREA,LET_FILE,USER_ID)
+			VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(#{item.id,jdbcType=NUMERIC},#{item.funtionId,jdbcType=NUMERIC},#{item.portletId,jdbcType=NUMERIC},#{item.portalId,jdbcType=NUMERIC},#{item.letTextarea,jdbcType=VARCHAR},#{item.letFile,jdbcType=VARCHAR},#{item.userId,jdbcType=NUMERIC})
+			</foreach> 
+	</insert>
+
+	<update id="update" parameterType="com.jc.system.portal.domain.PortletRelation">
+	UPDATE tty_sys_portlet_relation
+		<set>
+		   	<if test="funtionId != null">
+		   		funtion_ID = #{funtionId},
+		   	</if>
+		   	<if test="portletId != null">
+		   		portlet_ID = #{portletId},
+		   	</if>
+		   	<if test="portalId != null">
+		   		PORTAL_ID = #{portalId},
+		   	</if>
+		   	<if test="letTextarea != null">
+		   		LET_TEXTAREA = #{letTextarea},
+		   	</if>
+		   	<if test="letFile != null">
+		   		LET_FILE = #{letFile},
+		   	</if>
+		   	<if test="userId != null">
+		   		USER_ID = #{userId},
+		   	</if>
+		</set>
+	   	where ID = #{id} 
+	</update>
+
+	<select id="query" parameterType="com.jc.system.portal.domain.PortletRelation" resultType="com.jc.system.portal.domain.PortletRelation">
+		SELECT 
+			t.ID id,
+			t.funtion_ID funtionId,
+			t.portlet_ID portletId,
+			t.PORTAL_ID portalId,
+			t.LET_TEXTAREA letTextarea,
+			t.LET_FILE letFile,
+			t.USER_ID userId
+			
+		FROM tty_sys_portlet_relation t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+
+			<if test="funtionId != null">
+				and t.funtion_ID = #{funtionId}
+			</if>
+
+			<if test="portletId != null">
+				and t.portlet_ID = #{portletId}
+			</if>
+
+			<if test="portalId != null">
+				and t.PORTAL_ID = #{portalId}
+			</if>
+
+			<if test="letTextarea != null">
+				and t.LET_TEXTAREA = #{letTextarea}
+			</if>
+
+			<if test="letFile != null">
+				and t.LET_FILE = #{letFile}
+			</if>
+
+			<if test="userId != null">
+				and t.USER_ID = #{userId}
+			</if>
+		</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+	</select>
+	
+	
+	<select id="queryCount" parameterType="com.jc.system.portal.domain.PortletRelation" resultType="java.lang.Long">
+		SELECT count(ID) 
+		FROM tty_sys_portlet_relation t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+
+			<if test="funtionId != null">
+				and t.funtion_ID = #{funtionId}
+			</if>
+
+			<if test="portletId != null">
+				and t.portlet_ID = #{portletId}
+			</if>
+
+			<if test="portalId != null">
+				and t.PORTAL_ID = #{portalId}
+			</if>
+
+			<if test="letTextarea != null">
+				and t.LET_TEXTAREA = #{letTextarea}
+			</if>
+
+			<if test="letFile != null">
+				and t.LET_FILE = #{letFile}
+			</if>
+
+			<if test="userId != null">
+				and t.USER_ID = #{userId}
+			</if>
+		</where>
+	</select>
+
+	<delete id="deletePhysical"  parameterType="com.jc.system.portal.domain.PortletRelation">
+    	delete from tty_sys_portlet_relation
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete>
+
+	<update id="deleteLogic"  parameterType="com.jc.system.portal.domain.PortletRelation">
+    	UPDATE tty_sys_portlet_relation t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+
+</mapper>

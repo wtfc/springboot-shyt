@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infos>
+
+    <!-- 选择人员 的中文描述 [begin] -->
+    <info name="com.horizon.common.selectuser.msg001">(部门)</info>
+    <info name="com.horizon.common.selectuser.msg002">(群组)</info>
+    <info name="com.horizon.common.selectuser.msg003">(角色)</info>
+    <info name="com.horizon.common.selectuser.msg004">(个人)</info>
+    <info name="com.horizon.common.selectuser.msg005">流程定义列表</info>
+    <info name="com.horizon.common.selectuser.msg006">人员列表</info>
+    <info name="com.horizon.common.selectuser.msg007">角色管理</info>
+    <info name="com.horizon.common.selectuser.msg008">没有符合条件的角色</info>
+    
+    <!-- 选择人员的中文描述 [end] -->
+
+	
+</infos>

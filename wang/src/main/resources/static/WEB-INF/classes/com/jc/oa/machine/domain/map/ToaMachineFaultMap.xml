@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.machine.domain.ToaMachineFault" > 
+
+<insert id="insert" parameterType="com.jc.oa.machine.domain.ToaMachineFault"
+		useGeneratedKeys="true" keyProperty="id">
+  		insert into toa_machine_fault(ID,FAULT_NUMBER,COMPANY_NAME,COMPANY_ID,INT_DATE,TYPE,OPERATE_DATE,RESTORE_DATE,FAULT_REASON,FAULT_REPORT,EAZY_NAME,PROCESSING,DEPARTMENT,NETWORK,YUNWEI,JIANKONG,REMARK_ONE,STATUS,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3)
+ values(#{id},#{faultNumber},#{companyName},#{companyId},#{intDate},#{type},#{operateDate},#{restoreDate},#{faultReason},#{faultReport},#{eazyName},#{processing},#{department},#{network},#{yunwei},#{jiankong},#{remarkOne},#{status},#{deleteFlag},#{createUser},#{createUserDept},#{createDate},#{modifyUser},#{modifyDate},#{extStr1},#{extStr2},#{extStr3},#{extStr4},#{extStr5},#{extDate1},#{extDate2},#{extNum1},#{extNum2},#{extNum3})
+</insert>
+
+<update id="update" parameterType="com.jc.oa.machine.domain.ToaMachineFault">
+		update toa_machine_fault set 
+	<if test="faultNumber != null ">
+		FAULT_NUMBER=#{faultNumber},
+	</if>
+	<if test="companyName != null ">
+		COMPANY_NAME=#{companyName},
+	</if>
+	<if test="companyId != null ">
+		COMPANY_ID=#{companyId},
+	</if>
+	<if test="intDate != null ">
+		INT_DATE=#{intDate},
+	</if>
+	<if test="type != null ">
+		TYPE=#{type},
+	</if>
+	<if test="operateDate != null ">
+		OPERATE_DATE=#{operateDate},
+	</if>
+	<if test="restoreDate != null ">
+		RESTORE_DATE=#{restoreDate},
+	</if>
+	<if test="faultReason != null ">
+		FAULT_REASON=#{faultReason},
+	</if>
+	<if test="faultReport != null ">
+		FAULT_REPORT=#{faultReport},
+	</if>
+	<if test="eazyName != null ">
+		EAZY_NAME=#{eazyName},
+	</if>
+	<if test="processing != null ">
+		PROCESSING=#{processing},
+	</if>
+	<if test="department != null ">
+		DEPARTMENT=#{department},
+	</if>
+	<if test="network != null ">
+		NETWORK=#{network},
+	</if>
+	<if test="yunwei != null ">
+		YUNWEI=#{yunwei},
+	</if>
+	<if test="jiankong != null ">
+		JIANKONG=#{jiankong},
+	</if>
+	<if test="remarkOne != null ">
+		REMARK_ONE=#{remarkOne},
+	</if>
+	<if test="status != null ">
+		STATUS=#{status},
+	</if>
+	<if test="deleteFlag != null ">
+		DELETE_FLAG=#{deleteFlag},
+	</if>
+	<if test="createUser != null ">
+		CREATE_USER=#{createUser},
+	</if>
+	<if test="createUserDept != null ">
+		CREATE_USER_DEPT=#{createUserDept},
+	</if>
+	<if test="createDate != null ">
+		CREATE_DATE=#{createDate},
+	</if>
+	<if test="modifyUser != null ">
+		MODIFY_USER=#{modifyUser},
+	</if>
+	<if test="modifyDate != null ">
+		MODIFY_DATE=#{modifyDate},
+	</if>
+	<if test="extStr1 != null ">
+		EXT_STR1=#{extStr1},
+	</if>
+	<if test="extStr2 != null ">
+		EXT_STR2=#{extStr2},
+	</if>
+	<if test="extStr3 != null ">
+		EXT_STR3=#{extStr3},
+	</if>
+	<if test="extStr4 != null ">
+		EXT_STR4=#{extStr4},
+	</if>
+	<if test="extStr5 != null ">
+		EXT_STR5=#{extStr5},
+	</if>
+	<if test="extDate1 != null ">
+		EXT_DATE1=#{extDate1},
+	</if>
+	<if test="extDate2 != null ">
+		EXT_DATE2=#{extDate2},
+	</if>
+	<if test="extNum1 != null ">
+		EXT_NUM1=#{extNum1},
+	</if>
+	<if test="extNum2 != null ">
+		EXT_NUM2=#{extNum2},
+	</if>
+	<if test="extNum3 != null ">
+		EXT_NUM3=#{extNum3},
+	</if>
+
+	 MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+</update>
+
+<select id="query" parameterType="com.jc.oa.machine.domain.ToaMachineFault" resultType="com.jc.oa.machine.domain.ToaMachineFault">
+		SELECT 
+		 t.ID id
+		,t.FAULT_NUMBER faultNumber
+		,t.COMPANY_NAME companyName
+		,t.COMPANY_ID companyId
+		,t.INT_DATE intDate
+		,t.TYPE type
+		,t.OPERATE_DATE operateDate
+		,t.RESTORE_DATE restoreDate
+		,t.FAULT_REASON faultReason
+		,t.FAULT_REPORT faultReport
+		,t.EAZY_NAME eazyName
+		,t.PROCESSING processing
+		,t.DEPARTMENT department
+		,t.NETWORK network
+		,t.YUNWEI yunwei
+		,t.JIANKONG jiankong
+		,t.REMARK_ONE remarkOne
+		,t.STATUS status
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.EXT_NUM1 extNum1
+		,t.EXT_NUM2 extNum2
+		,t.EXT_NUM3 extNum3
+ FROM toa_machine_fault t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="faultNumber != null ">
+		and t.FAULT_NUMBER=#{faultNumber}
+	</if>
+	<if test="companyName != null ">
+		and t.company_name like <![CDATA['%${companyName}%']]>
+	</if>
+	<if test="companyId != null ">
+		and t.COMPANY_ID=#{companyId}
+	</if>
+	<if test="intDate != null ">
+		and t.INT_DATE=#{intDate}
+	</if>
+	<if test="type != null ">
+		and t.TYPE=#{type}
+	</if>
+	<if test="operateDate != null ">
+		and t.OPERATE_DATE=#{operateDate}
+	</if>
+	<if test="restoreDate != null ">
+		and t.RESTORE_DATE=#{restoreDate}
+	</if>
+	<if test="faultReason != null ">
+		and t.FAULT_REASON=#{faultReason}
+	</if>
+	<if test="faultReport != null ">
+		and t.FAULT_REPORT=#{faultReport}
+	</if>
+	<if test="eazyName != null ">
+		and t.EAZY_NAME=#{eazyName}
+	</if>
+	<if test="processing != null ">
+		and t.PROCESSING=#{processing}
+	</if>
+	<if test="department != null ">
+		and t.DEPARTMENT=#{department}
+	</if>
+	<if test="network != null ">
+		and t.NETWORK=#{network}
+	</if>
+	<if test="yunwei != null ">
+		and t.YUNWEI=#{yunwei}
+	</if>
+	<if test="jiankong != null ">
+		and t.JIANKONG=#{jiankong}
+	</if>
+	<if test="remarkOne != null ">
+		and t.REMARK_ONE=#{remarkOne}
+	</if>
+	<if test="status != null ">
+		and t.STATUS=#{status}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+</select>
+	
+<select id="queryCount" parameterType="com.jc.oa.machine.domain.ToaMachineFault" resultType="java.lang.Long">
+		SELECT COUNT(ID) 
+	 FROM toa_machine_fault t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="faultNumber != null ">
+		and t.FAULT_NUMBER=#{faultNumber}
+	</if>
+	<if test="companyName != null ">
+		and t.company_name like <![CDATA['%${companyName}%']]>
+	</if>
+	<if test="companyId != null ">
+		and t.COMPANY_ID=#{companyId}
+	</if>
+	<if test="intDate != null ">
+		and t.INT_DATE=#{intDate}
+	</if>
+	<if test="type != null ">
+		and t.TYPE=#{type}
+	</if>
+	<if test="operateDate != null ">
+		and t.OPERATE_DATE=#{operateDate}
+	</if>
+	<if test="restoreDate != null ">
+		and t.RESTORE_DATE=#{restoreDate}
+	</if>
+	<if test="faultReason != null ">
+		and t.FAULT_REASON=#{faultReason}
+	</if>
+	<if test="faultReport != null ">
+		and t.FAULT_REPORT=#{faultReport}
+	</if>
+	<if test="eazyName != null ">
+		and t.EAZY_NAME=#{eazyName}
+	</if>
+	<if test="processing != null ">
+		and t.PROCESSING=#{processing}
+	</if>
+	<if test="department != null ">
+		and t.DEPARTMENT=#{department}
+	</if>
+	<if test="network != null ">
+		and t.NETWORK=#{network}
+	</if>
+	<if test="yunwei != null ">
+		and t.YUNWEI=#{yunwei}
+	</if>
+	<if test="jiankong != null ">
+		and t.JIANKONG=#{jiankong}
+	</if>
+	<if test="remarkOne != null ">
+		and t.REMARK_ONE=#{remarkOne}
+	</if>
+	<if test="status != null ">
+		and t.STATUS=#{status}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+
+</select>
+
+<update id="deleteLogic"  parameterType="com.jc.oa.machine.domain.ToaMachineFault">
+	     UPDATE toa_machine_fault t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+ 			where ID in
+ 			<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=","> 
+				 #{primaryKey}
+			</foreach>
+</update>
+  	
+</mapper>   

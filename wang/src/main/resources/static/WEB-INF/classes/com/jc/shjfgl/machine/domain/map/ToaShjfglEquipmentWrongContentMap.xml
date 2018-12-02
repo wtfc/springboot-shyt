@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentWrongContent" > 
+
+<insert id="insert" parameterType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentWrongContent"
+		useGeneratedKeys="true" keyProperty="id">
+  		insert into toa_shjfgl_equipment_wrong_content(ID,WRONG_ID,OPERATION_TYPE,OPERATE_AND_RESULT,CONTENT_TYPE,CAOZGCS,CAOZGCS_NAME,REMARK,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3)
+ values(#{id},#{wrongId},#{operationType},#{operateAndResult},#{contentType},#{caozgcs},#{caozgcsName},#{remark},#{deleteFlag},#{createUser},#{createUserDept},#{createDate},#{modifyUser},#{modifyDate},#{extStr1},#{extStr2},#{extStr3},#{extStr4},#{extStr5},#{extDate1},#{extDate2},#{extNum1},#{extNum2},#{extNum3})
+</insert>
+
+<update id="update" parameterType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentWrongContent">
+		update toa_shjfgl_equipment_wrong_content set 
+	<if test="wrongId != null ">
+		WRONG_ID=#{wrongId},
+	</if>
+	<if test="operationType != null ">
+		OPERATION_TYPE=#{operationType},
+	</if>
+	<if test="operateAndResult != null ">
+		OPERATE_AND_RESULT=#{operateAndResult},
+	</if>
+	<if test="contentType != null ">
+		CONTENT_TYPE=#{contentType},
+	</if>
+	<if test="caozgcs != null ">
+		CAOZGCS=#{caozgcs},
+	</if>
+	<if test="caozgcsName != null ">
+		CAOZGCS_NAME=#{caozgcsName},
+	</if>
+	<if test="remark != null ">
+		REMARK=#{remark},
+	</if>
+	<if test="deleteFlag != null ">
+		DELETE_FLAG=#{deleteFlag},
+	</if>
+	<if test="createUser != null ">
+		CREATE_USER=#{createUser},
+	</if>
+	<if test="createUserDept != null ">
+		CREATE_USER_DEPT=#{createUserDept},
+	</if>
+	<if test="createDate != null ">
+		CREATE_DATE=#{createDate},
+	</if>
+	<if test="modifyUser != null ">
+		MODIFY_USER=#{modifyUser},
+	</if>
+	<if test="modifyDate != null ">
+		MODIFY_DATE=#{modifyDate},
+	</if>
+	<if test="extStr1 != null ">
+		EXT_STR1=#{extStr1},
+	</if>
+	<if test="extStr2 != null ">
+		EXT_STR2=#{extStr2},
+	</if>
+	<if test="extStr3 != null ">
+		EXT_STR3=#{extStr3},
+	</if>
+	<if test="extStr4 != null ">
+		EXT_STR4=#{extStr4},
+	</if>
+	<if test="extStr5 != null ">
+		EXT_STR5=#{extStr5},
+	</if>
+	<if test="extDate1 != null ">
+		EXT_DATE1=#{extDate1},
+	</if>
+	<if test="extDate2 != null ">
+		EXT_DATE2=#{extDate2},
+	</if>
+	<if test="extNum1 != null ">
+		EXT_NUM1=#{extNum1},
+	</if>
+	<if test="extNum2 != null ">
+		EXT_NUM2=#{extNum2},
+	</if>
+	<if test="extNum3 != null ">
+		EXT_NUM3=#{extNum3},
+	</if>
+
+	 MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+</update>
+
+<select id="query" parameterType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentWrongContent" resultType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentWrongContent">
+		SELECT 
+		 t.ID id
+		,t.WRONG_ID wrongId
+		,t.OPERATION_TYPE operationType
+		,t.OPERATE_AND_RESULT operateAndResult
+		,t.CONTENT_TYPE contentType
+		,t.CAOZGCS caozgcs
+		,t.CAOZGCS_NAME caozgcsName
+		,t.REMARK remark
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.EXT_NUM1 extNum1
+		,t.EXT_NUM2 extNum2
+		,t.EXT_NUM3 extNum3
+ FROM toa_shjfgl_equipment_wrong_content t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="wrongId != null ">
+		and t.WRONG_ID=#{wrongId}
+	</if>
+	<if test="operationType != null ">
+		and t.OPERATION_TYPE=#{operationType}
+	</if>
+	<if test="operateAndResult != null ">
+		and t.OPERATE_AND_RESULT=#{operateAndResult}
+	</if>
+	<if test="contentType != null ">
+		and t.CONTENT_TYPE=#{contentType},
+	</if>
+	<if test="caozgcs != null ">
+		and t.CAOZGCS=#{caozgcs},
+	</if>
+	<if test="caozgcsName != null ">
+		and t.CAOZGCS_NAME=#{caozgcsName},
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+</select>
+	
+<select id="queryCount" parameterType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentWrongContent" resultType="java.lang.Long">
+		SELECT COUNT(ID) 
+	 FROM toa_shjfgl_equipment_wrong_content t
+<where>
+	<if test="id != null ">
+		and t.ID=#{id}
+	</if>
+	<if test="wrongId != null ">
+		and t.WRONG_ID=#{wrongId}
+	</if>
+	<if test="operationType != null ">
+		and t.OPERATION_TYPE=#{operationType}
+	</if>
+	<if test="operateAndResult != null ">
+		and t.OPERATE_AND_RESULT=#{operateAndResult}
+	</if>
+	<if test="contentType != null ">
+		and t.CONTENT_TYPE=#{contentType},
+	</if>
+	<if test="caozgcs != null ">
+		and t.CAOZGCS=#{caozgcs},
+	</if>
+	<if test="caozgcsName != null ">
+		and t.CAOZGCS_NAME=#{caozgcsName},
+	</if>
+	<if test="remark != null ">
+		and t.REMARK=#{remark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+
+</select>
+
+<update id="deleteLogic"  parameterType="com.jc.shjfgl.machine.domain.ToaShjfglEquipmentWrongContent">
+	     UPDATE toa_shjfgl_equipment_wrong_content t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+ 			where ID in
+ 			<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=","> 
+				 #{primaryKey}
+			</foreach>
+</update>
+  	
+</mapper>   

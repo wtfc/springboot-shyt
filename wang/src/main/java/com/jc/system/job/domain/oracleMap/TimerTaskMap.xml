@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"><mapper namespace="com.jc.system.job.domain.TimerTask"><insert id="insert" parameterType="com.jc.system.job.domain.TimerTask"><selectKey resultType="long" keyProperty="id" order="BEFORE">SELECT TTY_SYS_TIMER_TASK_ID_SEQ.NEXTVAL FROM DUAL</selectKey>
+	INSERT INTO tty_sys_timer_task(id,group_name,description,job_class_name,start_at,end_at,cycle_type,cycle_detail,cron_Expression,state,EXT_STR1,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE)
+		VALUES (#{id},#{groupName,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR},#{jobClassName,jdbcType=VARCHAR},#{startAt,jdbcType=TIMESTAMP},#{endAt,jdbcType=TIMESTAMP},#{cycleType,jdbcType=VARCHAR},#{cycleDetail,jdbcType=VARCHAR},#{cronExpression,jdbcType=VARCHAR},#{state,jdbcType=VARCHAR},#{EXT_STR1,jdbcType=VARCHAR},#{createUser,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createUserOrg,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP})
+	</insert><update id="update" parameterType="com.jc.system.job.domain.TimerTask">
+	UPDATE tty_sys_timer_task
+	   <set>
+	   	<if test="groupName != null">
+	   		group_name = #{groupName},
+	   	</if>
+	   	<if test="description != null">
+	   		description = #{description},
+	   	</if>
+	   	<if test="jobClassName != null">
+	   		job_class_name = #{jobClassName},
+	   	</if>
+	   	<if test="startAt != null">
+	   		start_at = #{startAt},
+	   	</if>
+	   		end_at = #{endAt,jdbcType=TIMESTAMP},
+	   	<if test="cycleType != null">
+	   		cycle_type = #{cycleType},
+	   	</if>
+	   	<if test="cycleDetail != null">
+	   		cycle_detail = #{cycleDetail},
+	   	</if>
+	   	<if test="cronExpression != null">
+	   		cron_Expression = #{cronExpression},
+	   	</if>
+	   	<if test="state != null">
+	   		state = #{state},
+	   	</if>
+	   	<if test="EXT_STR1 != null">
+	   		EXT_STR1 = #{EXT_STR1},
+	   	</if>
+	   	<if test="modifyUser != null">
+	   		MODIFY_USER = #{modifyUser},
+	   	</if>
+	   	<if test="modifyDate != null">
+	   		MODIFY_DATE = #{modifyDateNew},
+	   	</if>
+	   </set>
+	   where id = #{id}
+	</update><select id="query" parameterType="com.jc.system.job.domain.TimerTask" resultType="com.jc.system.job.domain.TimerTask">
+		SELECT 
+			t.id id,
+			t.group_name groupName,
+			t.description description,
+			t.job_class_name jobClassName,
+			t.start_at startAt,
+			t.end_at endAt,
+			t.cycle_type cycleType,
+			t.cycle_detail cycleDetail,
+			t.cron_Expression cronExpression,
+			t.state state,
+			t.EXT_STR1,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate
+			
+		FROM tty_sys_timer_task t
+		<where>
+			<if test="id != null">
+				and t.id = #{id}
+			</if>
+			<if test="groupName != null">
+				and t.group_name like <![CDATA['%${groupName}%']]>
+			</if>
+			<if test="description != null">
+				and t.description like <![CDATA['%${description}%']]>
+			</if>
+			<if test="jobClassName != null">
+				and t.job_class_name = #{jobClassName}
+			</if>
+			<if test="startAt != null">
+				and t.start_at = #{startAt}
+			</if>
+			<if test="endAt != null">
+				and t.end_at = #{endAt}
+			</if>
+			<if test="cycleType != null">
+				and t.cycle_type = #{cycleType}
+			</if>
+			<if test="cycleDetail != null">
+				and t.cycle_detail = #{cycleDetail}
+			</if>
+			<if test="cronExpression != null">
+				and t.cron_Expression = #{cronExpression}
+			</if>
+			<if test="state != null">
+				and t.state = #{state}
+			</if>
+			<if test="EXT_STR1 != null">
+				and t.EXT_STR1 = #{EXT_STR1}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+		</where>
+	</select><select id="queryByGroupName" parameterType="com.jc.system.job.domain.TimerTask" resultType="com.jc.system.job.domain.TimerTask">
+		SELECT 
+			t.id id
+			
+		FROM tty_sys_timer_task t
+		<where>
+			<if test="groupName != null">
+				and t.group_name = #{groupName}
+			</if>
+		</where>
+	</select><select id="queryCount" parameterType="com.jc.system.job.domain.TimerTask" resultType="java.lang.Integer">
+		SELECT count(id) 
+		FROM tty_sys_timer_task t
+		<where>
+			<if test="id != null">
+				and t.id = #{id}
+			</if>
+			<if test="groupName != null">
+				and t.group_name like <![CDATA['%${groupName}%']]>
+			</if>
+			<if test="description != null">
+				and t.description like <![CDATA['%${description}%']]>
+			</if>
+			<if test="jobClassName != null">
+				and t.job_class_name = #{jobClassName}
+			</if>
+			<if test="startAt != null">
+				and t.start_at = #{startAt}
+			</if>
+			<if test="endAt != null">
+				and t.end_at = #{endAt}
+			</if>
+			<if test="cycleType != null">
+				and t.cycle_type = #{cycleType}
+			</if>
+			<if test="cycleDetail != null">
+				and t.cycle_detail = #{cycleDetail}
+			</if>
+			<if test="cronExpression != null">
+				and t.cron_Expression = #{cronExpression}
+			</if>
+			<if test="state != null">
+				and t.state = #{state}
+			</if>
+			<if test="EXT_STR1 != null">
+				and t.EXT_STR1 = #{EXT_STR1}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+		</where>
+	</select><delete id="deletePhysical" parameterType="com.jc.system.job.domain.TimerTask">
+    	delete from tty_sys_timer_task
+      		where id in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete></mapper>

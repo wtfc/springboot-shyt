@@ -1,0 +1,1054 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.ic.domain.Out">
+
+	<select id="query" parameterType="com.jc.oa.ic.domain.Out" resultType="com.jc.oa.ic.domain.Out">
+		SELECT 
+			t.ID id,
+			t.RECIPIENT recipient,
+			t.TYPE type,
+			t.SEND_TYPE sendType,
+			t.TEXT text,
+			t.WAP_URL wapUrl,
+			t.WAP_EXPIRY_DATE wapExpiryDate,
+			t.WAP_SIGNAL wapSignal,
+			t.CREATE_DATE createDate,
+			t.ORIGINATOR originator,
+			t.ENCODING encoding,
+			t.STATUS_REPORT statusReport,
+			t.FLASH_SMS flashSms,
+			t.SRC_PORT srcPort,
+			t.DST_PORT dstPort,
+			t.SENT_DATE sentDate,
+			t.REF_NO refNo,
+			t.PRIORITY priority,
+			t.STATUS status,
+			t.ERRORS errors,
+			t.GATEWAY_ID gatewayId,
+			t.REMAINING_QTY remainingQty,
+			t.SENDED_QTY sendedQty,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE2 createDate2,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5
+			
+		FROM smsserver_out t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="recipient != null">
+				and t.RECIPIENT = #{recipient}
+			</if>
+			<if test="type != null">
+				and t.TYPE = #{type}
+			</if>
+			<if test="sendType != null">
+				and t.SEND_TYPE = #{sendType}
+			</if>
+			<if test="text != null">
+				and t.TEXT like <![CDATA['%${text}%']]>
+			</if>
+			<if test="wapUrl != null">
+				and t.WAP_URL = #{wapUrl}
+			</if>
+			<if test="wapExpiryDate != null">
+				and t.WAP_EXPIRY_DATE = #{wapExpiryDate}
+			</if>
+			<if test="wapSignal != null">
+				and t.WAP_SIGNAL = #{wapSignal}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="originator != null">
+				and t.ORIGINATOR = #{originator}
+			</if>
+			<if test="encoding != null">
+				and t.ENCODING = #{encoding}
+			</if>
+			<if test="statusReport != null">
+				and t.STATUS_REPORT = #{statusReport}
+			</if>
+			<if test="flashSms != null">
+				and t.FLASH_SMS = #{flashSms}
+			</if>
+			<if test="srcPort != null">
+				and t.SRC_PORT = #{srcPort}
+			</if>
+			<if test="dstPort != null">
+				and t.DST_PORT = #{dstPort}
+			</if>
+			<if test="outDateStart != null">
+				<![CDATA[ and t.SENT_DATE >= #{outDateStart} ]]>
+			</if>
+			<if test="outDateEnd != null">
+				<![CDATA[ and t.SENT_DATE <= #{outDateEnd} ]]>
+			</if>
+			<if test="refNo != null">
+				and t.REF_NO = #{refNo}
+			</if>
+			<if test="priority != null">
+				and t.PRIORITY = #{priority}
+			</if>
+			<if test="status != null">
+				and t.STATUS = #{status}
+			</if>
+			<if test="errors != null">
+				and t.ERRORS = #{errors}
+			</if>
+			<if test="gatewayId != null">
+				and t.GATEWAY_ID = #{gatewayId}
+			</if>
+			<if test="remainingQty != null">
+				and t.REMAINING_QTY = #{remainingQty}
+			</if>
+			<if test="sendedQty != null">
+				and t.SENDED_QTY = #{sendedQty}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate2 != null">
+				and t.CREATE_DATE2 = #{createDate2}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+		<if test="orderBy != null">
+				order by ${orderBy}
+		</if>
+	</select>
+	
+	
+	<select id="queryCount" parameterType="com.jc.oa.ic.domain.Out" resultType="java.lang.Integer">
+		SELECT count(ID) 
+		FROM smsserver_out t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="recipient != null">
+				and t.RECIPIENT = #{recipient}
+			</if>
+			<if test="type != null">
+				and t.TYPE = #{type}
+			</if>
+			<if test="sendType != null">
+				and t.SEND_TYPE = #{sendType}
+			</if>
+			<if test="text != null">
+				and t.TEXT like <![CDATA['%${text}%']]>
+			</if>
+			<if test="wapUrl != null">
+				and t.WAP_URL = #{wapUrl}
+			</if>
+			<if test="wapExpiryDate != null">
+				and t.WAP_EXPIRY_DATE = #{wapExpiryDate}
+			</if>
+			<if test="wapSignal != null">
+				and t.WAP_SIGNAL = #{wapSignal}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="originator != null">
+				and t.ORIGINATOR = #{originator}
+			</if>
+			<if test="encoding != null">
+				and t.ENCODING = #{encoding}
+			</if>
+			<if test="statusReport != null">
+				and t.STATUS_REPORT = #{statusReport}
+			</if>
+			<if test="flashSms != null">
+				and t.FLASH_SMS = #{flashSms}
+			</if>
+			<if test="srcPort != null">
+				and t.SRC_PORT = #{srcPort}
+			</if>
+			<if test="dstPort != null">
+				and t.DST_PORT = #{dstPort}
+			</if>
+			<if test="outDateStart != null">
+				<![CDATA[ and t.SENT_DATE >= #{outDateStart} ]]>
+			</if>
+			<if test="outDateEnd != null">
+				<![CDATA[ and t.SENT_DATE <= #{outDateEnd} ]]>
+			</if>
+			<if test="refNo != null">
+				and t.REF_NO = #{refNo}
+			</if>
+			<if test="priority != null">
+				and t.PRIORITY = #{priority}
+			</if>
+			<if test="status != null">
+				and t.STATUS = #{status}
+			</if>
+			<if test="errors != null">
+				and t.ERRORS = #{errors}
+			</if>
+			<if test="gatewayId != null">
+				and t.GATEWAY_ID = #{gatewayId}
+			</if>
+			<if test="remainingQty != null">
+				and t.REMAINING_QTY = #{remainingQty}
+			</if>
+			<if test="sendedQty != null">
+				and t.SENDED_QTY = #{sendedQty}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate2 != null">
+				and t.CREATE_DATE2 = #{createDate2}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+	</select>
+	<select id="queryOutMes" parameterType="com.jc.oa.ic.domain.Out" resultType="com.jc.oa.ic.domain.Out">
+		<!-- ( -->
+		SELECT 
+			<!-- u.display_name receiveUser, -->
+			t.ID id,
+			IF(
+			    s.displaName IS NULL,
+			    t.RECIPIENT,
+			    s.displaName
+			) recipient,
+			<!-- t.RECIPIENT recipient, -->
+			t.TYPE type,
+			t.SEND_TYPE sendType,
+			t.TEXT text,
+			t.WAP_URL wapUrl,
+			t.WAP_EXPIRY_DATE wapExpiryDate,
+			t.WAP_SIGNAL wapSignal,
+			t.CREATE_DATE createDate,
+			t.ORIGINATOR originator,
+			t.ENCODING encoding,
+			t.STATUS_REPORT statusReport,
+			t.FLASH_SMS flashSms,
+			t.SRC_PORT srcPort,
+			t.DST_PORT dstPort,
+			t.SENT_DATE sentDate,
+			t.REF_NO refNo,
+			t.PRIORITY priority,
+			t.STATUS status,
+			t.ERRORS errors,
+			t.GATEWAY_ID gatewayId,
+			t.REMAINING_QTY remainingQty,
+			t.SENDED_QTY sendedQty,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE2 createDate2,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5
+			
+		FROM smsserver_out t left join (SELECT m.mob mobile,m.displayN displaName FROM (
+				(SELECT u.MOBILE mob,u.display_name displayN FROM toa_sys_user u WHERE u.DELETE_FLAG = 0) 
+				UNION (SELECT c.phone mob,c.user_name displayN FROM tty_ic_contacts c WHERE c.DELETE_FLAG = 0 and c.CREATE_USER = #{currentUserId})) m) s
+		 on t.RECIPIENT = s.MOBILE
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="recipient != null">
+				and t.RECIPIENT like <![CDATA['%${recipient}%']]>
+			</if>
+			<if test="type != null">
+				and t.TYPE = #{type}
+			</if>
+			<if test="sendType != null">
+				and t.SEND_TYPE = #{sendType}
+			</if>
+			<if test="text != null">
+				and t.TEXT like <![CDATA['%${text}%']]>
+			</if>
+			<if test="wapUrl != null">
+				and t.WAP_URL = #{wapUrl}
+			</if>
+			<if test="wapExpiryDate != null">
+				and t.WAP_EXPIRY_DATE = #{wapExpiryDate}
+			</if>
+			<if test="wapSignal != null">
+				and t.WAP_SIGNAL = #{wapSignal}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="originator != null">
+				and t.ORIGINATOR = #{originator}
+			</if>
+			<if test="encoding != null">
+				and t.ENCODING = #{encoding}
+			</if>
+			<if test="statusReport != null">
+				and t.STATUS_REPORT = #{statusReport}
+			</if>
+			<if test="flashSms != null">
+				and t.FLASH_SMS = #{flashSms}
+			</if>
+			<if test="srcPort != null">
+				and t.SRC_PORT = #{srcPort}
+			</if>
+			<if test="dstPort != null">
+				and t.DST_PORT = #{dstPort}
+			</if>
+			<if test="outDateStart != null">
+				<![CDATA[ and t.SENT_DATE >= #{outDateStart} ]]>
+			</if>
+			<if test="outDateEnd != null">
+				<![CDATA[ and t.SENT_DATE <= #{outDateEnd} ]]>
+			</if>
+			<if test="refNo != null">
+				and t.REF_NO = #{refNo}
+			</if>
+			<if test="priority != null">
+				and t.PRIORITY = #{priority}
+			</if>
+			<if test="status != null">
+				and t.STATUS = #{status}
+			</if>
+			<if test="errors != null">
+				and t.ERRORS = #{errors}
+			</if>
+			<if test="gatewayId != null">
+				and t.GATEWAY_ID = #{gatewayId}
+			</if>
+			<if test="remainingQty != null">
+				and t.REMAINING_QTY = #{remainingQty}
+			</if>
+			<if test="sendedQty != null">
+				and t.SENDED_QTY = #{sendedQty}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate2 != null">
+				and t.CREATE_DATE2 = #{createDate2}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+		<!-- 
+		)
+		UNION ALL
+		(SELECT 
+			NULL receiveUser,
+			t.ID id,
+			t.RECIPIENT recipient,
+			t.TYPE type,
+			t.SEND_TYPE sendType,
+			t.TEXT text,
+			t.WAP_URL wapUrl,
+			t.WAP_EXPIRY_DATE wapExpiryDate,
+			t.WAP_SIGNAL wapSignal,
+			t.CREATE_DATE createDate,
+			t.ORIGINATOR originator,
+			t.ENCODING encoding,
+			t.STATUS_REPORT statusReport,
+			t.FLASH_SMS flashSms,
+			t.SRC_PORT srcPort,
+			t.DST_PORT dstPort,
+			t.SENT_DATE sentDate,
+			t.REF_NO refNo,
+			t.PRIORITY priority,
+			t.STATUS status,
+			t.ERRORS errors,
+			t.GATEWAY_ID gatewayId,
+			t.REMAINING_QTY remainingQty,
+			t.SENDED_QTY sendedQty,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE2 createDate2,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5
+			
+		FROM smsserver_out t
+		<where>
+			t.RECIPIENT   NOT IN  (
+					SELECT u.MOBILE 
+				FROM toa_sys_user u  
+				WHERE u.MOBILE IS NOT NULL
+			 )
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="recipient != null">
+				and t.RECIPIENT like <![CDATA['%${recipient}%']]>
+			</if>
+			<if test="type != null">
+				and t.TYPE = #{type}
+			</if>
+			<if test="sendType != null">
+				and t.SEND_TYPE = #{sendType}
+			</if>
+			<if test="text != null">
+				and t.TEXT like <![CDATA['%${text}%']]>
+			</if>
+			<if test="wapUrl != null">
+				and t.WAP_URL = #{wapUrl}
+			</if>
+			<if test="wapExpiryDate != null">
+				and t.WAP_EXPIRY_DATE = #{wapExpiryDate}
+			</if>
+			<if test="wapSignal != null">
+				and t.WAP_SIGNAL = #{wapSignal}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="originator != null">
+				and t.ORIGINATOR = #{originator}
+			</if>
+			<if test="encoding != null">
+				and t.ENCODING = #{encoding}
+			</if>
+			<if test="statusReport != null">
+				and t.STATUS_REPORT = #{statusReport}
+			</if>
+			<if test="flashSms != null">
+				and t.FLASH_SMS = #{flashSms}
+			</if>
+			<if test="srcPort != null">
+				and t.SRC_PORT = #{srcPort}
+			</if>
+			<if test="dstPort != null">
+				and t.DST_PORT = #{dstPort}
+			</if>
+			<if test="outDateStart != null">
+				<![CDATA[ and t.SENT_DATE >= #{outDateStart} ]]>
+			</if>
+			<if test="outDateEnd != null">
+				<![CDATA[ and t.SENT_DATE <= #{outDateEnd} ]]>
+			</if>
+			<if test="refNo != null">
+				and t.REF_NO = #{refNo}
+			</if>
+			<if test="priority != null">
+				and t.PRIORITY = #{priority}
+			</if>
+			<if test="status != null">
+				and t.STATUS = #{status}
+			</if>
+			<if test="errors != null">
+				and t.ERRORS = #{errors}
+			</if>
+			<if test="gatewayId != null">
+				and t.GATEWAY_ID = #{gatewayId}
+			</if>
+			<if test="remainingQty != null">
+				and t.REMAINING_QTY = #{remainingQty}
+			</if>
+			<if test="sendedQty != null">
+				and t.SENDED_QTY = #{sendedQty}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate2 != null">
+				and t.CREATE_DATE2 = #{createDate2}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+		) -->
+		<if test="orderBy != null">
+				order by ${orderBy}
+		</if>
+	</select>
+	
+	
+	<select id="queryOutMesCount" parameterType="com.jc.oa.ic.domain.Out" resultType="java.lang.Integer">
+		SELECT count(ID) 
+		FROM smsserver_out t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="recipient != null">
+				and t.RECIPIENT like <![CDATA['%${recipient}%']]>
+			</if>
+			<if test="type != null">
+				and t.TYPE = #{type}
+			</if>
+			<if test="sendType != null">
+				and t.SEND_TYPE = #{sendType}
+			</if>
+			<if test="text != null">
+				and t.TEXT like <![CDATA['%${text}%']]>
+			</if>
+			<if test="wapUrl != null">
+				and t.WAP_URL = #{wapUrl}
+			</if>
+			<if test="wapExpiryDate != null">
+				and t.WAP_EXPIRY_DATE = #{wapExpiryDate}
+			</if>
+			<if test="wapSignal != null">
+				and t.WAP_SIGNAL = #{wapSignal}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="originator != null">
+				and t.ORIGINATOR = #{originator}
+			</if>
+			<if test="encoding != null">
+				and t.ENCODING = #{encoding}
+			</if>
+			<if test="statusReport != null">
+				and t.STATUS_REPORT = #{statusReport}
+			</if>
+			<if test="flashSms != null">
+				and t.FLASH_SMS = #{flashSms}
+			</if>
+			<if test="srcPort != null">
+				and t.SRC_PORT = #{srcPort}
+			</if>
+			<if test="dstPort != null">
+				and t.DST_PORT = #{dstPort}
+			</if>
+			<if test="outDateStart != null">
+				<![CDATA[ and t.SENT_DATE >= #{outDateStart} ]]>
+			</if>
+			<if test="outDateEnd != null">
+				<![CDATA[ and t.SENT_DATE <= #{outDateEnd} ]]>
+			</if>
+			<if test="refNo != null">
+				and t.REF_NO = #{refNo}
+			</if>
+			<if test="priority != null">
+				and t.PRIORITY = #{priority}
+			</if>
+			<if test="status != null">
+				and t.STATUS = #{status}
+			</if>
+			<if test="errors != null">
+				and t.ERRORS = #{errors}
+			</if>
+			<if test="gatewayId != null">
+				and t.GATEWAY_ID = #{gatewayId}
+			</if>
+			<if test="remainingQty != null">
+				and t.REMAINING_QTY = #{remainingQty}
+			</if>
+			<if test="sendedQty != null">
+				and t.SENDED_QTY = #{sendedQty}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate2 != null">
+				and t.CREATE_DATE2 = #{createDate2}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+	</select>
+	
+	<select id="queryAllOutMes" parameterType="com.jc.oa.ic.domain.Out" resultType="com.jc.oa.ic.domain.Out">
+		SELECT a.CREATE_USER createUser,COUNT(a.create_user) num  
+		FROM((SELECT t.CREATE_USER 
+			  FROM smsserver_out t	
+		<where>
+			t.SENT_DATE IS  NULL
+			<![CDATA[and t.status  != 'F']]>
+			<if test="outDateStart != null">
+				<![CDATA[ and t.CREATE_DATE >= #{outDateStart} ]]>
+			</if>
+			<if test="outDateEnd != null">
+				<![CDATA[ and t.CREATE_DATE <= #{outDateEnd} ]]>
+			</if>
+		</where>	
+		)UNION ALL
+		(SELECT 
+			t.CREATE_USER
+		FROM smsserver_out t
+		<where>
+			
+			<![CDATA[ t.status  != 'F']]>
+			<if test="outDateStart != null">
+				<![CDATA[ and t.SENT_DATE >= #{outDateStart} ]]>
+			</if>
+			<if test="outDateEnd != null">
+				<![CDATA[ and t.SENT_DATE <= #{outDateEnd} ]]>
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+		</where>
+		) ) a GROUP BY  a.CREATE_USER
+		<if test="orderBy != null">
+				order by ${orderBy}
+		</if>
+	</select>
+	<select id="queryAllOutMesCount" parameterType="com.jc.oa.ic.domain.Out" resultType="java.lang.Integer">
+		SELECT COUNT(o.create_user) FROM 
+		(SELECT a.CREATE_USER  FROM((SELECT 
+			t.CREATE_USER 
+			FROM smsserver_out t
+		<where>
+			t.SENT_DATE IS  NULL
+			<![CDATA[and t.status  != 'F']]>
+			<if test="outDateStart != null">
+				<![CDATA[ and t.CREATE_DATE >= #{outDateStart} ]]>
+			</if>
+			<if test="outDateEnd != null">
+				<![CDATA[ and t.CREATE_DATE <= #{outDateEnd} ]]>
+			</if>
+		</where>		
+			)UNION ALL
+			(SELECT t.CREATE_USER 
+			FROM smsserver_out t
+		<where>
+			<![CDATA[ t.status  != 'F']]>
+			<if test="outDateStart != null">
+				<![CDATA[ and t.SENT_DATE >= #{outDateStart} ]]>
+			</if>
+			<if test="outDateEnd != null">
+				<![CDATA[ and t.SENT_DATE <= #{outDateEnd} ]]>
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+		</where>
+		) ) a GROUP BY  a.CREATE_USER
+		) o
+	</select>
+
+	<select id="querySendCount" parameterType="com.jc.oa.ic.domain.Out" resultType="java.lang.Integer">
+		SELECT COUNT(a.create_user) num  
+		FROM((SELECT t.CREATE_USER 
+			  FROM smsserver_out t	
+		<where>
+			t.SENT_DATE IS  NULL
+			<![CDATA[and t.status  != 'F']]>
+			<if test="outDateStart != null">
+				<![CDATA[ and t.CREATE_DATE >= #{outDateStart} ]]>
+			</if>
+			<if test="outDateEnd != null">
+				<![CDATA[ and t.CREATE_DATE <= #{outDateEnd} ]]>
+			</if>
+		</where>	
+		)UNION ALL
+		(SELECT 
+			t.CREATE_USER
+		FROM smsserver_out t
+		<where>
+			
+			<![CDATA[ t.status  != 'F']]>
+			<if test="outDateStart != null">
+				<![CDATA[ and t.SENT_DATE >= #{outDateStart} ]]>
+			</if>
+			<if test="outDateEnd != null">
+				<![CDATA[ and t.SENT_DATE <= #{outDateEnd} ]]>
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+		</where>
+		) ) a 
+		<where>
+			<if test="createUser != null">
+				and a.CREATE_USER  = #{createUser}
+			</if>
+		</where>
+		GROUP BY  a.CREATE_USER 
+		<if test="orderBy != null">
+				order by ${orderBy}
+		</if>
+	</select>
+	
+	<delete id="deleteByIds"  parameterType="com.jc.oa.ic.domain.Out">
+    	delete from smsserver_out
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete>
+
+	<update id="delete"  parameterType="com.jc.oa.ic.domain.Out">
+    	UPDATE toa_sys_remind t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+
+	<insert id="insert" parameterType="com.jc.oa.ic.domain.Out" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO smsserver_out(ID,RECIPIENT,TYPE,SEND_TYPE,TEXT,WAP_URL,WAP_EXPIRY_DATE,WAP_SIGNAL,CREATE_DATE,ORIGINATOR,ENCODING,STATUS_REPORT,FLASH_SMS,SRC_PORT,DST_PORT,SENT_DATE,REF_NO,PRIORITY,STATUS,ERRORS,GATEWAY_ID,REMAINING_QTY,SENDED_QTY,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE2,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES (#{id,jdbcType=NUMERIC},#{recipient,jdbcType=VARCHAR},#{type,jdbcType=VARCHAR},#{sendType,jdbcType=VARCHAR},#{text,jdbcType=VARCHAR},#{wapUrl,jdbcType=VARCHAR},#{wapExpiryDate,jdbcType=TIMESTAMP},#{wapSignal,jdbcType=VARCHAR},#{createDate,jdbcType=TIMESTAMP},#{originator,jdbcType=VARCHAR},#{encoding,jdbcType=VARCHAR},#{statusReport,jdbcType=NUMERIC},#{flashSms,jdbcType=NUMERIC},#{srcPort,jdbcType=NUMERIC},#{dstPort,jdbcType=NUMERIC},#{sentDate,jdbcType=TIMESTAMP},#{refNo,jdbcType=VARCHAR},#{priority,jdbcType=NUMERIC},#{status,jdbcType=VARCHAR},#{errors,jdbcType=NUMERIC},#{gatewayId,jdbcType=VARCHAR},#{remainingQty,jdbcType=NUMERIC},#{sendedQty,jdbcType=NUMERIC},#{deleteFlag,jdbcType=NUMERIC},#{createUser,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createUserOrg,jdbcType=NUMERIC},#{createDate2,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extDate1,jdbcType=TIMESTAMP},#{extDate2,jdbcType=TIMESTAMP},#{extNum1,jdbcType=NUMERIC},#{extNum2,jdbcType=NUMERIC},#{extNum3,jdbcType=NUMERIC},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr5,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertList" parameterType="list">
+		INSERT INTO smsserver_out(ID,RECIPIENT,TYPE,SEND_TYPE,TEXT,WAP_URL,WAP_EXPIRY_DATE,WAP_SIGNAL,CREATE_DATE,ORIGINATOR,ENCODING,STATUS_REPORT,FLASH_SMS,SRC_PORT,DST_PORT,SENT_DATE,REF_NO,PRIORITY,STATUS,ERRORS,GATEWAY_ID,REMAINING_QTY,SENDED_QTY,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE2,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(#{item.id,jdbcType=NUMERIC},#{item.recipient,jdbcType=VARCHAR},#{item.type,jdbcType=VARCHAR},#{item.sendType,jdbcType=VARCHAR},#{item.text,jdbcType=VARCHAR},#{item.wapUrl,jdbcType=VARCHAR},#{item.wapExpiryDate,jdbcType=TIMESTAMP},#{item.wapSignal,jdbcType=VARCHAR},#{item.createDate,jdbcType=TIMESTAMP},#{item.originator,jdbcType=VARCHAR},#{item.encoding,jdbcType=VARCHAR},#{item.statusReport,jdbcType=NUMERIC},#{item.flashSms,jdbcType=NUMERIC},#{item.srcPort,jdbcType=NUMERIC},#{item.dstPort,jdbcType=NUMERIC},#{item.sentDate,jdbcType=TIMESTAMP},#{item.refNo,jdbcType=VARCHAR},#{item.priority,jdbcType=NUMERIC},#{item.status,jdbcType=VARCHAR},#{item.errors,jdbcType=NUMERIC},#{item.gatewayId,jdbcType=VARCHAR},#{item.remainingQty,jdbcType=NUMERIC},#{item.sendedQty,jdbcType=NUMERIC},#{item.deleteFlag,jdbcType=NUMERIC},#{item.createUser,jdbcType=NUMERIC},#{item.createUserDept,jdbcType=NUMERIC},#{item.createUserOrg,jdbcType=NUMERIC},#{item.createDate2,jdbcType=TIMESTAMP},#{item.modifyUser,jdbcType=NUMERIC},#{item.modifyDate,jdbcType=TIMESTAMP},#{item.extDate1,jdbcType=TIMESTAMP},#{item.extDate2,jdbcType=TIMESTAMP},#{item.extNum1,jdbcType=NUMERIC},#{item.extNum2,jdbcType=NUMERIC},#{item.extNum3,jdbcType=NUMERIC},#{item.extStr1,jdbcType=VARCHAR},#{item.extStr2,jdbcType=VARCHAR},#{item.extStr3,jdbcType=VARCHAR},#{item.extStr4,jdbcType=VARCHAR},#{item.extStr5,jdbcType=VARCHAR})
+			</foreach> 
+	</insert>
+
+	<update id="update" parameterType="com.jc.oa.ic.domain.Out">
+	UPDATE smsserver_out
+	   <set>
+	   	<if test="recipient != null">
+	   		RECIPIENT = #{recipient},
+	   	</if>
+	   	<if test="type != null">
+	   		TYPE = #{type},
+	   	</if>
+	   	<if test="sendType != null">
+				and t.SEND_TYPE = #{sendType}
+		</if>
+	   	<if test="text != null">
+	   		TEXT = #{text},
+	   	</if>
+	   	<if test="wapUrl != null">
+	   		WAP_URL = #{wapUrl},
+	   	</if>
+	   	<if test="wapExpiryDate != null">
+	   		WAP_EXPIRY_DATE = #{wapExpiryDate},
+	   	</if>
+	   	<if test="wapSignal != null">
+	   		WAP_SIGNAL = #{wapSignal},
+	   	</if>
+	   	<if test="originator != null">
+	   		ORIGINATOR = #{originator},
+	   	</if>
+	   	<if test="encoding != null">
+	   		ENCODING = #{encoding},
+	   	</if>
+	   	<if test="statusReport != null">
+	   		STATUS_REPORT = #{statusReport},
+	   	</if>
+	   	<if test="flashSms != null">
+	   		FLASH_SMS = #{flashSms},
+	   	</if>
+	   	<if test="srcPort != null">
+	   		SRC_PORT = #{srcPort},
+	   	</if>
+	   	<if test="dstPort != null">
+	   		DST_PORT = #{dstPort},
+	   	</if>
+	   	<if test="sentDate != null">
+	   		SENT_DATE = #{sentDate},
+	   	</if>
+	   	<if test="refNo != null">
+	   		REF_NO = #{refNo},
+	   	</if>
+	   	<if test="priority != null">
+	   		PRIORITY = #{priority},
+	   	</if>
+	   	<if test="status != null">
+	   		STATUS = #{status},
+	   	</if>
+	   	<if test="errors != null">
+	   		ERRORS = #{errors},
+	   	</if>
+	   	<if test="gatewayId != null">
+	   		GATEWAY_ID = #{gatewayId},
+	   	</if>
+	   	<if test="remainingQty != null">
+	   		REMAINING_QTY = #{remainingQty},
+	   	</if>
+	   	<if test="sendedQty != null">
+	   		SENDED_QTY = #{sendedQty},
+	   	</if>
+	   	<if test="deleteFlag != null">
+	   		DELETE_FLAG = #{deleteFlag},
+	   	</if>
+	   	<if test="modifyUser != null">
+	   		MODIFY_USER = #{modifyUser},
+	   	</if>
+	   	<if test="extDate1 != null">
+	   		EXT_DATE1 = #{extDate1},
+	   	</if>
+	   	<if test="extDate2 != null">
+	   		EXT_DATE2 = #{extDate2},
+	   	</if>
+	   	<if test="extNum1 != null">
+	   		EXT_NUM1 = #{extNum1},
+	   	</if>
+	   	<if test="extNum2 != null">
+	   		EXT_NUM2 = #{extNum2},
+	   	</if>
+	   	<if test="extNum3 != null">
+	   		EXT_NUM3 = #{extNum3},
+	   	</if>
+	   	<if test="extStr1 != null">
+	   		EXT_STR1 = #{extStr1},
+	   	</if>
+	   	<if test="extStr2 != null">
+	   		EXT_STR2 = #{extStr2},
+	   	</if>
+	   	<if test="extStr3 != null">
+	   		EXT_STR3 = #{extStr3},
+	   	</if>
+	   	<if test="extStr4 != null">
+	   		EXT_STR4 = #{extStr4},
+	   	</if>
+	   	<if test="extStr5 != null">
+	   		EXT_STR5 = #{extStr5},
+	   	</if>
+	   </set>
+	    ,MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+	</update>
+
+</mapper>

@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.shyt.domain.CustomerPeople">
+
+	<insert id="insert" parameterType="com.jc.oa.shyt.domain.CustomerPeople"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO toa_shyt_customer_people(
+								ID
+								,COMPANY_NAME
+								,CUSTOMER_ID
+								,JOB
+								,NAME
+								,EMAIL
+								,WEIXIN
+								,TEL
+								,ID_CARD
+								,LIKEE
+								,LEAVE_JOB
+								,REMARK
+								,PLACE_ORIGIN
+								,MARRIAGE_PEOPLE
+								,CHILDREN_SITUATION
+								,DEPARTMENT_PEOPLE
+								,CUSTOMER_YEAR
+								,DECISION_MAKING
+								,DELETE_FLAG
+								,CREATE_USER
+								,CREATE_USER_DEPT
+								,CREATE_USER_ORG
+								,CREATE_DATE
+								,MODIFY_USER
+								,MODIFY_DATE
+								,EXT_STR1
+								,EXT_STR2
+								,EXT_STR3
+								,EXT_STR4
+								,EXT_STR5
+								,EXT_DATE1
+								,EXT_DATE2
+								,EXT_NUM1
+								,EXT_NUM2
+								,EXT_NUM3)
+		VALUES (#{id,jdbcType=NUMERIC}
+				,#{companyName,jdbcType=VARCHAR}
+				,#{customerId,jdbcType=NUMERIC}
+				,#{job,jdbcType=VARCHAR}
+				,#{name,jdbcType=VARCHAR}
+				,#{email,jdbcType=VARCHAR}
+				,#{weixin,jdbcType=VARCHAR}
+				,#{tel,jdbcType=VARCHAR}
+				,#{idCard,jdbcType=VARCHAR}
+				,#{likee,jdbcType=VARCHAR}
+				,#{leaveJob,jdbcType=VARCHAR}
+				,#{remark,jdbcType=VARCHAR}
+				,#{placeOrigin,jdbcType=VARCHAR}
+				,#{marriagePeople,jdbcType=VARCHAR}
+				,#{childrenSituation,jdbcType=VARCHAR}
+				,#{departmentPeople,jdbcType=VARCHAR}
+				,#{customerYear,jdbcType=VARCHAR}
+				,#{decisionMaking,jdbcType=VARCHAR}
+				,#{deleteFlag,jdbcType=VARCHAR}
+				,#{createUser,jdbcType=NUMERIC}
+				,#{createUserDept,jdbcType=NUMERIC}
+				,#{createUserOrg,jdbcType=NUMERIC}
+				,#{createDate,jdbcType=TIMESTAMP}
+				,#{modifyUser,jdbcType=NUMERIC}
+				,#{modifyDate,jdbcType=TIMESTAMP}
+				,#{extStr1,jdbcType=VARCHAR}
+				,#{extStr2,jdbcType=VARCHAR}
+				,#{extStr3,jdbcType=VARCHAR}
+				,#{extStr4,jdbcType=VARCHAR}
+				,#{extStr5,jdbcType=VARCHAR}
+				,#{extDate1,jdbcType=TIMESTAMP}
+				,#{extDate2,jdbcType=TIMESTAMP}
+				,#{extNum1,jdbcType=NUMERIC}
+				,#{extNum2,jdbcType=NUMERIC}
+				,#{extNum3,jdbcType=NUMERIC}
+				)
+	</insert>
+
+	<insert id="insertList" parameterType="list">
+		INSERT INTO toa_shyt_customer_people(ID
+								,COMPANY_NAME
+								,CUSTOMER_ID
+								,JOB
+								,NAME
+								,EMAIL
+								,WEIXIN
+								,TEL
+								,ID_CARD
+								,LIKEE
+								,LEAVE_JOB
+								,REMARK
+								,PLACE_ORIGIN
+								,MARRIAGE_PEOPLE
+								,CHILDREN_SITUATION
+								,DEPARTMENT_PEOPLE
+								,CUSTOMER_YEAR
+								,DECISION_MAKING
+								,DELETE_FLAG
+								,CREATE_USER
+								,CREATE_USER_DEPT
+								,CREATE_DATE
+								,MODIFY_USER
+								,MODIFY_DATE
+								,EXT_STR1
+								,EXT_STR2
+								,EXT_STR3
+								,EXT_STR4
+								,EXT_STR5
+								,EXT_DATE1
+								,EXT_DATE2
+								,EXT_NUM1
+								,EXT_NUM2
+								,EXT_NUM3
+								)
+		VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(#{item.id,jdbcType=NUMERIC}
+				,#{item.companyName,jdbcType=VARCHAR}
+				,#{item.customerId,jdbcType=NUMERIC}
+				,#{item.job,jdbcType=VARCHAR}
+				,#{item.name,jdbcType=VARCHAR}
+				,#{item.email,jdbcType=VARCHAR}
+				,#{item.weixin,jdbcType=VARCHAR}
+				,#{item.tel,jdbcType=VARCHAR}
+				,#{item.idCard,jdbcType=VARCHAR}
+				,#{item.likee,jdbcType=VARCHAR}
+				,#{item.leaveJob,jdbcType=VARCHAR}
+				,#{item.remark,jdbcType=VARCHAR}
+				,#{placeOrigin,jdbcType=VARCHAR}
+				,#{marriagePeople,jdbcType=VARCHAR}
+				,#{childrenSituation,jdbcType=VARCHAR}
+				,#{departmentPeople,jdbcType=VARCHAR}
+				,#{customerYear,jdbcType=VARCHAR}
+				,#{decisionMaking,jdbcType=VARCHAR}
+				,#{item.deleteFlag,jdbcType=VARCHAR}
+				,#{item.createUser,jdbcType=NUMERIC}
+				,#{item.createUserDept,jdbcType=NUMERIC}
+				,#{item.createDate,jdbcType=TIMESTAMP}
+				,#{item.modifyUser,jdbcType=NUMERIC}
+				,#{item.modifyDate,jdbcType=TIMESTAMP}
+				,#{item.extStr1,jdbcType=VARCHAR}
+				,#{item.extStr2,jdbcType=VARCHAR}
+				,#{item.extStr3,jdbcType=VARCHAR}
+				,#{item.extStr4,jdbcType=VARCHAR}
+				,#{item.extStr5,jdbcType=VARCHAR}
+				,#{item.extDate1,jdbcType=TIMESTAMP}
+				,#{item.extDate2,jdbcType=TIMESTAMP}
+				,#{item.extNum1,jdbcType=NUMERIC}
+				,#{item.extNum2,jdbcType=NUMERIC}
+				,#{item.extNum3,jdbcType=NUMERIC}
+				)
+			</foreach> 
+	</insert>
+	
+	<update id="update" parameterType="com.jc.oa.shyt.domain.CustomerPeople">
+		UPDATE toa_shyt_customer_people set
+			<!-- <if test="groupName != null">
+				group_name like <![CDATA['%${groupName}%']]>
+			</if> -->
+			
+			<if test="companyName != null">
+				 COMPANY_NAME = #{companyName},
+			</if>
+			<if test="customerId != null">
+				 CUSTOMER_ID = #{customerId},
+			</if>
+			<if test="job != null">
+				 JOB = #{job},
+			</if>
+			<if test="name != null">
+				 NAME = #{name},
+			</if>
+			<if test="email != null">
+				 EMAIL = #{email},
+			</if>
+			<if test="weixin != null">
+				 WEIXIN = #{weixin},
+			</if>
+			<if test="tel != null">
+				 TEL = #{tel},
+			</if>
+			<if test="idCard != null">
+				 ID_CARD = #{idCard},
+			</if>
+			<if test="likee != null">
+				 LIKEE = #{likee},
+			</if>
+			<if test="leaveJob != null">
+				 LEAVE_JOB = #{leaveJob},
+			</if>
+			<if test="remark != null">
+				 REMARK = #{remark},
+			</if>
+			<if test="placeOrigin != null ">
+				PLACE_ORIGIN=#{placeOrigin},
+			</if>
+			<if test="marriagePeople != null ">
+				MARRIAGE_PEOPLE=#{marriagePeople},
+			</if>
+			<if test="childrenSituation != null ">
+				CHILDREN_SITUATION=#{childrenSituation},
+			</if>
+			<if test="departmentPeople != null ">
+				DEPARTMENT_PEOPLE=#{departmentPeople},
+			</if>
+			<if test="customerYear != null ">
+				CUSTOMER_YEAR=#{customerYear},
+			</if>
+			<if test="decisionMaking != null ">
+				DECISION_MAKING=#{decisionMaking},
+			</if>
+			<if test="deleteFlag != null ">
+				DELETE_FLAG=#{deleteFlag},
+			</if>
+			<if test="createUser != null ">
+				CREATE_USER=#{createUser},
+			</if>
+			<if test="createUserDept != null ">
+				CREATE_USER_DEPT=#{createUserDept},
+			</if>
+			<if test="createUserOrg != null ">
+				CREATE_USER_ORG=#{createUserOrg},
+			</if>
+			<if test="createDate != null ">
+				CREATE_DATE=#{createDate},
+			</if>
+			<if test="modifyUser != null ">
+				MODIFY_USER=#{modifyUser},
+			</if>
+			<if test="modifyDate != null ">
+				MODIFY_DATE=#{modifyDate},
+			</if>
+			<if test="extStr1 != null ">
+				EXT_STR1=#{extStr1},
+			</if>
+			<if test="extStr2 != null ">
+				EXT_STR2=#{extStr2},
+			</if>
+			<if test="extStr3 != null ">
+				EXT_STR3=#{extStr3},
+			</if>
+			<if test="extStr4 != null ">
+				EXT_STR4=#{extStr4},
+			</if>
+			<if test="extStr5 != null ">
+				EXT_STR5=#{extStr5},
+			</if>
+			<if test="extDate1 != null ">
+				EXT_DATE1=#{extDate1},
+			</if>
+			<if test="extDate2 != null ">
+				EXT_DATE2=#{extDate2},
+			</if>
+			<if test="extNum1 != null ">
+				EXT_NUM1=#{extNum1},
+			</if>
+			<if test="extNum2 != null ">
+				EXT_NUM2=#{extNum2},
+			</if>
+			<if test="extNum3 != null ">
+				EXT_NUM3=#{extNum3},
+			</if>
+		MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+	</update>
+	
+	
+	<select id="query" parameterType="com.jc.oa.shyt.domain.CustomerPeople" resultType="com.jc.oa.shyt.domain.CustomerPeople">
+		SELECT 
+			t.ID 				id
+			,t.COMPANY_NAME 	companyName
+			,t.CUSTOMER_ID 		customerId
+			,t.JOB 				job
+			,t.NAME 			name
+			,t.EMAIL 			email
+			,t.WEIXIN 			weixin
+			,t.TEL 				tel
+			,t.ID_CARD 			idCard
+			,t.LIKEE 			likee
+			,t.LEAVE_JOB 		leaveJob
+			,t.REMARK 			remark
+			,t.PLACE_ORIGIN     placeOrigin
+			,t.MARRIAGE_PEOPLE  marriagePeople
+			,t.CHILDREN_SITUATION childrenSituation
+			,t.DEPARTMENT_PEOPLE departmentPeople
+			,t.CUSTOMER_YEAR     customerYear
+			,t.DECISION_MAKING  decisionMaking
+			,t.DELETE_FLAG 		deleteFlag
+			,t.CREATE_USER 		createUser
+			,t.CREATE_USER_DEPT createUserDept
+			,t.CREATE_USER_ORG createUserOrg
+			,t.CREATE_DATE		createDate
+			,t.MODIFY_USER      modifyUser
+			,t.MODIFY_DATE      modifyDate
+			,t.EXT_STR1			extStr1
+			,t.EXT_STR2			extStr2
+			,t.EXT_STR3			extStr3
+			,t.EXT_STR4			extStr4
+			,t.EXT_STR5			extStr5
+			,t.EXT_DATE1		extDate1
+			,t.EXT_DATE2		extDate2
+			,t.EXT_NUM1			extNum1
+			,t.EXT_NUM2			extNum2
+			,t.EXT_NUM3			extNum3
+		FROM toa_shyt_customer_people t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<!-- <if test="groupName != null">
+				group_name like <![CDATA['%${groupName}%']]>
+			</if> -->
+			
+			<if test="companyName != null">
+				 and t.COMPANY_NAME like <![CDATA['%${companyName}%']]>
+			</if>
+			<if test="customerId != null">
+				 and t.CUSTOMER_ID = #{customerId}
+			</if>
+			<if test="job != null">
+				 and t.JOB = #{job}
+			</if>
+			<if test="name != null">
+				 and t.NAME like <![CDATA['%${name}%']]>
+			</if>
+			<if test="email != null">
+				 and t.EMAIL = #{email}
+			</if>
+			<if test="weixin != null">
+				 and t.WEIXIN = #{weixin}
+			</if>
+			<if test="tel != null">
+				 and t.TEL = #{tel}
+			</if>
+			<if test="idCard != null">
+				 and t.ID_CARD = #{idCard}
+			</if>
+			<if test="likee != null">
+				 and t.LIKEE = #{likee}
+			</if>
+			<if test="leaveJob != null">
+				 and t.LEAVE_JOB = #{leaveJob}
+			</if>
+			<if test="remark != null">
+				 and t.REMARK = #{remark}
+			</if>
+			<if test="placeOrigin != null ">
+				and t.PLACE_ORIGIN=#{placeOrigin}
+			</if>
+			<if test="marriagePeople != null ">
+				and t.MARRIAGE_PEOPLE=#{marriagePeople}
+			</if>
+			<if test="childrenSituation != null ">
+				and t.CHILDREN_SITUATION=#{childrenSituation}
+			</if>
+			<if test="departmentPeople != null ">
+				and t.DEPARTMENT_PEOPLE=#{departmentPeople}
+			</if>
+			<if test="customerYear != null ">
+				and t.CUSTOMER_YEAR=#{customerYear}
+			</if>
+			<if test="decisionMaking != null ">
+				and t.DECISION_MAKING=#{decisionMaking}
+			</if>
+			<if test="deleteFlag !=null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="extStr1 != null">
+				 and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				 and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				 and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				 and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				 and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="createUser != null">
+				 and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				 and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				 and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				 and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				 and t.MODIFY_USER = #{modifyUser}
+			</if>
+		</where>
+			<if test="orderBy != null">
+				order by ${orderBy}
+			</if>
+	</select>
+	
+	<select id="queryCount" parameterType="com.jc.oa.shyt.domain.CustomerPeople" resultType="java.lang.Long">
+		SELECT count(ID) 
+		FROM toa_shyt_customer_people t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<!-- <if test="groupName != null">
+				group_name like <![CDATA['%${groupName}%']]>
+			</if> -->
+			<if test="companyName != null">
+				 and t.COMPANY_NAME like <![CDATA['%${companyName}%']]>
+			</if>
+			<if test="customerId != null">
+				 and t.CUSTOMER_ID = #{customerId}
+			</if>
+			<if test="job != null">
+				 and t.JOB = #{job}
+			</if>
+			<if test="name != null">
+				 and t.NAME like <![CDATA['%${name}%']]>
+			</if>
+			<if test="email != null">
+				 and t.EMAIL = #{email}
+			</if>
+			<if test="weixin != null">
+				 and t.WEIXIN = #{weixin}
+			</if>
+			<if test="tel != null">
+				 and t.TEL = #{tel}
+			</if>
+			<if test="idCard != null">
+				 and t.ID_CARD = #{idCard}
+			</if>
+			<if test="likee != null">
+				 and t.LIKEE = #{likee}
+			</if>
+			<if test="leaveJob != null">
+				 and t.LEAVE_JOB = #{leaveJob}
+			</if>
+			<if test="remark != null">
+				 and t.REMARK = #{remark}
+			</if>
+			<if test="placeOrigin != null ">
+				and t.PLACE_ORIGIN=#{placeOrigin}
+			</if>
+			<if test="marriagePeople != null ">
+				and t.MARRIAGE_PEOPLE=#{marriagePeople}
+			</if>
+			<if test="childrenSituation != null ">
+				and t.CHILDREN_SITUATION=#{childrenSituation}
+			</if>
+			<if test="departmentPeople != null ">
+				and t.DEPARTMENT_PEOPLE=#{departmentPeople}
+			</if>
+			<if test="customerYear != null ">
+				and t.CUSTOMER_YEAR=#{customerYear}
+			</if>
+			<if test="decisionMaking != null ">
+				and t.DECISION_MAKING=#{decisionMaking}
+			</if>
+			<if test="deleteFlag !=null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="extStr1 != null">
+				 and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				 and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				 and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				 and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				 and t.EXT_STR5 = #{extStr5}
+			</if>
+			<if test="createUser != null">
+				 and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				 and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				 and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				 and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				 and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="dataAccessDynamicSQL != null">
+				${dataAccessDynamicSQL}
+			</if>
+		</where>
+	</select>
+	<update id="deleteLogic"  parameterType="com.jc.oa.shyt.domain.CustomerPeople">
+    	UPDATE toa_shyt_customer_people t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+ 	<!-- 修改客维信息 -->
+ 	<update id="updatePeople"  parameterType="com.jc.oa.shyt.domain.CustomerPeople">
+    	UPDATE toa_shyt_customer_people set create_user =#{createUser}
+	 			where customer_id=#{customerId}
+ 	</update>
+ 	
+</mapper>

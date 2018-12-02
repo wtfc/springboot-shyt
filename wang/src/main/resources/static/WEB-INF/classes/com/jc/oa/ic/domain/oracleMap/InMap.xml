@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"><mapper namespace="com.jc.oa.ic.domain.In"><select id="query" parameterType="com.jc.oa.ic.domain.In" resultType="com.jc.oa.ic.domain.In">
+		SELECT 
+			t.ID id,
+			t.PROCESS process,
+			IF(
+			    s.displaName IS NULL,
+			    t.ORIGINATOR,
+			    s.displaName
+			) originator,
+			t.type type,
+			t.ENCODING encoding,
+			t.MESSAGE_DATE messageDate,
+			t.RECEIVE_DATE receiveDate,
+			t.TEXT text,
+			t.ORIGINAL_REF_NO originalRefNo,
+			t.ORIGINAL_RECEIVE_DATE originalReceiveDate,
+			t.GATEWAY_ID gatewayId,
+			t.STATE state,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5
+			
+		FROM smsserver_in t left join (SELECT m.mob mobile,m.displayN displaName FROM (
+				(SELECT u.MOBILE mob,u.display_name displayN FROM toa_sys_user u WHERE u.DELETE_FLAG = 0) 
+				UNION (SELECT c.phone mob,c.user_name displayN FROM tty_ic_contacts c WHERE c.DELETE_FLAG = 0 and c.CREATE_USER = #{currentUserId})) m) s
+		 on t.ORIGINATOR = s.MOBILE
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="process != null">
+				and t.PROCESS = #{process}
+			</if>
+			<if test="originator != null">
+				and t.ORIGINATOR like <![CDATA['%${originator}%']]>
+			</if>
+			<if test="type != null">
+				and t.type = #{type}
+			</if>
+			<if test="encoding != null">
+				and t.ENCODING = #{encoding}
+			</if>
+			<if test="messageDate != null">
+				and t.MESSAGE_DATE = #{messageDate}
+			</if>
+			<if test="inDateStart != null">
+				<![CDATA[ and t.RECEIVE_DATE>= #{inDateStart} ]]>
+			</if>
+			<if test="inDateEnd != null">
+				<![CDATA[ and t.RECEIVE_DATE <= #{inDateEnd} ]]>
+			</if>
+			<if test="text != null">
+				and t.TEXT like <![CDATA['%${text}%']]>
+			</if>
+			<if test="originalRefNo != null">
+				and t.ORIGINAL_REF_NO = #{originalRefNo}
+			</if>
+			<if test="originalReceiveDate != null">
+				and t.ORIGINAL_RECEIVE_DATE = #{originalReceiveDate}
+			</if>
+			<if test="gatewayId != null">
+				and t.GATEWAY_ID = #{gatewayId}
+			</if>
+			<if test="state != null">
+				and t.STATE = #{state}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+		<if test="orderBy != null">
+				order by ${orderBy}
+		</if>
+	</select><select id="queryCount" parameterType="com.jc.oa.ic.domain.In" resultType="java.lang.Integer">
+		SELECT count(ID) 
+		FROM smsserver_in t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="process != null">
+				and t.PROCESS = #{process}
+			</if>
+			<if test="originator != null">
+				and t.ORIGINATOR like <![CDATA['%${originator}%']]>
+			</if>
+			<if test="type != null">
+				and t.type = #{type}
+			</if>
+			<if test="encoding != null">
+				and t.ENCODING = #{encoding}
+			</if>
+			<if test="messageDate != null">
+				and t.MESSAGE_DATE = #{messageDate}
+			</if>
+			<if test="inDateStart != null">
+				<![CDATA[ and t.RECEIVE_DATE>= #{inDateStart} ]]>
+			</if>
+			<if test="inDateEnd != null">
+				<![CDATA[ and t.RECEIVE_DATE <= #{inDateEnd} ]]>
+			</if>
+			<if test="text != null">
+				and t.TEXT like <![CDATA['%${text}%']]>
+			</if>
+			<if test="originalRefNo != null">
+				and t.ORIGINAL_REF_NO = #{originalRefNo}
+			</if>
+			<if test="originalReceiveDate != null">
+				and t.ORIGINAL_RECEIVE_DATE = #{originalReceiveDate}
+			</if>
+			<if test="gatewayId != null">
+				and t.GATEWAY_ID = #{gatewayId}
+			</if>
+			<if test="state != null">
+				and t.STATE = #{state}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if>
+		</where>
+	</select><delete id="deleteByIds" parameterType="com.jc.oa.ic.domain.In">
+    	delete from smsserver_in
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete><update id="delete" parameterType="com.jc.oa.ic.domain.In">
+    	UPDATE smsserver_in t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update><update id="deleteLogic" parameterType="com.jc.oa.ic.domain.In">
+    	UPDATE smsserver_in t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update><insert id="insert" parameterType="com.jc.oa.ic.domain.In"><selectKey resultType="long" keyProperty="id" order="BEFORE">SELECT SMSSERVER_IN_ID_SEQ.NEXTVAL FROM DUAL</selectKey>
+		INSERT INTO smsserver_in(ID,PROCESS,ORIGINATOR,type,ENCODING,MESSAGE_DATE,RECEIVE_DATE,TEXT,ORIGINAL_REF_NO,ORIGINAL_RECEIVE_DATE,GATEWAY_ID,STATE,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES (#{id},#{process,jdbcType=NUMERIC},#{originator,jdbcType=VARCHAR},#{etype,jdbcType=VARCHAR},#{encoding,jdbcType=VARCHAR},#{messageDate,jdbcType=TIMESTAMP},#{receiveDate,jdbcType=TIMESTAMP},#{text,jdbcType=VARCHAR},#{originalRefNo,jdbcType=VARCHAR},#{originalReceiveDate,jdbcType=TIMESTAMP},#{gatewayId,jdbcType=VARCHAR},#{state,jdbcType=NUMERIC},#{deleteFlag,jdbcType=NUMERIC},#{createUser,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createUserOrg,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extDate1,jdbcType=TIMESTAMP},#{extDate2,jdbcType=TIMESTAMP},#{extNum1,jdbcType=NUMERIC},#{extNum2,jdbcType=NUMERIC},#{extNum3,jdbcType=NUMERIC},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr5,jdbcType=VARCHAR})
+	</insert><insert id="insertList" parameterType="list">
+		INSERT INTO smsserver_in(ID,PROCESS,ORIGINATOR,type,ENCODING,MESSAGE_DATE,RECEIVE_DATE,TEXT,ORIGINAL_REF_NO,ORIGINAL_RECEIVE_DATE,GATEWAY_ID,STATE,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(SMSSERVER_IN_ID_SEQ.nextval,#{item.process,jdbcType=NUMERIC},#{item.originator,jdbcType=VARCHAR},#{item.etype,jdbcType=VARCHAR},#{item.encoding,jdbcType=VARCHAR},#{item.messageDate,jdbcType=TIMESTAMP},#{item.receiveDate,jdbcType=TIMESTAMP},#{item.text,jdbcType=VARCHAR},#{item.originalRefNo,jdbcType=VARCHAR},#{item.originalReceiveDate,jdbcType=TIMESTAMP},#{item.gatewayId,jdbcType=VARCHAR},#{item.state,jdbcType=NUMERIC},#{item.deleteFlag,jdbcType=NUMERIC},#{item.createUser,jdbcType=NUMERIC},#{item.createUserDept,jdbcType=NUMERIC},#{item.createUserOrg,jdbcType=NUMERIC},#{item.createDate,jdbcType=TIMESTAMP},#{item.modifyUser,jdbcType=NUMERIC},#{item.modifyDate,jdbcType=TIMESTAMP},#{item.extDate1,jdbcType=TIMESTAMP},#{item.extDate2,jdbcType=TIMESTAMP},#{item.extNum1,jdbcType=NUMERIC},#{item.extNum2,jdbcType=NUMERIC},#{item.extNum3,jdbcType=NUMERIC},#{item.extStr1,jdbcType=VARCHAR},#{item.extStr2,jdbcType=VARCHAR},#{item.extStr3,jdbcType=VARCHAR},#{item.extStr4,jdbcType=VARCHAR},#{item.extStr5,jdbcType=VARCHAR})
+			</foreach> 
+	</insert><update id="update" parameterType="com.jc.oa.ic.domain.In">
+	UPDATE smsserver_in
+	   <set>
+	   	<if test="process != null">
+	   		PROCESS = #{process},
+	   	</if>
+	   	<if test="originator != null">
+	   		ORIGINATOR = #{originator},
+	   	</if>
+	   	<if test="type != null">
+	   		type = #{type},
+	   	</if>
+	   	<if test="encoding != null">
+	   		ENCODING = #{encoding},
+	   	</if>
+	   	<if test="messageDate != null">
+	   		MESSAGE_DATE = #{messageDate},
+	   	</if>
+	   	<if test="receiveDate != null">
+	   		RECEIVE_DATE = #{receiveDate},
+	   	</if>
+	   	<if test="text != null">
+	   		TEXT = #{text},
+	   	</if>
+	   	<if test="originalRefNo != null">
+	   		ORIGINAL_REF_NO = #{originalRefNo},
+	   	</if>
+	   	<if test="originalReceiveDate != null">
+	   		ORIGINAL_RECEIVE_DATE = #{originalReceiveDate},
+	   	</if>
+	   	<if test="gatewayId != null">
+	   		GATEWAY_ID = #{gatewayId},
+	   	</if>
+	   	<if test="state != null">
+	   		STATE = #{state},
+	   	</if>
+	   	<if test="deleteFlag != null">
+	   		DELETE_FLAG = #{deleteFlag},
+	   	</if>
+	   	<if test="modifyUser != null">
+	   		MODIFY_USER = #{modifyUser},
+	   	</if>
+	   	<if test="extDate1 != null">
+	   		EXT_DATE1 = #{extDate1},
+	   	</if>
+	   	<if test="extDate2 != null">
+	   		EXT_DATE2 = #{extDate2},
+	   	</if>
+	   	<if test="extNum1 != null">
+	   		EXT_NUM1 = #{extNum1},
+	   	</if>
+	   	<if test="extNum2 != null">
+	   		EXT_NUM2 = #{extNum2},
+	   	</if>
+	   	<if test="extNum3 != null">
+	   		EXT_NUM3 = #{extNum3},
+	   	</if>
+	   	<if test="extStr1 != null">
+	   		EXT_STR1 = #{extStr1},
+	   	</if>
+	   	<if test="extStr2 != null">
+	   		EXT_STR2 = #{extStr2},
+	   	</if>
+	   	<if test="extStr3 != null">
+	   		EXT_STR3 = #{extStr3},
+	   	</if>
+	   	<if test="extStr4 != null">
+	   		EXT_STR4 = #{extStr4},
+	   	</if>
+	   	<if test="extStr5 != null">
+	   		EXT_STR5 = #{extStr5},
+	   	</if>
+	   </set>
+	    ,MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+	</update></mapper>

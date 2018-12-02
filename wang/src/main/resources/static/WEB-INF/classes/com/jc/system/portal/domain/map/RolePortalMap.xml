@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.system.portal.domain.RolePortal">
+
+	<select id="query" parameterType="com.jc.system.portal.domain.RolePortal" resultType="com.jc.system.portal.domain.RolePortal">
+		SELECT 
+			t.ID id,
+			t.PORTAL_ID portalId,
+			t.PORTALET_ID portaletId,
+			t.ROLE_ID roleId,
+			t.DEPT_ID deptId,
+			t.USER_ID userId,
+			t.ORGAN_ID organId
+			
+		FROM tty_sys_role_portal t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+
+			<if test="portalId != null">
+				and t.PORTAL_ID = #{portalId}
+			</if>
+
+			<if test="portaletId != null">
+				and t.PORTALET_ID = #{portaletId}
+			</if>
+
+			<if test="roleId != null">
+				and t.ROLE_ID = #{roleId}
+			</if>
+
+			<if test="deptId != null">
+				and t.DEPT_ID = #{deptId}
+			</if>
+
+			<if test="userId != null">
+				and t.USER_ID = #{userId}
+			</if>
+
+			<if test="organId != null">
+				and t.ORGAN_ID = #{organId}
+			</if>
+		</where>
+	</select>
+	
+	
+	<select id="queryCount" parameterType="com.jc.system.portal.domain.RolePortal" resultType="java.lang.Long">
+		SELECT count(ID) 
+		FROM tty_sys_role_portal t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+
+			<if test="portalId != null">
+				and t.PORTAL_ID = #{portalId}
+			</if>
+
+			<if test="portaletId != null">
+				and t.PORTALET_ID = #{portaletId}
+			</if>
+
+			<if test="roleId != null">
+				and t.ROLE_ID = #{roleId}
+			</if>
+
+			<if test="deptId != null">
+				and t.DEPT_ID = #{deptId}
+			</if>
+
+			<if test="userId != null">
+				and t.USER_ID = #{userId}
+			</if>
+
+			<if test="organId != null">
+				and t.ORGAN_ID = #{organId}
+			</if>
+		</where>
+	</select>
+	
+	<delete id="deleteRolePortalItem"  parameterType="com.jc.system.portal.domain.RolePortal">
+    	delete from tty_sys_role_portal
+      		where  1=1
+      		<if test="portalId != null">
+				and PORTAL_ID = #{portalId}
+			</if>
+			 <if test="portaletId != null">
+				and PORTALET_ID = #{portaletId}
+			</if>
+ 	</delete>
+ 	
+ 	<delete id="deleteForPortalsOrPortalets"  parameterType="com.jc.system.portal.domain.RolePortal">
+    	delete from tty_sys_role_portal 
+      		where 
+			PORTAL_ID in (#{portalIds}) or PORTALET_ID in 
+			( SELECT p.ID from tty_sys_portlet p where p.PORTAL_ID in (#{portalIds})) 
+			
+ 	</delete>
+ 	
+	<delete id="deletePhysical"  parameterType="com.jc.system.portal.domain.RolePortal">
+    	delete from tty_sys_role_portal
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete>
+
+	<update id="deleteLogic"  parameterType="com.jc.system.portal.domain.RolePortal">
+    	UPDATE tty_sys_role_portal t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+
+	<insert id="insert" parameterType="com.jc.system.portal.domain.RolePortal" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tty_sys_role_portal(ID,PORTAL_ID,PORTALET_ID,ROLE_ID,DEPT_ID,USER_ID,ORGAN_ID)
+			VALUES (#{id,jdbcType=NUMERIC},#{portalId,jdbcType=NUMERIC},#{portaletId,jdbcType=NUMERIC},#{roleId,jdbcType=NUMERIC},#{deptId,jdbcType=NUMERIC},#{userId,jdbcType=NUMERIC},#{organId,jdbcType=NUMERIC})
+	</insert>
+
+	<insert id="insertList" parameterType="list">
+		INSERT INTO tty_sys_role_portal(ID,PORTAL_ID,PORTALET_ID,ROLE_ID,DEPT_ID,USER_ID,ORGAN_ID)
+			VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(#{item.id,jdbcType=NUMERIC},#{item.portalId,jdbcType=NUMERIC},#{item.portaletId,jdbcType=NUMERIC},#{item.roleId,jdbcType=NUMERIC},#{item.deptId,jdbcType=NUMERIC},#{item.userId,jdbcType=NUMERIC},#{item.organId,jdbcType=NUMERIC})
+			</foreach> 
+	</insert>
+
+	<update id="update" parameterType="com.jc.system.portal.domain.RolePortal">
+	UPDATE tty_sys_role_portal set
+	   	<if test="portalId != null">
+	   		PORTAL_ID = #{portalId},
+	   	</if>
+	   	<if test="portaletId != null">
+	   		PORTALET_ID = #{portaletId},
+	   	</if>
+	   	<if test="roleId != null">
+	   		ROLE_ID = #{roleId},
+	   	</if>
+	   	<if test="deptId != null">
+	   		DEPT_ID = #{deptId},
+	   	</if>
+	   	<if test="userId != null">
+	   		USER_ID = #{userId},
+	   	</if>
+	   	<if test="organId != null">
+	   		ORGAN_ID = #{organId},
+	   	</if>
+	   	MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+	</update>
+
+	<select id="queryPortaletPower" parameterType="com.jc.system.portal.domain.RolePortal" resultType="com.jc.system.portal.domain.RolePortal">
+		SELECT 
+			t.ID id,
+			t.PORTAL_ID portalId,
+			t.PORTALET_ID portaletId,
+			t.ROLE_ID roleId,
+			t.DEPT_ID deptId,
+			t.USER_ID userId,
+			t.ORGAN_ID organId
+			
+		FROM tty_sys_role_portal t
+		<where>
+			<if test="portalId != null">
+				and t.PORTAL_ID = #{portalId}
+			</if>
+
+			<if test="portaletId != null">
+				and t.PORTALET_ID = #{portaletId}
+			</if>
+			and t.PORTALET_ID is not NULL and (t.ROLE_ID in (${roleIds}) or t.DEPT_ID = #{deptId} or t.USER_ID = #{userId} or t.ORGAN_ID = #{organId} ) 
+		</where>
+	</select>
+
+</mapper>

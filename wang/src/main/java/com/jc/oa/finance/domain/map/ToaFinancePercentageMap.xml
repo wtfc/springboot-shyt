@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.finance.domain.ToaFinancePercentage" > 
+
+<insert id="insert" parameterType="com.jc.oa.finance.domain.ToaFinancePercentage"
+		useGeneratedKeys="true" keyProperty="id">
+  		insert into toa_finance_percentage(id,per_number,main_id,per_year,per_month,per_type,company_name,company_id,department,sale,trade_department,per_en_sale,per_account,per_agent_account,per_pure_account,bill_account,add_bill,kuorong,per_start,bill_date,per_yers,kewei_ratio,tuozhan_ratio,kewei_money,tuozhan_money,bill_number,remark,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3)
+ values(#{id},#{perNumber},#{mainId},#{perYear},#{perMonth},#{perType},#{companyName},#{companyId},#{department},#{sale},#{tradeDepartment},#{perEnSale},#{perAccount},#{perAgentAccount},#{perPureAccount},#{billAccount},#{addBill},#{kuorong},#{perStart},#{billDate},#{perYers},#{keweiRatio},#{tuozhanRatio},#{keweiMoney},#{tuozhanMoney},#{billNumber},#{remark},#{deleteFlag},#{createUser},#{createUserDept},#{createDate},#{modifyUser},#{modifyDate},#{extStr1},#{extStr2},#{extStr3},#{extStr4},#{extStr5},#{extDate1},#{extDate2},#{extNum1},#{extNum2},#{extNum3})
+</insert>
+
+<update id="update" parameterType="com.jc.oa.finance.domain.ToaFinancePercentage">
+		update toa_finance_percentage set 
+	<if test="perNumber != null ">
+		per_number=#{perNumber},
+	</if>
+	<if test="mainId != null ">
+		main_id=#{mainId},
+	</if>
+	<if test="perYear != null ">
+		per_year=#{perYear},
+	</if>
+	<if test="perMonth != null ">
+		per_month=#{perMonth},
+	</if>
+	<if test="perType != null ">
+		per_type=#{perType},
+	</if>
+	<if test="companyName != null ">
+		company_name=#{companyName},
+	</if>
+	<if test="companyId != null ">
+		company_id=#{companyId},
+	</if>
+	<if test="department != null ">
+		department=#{department},
+	</if>
+	<if test="sale != null ">
+		sale=#{sale},
+	</if>
+	<if test="tradeDepartment != null ">
+		trade_department=#{tradeDepartment},
+	</if>
+	<if test="perEnSale != null ">
+		per_en_sale=#{perEnSale},
+	</if>
+	<if test="perAccount != null ">
+		per_account=#{perAccount},
+	</if>
+	<if test="perAgentAccount != null ">
+		per_agent_account=#{perAgentAccount},
+	</if>
+	<if test="perPureAccount != null ">
+		per_pure_account=#{perPureAccount},
+	</if>
+	<if test="billAccount != null ">
+		bill_account=#{billAccount},
+	</if>
+	<if test="addBill != null ">
+		add_bill=#{addBill},
+	</if>
+	<if test="kuorong != null ">
+		kuorong=#{kuorong},
+	</if>
+	<if test="perStart != null ">
+		per_start=#{perStart},
+	</if>
+	<if test="billDate != null ">
+		bill_date=#{billDate},
+	</if>
+	<if test="perYers != null ">
+		per_yers=#{perYers},
+	</if>
+	<if test="keweiRatio != null ">
+		kewei_ratio=#{keweiRatio},
+	</if>
+	<if test="tuozhanRatio != null ">
+		tuozhan_ratio=#{tuozhanRatio},
+	</if>
+	<if test="keweiMoney != null ">
+		kewei_money=#{keweiMoney},
+	</if>
+	<if test="tuozhanMoney != null ">
+		tuozhan_money=#{tuozhanMoney},
+	</if>
+	<if test="billNumber != null ">
+		bill_number=#{billNumber},
+	</if>
+	<if test="remark != null ">
+		remark=#{remark},
+	</if>
+	<if test="deleteFlag != null ">
+		DELETE_FLAG=#{deleteFlag},
+	</if>
+	<if test="createUser != null ">
+		CREATE_USER=#{createUser},
+	</if>
+	<if test="createUserDept != null ">
+		CREATE_USER_DEPT=#{createUserDept},
+	</if>
+	<if test="createDate != null ">
+		CREATE_DATE=#{createDate},
+	</if>
+	<if test="modifyUser != null ">
+		MODIFY_USER=#{modifyUser},
+	</if>
+	<if test="modifyDate != null ">
+		MODIFY_DATE=#{modifyDate},
+	</if>
+	<if test="extStr1 != null ">
+		EXT_STR1=#{extStr1},
+	</if>
+	<if test="extStr2 != null ">
+		EXT_STR2=#{extStr2},
+	</if>
+	<if test="extStr3 != null ">
+		EXT_STR3=#{extStr3},
+	</if>
+	<if test="extStr4 != null ">
+		EXT_STR4=#{extStr4},
+	</if>
+	<if test="extStr5 != null ">
+		EXT_STR5=#{extStr5},
+	</if>
+	<if test="extDate1 != null ">
+		EXT_DATE1=#{extDate1},
+	</if>
+	<if test="extDate2 != null ">
+		EXT_DATE2=#{extDate2},
+	</if>
+	<if test="extNum1 != null ">
+		EXT_NUM1=#{extNum1},
+	</if>
+	<if test="extNum2 != null ">
+		EXT_NUM2=#{extNum2},
+	</if>
+	<if test="extNum3 != null ">
+		EXT_NUM3=#{extNum3},
+	</if>
+
+	 MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+</update>
+
+<select id="query" parameterType="com.jc.oa.finance.domain.ToaFinancePercentage" resultType="com.jc.oa.finance.domain.ToaFinancePercentage">
+		SELECT 
+		 t.ID id
+		,t.per_number perNumber
+		,t.main_id mainId
+		,t.per_year perYear
+		,t.per_month perMonth
+		,t.per_type perType
+		,t.company_name companyName
+		,t.company_id companyId
+		,t.department department
+		,t.sale sale
+		,t.trade_department tradeDepartment
+		,t.per_en_sale perEnSale
+		,t.per_account perAccount
+		,t.per_agent_account perAgentAccount
+		,t.per_pure_account perPureAccount
+		,t.bill_account billAccount
+		,t.add_bill addBill
+		,t.kuorong kuorong
+		,t.per_start perStart
+		,t.bill_date billDate
+		,t.per_yers perYers
+		,t.kewei_ratio keweiRatio
+		,t.tuozhan_ratio tuozhanRatio
+		,t.kewei_money keweiMoney
+		,t.tuozhan_money tuozhanMoney
+		,t.bill_number billNumber
+		,t.remark remark
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.EXT_NUM1 extNum1
+		,t.EXT_NUM2 extNum2
+		,t.EXT_NUM3 extNum3
+ FROM toa_finance_percentage t
+<where>
+	<if test="id != null ">
+		and t.id=#{id}
+	</if>
+	<if test="perNumber != null ">
+		and t.per_number=#{perNumber}
+	</if>
+	<if test="mainId != null ">
+		and t.main_id=#{mainId}
+	</if>
+	<if test="perYear != null ">
+		and t.per_year=#{perYear}
+	</if>
+	<if test="perMonth != null ">
+		and t.per_month=#{perMonth}
+	</if>
+	<if test="perType != null ">
+		and t.per_type=#{perType}
+	</if>
+	<if test="companyName != null ">
+		and t.company_name like <![CDATA['%${companyName}%']]>
+	</if>
+	<if test="companyId != null ">
+		and t.company_id=#{companyId}
+	</if>
+	<if test="department != null ">
+		and t.department=#{department}
+	</if>
+	<if test="sale != null ">
+		and t.sale=#{sale}
+	</if>
+	<if test="tradeDepartment != null ">
+		and t.trade_department=#{tradeDepartment}
+	</if>
+	<if test="perEnSale != null ">
+		and t.per_en_sale=#{perEnSale}
+	</if>
+	<if test="perAccount != null ">
+		and t.per_account=#{perAccount}
+	</if>
+	<if test="perAgentAccount != null ">
+		and t.per_agent_account=#{perAgentAccount}
+	</if>
+	<if test="perPureAccount != null ">
+		and t.per_pure_account=#{perPureAccount}
+	</if>
+	<if test="billAccount != null ">
+		and t.bill_account=#{billAccount}
+	</if>
+	<if test="addBill != null ">
+		and t.add_bill=#{addBill}
+	</if>
+	<if test="kuorong != null ">
+		and t.kuorong=#{kuorong}
+	</if>
+	<if test="perStart != null ">
+		and t.per_start=#{perStart}
+	</if>
+	<if test="billDate != null ">
+		and t.bill_date=#{billDate}
+	</if>
+	<if test="perYers != null ">
+		and t.per_yers=#{perYers}
+	</if>
+	<if test="keweiRatio != null ">
+		and t.kewei_ratio=#{keweiRatio}
+	</if>
+	<if test="tuozhanRatio != null ">
+		and t.tuozhan_ratio=#{tuozhanRatio}
+	</if>
+	<if test="keweiMoney != null ">
+		and t.kewei_money=#{keweiMoney}
+	</if>
+	<if test="tuozhanMoney != null ">
+		and t.tuozhan_money=#{tuozhanMoney}
+	</if>
+	<if test="billNumber != null ">
+		and t.bill_number=#{billNumber}
+	</if>
+	<if test="remark != null ">
+		and t.remark=#{remark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+</select>
+	
+<select id="queryCount" parameterType="com.jc.oa.finance.domain.ToaFinancePercentage" resultType="java.lang.Long">
+		SELECT COUNT(ID) 
+	 FROM toa_finance_percentage t
+<where>
+	<if test="id != null ">
+		and t.id=#{id}
+	</if>
+	<if test="perNumber != null ">
+		and t.per_number=#{perNumber}
+	</if>
+	<if test="mainId != null ">
+		and t.main_id=#{mainId}
+	</if>
+	<if test="perYear != null ">
+		and t.per_year=#{perYear}
+	</if>
+	<if test="perMonth != null ">
+		and t.per_month=#{perMonth}
+	</if>
+	<if test="perType != null ">
+		and t.per_type=#{perType}
+	</if>
+	<if test="companyName != null ">
+		and t.company_name like <![CDATA['%${companyName}%']]>
+	</if>
+	<if test="companyId != null ">
+		and t.company_id=#{companyId}
+	</if>
+	<if test="department != null ">
+		and t.department=#{department}
+	</if>
+	<if test="sale != null ">
+		and t.sale=#{sale}
+	</if>
+	<if test="tradeDepartment != null ">
+		and t.trade_department=#{tradeDepartment}
+	</if>
+	<if test="perEnSale != null ">
+		and t.per_en_sale=#{perEnSale}
+	</if>
+	<if test="perAccount != null ">
+		and t.per_account=#{perAccount}
+	</if>
+	<if test="perAgentAccount != null ">
+		and t.per_agent_account=#{perAgentAccount}
+	</if>
+	<if test="perPureAccount != null ">
+		and t.per_pure_account=#{perPureAccount}
+	</if>
+	<if test="billAccount != null ">
+		and t.bill_account=#{billAccount}
+	</if>
+	<if test="addBill != null ">
+		and t.add_bill=#{addBill}
+	</if>
+	<if test="kuorong != null ">
+		and t.kuorong=#{kuorong}
+	</if>
+	<if test="perStart != null ">
+		and t.per_start=#{perStart}
+	</if>
+	<if test="billDate != null ">
+		and t.bill_date=#{billDate}
+	</if>
+	<if test="perYers != null ">
+		and t.per_yers=#{perYers}
+	</if>
+	<if test="keweiRatio != null ">
+		and t.kewei_ratio=#{keweiRatio}
+	</if>
+	<if test="tuozhanRatio != null ">
+		and t.tuozhan_ratio=#{tuozhanRatio}
+	</if>
+	<if test="keweiMoney != null ">
+		and t.kewei_money=#{keweiMoney}
+	</if>
+	<if test="tuozhanMoney != null ">
+		and t.tuozhan_money=#{tuozhanMoney}
+	</if>
+	<if test="billNumber != null ">
+		and t.bill_number=#{billNumber}
+	</if>
+	<if test="remark != null ">
+		and t.remark=#{remark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+
+</select>
+
+<update id="deleteLogic"  parameterType="com.jc.oa.finance.domain.ToaFinancePercentage">
+	     UPDATE toa_finance_percentage t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+ 			where ID in
+ 			<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=","> 
+				 #{primaryKey}
+			</foreach>
+</update>
+  	
+</mapper>   

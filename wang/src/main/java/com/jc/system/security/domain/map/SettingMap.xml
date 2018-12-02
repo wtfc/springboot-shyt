@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.system.security.domain.Setting">
+
+	<select id="query" parameterType="com.jc.system.security.domain.Setting" resultType="com.jc.system.security.domain.Setting">
+		SELECT 
+			t.ID id,
+			t.IS_MSG_SERVICE isMsgService,
+			t.MSG_PREFIX msgPrefix,
+			t.DOC_suggestion_HISTORY docSuggestionHistory,
+			t.suggestion_TYPE suggestionType,
+			t.SHOW_identifying_code showIdentifyingCode,
+			t.USE_IP_BANDING useIpBanding,
+			t.MAX_ERROR_COUNT maxErrorCount,
+			t.lock_time lockTime,
+			t.LOGIN_TYPE loginType,
+			t.CONTROL_PRINT controlPrint,
+			t.SIGN_TYPE signType,
+			t.WORKLOG_DAY worklogDay,
+			t.TASK_PARENT_TO_SUB taskParentToSub,
+			t.NET_KEY netKey,
+			t.FILE_PATH filePath,
+			t.PHOTO_PATN photoPatn,
+			t.QUEUE queue,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER createUser,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			t.EMAIL_SAVETIME emailSaveTime
+			
+		FROM toa_sys_setting t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="isMsgService != null">
+				and t.IS_MSG_SERVICE = #{isMsgService}
+			</if>
+			<if test="msgPrefix != null">
+				and t.MSG_PREFIX = #{msgPrefix}
+			</if>
+			<if test="docSuggestionHistory != null">
+				and t.DOC_suggestion_HISTORY = #{docSuggestionHistory}
+			</if>
+			<if test="suggestionType != null">
+				and t.suggestion_TYPE = #{suggestionType}
+			</if>
+			<if test="showIdentifyingCode != null">
+				and t.SHOW_identifying_code = #{showIdentifyingCode}
+			</if>
+			<if test="useIpBanding != null">
+				and t.USE_IP_BANDING = #{useIpBanding}
+			</if>
+			<if test="maxErrorCount != null">
+				and t.MAX_ERROR_COUNT = #{maxErrorCount}
+			</if>
+			<if test="loginType != null">
+				and t.LOGIN_TYPE = #{loginType}
+			</if>
+			<if test="controlPrint != null">
+				and t.CONTROL_PRINT = #{controlPrint}
+			</if>
+			<if test="signType != null">
+				and t.SIGN_TYPE = #{signType}
+			</if>
+			<if test="worklogDay != null">
+				and t.WORKLOG_DAY = #{worklogDay}
+			</if>
+			<if test="taskParentToSub != null">
+				and t.TASK_PARENT_TO_SUB = #{taskParentToSub}
+			</if>
+			<if test="netKey != null">
+				and t.NET_KEY = #{netKey}
+			</if>
+			<if test="filePath != null">
+				and t.FILE_PATH = #{filePath}
+			</if>
+			<if test="photoPatn != null">
+				and t.PHOTO_PATN = #{photoPatn}
+			</if>
+			<if test="queue != null">
+				and t.QUEUE = #{queue}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+		</where>
+	</select>
+	
+	
+	<select id="queryCount" parameterType="com.jc.system.security.domain.Setting" resultType="java.lang.Integer">
+		SELECT count(ID) 
+		FROM toa_sys_setting t
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="isMsgService != null">
+				and t.IS_MSG_SERVICE = #{isMsgService}
+			</if>
+			<if test="msgPrefix != null">
+				and t.MSG_PREFIX = #{msgPrefix}
+			</if>
+			<if test="docSuggestionHistory != null">
+				and t.DOC_suggestion_HISTORY = #{docSuggestionHistory}
+			</if>
+			<if test="suggestionType != null">
+				and t.suggestion_TYPE = #{suggestionType}
+			</if>
+			<if test="showIdentifyingCode != null">
+				and t.SHOW_identifying_code = #{showIdentifyingCode}
+			</if>
+			<if test="useIpBanding != null">
+				and t.USE_IP_BANDING = #{useIpBanding}
+			</if>
+			<if test="maxErrorCount != null">
+				and t.MAX_ERROR_COUNT = #{maxErrorCount}
+			</if>
+			<if test="loginType != null">
+				and t.LOGIN_TYPE = #{loginType}
+			</if>
+			<if test="controlPrint != null">
+				and t.CONTROL_PRINT = #{controlPrint}
+			</if>
+			<if test="signType != null">
+				and t.SIGN_TYPE = #{signType}
+			</if>
+			<if test="worklogDay != null">
+				and t.WORKLOG_DAY = #{worklogDay}
+			</if>
+			<if test="taskParentToSub != null">
+				and t.TASK_PARENT_TO_SUB = #{taskParentToSub}
+			</if>
+			<if test="netKey != null">
+				and t.NET_KEY = #{netKey}
+			</if>
+			<if test="filePath != null">
+				and t.FILE_PATH = #{filePath}
+			</if>
+			<if test="photoPatn != null">
+				and t.PHOTO_PATN = #{photoPatn}
+			</if>
+			<if test="queue != null">
+				and t.QUEUE = #{queue}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+		</where>
+	</select>
+
+	<delete id="deletePhysical"  parameterType="com.jc.system.security.domain.Setting">
+    	delete from toa_sys_setting
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete>
+
+	<update id="deleteLogic"  parameterType="com.jc.system.security.domain.Setting">
+    	UPDATE toa_sys_setting t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index"
+	            open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update>
+
+	<insert id="insert" parameterType="com.jc.system.security.domain.Setting" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO toa_sys_setting(IS_MSG_SERVICE,MSG_PREFIX,DOC_suggestion_HISTORY,suggestion_TYPE,SHOW_identifying_code,USE_IP_BANDING,MAX_ERROR_COUNT,lock_time,LOGIN_TYPE,CONTROL_PRINT,SIGN_TYPE,NET_KEY,FILE_PATH,PHOTO_PATN,QUEUE,EMAIL_SAVETIME,WORKLOG_DAY,TASK_PARENT_TO_SUB,DELETE_FLAG,CREATE_USER_ORG,CREATE_USER_DEPT,CREATE_USER,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES (#{isMsgService,jdbcType=VARCHAR},#{msgPrefix,jdbcType=VARCHAR},#{docSuggestionHistory,jdbcType=NUMERIC},#{suggestionType,jdbcType=VARCHAR},#{showIdentifyingCode,jdbcType=VARCHAR},#{useIpBanding,jdbcType=VARCHAR},#{maxErrorCount,jdbcType=NUMERIC},#{lockTime,jdbcType=NUMERIC},#{loginType,jdbcType=VARCHAR},#{controlPrint,jdbcType=VARCHAR},#{signType,jdbcType=VARCHAR},#{netKey,jdbcType=VARCHAR},#{filePath,jdbcType=VARCHAR},#{photoPatn,jdbcType=VARCHAR},#{queue,jdbcType=NUMERIC},#{emailSavetime,jdbcType=NUMERIC},#{worklogDay,jdbcType=NUMERIC},#{taskParentToSub,jdbcType=VARCHAR},#{deleteFlag,jdbcType=NUMERIC},#{createUserOrg,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createUser,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extDate1,jdbcType=TIMESTAMP},#{extDate2,jdbcType=TIMESTAMP},#{extNum1,jdbcType=NUMERIC},#{extNum2,jdbcType=NUMERIC},#{extNum3,jdbcType=NUMERIC},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr5,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertList" parameterType="list">
+		INSERT INTO toa_sys_setting(IS_MSG_SERVICE,MSG_PREFIX,DOC_suggestion_HISTORY,suggestion_TYPE,SHOW_identifying_code,USE_IP_BANDING,MAX_ERROR_COUNT,lock_time,LOGIN_TYPE,CONTROL_PRINT,SIGN_TYPE,NET_KEY,FILE_PATH,PHOTO_PATN,QUEUE,EMAIL_SAVETIME,WORKLOG_DAY,TASK_PARENT_TO_SUB,DELETE_FLAG,CREATE_USER_ORG,CREATE_USER_DEPT,CREATE_USER,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(#{item.isMsgService,jdbcType=VARCHAR},#{item.msgPrefix,jdbcType=VARCHAR},#{item.docSuggestionHistory,jdbcType=NUMERIC},#{item.suggestionType,jdbcType=VARCHAR},#{item.showIdentifyingCode,jdbcType=VARCHAR},#{item.useIpBanding,jdbcType=VARCHAR},#{item.maxErrorCount,jdbcType=NUMERIC},#{item.lockTime,jdbcType=NUMERIC},#{item.loginType,jdbcType=VARCHAR},#{item.controlPrint,jdbcType=VARCHAR},#{item.signType,jdbcType=VARCHAR},#{item.netKey,jdbcType=VARCHAR},#{item.filePath,jdbcType=VARCHAR},#{item.photoPatn,jdbcType=VARCHAR},#{item.queue,jdbcType=NUMERIC},#{item.emailSavetime,jdbcType=NUMERIC},#{item.worklogDay,jdbcType=NUMERIC},#{item.taskParentToSub,jdbcType=VARCHAR},#{item.deleteFlag,jdbcType=NUMERIC},#{item.createUserOrg,jdbcType=NUMERIC},#{item.createUserDept,jdbcType=NUMERIC},#{item.createUser,jdbcType=NUMERIC},#{item.createDate,jdbcType=TIMESTAMP},#{item.modifyUser,jdbcType=NUMERIC},#{item.modifyDate,jdbcType=TIMESTAMP},#{item.extDate1,jdbcType=TIMESTAMP},#{item.extDate2,jdbcType=TIMESTAMP},#{item.extNum1,jdbcType=NUMERIC},#{item.extNum2,jdbcType=NUMERIC},#{item.extNum3,jdbcType=NUMERIC},#{item.extStr1,jdbcType=VARCHAR},#{item.extStr2,jdbcType=VARCHAR},#{item.extStr3,jdbcType=VARCHAR},#{item.extStr4,jdbcType=VARCHAR},#{item.extStr5,jdbcType=VARCHAR})
+			</foreach>  
+	</insert>
+
+	<update id="update" parameterType="com.jc.system.security.domain.Setting">
+	UPDATE toa_sys_setting
+	   <set>
+	   	<if test="isMsgService != null">
+	   		IS_MSG_SERVICE = #{isMsgService},
+	   	</if>
+	   	<if test="msgPrefix != null">
+	   		MSG_PREFIX = #{msgPrefix},
+	   	</if>
+	   	<if test="docSuggestionHistory != null">
+	   		DOC_suggestion_HISTORY = #{docSuggestionHistory},
+	   	</if>
+	   	<if test="suggestionType != null">
+	   		suggestion_TYPE = #{suggestionType},
+	   	</if>
+	   	<if test="showIdentifyingCode != null">
+	   		SHOW_identifying_code = #{showIdentifyingCode},
+	   	</if>
+	   	<if test="useIpBanding != null">
+	   		USE_IP_BANDING = #{useIpBanding},
+	   	</if>
+	   	<if test="maxErrorCount != null">
+	   		MAX_ERROR_COUNT = #{maxErrorCount},
+	   	</if>
+	   	<if test="lockTime != null">
+	   		lock_time = #{lockTime},
+	   	</if>
+	   	<if test="loginType != null">
+	   		LOGIN_TYPE = #{loginType},
+	   	</if>
+	   	<if test="controlPrint != null">
+	   		CONTROL_PRINT = #{controlPrint},
+	   	</if>
+	   	<if test="signType != null">
+	   		SIGN_TYPE = #{signType},
+	   	</if>
+	   	<if test="worklogDay != null">
+	   		WORKLOG_DAY = #{worklogDay},
+	   	</if>
+	   	<if test="taskParentToSub != null">
+	   		TASK_PARENT_TO_SUB = #{taskParentToSub},
+	   	</if>
+	   	<if test="netKey != null">
+	   		NET_KEY = #{netKey},
+	   	</if>
+	   	<if test="filePath != null">
+	   		FILE_PATH = #{filePath},
+	   	</if>
+	   	<if test="photoPatn != null">
+	   		PHOTO_PATN = #{photoPatn},
+	   	</if>
+	   	<if test="queue != null">
+	   		QUEUE = #{queue},
+	   	</if>
+	   	<if test="emailSaveTime != null">
+	   		EMAIL_SAVETIME = #{emailSaveTime},
+	   	</if>
+	   	<if test="deleteFlag != null">
+	   		DELETE_FLAG = #{deleteFlag},
+	   	</if>
+	   	<if test="createUserOrg != null">
+	   		CREATE_USER_ORG = #{createUserOrg},
+	   	</if>
+	   	<if test="createUserDept != null">
+	   		CREATE_USER_DEPT = #{createUserDept},
+	   	</if>
+	   	<if test="createUser != null">
+	   		CREATE_USER = #{createUser},
+	   	</if>
+	   	<if test="createDate != null">
+	   		CREATE_DATE = #{createDate},
+	   	</if>
+	   	<if test="modifyUser != null">
+	   		MODIFY_USER = #{modifyUser},
+	   	</if>
+	   	<if test="modifyDate != null">
+	   		MODIFY_DATE = #{modifyDate},
+	   	</if>
+	   </set>
+	   where ID = #{id}
+	</update>
+
+</mapper>

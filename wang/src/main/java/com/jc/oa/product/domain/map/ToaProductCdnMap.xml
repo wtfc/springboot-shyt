@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.product.domain.ToaProductCdn" > 
+
+<insert id="insert" parameterType="com.jc.oa.product.domain.ToaProductCdn"
+		useGeneratedKeys="true" keyProperty="id">
+  	insert into toa_product_cdn(id,customers_id,customers_name,phone,linkman,address,taxid,expand_people,vask,supporter,cooperate_type,business_type,user_name,speed_name,stick,charge_mode,price,floored_number,charge_number,amount,charge_time,start_date,start_end,remark,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3)
+ values(#{id},#{customersId},#{customersName},#{phone},#{linkman},#{address},#{taxid},#{expandPeople},#{vask},#{supporter},#{cooperateType},#{businessType},#{userName},#{speedName},#{stick},#{chargeMode},#{price},#{flooredNumber},#{chargeNumber},#{amount},#{chargeTime},#{startDate},#{startEnd},#{remark},#{deleteFlag},#{createUser},#{createUserDept},#{createDate},#{modifyUser},#{modifyDate},#{extStr1},#{extStr2},#{extStr3},#{extStr4},#{extStr5},#{extDate1},#{extDate2},#{extNum1},#{extNum2},#{extNum3})
+</insert>
+
+<update id="update" parameterType="com.jc.oa.product.domain.ToaProductCdn">
+	update toa_product_cdn set 
+	<if test="customersId != null ">
+		customers_id=#{customersId},
+	</if>
+	<if test="customersName != null ">
+		customers_name=#{customersName},
+	</if>
+	<if test="phone != null ">
+		phone=#{phone},
+	</if>
+	<if test="linkman != null ">
+		linkman=#{linkman},
+	</if>
+	<if test="address != null ">
+		address=#{address},
+	</if>
+	<if test="taxid != null ">
+		taxid=#{taxid},
+	</if>
+	<if test="expandPeople != null ">
+		expand_people=#{expandPeople},
+	</if>
+	<if test="vask != null ">
+		vask=#{vask},
+	</if>
+	<if test="supporter != null ">
+		supporter=#{supporter},
+	</if>
+	<if test="cooperateType != null ">
+		cooperate_type=#{cooperateType},
+	</if>
+	<if test="businessType != null ">
+		business_type=#{businessType},
+	</if>
+	<if test="userName != null ">
+		user_name=#{userName},
+	</if>
+	<if test="speedName != null ">
+		speed_name=#{speedName},
+	</if>
+	<if test="stick != null ">
+		stick=#{stick},
+	</if>
+	<if test="chargeMode != null ">
+		charge_mode=#{chargeMode},
+	</if>
+	<if test="price != null ">
+		price=#{price},
+	</if>
+	<if test="flooredNumber != null ">
+		floored_number=#{flooredNumber},
+	</if>
+	<if test="chargeNumber != null ">
+		charge_number=#{chargeNumber},
+	</if>
+	<if test="amount != null ">
+		amount=#{amount},
+	</if>
+	<if test="chargeTime != null ">
+		charge_time=#{chargeTime},
+	</if>
+	<if test="startDate != null ">
+		start_date=#{startDate},
+	</if>
+	<if test="startEnd != null ">
+		start_end=#{startEnd},
+	</if>
+	<if test="remark != null ">
+		remark=#{remark},
+	</if>
+	<if test="deleteFlag != null ">
+		DELETE_FLAG=#{deleteFlag},
+	</if>
+	<if test="createUser != null ">
+		CREATE_USER=#{createUser},
+	</if>
+	<if test="createUserDept != null ">
+		CREATE_USER_DEPT=#{createUserDept},
+	</if>
+	<if test="createDate != null ">
+		CREATE_DATE=#{createDate},
+	</if>
+	<if test="modifyUser != null ">
+		MODIFY_USER=#{modifyUser},
+	</if>
+	<if test="modifyDate != null ">
+		MODIFY_DATE=#{modifyDate},
+	</if>
+	<if test="extStr1 != null ">
+		EXT_STR1=#{extStr1},
+	</if>
+	<if test="extStr2 != null ">
+		EXT_STR2=#{extStr2},
+	</if>
+	<if test="extStr3 != null ">
+		EXT_STR3=#{extStr3},
+	</if>
+	<if test="extStr4 != null ">
+		EXT_STR4=#{extStr4},
+	</if>
+	<if test="extStr5 != null ">
+		EXT_STR5=#{extStr5},
+	</if>
+	<if test="extDate1 != null ">
+		EXT_DATE1=#{extDate1},
+	</if>
+	<if test="extDate2 != null ">
+		EXT_DATE2=#{extDate2},
+	</if>
+	<if test="extNum1 != null ">
+		EXT_NUM1=#{extNum1},
+	</if>
+	<if test="extNum2 != null ">
+		EXT_NUM2=#{extNum2},
+	</if>
+	<if test="extNum3 != null ">
+		EXT_NUM3=#{extNum3},
+	</if>
+
+	 MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+</update>
+
+<select id="query" parameterType="com.jc.oa.product.domain.ToaProductCdn" resultType="com.jc.oa.product.domain.ToaProductCdn">
+	SELECT 
+		 t.ID id
+		,t.customers_id customersId
+		,t.customers_name customersName
+		,t.phone phone
+		,t.linkman linkman
+		,t.address address
+		,t.taxid taxid
+		,t.expand_people expandPeople
+		,t.vask vask
+		,t.supporter supporter
+		,t.cooperate_type cooperateType
+		,t.business_type businessType
+		,t.user_name userName
+		,t.speed_name speedName
+		,t.stick stick
+		,t.charge_mode chargeMode
+		,t.price price
+		,t.floored_number flooredNumber
+		,t.charge_number chargeNumber
+		,t.amount amount
+		,t.charge_time chargeTime
+		,t.start_date startDate
+		,t.start_end startEnd
+		,t.remark remark
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.EXT_NUM1 extNum1
+		,t.EXT_NUM2 extNum2
+		,t.EXT_NUM3 extNum3
+ FROM toa_product_cdn t
+<where>
+	<if test="id != null ">
+		and t.id=#{id}
+	</if>
+	<if test="customersId != null ">
+		and t.customers_id=#{customersId}
+	</if>
+	<if test="customersName != null ">
+		and t.customers_name=#{customersName}
+	</if>
+	<if test="phone != null ">
+		and t.phone=#{phone}
+	</if>
+	<if test="linkman != null ">
+		and t.linkman=#{linkman}
+	</if>
+	<if test="address != null ">
+		and t.address=#{address}
+	</if>
+	<if test="taxid != null ">
+		and t.taxid=#{taxid}
+	</if>
+	<if test="expandPeople != null ">
+		and t.expand_people=#{expandPeople}
+	</if>
+	<if test="vask != null ">
+		and t.vask=#{vask}
+	</if>
+	<if test="supporter != null ">
+		and t.supporter=#{supporter}
+	</if>
+	<if test="cooperateType != null ">
+		and t.cooperate_type=#{cooperateType}
+	</if>
+	<if test="businessType != null ">
+		and t.business_type=#{businessType}
+	</if>
+	<if test="userName != null ">
+		and t.user_name=#{userName}
+	</if>
+	<if test="speedName != null ">
+		and t.speed_name=#{speedName}
+	</if>
+	<if test="stick != null ">
+		and t.stick=#{stick}
+	</if>
+	<if test="chargeMode != null ">
+		and t.charge_mode=#{chargeMode}
+	</if>
+	<if test="price != null ">
+		and t.price=#{price}
+	</if>
+	<if test="flooredNumber != null ">
+		and t.floored_number=#{flooredNumber}
+	</if>
+	<if test="chargeNumber != null ">
+		and t.charge_number=#{chargeNumber}
+	</if>
+	<if test="amount != null ">
+		and t.amount=#{amount}
+	</if>
+	<if test="chargeTime != null ">
+		and t.charge_time=#{chargeTime}
+	</if>
+	<if test="startDate != null ">
+		and t.start_date=#{startDate}
+	</if>
+	<if test="startEnd != null ">
+		and t.start_end=#{startEnd}
+	</if>
+	<if test="remark != null ">
+		and t.remark=#{remark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+</select>
+	
+<select id="queryCount" parameterType="com.jc.oa.product.domain.ToaProductCdn" resultType="java.lang.Long">
+	SELECT COUNT(ID) 
+	 FROM toa_product_cdn t
+<where>
+	<if test="id != null ">
+		and t.id=#{id}
+	</if>
+	<if test="customersId != null ">
+		and t.customers_id=#{customersId}
+	</if>
+	<if test="customersName != null ">
+		and t.customers_name=#{customersName}
+	</if>
+	<if test="phone != null ">
+		and t.phone=#{phone}
+	</if>
+	<if test="linkman != null ">
+		and t.linkman=#{linkman}
+	</if>
+	<if test="address != null ">
+		and t.address=#{address}
+	</if>
+	<if test="taxid != null ">
+		and t.taxid=#{taxid}
+	</if>
+	<if test="expandPeople != null ">
+		and t.expand_people=#{expandPeople}
+	</if>
+	<if test="vask != null ">
+		and t.vask=#{vask}
+	</if>
+	<if test="supporter != null ">
+		and t.supporter=#{supporter}
+	</if>
+	<if test="cooperateType != null ">
+		and t.cooperate_type=#{cooperateType}
+	</if>
+	<if test="businessType != null ">
+		and t.business_type=#{businessType}
+	</if>
+	<if test="userName != null ">
+		and t.user_name=#{userName}
+	</if>
+	<if test="speedName != null ">
+		and t.speed_name=#{speedName}
+	</if>
+	<if test="stick != null ">
+		and t.stick=#{stick}
+	</if>
+	<if test="chargeMode != null ">
+		and t.charge_mode=#{chargeMode}
+	</if>
+	<if test="price != null ">
+		and t.price=#{price}
+	</if>
+	<if test="flooredNumber != null ">
+		and t.floored_number=#{flooredNumber}
+	</if>
+	<if test="chargeNumber != null ">
+		and t.charge_number=#{chargeNumber}
+	</if>
+	<if test="amount != null ">
+		and t.amount=#{amount}
+	</if>
+	<if test="chargeTime != null ">
+		and t.charge_time=#{chargeTime}
+	</if>
+	<if test="startDate != null ">
+		and t.start_date=#{startDate}
+	</if>
+	<if test="startEnd != null ">
+		and t.start_end=#{startEnd}
+	</if>
+	<if test="remark != null ">
+		and t.remark=#{remark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+
+</select>
+
+<update id="deleteLogic"  parameterType="com.jc.oa.product.domain.ToaProductCdn">
+	     UPDATE toa_product_cdn t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+ 			where ID in
+ 			<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=","> 
+				 #{primaryKey}
+			</foreach>
+</update>
+  	
+</mapper>   

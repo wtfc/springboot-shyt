@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.network.domain.ToaNetworkMachinewidth" > 
+
+<insert id="insert" parameterType="com.jc.oa.network.domain.ToaNetworkMachinewidth"
+		useGeneratedKeys="true" keyProperty="id">
+  		insert into toa_network_machinewidth(id,company_id,company_name,gbps,three_zhaowei,three_yangqiao,three_kandan,three_qinghuayuan,three_lugu,three_fufengqiao,three_shahe,two_zhaowei,two_yangqiao,two_kandan,two_qinghuayuan,two_lugu,two_fufengqiao,two_shahe,two_chuanshu,ws_langfang,ws_shandong,remark,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3)
+ values(#{id},#{companyId},#{companyName},#{gbps},#{threeZhaowei},#{threeYangqiao},#{threeKandan},#{threeQinghuayuan},#{threeLugu},#{threeFufengqiao},#{threeShahe},#{twoZhaowei},#{twoYangqiao},#{twoKandan},#{twoQinghuayuan},#{twoLugu},#{twoFufengqiao},#{twoShahe},#{twoChuanshu},#{wsLangfang},#{wsShandong},#{remark},#{deleteFlag},#{createUser},#{createUserDept},#{createDate},#{modifyUser},#{modifyDate},#{extStr1},#{extStr2},#{extStr3},#{extStr4},#{extStr5},#{extDate1},#{extDate2},#{extNum1},#{extNum2},#{extNum3})
+</insert>
+
+<update id="update" parameterType="com.jc.oa.network.domain.ToaNetworkMachinewidth">
+		update toa_network_machinewidth set 
+	<if test="companyId != null ">
+		company_id=#{companyId},
+	</if>
+	<if test="companyName != null ">
+		company_name=#{companyName},
+	</if>
+	<if test="gbps != null ">
+		gbps=#{gbps},
+	</if>
+	<if test="threeZhaowei != null ">
+		three_zhaowei=#{threeZhaowei},
+	</if>
+	<if test="threeYangqiao != null ">
+		three_yangqiao=#{threeYangqiao},
+	</if>
+	<if test="threeKandan != null ">
+		three_kandan=#{threeKandan},
+	</if>
+	<if test="threeQinghuayuan != null ">
+		three_qinghuayuan=#{threeQinghuayuan},
+	</if>
+	<if test="threeLugu != null ">
+		three_lugu=#{threeLugu},
+	</if>
+	<if test="threeFufengqiao != null ">
+		three_fufengqiao=#{threeFufengqiao},
+	</if>
+	<if test="threeShahe != null ">
+		three_shahe=#{threeShahe},
+	</if>
+	<if test="twoZhaowei != null ">
+		two_zhaowei=#{twoZhaowei},
+	</if>
+	<if test="twoYangqiao != null ">
+		two_yangqiao=#{twoYangqiao},
+	</if>
+	<if test="twoKandan != null ">
+		two_kandan=#{twoKandan},
+	</if>
+	<if test="twoQinghuayuan != null ">
+		two_qinghuayuan=#{twoQinghuayuan},
+	</if>
+	<if test="twoLugu != null ">
+		two_lugu=#{twoLugu},
+	</if>
+	<if test="twoFufengqiao != null ">
+		two_fufengqiao=#{twoFufengqiao},
+	</if>
+	<if test="twoShahe != null ">
+		two_shahe=#{twoShahe},
+	</if>
+	<if test="twoChuanshu != null ">
+		two_chuanshu=#{twoChuanshu},
+	</if>
+	<if test="wsLangfang != null ">
+		ws_langfang=#{wsLangfang},
+	</if>
+	<if test="wsShandong != null ">
+		ws_shandong=#{wsShandong},
+	</if>
+	<if test="remark != null ">
+		remark=#{remark},
+	</if>
+	<if test="deleteFlag != null ">
+		DELETE_FLAG=#{deleteFlag},
+	</if>
+	<if test="createUser != null ">
+		CREATE_USER=#{createUser},
+	</if>
+	<if test="createUserDept != null ">
+		CREATE_USER_DEPT=#{createUserDept},
+	</if>
+	<if test="createDate != null ">
+		CREATE_DATE=#{createDate},
+	</if>
+	<if test="modifyUser != null ">
+		MODIFY_USER=#{modifyUser},
+	</if>
+	<if test="modifyDate != null ">
+		MODIFY_DATE=#{modifyDate},
+	</if>
+	<if test="extStr1 != null ">
+		EXT_STR1=#{extStr1},
+	</if>
+	<if test="extStr2 != null ">
+		EXT_STR2=#{extStr2},
+	</if>
+	<if test="extStr3 != null ">
+		EXT_STR3=#{extStr3},
+	</if>
+	<if test="extStr4 != null ">
+		EXT_STR4=#{extStr4},
+	</if>
+	<if test="extStr5 != null ">
+		EXT_STR5=#{extStr5},
+	</if>
+	<if test="extDate1 != null ">
+		EXT_DATE1=#{extDate1},
+	</if>
+	<if test="extDate2 != null ">
+		EXT_DATE2=#{extDate2},
+	</if>
+	<if test="extNum1 != null ">
+		EXT_NUM1=#{extNum1},
+	</if>
+	<if test="extNum2 != null ">
+		EXT_NUM2=#{extNum2},
+	</if>
+	<if test="extNum3 != null ">
+		EXT_NUM3=#{extNum3},
+	</if>
+
+	 MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+</update>
+
+<select id="query" parameterType="com.jc.oa.network.domain.ToaNetworkMachinewidth" resultType="com.jc.oa.network.domain.ToaNetworkMachinewidth">
+		SELECT 
+		 t.ID id
+		,t.company_id companyId
+		,t.company_name companyName
+		,t.gbps gbps
+		,t.three_zhaowei threeZhaowei
+		,t.three_yangqiao threeYangqiao
+		,t.three_kandan threeKandan
+		,t.three_qinghuayuan threeQinghuayuan
+		,t.three_lugu threeLugu
+		,t.three_fufengqiao threeFufengqiao
+		,t.three_shahe threeShahe
+		,t.two_zhaowei twoZhaowei
+		,t.two_yangqiao twoYangqiao
+		,t.two_kandan twoKandan
+		,t.two_qinghuayuan twoQinghuayuan
+		,t.two_lugu twoLugu
+		,t.two_fufengqiao twoFufengqiao
+		,t.two_shahe twoShahe
+		,t.two_chuanshu twoChuanshu
+		,t.ws_langfang wsLangfang
+		,t.ws_shandong wsShandong
+		,t.remark remark
+		,t.DELETE_FLAG deleteFlag
+		,t.CREATE_USER createUser
+		,t.CREATE_USER_DEPT createUserDept
+		,t.CREATE_DATE createDate
+		,t.MODIFY_USER modifyUser
+		,t.MODIFY_DATE modifyDate
+		,t.EXT_STR1 extStr1
+		,t.EXT_STR2 extStr2
+		,t.EXT_STR3 extStr3
+		,t.EXT_STR4 extStr4
+		,t.EXT_STR5 extStr5
+		,t.EXT_DATE1 extDate1
+		,t.EXT_DATE2 extDate2
+		,t.EXT_NUM1 extNum1
+		,t.EXT_NUM2 extNum2
+		,t.EXT_NUM3 extNum3
+ FROM toa_network_machinewidth t
+<where>
+	<if test="id != null ">
+		and t.id=#{id}
+	</if>
+	<if test="companyId != null ">
+		and t.company_id=#{companyId}
+	</if>
+	<if test="companyName != null ">
+		and t.company_name like <![CDATA['%${companyName}%']]>
+	</if>
+	<if test="gbps != null ">
+		and t.gbps=#{gbps}
+	</if>
+	<if test="threeZhaowei != null ">
+		and t.three_zhaowei=#{threeZhaowei}
+	</if>
+	<if test="threeYangqiao != null ">
+		and t.three_yangqiao=#{threeYangqiao}
+	</if>
+	<if test="threeKandan != null ">
+		and t.three_kandan=#{threeKandan}
+	</if>
+	<if test="threeQinghuayuan != null ">
+		and t.three_qinghuayuan=#{threeQinghuayuan}
+	</if>
+	<if test="threeLugu != null ">
+		and t.three_lugu=#{threeLugu}
+	</if>
+	<if test="threeFufengqiao != null ">
+		and t.three_fufengqiao=#{threeFufengqiao}
+	</if>
+	<if test="threeShahe != null ">
+		and t.three_shahe=#{threeShahe}
+	</if>
+	<if test="twoZhaowei != null ">
+		and t.two_zhaowei=#{twoZhaowei}
+	</if>
+	<if test="twoYangqiao != null ">
+		and t.two_yangqiao=#{twoYangqiao}
+	</if>
+	<if test="twoKandan != null ">
+		and t.two_kandan=#{twoKandan}
+	</if>
+	<if test="twoQinghuayuan != null ">
+		and t.two_qinghuayuan=#{twoQinghuayuan}
+	</if>
+	<if test="twoLugu != null ">
+		and t.two_lugu=#{twoLugu}
+	</if>
+	<if test="twoFufengqiao != null ">
+		and t.two_fufengqiao=#{twoFufengqiao}
+	</if>
+	<if test="twoShahe != null ">
+		and t.two_shahe=#{twoShahe}
+	</if>
+	<if test="twoChuanshu != null ">
+		and t.two_chuanshu=#{twoChuanshu}
+	</if>
+	<if test="wsLangfang != null ">
+		and t.ws_langfang=#{wsLangfang}
+	</if>
+	<if test="wsShandong != null ">
+		and t.ws_shandong=#{wsShandong}
+	</if>
+	<if test="remark != null ">
+		and t.remark=#{remark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+</select>
+	
+<select id="queryCount" parameterType="com.jc.oa.network.domain.ToaNetworkMachinewidth" resultType="java.lang.Long">
+		SELECT COUNT(ID) 
+	 FROM toa_network_machinewidth t
+<where>
+	<if test="id != null ">
+		and t.id=#{id}
+	</if>
+	<if test="companyId != null ">
+		and t.company_id=#{companyId}
+	</if>
+	<if test="companyName != null ">
+		and t.company_name like <![CDATA['%${companyName}%']]>
+	</if>
+	<if test="gbps != null ">
+		and t.gbps=#{gbps}
+	</if>
+	<if test="threeZhaowei != null ">
+		and t.three_zhaowei=#{threeZhaowei}
+	</if>
+	<if test="threeYangqiao != null ">
+		and t.three_yangqiao=#{threeYangqiao}
+	</if>
+	<if test="threeKandan != null ">
+		and t.three_kandan=#{threeKandan}
+	</if>
+	<if test="threeQinghuayuan != null ">
+		and t.three_qinghuayuan=#{threeQinghuayuan}
+	</if>
+	<if test="threeLugu != null ">
+		and t.three_lugu=#{threeLugu}
+	</if>
+	<if test="threeFufengqiao != null ">
+		and t.three_fufengqiao=#{threeFufengqiao}
+	</if>
+	<if test="threeShahe != null ">
+		and t.three_shahe=#{threeShahe}
+	</if>
+	<if test="twoZhaowei != null ">
+		and t.two_zhaowei=#{twoZhaowei}
+	</if>
+	<if test="twoYangqiao != null ">
+		and t.two_yangqiao=#{twoYangqiao}
+	</if>
+	<if test="twoKandan != null ">
+		and t.two_kandan=#{twoKandan}
+	</if>
+	<if test="twoQinghuayuan != null ">
+		and t.two_qinghuayuan=#{twoQinghuayuan}
+	</if>
+	<if test="twoLugu != null ">
+		and t.two_lugu=#{twoLugu}
+	</if>
+	<if test="twoFufengqiao != null ">
+		and t.two_fufengqiao=#{twoFufengqiao}
+	</if>
+	<if test="twoShahe != null ">
+		and t.two_shahe=#{twoShahe}
+	</if>
+	<if test="twoChuanshu != null ">
+		and t.two_chuanshu=#{twoChuanshu}
+	</if>
+	<if test="wsLangfang != null ">
+		and t.ws_langfang=#{wsLangfang}
+	</if>
+	<if test="wsShandong != null ">
+		and t.ws_shandong=#{wsShandong}
+	</if>
+	<if test="remark != null ">
+		and t.remark=#{remark}
+	</if>
+	<if test="deleteFlag != null ">
+		and t.DELETE_FLAG=#{deleteFlag}
+	</if>
+	<if test="createUser != null ">
+		and t.CREATE_USER=#{createUser}
+	</if>
+	<if test="createUserDept != null ">
+		and t.CREATE_USER_DEPT=#{createUserDept}
+	</if>
+	<if test="createDate != null ">
+		and t.CREATE_DATE=#{createDate}
+	</if>
+	<if test="modifyUser != null ">
+		and t.MODIFY_USER=#{modifyUser}
+	</if>
+	<if test="modifyDate != null ">
+		and t.MODIFY_DATE=#{modifyDate}
+	</if>
+	<if test="extStr1 != null ">
+		and t.EXT_STR1=#{extStr1}
+	</if>
+	<if test="extStr2 != null ">
+		and t.EXT_STR2=#{extStr2}
+	</if>
+	<if test="extStr3 != null ">
+		and t.EXT_STR3=#{extStr3}
+	</if>
+	<if test="extStr4 != null ">
+		and t.EXT_STR4=#{extStr4}
+	</if>
+	<if test="extStr5 != null ">
+		and t.EXT_STR5=#{extStr5}
+	</if>
+	<if test="extDate1 != null ">
+		and t.EXT_DATE1=#{extDate1}
+	</if>
+	<if test="extDate2 != null ">
+		and t.EXT_DATE2=#{extDate2}
+	</if>
+	<if test="extNum1 != null ">
+		and t.EXT_NUM1=#{extNum1}
+	</if>
+	<if test="extNum2 != null ">
+		and t.EXT_NUM2=#{extNum2}
+	</if>
+	<if test="extNum3 != null ">
+		and t.EXT_NUM3=#{extNum3}
+	</if>
+</where>
+
+</select>
+
+<update id="deleteLogic"  parameterType="com.jc.oa.network.domain.ToaNetworkMachinewidth">
+	     UPDATE toa_network_machinewidth t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+ 			where ID in
+ 			<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=","> 
+				 #{primaryKey}
+			</foreach>
+</update>
+  	
+</mapper>   

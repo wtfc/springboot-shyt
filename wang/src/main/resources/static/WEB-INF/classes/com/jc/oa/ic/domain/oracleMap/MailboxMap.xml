@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"><mapper namespace="com.jc.oa.ic.domain.Mailbox"><resultMap type="com.jc.oa.ic.domain.Mailbox" id="mailbox_with_sign"><result column="id" property="id"/><result column="address" property="address"/><result column="receiveService" property="receiveService"/><result column="receivePort" property="receivePort"/><result column="senderService" property="senderService"/><result column="senderPort" property="senderPort"/><result column="username" property="username"/><result column="mailPassword" property="mailPassword"/><result column="isDefault" property="isDefault"/><result column="senderSSL" property="senderSSL"/><result column="receiveSSL" property="receiveSSL"/><result column="signId" property="signId"/><result column="replySignId" property="replySignId"/><result column="lastReceived" property="lastReceived"/><result column="deleteFlag" property="deleteFlag"/><result column="createUser" property="createUser"/><result column="createUserDept" property="createUserDept"/><result column="createUserOrg" property="createUserOrg"/><result column="createDate" property="createDate"/><result column="modifyUser" property="modifyUser"/><result column="modifyDate" property="modifyDate"/><result column="signContent" property="sign.signContent"/><result column="replySignContent" property="replySign.signContent"/></resultMap><select id="query" parameterType="com.jc.oa.ic.domain.Mailbox" resultMap="mailbox_with_sign">
+		SELECT 
+			t.ID id,
+			t.ADDRESS address,
+			t.RECEIVE_SERVICE receiveService,
+			t.RECEIVE_PORT receivePort,
+			t.SENDER_SERVICE senderService,
+			t.SENDER_PORT senderPort,
+			t.USERNAME username,
+			t.MAIL_PASSWORD mailPassword,
+			t.RECEIVE_SSL receiveSSL,
+			t.SENDER_SSL senderSSL,
+			t.IS_DEFAULT isDefault,
+			t.SIGN_ID signId,
+			t.REPLY_SIGN_ID replySignId,
+			t.LAST_RECEIVED lastReceived,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			
+			s.SIGN_CONTENT signContent,
+			os.SIGN_CONTENT replySignContent
+<!-- 			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5
+ -->			
+		FROM tty_ic_mailbox t LEFT JOIN TTY_IC_MAIL_SIGN s on t.SIGN_ID =s.ID 
+		LEFT JOIN TTY_IC_MAIL_SIGN os on t.REPLY_SIGN_ID =os.ID
+		<where>
+			t.RECEIVE_SERVICE!='1'
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="address != null">
+				and t.ADDRESS like <![CDATA['%${address}%']]>
+			</if>
+			<if test="receiveService != null">
+				and t.RECEIVE_SERVICE = #{receiveService}
+			</if>
+			<if test="receivePort != null">
+				and t.RECEIVE_PORT = #{receivePort}
+			</if>
+			<if test="senderService != null">
+				and t.SENDER_SERVICE = #{senderService}
+			</if>
+			<if test="senderPort != null">
+				and t.SENDER_PORT = #{senderPort}
+			</if>
+			<if test="username != null">
+				and t.USERNAME = #{username}
+			</if>
+			<if test="mailPassword != null">
+				and t.MAIL_PASSWORD = #{mailPassword}
+			</if>
+			<if test="isDefault != null">
+				and t.IS_DEFAULT = #{isDefault}
+			</if>
+			<if test="receiveSSL != null">
+				and t.RECEIVE_SSL = #{receiveSSL}
+			</if>
+			<if test="senderSSL != null">
+				and t.SENDER_SSL = #{senderSSL}
+			</if>
+			<if test="signId != null and replySignId != null">
+				and (t.SIGN_ID = #{signId} or t.REPLY_SIGN_ID = #{replySignId})
+			</if>
+			<if test="lastReceived != null">
+				and t.LAST_RECEIVED = #{lastReceived}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<!-- <if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if> -->
+		</where>
+			<if test="orderBy != null">
+				order by ${orderBy}
+			</if>
+	</select><select id="queryCount" parameterType="com.jc.oa.ic.domain.Mailbox" resultType="java.lang.Integer">
+		SELECT count(t.ID) 
+		FROM tty_ic_mailbox t LEFT JOIN TTY_IC_MAIL_SIGN s on t.SIGN_ID =s.ID 
+		LEFT JOIN TTY_IC_MAIL_SIGN os on t.REPLY_SIGN_ID =os.ID
+		<where>
+		    t.RECEIVE_SERVICE!='1'
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="address != null">
+				and t.ADDRESS like <![CDATA['%${address}%']]>
+			</if>
+			<if test="receiveService != null">
+				and t.RECEIVE_SERVICE = #{receiveService}
+			</if>
+			<if test="receivePort != null">
+				and t.RECEIVE_PORT = #{receivePort}
+			</if>
+			<if test="senderService != null">
+				and t.SENDER_SERVICE = #{senderService}
+			</if>
+			<if test="senderPort != null">
+				and t.SENDER_PORT = #{senderPort}
+			</if>
+			<if test="username != null">
+				and t.USERNAME = #{username}
+			</if>
+			<if test="mailPassword != null">
+				and t.MAIL_PASSWORD = #{mailPassword}
+			</if>
+			<if test="receiveSSL != null">
+				and t.RECEIVE_SSL = #{receiveSSL}
+			</if>
+			<if test="senderSSL != null">
+				and t.SENDER_SSL = #{senderSSL}
+			</if>
+			<if test="isDefault != null">
+				and t.IS_DEFAULT = #{isDefault}
+			</if>
+			<if test="signId != null">
+				and t.SIGN_ID = #{signId}
+			</if>
+			<if test="replySignId != null">
+				and t.REPLY_SIGN_ID = #{replySignId}
+			</if>
+			<if test="lastReceived != null">
+				and t.LAST_RECEIVED = #{lastReceived}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<!-- <if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if> -->
+		</where>
+		<if test="orderBy != null">
+				order by ${orderBy}
+			</if>
+	</select><select id="queryAllMailBox" parameterType="com.jc.oa.ic.domain.Mailbox" resultMap="mailbox_with_sign">
+		SELECT 
+			t.ID id,
+			t.ADDRESS address,
+			t.RECEIVE_SERVICE receiveService,
+			t.RECEIVE_PORT receivePort,
+			t.SENDER_SERVICE senderService,
+			t.SENDER_PORT senderPort,
+			t.USERNAME username,
+			t.MAIL_PASSWORD mailPassword,
+			t.RECEIVE_SSL receiveSSL,
+			t.SENDER_SSL senderSSL,
+			t.IS_DEFAULT isDefault,
+			t.SIGN_ID signId,
+			t.REPLY_SIGN_ID replySignId,
+			t.LAST_RECEIVED lastReceived,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			
+			s.SIGN_CONTENT signContent,
+			os.SIGN_CONTENT replySignContent
+<!-- 			t.EXT_DATE1 extDate1,
+			t.EXT_DATE2 extDate2,
+			t.EXT_NUM1 extNum1,
+			t.EXT_NUM2 extNum2,
+			t.EXT_NUM3 extNum3,
+			t.EXT_STR1 extStr1,
+			t.EXT_STR2 extStr2,
+			t.EXT_STR3 extStr3,
+			t.EXT_STR4 extStr4,
+			t.EXT_STR5 extStr5
+ -->			
+		FROM tty_ic_mailbox t LEFT JOIN TTY_IC_MAIL_SIGN s on t.SIGN_ID =s.ID 
+		LEFT JOIN TTY_IC_MAIL_SIGN os on t.REPLY_SIGN_ID =os.ID
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="address != null">
+				and t.ADDRESS like <![CDATA['%${address}%']]>
+			</if>
+			<if test="receiveService != null">
+				and t.RECEIVE_SERVICE = #{receiveService}
+			</if>
+			<if test="receivePort != null">
+				and t.RECEIVE_PORT = #{receivePort}
+			</if>
+			<if test="senderService != null">
+				and t.SENDER_SERVICE = #{senderService}
+			</if>
+			<if test="senderPort != null">
+				and t.SENDER_PORT = #{senderPort}
+			</if>
+			<if test="username != null">
+				and t.USERNAME = #{username}
+			</if>
+			<if test="mailPassword != null">
+				and t.MAIL_PASSWORD = #{mailPassword}
+			</if>
+			<if test="isDefault != null">
+				and t.IS_DEFAULT = #{isDefault}
+			</if>
+			<if test="receiveSSL != null">
+				and t.RECEIVE_SSL = #{receiveSSL}
+			</if>
+			<if test="senderSSL != null">
+				and t.SENDER_SSL = #{senderSSL}
+			</if>
+			<if test="signId != null and replySignId != null">
+				and (t.SIGN_ID = #{signId} or t.REPLY_SIGN_ID = #{replySignId})
+			</if>
+			<if test="lastReceived != null">
+				and t.LAST_RECEIVED = #{lastReceived}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<!-- <if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if> -->
+		</where>
+			<if test="orderBy != null">
+				order by ${orderBy}
+			</if>
+	</select><select id="queryAllMailBoxCount" parameterType="com.jc.oa.ic.domain.Mailbox" resultType="java.lang.Integer">
+		SELECT count(t.ID) 
+		FROM tty_ic_mailbox t LEFT JOIN TTY_IC_MAIL_SIGN s on t.SIGN_ID =s.ID 
+		LEFT JOIN TTY_IC_MAIL_SIGN os on t.REPLY_SIGN_ID =os.ID
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="address != null">
+				and t.ADDRESS like <![CDATA['%${address}%']]>
+			</if>
+			<if test="receiveService != null">
+				and t.RECEIVE_SERVICE = #{receiveService}
+			</if>
+			<if test="receivePort != null">
+				and t.RECEIVE_PORT = #{receivePort}
+			</if>
+			<if test="senderService != null">
+				and t.SENDER_SERVICE = #{senderService}
+			</if>
+			<if test="senderPort != null">
+				and t.SENDER_PORT = #{senderPort}
+			</if>
+			<if test="username != null">
+				and t.USERNAME = #{username}
+			</if>
+			<if test="mailPassword != null">
+				and t.MAIL_PASSWORD = #{mailPassword}
+			</if>
+			<if test="receiveSSL != null">
+				and t.RECEIVE_SSL = #{receiveSSL}
+			</if>
+			<if test="senderSSL != null">
+				and t.SENDER_SSL = #{senderSSL}
+			</if>
+			<if test="isDefault != null">
+				and t.IS_DEFAULT = #{isDefault}
+			</if>
+			<if test="signId != null">
+				and t.SIGN_ID = #{signId}
+			</if>
+			<if test="replySignId != null">
+				and t.REPLY_SIGN_ID = #{replySignId}
+			</if>
+			<if test="lastReceived != null">
+				and t.LAST_RECEIVED = #{lastReceived}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<!-- <if test="extDate1 != null">
+				and t.EXT_DATE1 = #{extDate1}
+			</if>
+			<if test="extDate2 != null">
+				and t.EXT_DATE2 = #{extDate2}
+			</if>
+			<if test="extNum1 != null">
+				and t.EXT_NUM1 = #{extNum1}
+			</if>
+			<if test="extNum2 != null">
+				and t.EXT_NUM2 = #{extNum2}
+			</if>
+			<if test="extNum3 != null">
+				and t.EXT_NUM3 = #{extNum3}
+			</if>
+			<if test="extStr1 != null">
+				and t.EXT_STR1 = #{extStr1}
+			</if>
+			<if test="extStr2 != null">
+				and t.EXT_STR2 = #{extStr2}
+			</if>
+			<if test="extStr3 != null">
+				and t.EXT_STR3 = #{extStr3}
+			</if>
+			<if test="extStr4 != null">
+				and t.EXT_STR4 = #{extStr4}
+			</if>
+			<if test="extStr5 != null">
+				and t.EXT_STR5 = #{extStr5}
+			</if> -->
+		</where>
+		<if test="orderBy != null">
+				order by ${orderBy}
+			</if>
+	</select><delete id="deletePhysical" parameterType="com.jc.oa.ic.domain.Mailbox">
+    	delete from tty_ic_mailbox
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</delete><update id="deleteLogic" parameterType="com.jc.oa.ic.domain.Mailbox">
+    	UPDATE tty_ic_mailbox t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      		where ID in
+      		<foreach collection="primaryKeys" item="primaryKey" index="index" open="(" close=")" separator=",">
+	            #{primaryKey}
+	        </foreach>
+ 	</update><insert id="insert" parameterType="com.jc.oa.ic.domain.Mailbox"><selectKey resultType="long" keyProperty="id" order="BEFORE">SELECT TTY_IC_MAILBOX_ID_SEQ.NEXTVAL FROM DUAL</selectKey>
+		INSERT INTO tty_ic_mailbox(ID,ADDRESS,RECEIVE_SERVICE,RECEIVE_PORT,SENDER_SERVICE,SENDER_PORT,USERNAME,MAIL_PASSWORD,RECEIVE_SSL,SENDER_SSL,IS_DEFAULT,SIGN_ID,REPLY_SIGN_ID,LAST_RECEIVED,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES (#{id},#{address,jdbcType=VARCHAR},#{receiveService,jdbcType=VARCHAR},#{receivePort,jdbcType=BLOB},#{senderService,jdbcType=VARCHAR},#{senderPort,jdbcType=BLOB},#{username,jdbcType=VARCHAR},#{mailPassword,jdbcType=VARCHAR},#{receiveSSL,jdbcType=VARCHAR},#{senderSSL,jdbcType=VARCHAR},#{isDefault,jdbcType=NUMERIC},#{signId,jdbcType=NUMERIC},#{replySignId,jdbcType=NUMERIC},#{lastReceived,jdbcType=TIMESTAMP},#{deleteFlag,jdbcType=NUMERIC},#{createUser,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createUserOrg,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extDate1,jdbcType=TIMESTAMP},#{extDate2,jdbcType=TIMESTAMP},#{extNum1,jdbcType=NUMERIC},#{extNum2,jdbcType=NUMERIC},#{extNum3,jdbcType=NUMERIC},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr5,jdbcType=VARCHAR})
+	</insert><insert id="insertList" parameterType="list">
+		INSERT INTO tty_ic_mailbox(ID,ADDRESS,RECEIVE_SERVICE,RECEIVE_PORT,SENDER_SERVICE,SENDER_PORT,USERNAME,MAIL_PASSWORD,RECEIVE_SSL,SENDER_SSL,IS_DEFAULT,SIGN_ID,REPLY_SIGN_ID,LAST_RECEIVED,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+			VALUES
+			<foreach collection="list" item="item" index="index" separator=","> 
+				(TTY_IC_MAILBOX_ID_SEQ.nextval,#{item.address,jdbcType=VARCHAR},#{item.receiveService,jdbcType=VARCHAR},#{item.receivePort,jdbcType=BLOB},#{item.senderService,jdbcType=VARCHAR},#{item.senderPort,jdbcType=BLOB},#{item.username,jdbcType=VARCHAR},#{item.mailPassword,jdbcType=VARCHAR},#{receiveSSL,jdbcType=VARCHAR},#{senderSSL,jdbcType=VARCHAR},#{item.isDefault,jdbcType=NUMERIC},#{item.signId,jdbcType=NUMERIC},#{item.replySignId,jdbcType=NUMERIC},#{item.lastReceived,jdbcType=TIMESTAMP},#{item.deleteFlag,jdbcType=NUMERIC},#{item.createUser,jdbcType=NUMERIC},#{item.createUserDept,jdbcType=NUMERIC},#{item.createUserOrg,jdbcType=NUMERIC},#{item.createDate,jdbcType=TIMESTAMP},#{item.modifyUser,jdbcType=NUMERIC},#{item.modifyDate,jdbcType=TIMESTAMP},#{item.extDate1,jdbcType=TIMESTAMP},#{item.extDate2,jdbcType=TIMESTAMP},#{item.extNum1,jdbcType=NUMERIC},#{item.extNum2,jdbcType=NUMERIC},#{item.extNum3,jdbcType=NUMERIC},#{item.extStr1,jdbcType=VARCHAR},#{item.extStr2,jdbcType=VARCHAR},#{item.extStr3,jdbcType=VARCHAR},#{item.extStr4,jdbcType=VARCHAR},#{item.extStr5,jdbcType=VARCHAR})
+			</foreach> 
+	</insert><update id="update" parameterType="com.jc.oa.ic.domain.Mailbox">
+	UPDATE tty_ic_mailbox
+	   <set>
+	   	<if test="address != null">
+	   		ADDRESS = #{address},
+	   	</if>
+	   	<if test="receiveService != null">
+	   		RECEIVE_SERVICE = #{receiveService},
+	   	</if>
+	   	<if test="senderService != null">
+	   		SENDER_SERVICE = #{senderService},
+	   	</if>
+	   	<if test="username != null">
+	   		USERNAME = #{username},
+	   	</if>
+	   	<if test="mailPassword != null">
+	   		MAIL_PASSWORD = #{mailPassword},
+	   	</if>
+	   	<if test="isDefault != null">
+	   		IS_DEFAULT = #{isDefault},
+	   	</if>
+	   	<if test="isDefault == null or isDefault == ''">
+	   		IS_DEFAULT = null,
+	   	</if>
+	   	<if test="receiveSSL != null">
+	   		RECEIVE_SSL = #{receiveSSL},
+	   	</if>
+	   	<if test="senderSSL != null">
+	   		SENDER_SSL = #{senderSSL},
+	   	</if>
+	   	<if test="signId != null and signId !=0">
+	   		SIGN_ID = #{signId},
+	   	</if>
+	   	<if test="signId == 0">
+	   		SIGN_ID = null,
+	   	</if>
+	   	<if test="replySignId != null and replySignId !=0">
+	   		REPLY_SIGN_ID = #{replySignId},
+	   	</if>
+	   	<if test="replySignId == 0">
+	   		REPLY_SIGN_ID = null,
+	   	</if>
+	   	<if test="deleteFlag != null">
+	   		DELETE_FLAG = #{deleteFlag},
+	   	</if>
+	   	<if test="modifyUser != null">
+	   		MODIFY_USER = #{modifyUser},
+	   	</if>
+	   	<if test="lastReceived!=null">
+	   		LAST_RECEIVED=#{lastReceived},
+	   	</if>
+	   	SENDER_PORT = #{senderPort},
+	   	RECEIVE_PORT = #{receivePort},
+	   	<!-- <if test="extDate1 != null">
+	   		EXT_DATE1 = #{extDate1},
+	   	</if>
+	   	<if test="extDate2 != null">
+	   		EXT_DATE2 = #{extDate2},
+	   	</if>
+	   	<if test="extNum1 != null">
+	   		EXT_NUM1 = #{extNum1},
+	   	</if>
+	   	<if test="extNum2 != null">
+	   		EXT_NUM2 = #{extNum2},
+	   	</if>
+	   	<if test="extNum3 != null">
+	   		EXT_NUM3 = #{extNum3},
+	   	</if>
+	   	<if test="extStr1 != null">
+	   		EXT_STR1 = #{extStr1},
+	   	</if>
+	   	<if test="extStr2 != null">
+	   		EXT_STR2 = #{extStr2},
+	   	</if>
+	   	<if test="extStr3 != null">
+	   		EXT_STR3 = #{extStr3},
+	   	</if>
+	   	<if test="extStr4 != null">
+	   		EXT_STR4 = #{extStr4},
+	   	</if>
+	   	<if test="extStr5 != null">
+	   		EXT_STR5 = #{extStr5},
+	   	</if> -->
+	   </set>
+	  ,MODIFY_DATE = #{modifyDateNew} where ID = #{id} and MODIFY_DATE = #{modifyDate}
+	</update><select id="querySign" parameterType="com.jc.oa.ic.domain.Mailbox" resultMap="mailbox_with_sign">
+		SELECT 
+			t.ID id,
+			t.ADDRESS address,
+			t.RECEIVE_SERVICE receiveService,
+			t.RECEIVE_PORT receivePort,
+			t.SENDER_SERVICE senderService,
+			t.SENDER_PORT senderPort,
+			t.USERNAME username,
+			t.MAIL_PASSWORD mailPassword,
+			t.RECEIVE_SSL receiveSSL,
+			t.SENDER_SSL senderSSL,
+			t.IS_DEFAULT isDefault,
+			t.SIGN_ID signId,
+			t.REPLY_SIGN_ID replySignId,
+			t.LAST_RECEIVED lastReceived,
+			t.DELETE_FLAG deleteFlag,
+			t.CREATE_USER createUser,
+			t.CREATE_USER_DEPT createUserDept,
+			t.CREATE_USER_ORG createUserOrg,
+			t.CREATE_DATE createDate,
+			t.MODIFY_USER modifyUser,
+			t.MODIFY_DATE modifyDate,
+			
+			s.SIGN_CONTENT signContent,
+			os.SIGN_CONTENT replySignContent
+		FROM tty_ic_mailbox t LEFT JOIN TTY_IC_MAIL_SIGN s on t.SIGN_ID =s.ID 
+		LEFT JOIN TTY_IC_MAIL_SIGN os on t.REPLY_SIGN_ID =os.ID
+		<where>
+			<if test="id != null">
+				and t.ID = #{id}
+			</if>
+			<if test="address != null">
+				and t.ADDRESS = #{address}
+			</if>
+			<if test="receiveService != null">
+				and t.RECEIVE_SERVICE = #{receiveService}
+			</if>
+			<if test="receivePort != null">
+				and t.RECEIVE_PORT = #{receivePort}
+			</if>
+			<if test="senderService != null">
+				and t.SENDER_SERVICE = #{senderService}
+			</if>
+			<if test="senderPort != null">
+				and t.SENDER_PORT = #{senderPort}
+			</if>
+			<if test="username != null">
+				and t.USERNAME = #{username}
+			</if>
+			<if test="mailPassword != null">
+				and t.MAIL_PASSWORD = #{mailPassword}
+			</if>
+			<if test="isDefault != null">
+				and t.IS_DEFAULT = #{isDefault}
+			</if>
+			<if test="receiveSSL != null">
+				and t.RECEIVE_SSL = #{receiveSSL}
+			</if>
+			<if test="senderSSL != null">
+				and t.SENDER_SSL = #{senderSSL}
+			</if>
+			<if test="signId != null and replySignId != null">
+				and (t.SIGN_ID = #{signId} or t.REPLY_SIGN_ID = #{replySignId})
+			</if>
+			<if test="lastReceived != null">
+				and t.LAST_RECEIVED = #{lastReceived}
+			</if>
+			<if test="deleteFlag != null">
+				and t.DELETE_FLAG = #{deleteFlag}
+			</if>
+			<if test="createUser != null">
+				and t.CREATE_USER = #{createUser}
+			</if>
+			<if test="createUserDept != null">
+				and t.CREATE_USER_DEPT = #{createUserDept}
+			</if>
+			<if test="createUserOrg != null">
+				and t.CREATE_USER_ORG = #{createUserOrg}
+			</if>
+			<if test="createDate != null">
+				and t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyUser != null">
+				and t.MODIFY_USER = #{modifyUser}
+			</if>
+			<if test="modifyDate != null">
+				and t.MODIFY_DATE = #{modifyDate}
+			</if>
+			
+		</where>
+	</select></mapper>

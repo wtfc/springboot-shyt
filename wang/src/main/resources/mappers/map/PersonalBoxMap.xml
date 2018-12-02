@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.oa.po.personalBox.domain.Note">
+
+<select id="query" parameterType="com.jc.oa.po.personalBox.domain.Note" resultType="com.jc.oa.po.personalBox.domain.Note">
+  SELECT t.ID id,
+	  t.CONTENT content,
+	  t.X_POSITION xPosition,
+	  t.Y_POSITION yPosition,
+	  t.DELETE_FLAG deleteFlag,
+	  t.CREATE_USER createUser,
+	  t.CREATE_USER_DEPT createUserDept,
+	  t.CREATE_USER_ORG createUserOrg,
+	  t.CREATE_DATE createDate,
+	  t.MODIFY_USER modifyUser,
+	  t.MODIFY_DATE modifyDate
+  FROM tty_po_note t
+  <where>
+	  <if test="deleteFlag != null">
+		and t.DELETE_FLAG = #{deleteFlag}
+	  </if>
+	  <if test="createUser != null">
+		and t.CREATE_USER = ${createUser}
+	  </if>
+  </where>
+  <if test="orderBy != null">
+		order by ${orderBy}
+  </if>
+</select>
+
+<delete id="deletePhysical"  parameterType="com.jc.oa.po.personalBox.domain.Note">
+    delete from tty_po_note
+      where ID in
+      <foreach collection="primaryKeys" item="primaryKey" index="index"
+            open="(" close=")" separator=",">
+            #{primaryKey}
+        </foreach>
+ </delete>
+
+<update id="delete"  parameterType="com.jc.oa.po.personalBox.domain.Note">
+    UPDATE tty_po_note t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+      where ID in
+      <foreach collection="primaryKeys" item="primaryKey" index="index"
+            open="(" close=")" separator=",">
+            #{primaryKey}
+        </foreach>
+ </update>
+ 
+ <update id="deleteLogic"  parameterType="com.jc.oa.po.personalBox.domain.Note">
+<![CDATA[
+    UPDATE tty_po_note t set t.delete_flag = 1,t.modify_user = #{modifyUser},t.modify_date = #{modifyDate}
+    ]]>
+      where ID in
+      <foreach collection="primaryKeys" item="primaryKey" index="index"
+            open="(" close=")" separator=",">
+            #{primaryKey}
+        </foreach>
+ </update>
+
+<insert id="insert" parameterType="com.jc.oa.po.personalBox.domain.Note" useGeneratedKeys="true" keyProperty="id">
+INSERT INTO tty_po_note(ID,CONTENT,X_POSITION,Y_POSITION,DELETE_FLAG,CREATE_USER,CREATE_USER_DEPT,CREATE_USER_ORG,CREATE_DATE,MODIFY_USER,MODIFY_DATE,EXT_DATE1,EXT_DATE2,EXT_NUM1,EXT_NUM2,EXT_NUM3,EXT_STR1,EXT_STR2,EXT_STR3,EXT_STR4,EXT_STR5)
+VALUES (#{id,jdbcType=NUMERIC},#{content,jdbcType=VARCHAR},#{xPosition,jdbcType=NUMERIC},#{yPosition,jdbcType=NUMERIC},#{deleteFlag,jdbcType=NUMERIC},#{createUser,jdbcType=NUMERIC},#{createUserDept,jdbcType=NUMERIC},#{createUserOrg,jdbcType=NUMERIC},#{createDate,jdbcType=TIMESTAMP},#{modifyUser,jdbcType=NUMERIC},#{modifyDate,jdbcType=TIMESTAMP},#{extDate1,jdbcType=TIMESTAMP},#{extDate2,jdbcType=TIMESTAMP},#{extNum1,jdbcType=NUMERIC},#{extNum2,jdbcType=NUMERIC},#{extNum3,jdbcType=NUMERIC},#{extStr1,jdbcType=VARCHAR},#{extStr2,jdbcType=VARCHAR},#{extStr3,jdbcType=VARCHAR},#{extStr4,jdbcType=VARCHAR},#{extStr5,jdbcType=VARCHAR})
+</insert>
+
+<update id="update" parameterType="com.jc.oa.po.personalBox.domain.Note">
+UPDATE tty_po_note
+   <set>
+   <if test="content != null">
+   CONTENT = #{content},
+   </if>
+   <if test="xPosition != null">
+	X_POSITION = #{xPosition},
+   </if> 
+   <if test="yPosition != null">
+   	Y_POSITION = #{yPosition},
+   </if>
+   <if test="deleteFlag != null">
+   DELETE_FLAG = #{deleteFlag},
+   </if>
+   <if test="modifyUser != null">
+   MODIFY_USER = #{modifyUser},
+   </if>
+   <if test="modifyDate != null">
+   MODIFY_DATE = #{modifyDate},
+   </if>
+   <if test="extDate1 != null">
+   EXT_DATE1 = #{extDate1},
+   </if>
+   <if test="extDate2 != null">
+   EXT_DATE2 = #{extDate2},
+   </if>
+   <if test="extNum1 != null">
+   EXT_NUM1 = #{extNum1},
+   </if>
+   <if test="extNum2 != null">
+   EXT_NUM2 = #{extNum2},
+   </if>
+   <if test="extNum3 != null">
+   EXT_NUM3 = #{extNum3},
+   </if>
+   <if test="extStr1 != null">
+   EXT_STR1 = #{extStr1},
+   </if>
+   <if test="extStr2 != null">
+   EXT_STR2 = #{extStr2},
+   </if>
+   <if test="extStr3 != null">
+   EXT_STR3 = #{extStr3},
+   </if>
+   <if test="extStr4 != null">
+   EXT_STR4 = #{extStr4},
+   </if>
+   <if test="extStr5 != null">
+   EXT_STR5 = #{extStr5},
+   </if>
+   </set>
+   where ID = #{id}
+</update>
+</mapper>
